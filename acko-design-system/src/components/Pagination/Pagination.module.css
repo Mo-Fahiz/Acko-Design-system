@@ -1,0 +1,145 @@
+/* Pagination — ACKO Design System */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.info {
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-muted);
+  margin-right: var(--space-2);
+}
+
+/* --- Page button --- */
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: transparent;
+  color: var(--color-text-default);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.pageBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pageBtn:hover:not(:disabled):not(.current) {
+    background-color: var(--color-primary-subtle);
+    color: var(--color-text-strong);
+  }
+}
+
+.current {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.pageBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
+/* --- Nav buttons (prev/next) --- */
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-default);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.navBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navBtn:hover:not(:disabled) {
+    background-color: var(--color-surface-raised-hover);
+    color: var(--color-text-strong);
+  }
+}
+
+.navBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Ellipsis --- */
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  user-select: none;
+}
+
+/* --- Load more variant --- */
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Simple variant --- */
+
+.simpleWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.simpleInfo {
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 640px) {
+  .wrapper {
+    justify-content: center;
+  }
+
+  .info {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: var(--space-2);
+  }
+}

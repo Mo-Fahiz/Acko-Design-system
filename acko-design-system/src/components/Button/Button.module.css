@@ -1,0 +1,399 @@
+/* Button — ACKO Design System */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease,
+    box-shadow 150ms ease;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  opacity: 1;
+  filter: none;
+}
+
+.btn:disabled:active {
+  transform: none;
+}
+
+/* --- Sizes --- */
+
+.xs {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 9999px;
+}
+
+.sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 9999px;
+}
+
+.md {
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 9999px;
+}
+
+.lg {
+  height: 56px;
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 28px;
+  border-radius: 9999px;
+}
+
+.xl {
+  height: 64px;
+  padding: 0 32px;
+  font-size: 20px;
+  line-height: 32px;
+  border-radius: 9999px;
+}
+
+/* --- Icon sizing per size --- */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.xs .icon { width: 12px; height: 12px; }
+.sm .icon { width: 14px; height: 14px; }
+.md .icon { width: 16px; height: 16px; }
+.lg .icon { width: 18px; height: 18px; }
+.xl .icon { width: 20px; height: 20px; }
+
+/* --- Icon-only square --- */
+
+.iconOnly.xs { width: 32px; padding: 0; }
+.iconOnly.sm { width: 40px; padding: 0; }
+.iconOnly.md { width: 48px; padding: 0; }
+.iconOnly.lg { width: 56px; padding: 0; }
+.iconOnly.xl { width: 64px; padding: 0; }
+
+/* --- Full width --- */
+
+.fullWidth {
+  width: 100%;
+}
+
+/* --- Variants --- */
+
+/* Primary */
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.28);
+}
+
+/* Secondary */
+.secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-primary);
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.28);
+}
+
+/* Outline */
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+.outline:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary),
+    0 0 0 3px var(--color-primary-ring);
+}
+
+/* Ghost */
+.ghost {
+  background-color: transparent;
+  color: var(--color-btn-ghost-color);
+}
+
+/* Danger */
+.danger {
+  background-color: transparent;
+  color: var(--color-error);
+  box-shadow: inset 0 0 0 1px var(--color-error);
+}
+
+.danger:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px var(--color-error),
+    0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent);
+}
+
+/* --- Hover (pointer devices only) --- */
+
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover:not(:disabled) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
+    background-color: var(--color-primary);
+    box-shadow:
+      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.28),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .secondary:hover:not(:disabled) {
+    background-color: var(--color-surface-raised-hover);
+    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.48);
+  }
+
+  .outline:hover:not(:disabled) {
+    background-color: var(--color-primary-subtle);
+    box-shadow:
+      inset 0 0 0 1px var(--color-primary),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .ghost:hover:not(:disabled) {
+    background-color: var(--color-btn-ghost-hover-bg);
+  }
+
+  .danger:hover:not(:disabled) {
+    background-color: var(--color-error-subtle);
+    box-shadow:
+      inset 0 0 0 1px var(--color-error),
+      0px 4px 8px 0px color-mix(in srgb, var(--color-error) 8%, transparent);
+  }
+}
+
+/* ============================================================
+   Dark theme — Refined button styles
+   ============================================================ */
+
+:global([data-theme="dark"]) .primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.15);
+}
+
+:global([data-theme="dark"]) .secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-text-strong);
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.12);
+}
+
+:global([data-theme="dark"]) .outline {
+  background-color: transparent;
+  color: var(--color-on-primary);
+  box-shadow: inset 0 0 0 1px var(--color-on-primary);
+}
+
+:global([data-theme="dark"]) .ghost {
+  background-color: transparent;
+  color: var(--color-btn-ghost-color);
+}
+
+:global([data-theme="dark"]) .danger {
+  background-color: transparent;
+  color: var(--color-error);
+  box-shadow: inset 0 0 0 1px var(--color-error);
+}
+
+:global([data-theme="dark"]) .btn:disabled {
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  opacity: 1;
+  filter: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global([data-theme="dark"]) .primary:hover:not(:disabled) {
+    background-color: var(--color-btn-primary-hover-bg);
+    box-shadow:
+      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.18),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  :global([data-theme="dark"]) .secondary:hover:not(:disabled) {
+    background-color: var(--color-surface-raised-hover);
+    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.08);
+  }
+
+  :global([data-theme="dark"]) .outline:hover:not(:disabled) {
+    background-color: var(--color-surface-ghost-hover);
+    box-shadow: inset 0 0 0 1px var(--color-on-primary);
+  }
+
+  :global([data-theme="dark"]) .ghost:hover:not(:disabled) {
+    background-color: var(--color-btn-ghost-hover-bg);
+  }
+
+  :global([data-theme="dark"]) .danger:hover:not(:disabled) {
+    background-color: var(--color-error-subtle);
+    box-shadow: inset 0 0 0 1px var(--color-error);
+  }
+}
+
+/* ============================================================
+   Elevated theme — Horizon-like gradients & glass
+   Scoped to elevated theme only.
+   ============================================================ */
+
+:global([data-theme="elevated"]) .primary {
+  background: var(--elevated-primary-gradient);
+  box-shadow: var(--elevated-primary-shadow);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+/* Convex highlight overlay */
+:global([data-theme="elevated"]) .primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--elevated-convex-overlay);
+  pointer-events: none;
+}
+
+:global([data-theme="elevated"]) .danger {
+  background: var(--elevated-danger-gradient);
+  box-shadow: var(--elevated-danger-shadow);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+:global([data-theme="elevated"]) .danger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--elevated-convex-overlay);
+  pointer-events: none;
+}
+
+:global([data-theme="elevated"]) .secondary {
+  background-color: var(--elevated-glass-bg);
+  box-shadow: none;
+  backdrop-filter: blur(14px);
+}
+
+:global([data-theme="elevated"]) .outline {
+  border: 1px solid transparent;
+  box-shadow: none;
+  background:
+    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
+    var(--elevated-border-gradient) border-box;
+  color: var(--color-text-strong);
+  backdrop-filter: blur(14px);
+}
+
+:global([data-theme="elevated"]) .ghost {
+  color: var(--color-primary-active);
+}
+
+:global([data-theme="elevated"]) .btn:focus-visible {
+  box-shadow: var(--elevated-focus-ring);
+}
+
+:global([data-theme="elevated"]) .primary:focus-visible {
+  box-shadow: var(--elevated-primary-shadow), var(--elevated-focus-ring);
+}
+
+:global([data-theme="elevated"]) .danger:focus-visible {
+  box-shadow: var(--elevated-danger-shadow), var(--elevated-focus-ring);
+}
+
+:global([data-theme="elevated"]) .outline:focus-visible {
+  box-shadow: var(--elevated-focus-ring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global([data-theme="elevated"]) .primary:hover:not(:disabled) {
+    background: var(--elevated-primary-gradient-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-primary-shadow-hover);
+  }
+
+  :global([data-theme="elevated"]) .secondary:hover:not(:disabled) {
+    background-color: var(--elevated-glass-bg-hover);
+    box-shadow: var(--elevated-glow-hover);
+    transform: translateY(-1px);
+  }
+
+  :global([data-theme="elevated"]) .outline:hover:not(:disabled) {
+    background:
+      linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
+      var(--elevated-border-gradient) border-box;
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-glow-hover);
+  }
+
+  :global([data-theme="elevated"]) .danger:hover:not(:disabled) {
+    background: var(--elevated-danger-gradient-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-danger-shadow-hover);
+  }
+}
+
+/* --- Loading state --- */
+
+.loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 600ms linear infinite;
+}
+
+/* Inherit parent text color for spinner visibility */
+.primary .spinner { color: var(--color-on-primary); }
+.secondary .spinner { color: var(--color-text-default); }
+.outline .spinner { color: var(--color-text-default); }
+.ghost .spinner { color: var(--color-btn-ghost-color); }
+.danger .spinner { color: var(--color-on-primary); }
+.success .spinner { color: var(--color-on-primary); }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,367 @@
+/* TextInput — ACKO Design System */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* --- Label --- */
+
+.label {
+  font-size: var(--font-label-lg-size);
+  font-weight: var(--font-label-lg-weight);
+  letter-spacing: var(--font-label-lg-spacing);
+  line-height: var(--font-label-lg-line);
+  color: var(--color-text-default);
+  transition: color 150ms ease;
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+/* --- Input wrapper --- */
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-full);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+/* --- Sizes (from FOUNDATION.md / COMPONENTS.md) --- */
+
+.inputWrapperSm {
+  height: var(--scale-40);
+  padding: 0 var(--space-4);
+}
+
+.inputWrapperMd {
+  height: var(--scale-48);
+  padding: 0 var(--space-5);
+}
+
+.inputWrapperLg {
+  height: var(--scale-56);
+  padding: 0 var(--space-6);
+}
+
+/* --- Input element --- */
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 400;
+  color: var(--color-text-strong);
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+  transition: color 200ms ease;
+}
+
+.focused .input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.inputSm {
+  font-size: var(--font-body-sm-size);
+  line-height: var(--font-body-sm-line);
+}
+
+.inputMd {
+  font-size: var(--font-body-md-size);
+  line-height: var(--font-body-md-line);
+}
+
+.inputLg {
+  font-size: var(--font-body-lg-size);
+  line-height: var(--font-body-lg-line);
+}
+
+/* --- Prefix / Suffix --- */
+
+.prefix,
+.suffix {
+  flex-shrink: 0;
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.prefix {
+  margin-right: var(--space-2);
+}
+
+.suffix {
+  margin-left: var(--space-2);
+}
+
+/* --- Icons --- */
+
+.iconLeft,
+.iconRight {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color 150ms ease;
+}
+
+.iconLeft {
+  margin-right: var(--space-2);
+}
+
+.iconRight {
+  margin-left: var(--space-2);
+}
+
+/* Icon sizes match input font sizes */
+.inputWrapperSm .iconLeft,
+.inputWrapperSm .iconRight {
+  width: 14px;
+  height: 14px;
+}
+
+.inputWrapperMd .iconLeft,
+.inputWrapperMd .iconRight {
+  width: 16px;
+  height: 16px;
+}
+
+.inputWrapperLg .iconLeft,
+.inputWrapperLg .iconRight {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Helper / Error / Success text --- */
+
+.helperText {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-muted);
+}
+
+.errorText {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-error-text);
+}
+
+.successText {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-success-text);
+}
+
+/* --- Character count --- */
+
+.charCount {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ============================================================
+   States — Light Theme (default)
+   ============================================================ */
+
+/* Hover */
+@media (hover: hover) and (pointer: fine) {
+  .inputWrapper:hover:not(.disabled):not(.error):not(.success):not(.readOnly):not(.focused) {
+    border-color: var(--grey-300);
+  }
+
+  .inputWrapper:hover:not(.disabled):not(.error):not(.success):not(.readOnly):not(.focused) .iconLeft,
+  .inputWrapper:hover:not(.disabled):not(.error):not(.success):not(.readOnly):not(.focused) .iconRight {
+    color: var(--color-text-secondary);
+  }
+}
+
+/* Focus */
+.focused {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.focused .iconLeft,
+.focused .iconRight {
+  color: var(--color-primary);
+}
+
+/* Filled (has value, not focused) */
+.filled:not(.focused):not(.error):not(.success) {
+  border-color: var(--grey-300);
+}
+
+/* Label state colors */
+.wrapperFocused .label,
+.labelFocused {
+  color: var(--color-primary);
+}
+
+.labelError {
+  color: var(--red-500);
+}
+
+.labelSuccess {
+  color: var(--color-text-default);
+}
+
+.labelDisabled {
+  color: var(--color-text-muted);
+}
+
+/* Error */
+.error {
+  border-color: var(--red-300);
+  background-color: var(--color-surface);
+  animation: shake 300ms ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+/* Success — normal styling, checkmark handled by component */
+.success {
+  border-color: var(--grey-300);
+  background-color: var(--color-surface);
+}
+
+/* Success checkmark icon */
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-500);
+  margin-left: var(--space-2);
+  animation: checkPop 300ms ease-out;
+}
+
+@keyframes checkPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Disabled */
+.disabled {
+  border-color: var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+  cursor: not-allowed;
+}
+
+.disabled .input {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.disabled .iconLeft,
+.disabled .iconRight {
+  color: var(--color-text-disabled);
+}
+
+/* Read-only */
+.readOnly {
+  border-color: var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+}
+
+.readOnly .input {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   Dark Theme
+   ============================================================ */
+
+:global([data-theme="dark"]) .inputWrapper {
+  background-color: var(--color-surface-raised);
+  border-color: var(--grey-550);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global([data-theme="dark"]) .inputWrapper:hover:not(.disabled):not(.error):not(.success):not(.readOnly):not(.focused) {
+    border-color: var(--grey-450);
+  }
+}
+
+:global([data-theme="dark"]) .focused {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+:global([data-theme="dark"]) .error {
+  border-color: var(--red-400);
+  background-color: var(--color-surface-raised);
+}
+
+:global([data-theme="dark"]) .success {
+  border-color: var(--grey-450);
+  background-color: var(--color-surface-raised);
+}
+
+:global([data-theme="dark"]) .successIcon {
+  color: var(--green-400);
+}
+
+:global([data-theme="dark"]) .disabled {
+  background-color: var(--grey-600);
+  border-color: var(--grey-600);
+}
+
+:global([data-theme="dark"]) .disabled .input {
+  color: var(--grey-450);
+}
+
+:global([data-theme="dark"]) .disabled .iconLeft,
+:global([data-theme="dark"]) .disabled .iconRight {
+  color: var(--grey-450);
+}
+
+:global([data-theme="dark"]) .readOnly {
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-border-subtle);
+}
+
+:global([data-theme="dark"]) .readOnly .input {
+  color: var(--color-text-secondary);
+}
