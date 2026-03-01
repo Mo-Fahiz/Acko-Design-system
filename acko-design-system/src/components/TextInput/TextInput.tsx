@@ -3,6 +3,7 @@ import { Check } from 'lucide-react';
 import styles from './TextInput.module.css';
 
 export interface TextInputProps {
+  id?: string;
   label: string;
   placeholder?: string;
   value: string;
@@ -24,6 +25,7 @@ export interface TextInputProps {
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
+  id: propId,
   label,
   placeholder,
   value,
@@ -44,7 +46,8 @@ export const TextInput: React.FC<TextInputProps> = ({
   autoComplete,
 }) => {
   const [focused, setFocused] = useState(false);
-  const id = useId();
+  const generatedId = useId();
+  const id = propId ?? generatedId;
   const errorId = `${id}-error`;
   const helperId = `${id}-helper`;
 

@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--color-control-border);
+  border: 2px solid var(--color-control-border-selector);
   background-color: var(--color-card-bg);
   transition:
     background-color 150ms ease,

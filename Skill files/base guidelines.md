@@ -107,3 +107,4 @@ import { Button, TextInput, Badge } from '@acko/design-system';
 4. **Mobile-first.** ACKO's users are predominantly mobile. Build for 360px width first, then scale up.
 5. **Sentence case everywhere.** Buttons, labels, headings, navigation — all sentence case. Never UPPERCASE except the `overline` typography style.
 6. **Accessibility is not optional.** Every component must pass the checklist in accessibility.md before being considered complete.
+7. **Apply the nested radius rule.** Any rectangular element (icon box, image thumbnail, inset panel) placed inside a rounded container must use `R1 = R2 − D` for its border-radius — never the same radius as its parent. In ACKO cards this always resolves to `--radius-inset-lg` (4px). Use `<CardInset>` for inset panels — it applies the correct radius automatically. Pill-shaped elements (badges, buttons, avatars) are exempt.

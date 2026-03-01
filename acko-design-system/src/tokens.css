@@ -105,12 +105,8 @@
   --grey-350: #8F8E92; --grey-400: #7A7B7D; --grey-450: #605F63;
   --grey-500: #474649; --grey-550: #333333; --grey-600: #242324;
   --grey-650: #19191A; --grey-700: #141414; --grey-750: #0F0F10;
-  --grey-black: #000000;
+  --grey-800: #0A0A0A; --grey-black: #000000;
 
-  /* Onyx (Neutrals — legacy aliases mapped to Grey) */
-  --onyx-800: #0A0A0A; --onyx-700: #141414; --onyx-600: #333333;
-  --onyx-500: #605F63; --onyx-400: #B7B7B8; --onyx-300: #E0E0E1;
-  --onyx-200: #F5F5F5; --onyx-100: #FFFFFF;
 
   /* Red */
   --red-50: #FEF2F2; --red-100: #FEE2E2; --red-200: #FECACA;
@@ -234,12 +230,37 @@
   --radius-3xl: 16px;
   --radius-full: 9999px;
 
+  /* --- Nested radius (R2 = R1 + D) ---
+     Use on rectangular elements nested inside a container.
+     Formula: R1 = R2 − D. When D ≥ R2, floor at --radius-sm (4px).
+
+     Context                 R2      D       R1
+     card-lg inner panel    16px    24px    4px  → --radius-inset-lg
+     card-md inner panel    16px    20px    4px  → --radius-inset-md
+     card-sm inner panel    16px    12px    4px  → --radius-inset-sm
+  */
+  --radius-inset-sm: var(--radius-sm);   /* 4px — card padding sm (12px), D < R2: R1 = 16−12 = 4px */
+  --radius-inset-md: var(--radius-sm);   /* 4px — card padding md (20px), D > R2: floor to 4px */
+  --radius-inset-lg: var(--radius-sm);   /* 4px — card padding lg (24px), D > R2: floor to 4px */
+
   /* --- Shadows --- */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 8px 40px rgba(0, 0, 0, 0.16);
   --shadow-border: 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+  /* Semantic shadow aliases */
+  --shadow-card: var(--shadow-md);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-modal: var(--shadow-xl);
+  --shadow-subtle: var(--shadow-sm);
+
+  /* Component shadows */
+  --shadow-btn-inner: inset 0px 1px 2px rgba(255, 255, 255, 0.28);
+  --shadow-btn-hover: 0px 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-btn-secondary-hover: inset 0px 2px 4px rgba(255, 255, 255, 0.48);
+  --shadow-focus-ring: 0 0 0 3px var(--color-primary-ring);
 
   /* --- Z-Index --- */
   --z-dropdown: 100;
@@ -282,27 +303,31 @@
 
   /* Surfaces */
   --color-surface: var(--grey-100);
-  --color-surface-raised: var(--onyx-200);
-  --color-surface-raised-hover: var(--onyx-300);
-  --color-surface-raised-active: var(--onyx-400);
+  --color-surface-raised: var(--grey-100);
+  --color-surface-raised-hover: var(--grey-200);
+  --color-surface-raised-active: var(--grey-300);
   --color-surface-overlay: rgba(10, 10, 10, 0.5);
   --color-surface-ghost-hover: rgba(0, 0, 0, 0.04);
 
   /* Cards */
   --color-card-bg: var(--grey-50);
   --color-card-border: var(--grey-white);
+  --color-card-elevated-bg: var(--grey-white);
+  --color-card-demoted-bg: var(--grey-150);
+  --color-card-demoted-border: var(--grey-200);
+  --color-card-outline-border: var(--grey-200);
 
   /* Text */
-  --color-text-strong: var(--onyx-800);
-  --color-text-default: var(--onyx-700);
-  --color-text-secondary: var(--onyx-600);
-  --color-text-muted: var(--onyx-500);
-  --color-text-disabled: var(--onyx-400);
+  --color-text-strong: var(--grey-800);
+  --color-text-default: var(--grey-700);
+  --color-text-secondary: var(--grey-550);
+  --color-text-muted: var(--grey-450);
+  --color-text-disabled: var(--grey-300);
 
   /* Borders */
-  --color-border: var(--onyx-400);
-  --color-border-strong: var(--onyx-500);
-  --color-border-subtle: var(--onyx-300);
+  --color-border: var(--grey-300);
+  --color-border-strong: var(--grey-450);
+  --color-border-subtle: var(--grey-200);
 
   /* Disabled */
   --color-disabled-bg: var(--grey-150);
@@ -318,7 +343,7 @@
   /* Error */
   --color-error: var(--red-600);
   --color-error-subtle: var(--red-50);
-  --color-error-text: var(--red-600);
+  --color-error-text: var(--red-700);
   --color-error-badge-bg: var(--red-100);
 
   /* Warning */
@@ -333,13 +358,63 @@
   --color-info-text: var(--blue-700);
   --color-info-badge-bg: var(--blue-200);
 
-  /* Form Controls */
-  --color-control-border: var(--grey-250);
+  /* Alert borders */
+  --color-success-border: var(--green-200);
+  --color-error-border: var(--red-200);
+  --color-warning-border: var(--orange-200);
+  --color-info-border: var(--blue-200);
+
+  /* Tooltip */
+  --color-tooltip-bg: var(--grey-700);
+  --color-tooltip-text: var(--grey-white);
+
+  /* Tabs pill */
+  --color-tab-pill-bg: var(--grey-150);
+  --color-tab-pill-active-bg: var(--grey-white);
+
+  /* Toggle */
+  --color-toggle-bg: var(--grey-150);
+  --color-toggle-bg-hover: var(--grey-200);
+  --color-toggle-active-bg: var(--purple-100);
+  --color-toggle-active-text: var(--purple-700);
+  --color-toggle-text: var(--grey-450);
+
+  /* Input (shared by Dropdown, InputGroup, and form inputs) */
+  --color-input-bg: var(--grey-white);
+  --color-input-border: var(--color-border-subtle);
+  --color-input-hover-border: var(--grey-350);
+  --color-input-option-hover: var(--purple-50);
+  --color-input-option-selected-bg: var(--purple-100);
+  --color-input-option-selected-text: var(--purple-700);
+
+  /* Accordion */
+  --color-accordion-border: var(--grey-200);
+  --color-accordion-header-hover: var(--grey-50);
+  --color-accordion-icon: var(--grey-400);
+
+  /* Breadcrumb */
+  --color-breadcrumb-text: var(--grey-400);
+  --color-breadcrumb-link: var(--grey-500);
+  --color-breadcrumb-link-hover: var(--purple-600);
+  --color-breadcrumb-current: var(--grey-700);
+  --color-breadcrumb-separator: var(--grey-300);
+
+  /* Table */
+  --color-table-header-bg: var(--grey-100);
+  --color-table-header-text: var(--grey-500);
+  --color-table-border: var(--grey-200);
+  --color-table-row-hover: var(--grey-50);
+  --color-table-stripe: var(--grey-50);
+
+  /* Form Controls (checkbox/radio outer ring) */
+  --color-control-border-selector: var(--grey-200);
 
   /* Button */
   --color-btn-secondary-bg: var(--grey-150);
   --color-btn-ghost-hover-bg: var(--grey-150);
   --color-btn-ghost-color: var(--purple-600);
+  --color-btn-outline-color: var(--purple-600);
+  --color-btn-outline-hover-bg: var(--purple-50);
 
   /* Radio */
   --color-radio-card-hover-border: var(--purple-200);
@@ -359,33 +434,41 @@
   /* Badge — solid */
   --color-badge-purple-bg: var(--purple-200);
   --color-badge-purple-text: var(--purple-800);
-  --color-badge-purple-shadow-top: var(--purple-300);
-  --color-badge-purple-shadow-bottom: var(--purple-100);
+  --color-badge-purple-shadow-top: var(--purple-100);
+  --color-badge-purple-shadow-bottom: var(--purple-300);
 
   --color-badge-green-bg: var(--green-200);
   --color-badge-green-text: var(--green-800);
-  --color-badge-green-shadow-top: var(--green-300);
-  --color-badge-green-shadow-bottom: var(--green-100);
+  --color-badge-green-shadow-top: var(--green-100);
+  --color-badge-green-shadow-bottom: var(--green-300);
 
   --color-badge-blue-bg: var(--blue-200);
   --color-badge-blue-text: var(--blue-800);
-  --color-badge-blue-shadow-top: var(--blue-300);
-  --color-badge-blue-shadow-bottom: var(--blue-100);
+  --color-badge-blue-shadow-top: var(--blue-100);
+  --color-badge-blue-shadow-bottom: var(--blue-300);
 
   --color-badge-orange-bg: var(--orange-200);
   --color-badge-orange-text: var(--orange-800);
-  --color-badge-orange-shadow-top: var(--orange-300);
-  --color-badge-orange-shadow-bottom: var(--orange-100);
+  --color-badge-orange-shadow-top: var(--orange-100);
+  --color-badge-orange-shadow-bottom: var(--orange-300);
 
   --color-badge-pink-bg: var(--red-200);
   --color-badge-pink-text: var(--red-800);
-  --color-badge-pink-shadow-top: var(--red-300);
-  --color-badge-pink-shadow-bottom: var(--red-100);
+  --color-badge-pink-shadow-top: var(--red-100);
+  --color-badge-pink-shadow-bottom: var(--red-300);
 
   --color-badge-gray-bg: var(--grey-200);
   --color-badge-gray-text: var(--grey-600);
-  --color-badge-gray-shadow-top: var(--grey-250);
-  --color-badge-gray-shadow-bottom: var(--grey-100);
+  --color-badge-gray-shadow-top: var(--grey-100);
+  --color-badge-gray-shadow-bottom: var(--grey-250);
+
+  /* Badge outline */
+  --color-badge-purple-outline-color: var(--purple-600);
+  --color-badge-green-outline-color: var(--green-600);
+  --color-badge-blue-outline-color: var(--blue-600);
+  --color-badge-orange-outline-color: var(--orange-600);
+  --color-badge-pink-outline-color: var(--red-600);
+  --color-badge-gray-outline-color: var(--grey-600);
 
   /* Counter badge */
   --color-counter-pink-bg: var(--red-500);
@@ -405,11 +488,11 @@
   --color-wizard-active-text: var(--grey-50);
   --color-wizard-active-shadow-top: var(--purple-400);
   --color-wizard-active-shadow-bottom: var(--purple-700);
-  --color-wizard-done-bg: var(--purple-300);
-  --color-wizard-done-text: var(--purple-700);
+  --color-wizard-done-bg: var(--purple-200);
+  --color-wizard-done-text: var(--purple-600);
   --color-wizard-upcoming-border: var(--grey-250);
   --color-wizard-upcoming-text: var(--grey-350);
-  --color-wizard-connector-done: var(--purple-300);
+  --color-wizard-connector-done: var(--purple-200);
   --color-wizard-connector-upcoming: var(--grey-250);
 }
 
@@ -427,27 +510,27 @@
   --color-primary-subtle: var(--purple-100);
   --color-primary-muted: var(--purple-400);
   --color-primary-ring: var(--purple-200);
-  --color-on-primary: var(--onyx-100);
+  --color-on-primary: var(--grey-white);
 
   /* Surfaces — still light, with a touch more contrast */
-  --color-surface: var(--onyx-100); /* keep global background light */
-  --color-surface-raised: var(--onyx-200);
-  --color-surface-raised-hover: var(--onyx-300);
-  --color-surface-raised-active: var(--onyx-400);
-  --color-surface-overlay: color-mix(in srgb, var(--onyx-800) 8%, transparent);
+  --color-surface: var(--grey-white); /* keep global background light */
+  --color-surface-raised: var(--grey-100);
+  --color-surface-raised-hover: var(--grey-200);
+  --color-surface-raised-active: var(--grey-300);
+  --color-surface-overlay: color-mix(in srgb, var(--grey-800) 8%, transparent);
   --color-surface-ghost-hover: rgba(0, 0, 0, 0.04);
 
   /* Text — dark on light */
-  --color-text-strong: var(--onyx-800);
-  --color-text-default: var(--onyx-700);
-  --color-text-secondary: var(--onyx-600);
-  --color-text-muted: var(--onyx-500);
-  --color-text-disabled: var(--onyx-400);
+  --color-text-strong: var(--grey-800);
+  --color-text-default: var(--grey-700);
+  --color-text-secondary: var(--grey-550);
+  --color-text-muted: var(--grey-450);
+  --color-text-disabled: var(--grey-300);
 
   /* Borders — crisper, with a subtle violet hint */
-  --color-border: var(--onyx-400);
-  --color-border-strong: var(--onyx-500);
-  --color-border-subtle: var(--onyx-300);
+  --color-border: var(--grey-300);
+  --color-border-strong: var(--grey-450);
+  --color-border-subtle: var(--grey-200);
 
   /* Disabled */
   --color-disabled-bg: var(--grey-150);
@@ -463,7 +546,7 @@
   /* Error */
   --color-error: var(--red-600);
   --color-error-subtle: var(--red-50);
-  --color-error-text: var(--red-600);
+  --color-error-text: var(--red-700);
   --color-error-badge-bg: var(--red-100);
 
   /* Warning */
@@ -483,6 +566,10 @@
   --shadow-md: 0 4px 18px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 10px 32px rgba(15, 23, 42, 0.12);
   --shadow-xl: 0 18px 55px rgba(15, 23, 42, 0.14);
+  --shadow-card: var(--shadow-md);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-modal: var(--shadow-xl);
+  --shadow-subtle: var(--shadow-sm);
 
   /* ============================================================
      Elevated theme helpers (component chrome)
@@ -490,9 +577,9 @@
      changing the global page background.
      ============================================================ */
 
-  --elevated-glass-bg: color-mix(in srgb, var(--onyx-100) 86%, transparent);
-  --elevated-glass-bg-hover: color-mix(in srgb, var(--onyx-100) 94%, transparent);
-  --elevated-glass-bg-active: color-mix(in srgb, var(--onyx-100) 98%, transparent);
+  --elevated-glass-bg: color-mix(in srgb, var(--grey-white) 86%, transparent);
+  --elevated-glass-bg-hover: color-mix(in srgb, var(--grey-white) 94%, transparent);
+  --elevated-glass-bg-active: color-mix(in srgb, var(--grey-white) 98%, transparent);
 
   --elevated-glass-border: color-mix(in srgb, var(--purple-500) 22%, transparent);
   --elevated-glass-border-strong: color-mix(in srgb, var(--purple-600) 34%, transparent);
@@ -571,6 +658,22 @@
    ============================================================ */
 
 [data-theme="dark"] {
+  /* Shadows — deeper for dark surfaces */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 28px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 8px 44px rgba(0, 0, 0, 0.6);
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-card: var(--shadow-md);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-modal: var(--shadow-xl);
+  --shadow-subtle: var(--shadow-sm);
+
+  /* Component shadows — dark adjustments */
+  --shadow-btn-inner: inset 0px 1px 2px rgba(255, 255, 255, 0.15);
+  --shadow-btn-hover: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-btn-secondary-hover: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+
   /* Primary */
   --color-primary: var(--purple-500);
   --color-primary-hover: var(--purple-400);
@@ -591,6 +694,10 @@
   /* Cards */
   --color-card-bg: var(--grey-700);
   --color-card-border: var(--grey-650);
+  --color-card-elevated-bg: var(--grey-650);
+  --color-card-demoted-bg: var(--grey-750);
+  --color-card-demoted-border: var(--grey-600);
+  --color-card-outline-border: var(--grey-600);
 
   /* Text */
   --color-text-strong: var(--grey-50);
@@ -618,7 +725,7 @@
   /* Error */
   --color-error: var(--red-600);
   --color-error-subtle: var(--red-950);
-  --color-error-text: var(--red-600);
+  --color-error-text: var(--red-400);
   --color-error-badge-bg: var(--red-900);
 
   /* Warning */
@@ -633,14 +740,64 @@
   --color-info-text: var(--blue-400);
   --color-info-badge-bg: var(--blue-900);
 
-  /* Form Controls */
-  --color-control-border: var(--grey-450);
+  /* Alert borders */
+  --color-success-border: var(--green-800);
+  --color-error-border: var(--red-800);
+  --color-warning-border: var(--orange-800);
+  --color-info-border: var(--blue-800);
+
+  /* Tooltip */
+  --color-tooltip-bg: var(--grey-200);
+  --color-tooltip-text: var(--grey-750);
+
+  /* Tabs pill */
+  --color-tab-pill-bg: var(--grey-650);
+  --color-tab-pill-active-bg: var(--grey-550);
+
+  /* Toggle */
+  --color-toggle-bg: var(--grey-650);
+  --color-toggle-bg-hover: var(--grey-600);
+  --color-toggle-active-bg: var(--purple-900);
+  --color-toggle-active-text: var(--purple-300);
+  --color-toggle-text: var(--grey-350);
+
+  /* Input (shared by Dropdown, InputGroup, and form inputs) */
+  --color-input-bg: var(--grey-700);
+  --color-input-border: var(--grey-450);
+  --color-input-hover-border: var(--grey-500);
+  --color-input-option-hover: var(--grey-650);
+  --color-input-option-selected-bg: var(--purple-900);
+  --color-input-option-selected-text: var(--purple-300);
+
+  /* Accordion */
+  --color-accordion-border: var(--grey-600);
+  --color-accordion-header-hover: var(--grey-650);
+  --color-accordion-icon: var(--grey-400);
+
+  /* Breadcrumb */
+  --color-breadcrumb-text: var(--grey-400);
+  --color-breadcrumb-link: var(--grey-350);
+  --color-breadcrumb-link-hover: var(--purple-400);
+  --color-breadcrumb-current: var(--grey-100);
+  --color-breadcrumb-separator: var(--grey-550);
+
+  /* Table */
+  --color-table-header-bg: var(--grey-700);
+  --color-table-header-text: var(--grey-350);
+  --color-table-border: var(--grey-600);
+  --color-table-row-hover: var(--grey-650);
+  --color-table-stripe: rgba(255, 255, 255, 0.02);
+
+  /* Form Controls (checkbox/radio outer ring) */
+  --color-control-border-selector: var(--grey-500);
 
   /* Button */
   --color-btn-secondary-bg: var(--grey-600);
   --color-btn-ghost-hover-bg: var(--grey-600);
   --color-btn-primary-hover-bg: var(--purple-600);
   --color-btn-ghost-color: var(--purple-400);
+  --color-btn-outline-color: var(--purple-400);
+  --color-btn-outline-hover-bg: var(--purple-950);
 
   /* Radio */
   --color-radio-card-hover-border: var(--purple-700);
@@ -660,45 +817,53 @@
   /* Badge — solid */
   --color-badge-purple-bg: var(--purple-900);
   --color-badge-purple-text: var(--purple-200);
-  --color-badge-purple-shadow-top: var(--purple-800);
+  --color-badge-purple-shadow-top: var(--purple-700);
   --color-badge-purple-shadow-bottom: var(--purple-950);
 
   --color-badge-green-bg: var(--green-900);
   --color-badge-green-text: var(--green-200);
-  --color-badge-green-shadow-top: var(--green-800);
+  --color-badge-green-shadow-top: var(--green-700);
   --color-badge-green-shadow-bottom: var(--green-950);
 
   --color-badge-blue-bg: var(--blue-900);
   --color-badge-blue-text: var(--blue-200);
-  --color-badge-blue-shadow-top: var(--blue-800);
+  --color-badge-blue-shadow-top: var(--blue-700);
   --color-badge-blue-shadow-bottom: var(--blue-950);
 
   --color-badge-orange-bg: var(--orange-900);
   --color-badge-orange-text: var(--orange-200);
-  --color-badge-orange-shadow-top: var(--orange-800);
+  --color-badge-orange-shadow-top: var(--orange-700);
   --color-badge-orange-shadow-bottom: var(--orange-950);
 
   --color-badge-pink-bg: var(--red-900);
   --color-badge-pink-text: var(--red-200);
-  --color-badge-pink-shadow-top: var(--red-800);
+  --color-badge-pink-shadow-top: var(--red-700);
   --color-badge-pink-shadow-bottom: var(--red-950);
 
   --color-badge-gray-bg: var(--grey-600);
   --color-badge-gray-text: var(--grey-200);
-  --color-badge-gray-shadow-top: var(--grey-550);
+  --color-badge-gray-shadow-top: var(--grey-500);
   --color-badge-gray-shadow-bottom: var(--grey-650);
+
+  /* Badge outline */
+  --color-badge-purple-outline-color: var(--purple-400);
+  --color-badge-green-outline-color: var(--green-600);
+  --color-badge-blue-outline-color: var(--blue-600);
+  --color-badge-orange-outline-color: var(--orange-600);
+  --color-badge-pink-outline-color: var(--red-600);
+  --color-badge-gray-outline-color: var(--grey-500);
 
   /* Counter badge */
   --color-counter-pink-bg: var(--red-600);
-  --color-counter-pink-shadow-top: var(--red-500);
+  --color-counter-pink-shadow-top: var(--red-400);
   --color-counter-pink-shadow-bottom: var(--red-800);
 
   --color-counter-purple-bg: var(--purple-600);
-  --color-counter-purple-shadow-top: var(--purple-500);
+  --color-counter-purple-shadow-top: var(--purple-400);
   --color-counter-purple-shadow-bottom: var(--purple-800);
 
   --color-counter-blue-bg: var(--blue-600);
-  --color-counter-blue-shadow-top: var(--blue-500);
+  --color-counter-blue-shadow-top: var(--blue-400);
   --color-counter-blue-shadow-bottom: var(--blue-800);
 
   /* Wizard */
@@ -706,11 +871,11 @@
   --color-wizard-active-text: var(--grey-white);
   --color-wizard-active-shadow-top: var(--purple-500);
   --color-wizard-active-shadow-bottom: var(--purple-800);
-  --color-wizard-done-bg: var(--purple-800);
+  --color-wizard-done-bg: var(--purple-700);
   --color-wizard-done-text: var(--purple-300);
   --color-wizard-upcoming-border: var(--grey-500);
   --color-wizard-upcoming-text: var(--grey-450);
-  --color-wizard-connector-done: var(--purple-800);
+  --color-wizard-connector-done: var(--purple-700);
   --color-wizard-connector-upcoming: var(--grey-500);
 }
 

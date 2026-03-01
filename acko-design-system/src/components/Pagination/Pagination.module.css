@@ -22,7 +22,7 @@
   width: 40px;
   height: 40px;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   background-color: transparent;
   color: var(--color-text-default);
   font-family: inherit;
@@ -44,7 +44,7 @@
 @media (hover: hover) and (pointer: fine) {
   .pageBtn:hover:not(:disabled):not(.current) {
     background-color: var(--color-primary-subtle);
-    color: var(--color-text-strong);
+    color: var(--color-text-default);
   }
 }
 
@@ -69,7 +69,7 @@
   width: 40px;
   height: 40px;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   background-color: var(--color-surface-raised);
   color: var(--color-text-default);
   cursor: pointer;
@@ -86,7 +86,7 @@
 @media (hover: hover) and (pointer: fine) {
   .navBtn:hover:not(:disabled) {
     background-color: var(--color-surface-raised-hover);
-    color: var(--color-text-strong);
+    color: var(--color-text-default);
   }
 }
 

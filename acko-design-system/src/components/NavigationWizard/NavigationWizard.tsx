@@ -63,7 +63,7 @@ export const NavigationWizard: React.FC<WizardProps> = ({
                   style={onStepClick ? { cursor: 'pointer' } : undefined}
                   aria-hidden="true"
                 >
-                  {step.status === 'completed' ? <Check size={16} /> : step.status === 'error' ? <AlertTriangle size={14} /> : i + 1}
+                  {step.status === 'completed' ? <Check size={16} strokeWidth={2} /> : step.status === 'error' ? <AlertTriangle size={14} /> : i + 1}
                 </span>
                 {i < resolvedSteps.length - 1 && (
                   <div
@@ -104,7 +104,7 @@ export const NavigationWizard: React.FC<WizardProps> = ({
             >
               <div className={styles.stepRow}>
                 <span className={styles.circle} aria-hidden="true">
-                  {step.status === 'completed' ? <Check size={16} /> : step.status === 'error' ? <AlertTriangle size={14} /> : i + 1}
+                  {step.status === 'completed' ? <Check size={16} strokeWidth={2} /> : step.status === 'error' ? <AlertTriangle size={14} /> : i + 1}
                 </span>
               </div>
               <div className={styles.labelBlock}>

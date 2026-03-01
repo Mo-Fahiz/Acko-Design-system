@@ -1,0 +1,43 @@
+/* Separator — ACKO Design System */
+
+.separator {
+  flex-shrink: 0;
+}
+
+/* --- Orientation --- */
+
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-control-border-selector);
+}
+
+.vertical {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-control-border-selector);
+}
+
+/* --- With label --- */
+
+.withLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  height: auto;
+  background: none;
+}
+
+.withLabel .line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-control-border-selector);
+}
+
+.withLabel .label {
+  font-size: var(--font-caption-size);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}

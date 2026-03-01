@@ -246,7 +246,7 @@
 }
 
 .outsideMonth {
-  color: var(--color-border-subtle);
+  color: var(--color-text-disabled);
 }
 
 /* --- Month / Year picker grids --- */

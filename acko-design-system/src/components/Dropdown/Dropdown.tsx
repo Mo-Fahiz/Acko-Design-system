@@ -241,6 +241,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
           onClick={() => {
             if (!option.disabled) handleSelect(option.value);
           }}
+          onMouseEnter={() => {
+            if (!option.disabled && flatIndex >= 0) setFocusedIndex(flatIndex);
+          }}
         >
           {option.icon && <span className={styles.optionIcon}>{option.icon}</span>}
           {option.label}

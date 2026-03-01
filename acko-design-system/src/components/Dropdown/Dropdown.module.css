@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--color-input-border);
   background-color: var(--color-surface);
   border-radius: var(--radius-full);
   font-family: inherit;
@@ -89,7 +89,7 @@
 /* Trigger states */
 @media (hover: hover) and (pointer: fine) {
   .trigger:hover:not(:disabled):not(.triggerOpen):not(.triggerError) {
-    border-color: var(--grey-300);
+    border-color: var(--color-border-strong);
   }
 
   .trigger:hover:not(:disabled):not(.triggerOpen):not(.triggerError) .chevron {
@@ -139,7 +139,7 @@
 
 /* Has value (filled state) */
 .triggerFilled:not(.triggerOpen):not(.triggerError) {
-  border-color: var(--grey-300);
+  border-color: var(--color-border-strong);
 }
 
 /* Label states */
@@ -160,9 +160,9 @@
   right: 0;
   margin-top: 4px;
   background-color: var(--color-surface);
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--color-input-border);
   border-radius: var(--radius-3xl);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-dropdown);
   z-index: var(--z-dropdown);
   max-height: 280px;
   overflow-y: auto;
@@ -191,7 +191,7 @@
 
 .searchInput {
   width: 100%;
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--color-input-border);
   border-radius: var(--radius-full);
   padding: var(--space-2) var(--space-4);
   font-family: inherit;

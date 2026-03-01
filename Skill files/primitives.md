@@ -41,6 +41,7 @@ Primitives (hex, px)          Semantic roles     Component specs
 | 650 | `#19191A` |
 | 700 | `#141414` |
 | 750 | `#0F0F10` |
+| 800 | `#0A0A0A` |
 | Black | `#000000` |
 
 ### Red
@@ -109,7 +110,7 @@ Primitives (hex, px)          Semantic roles     Component specs
   --grey-350: #8F8E92; --grey-400: #7A7B7D; --grey-450: #605F63;
   --grey-500: #474649; --grey-550: #333333; --grey-600: #242324;
   --grey-650: #19191A; --grey-700: #141414; --grey-750: #0F0F10;
-  --grey-black: #000000;
+  --grey-800: #0A0A0A; --grey-black: #000000;
 
   /* Red */
   --red-50: #FEF2F2; --red-100: #FEE2E2; --red-200: #FECACA;
@@ -442,19 +443,79 @@ Spacing tokens reference the base scale. Use these semantic aliases for consiste
 
 Border radius tokens reference the base scale.
 
-| Token | Scale Value |
-|-------|------------|
-| `radius-none` | `0` |
-| `radius-xs` | `2` |
-| `radius-sm` | `4` |
-| `radius-md` | `8` |
-| `radius-lg` | `12` |
-| `radius-xl` | `16` |
-| `radius-2xl` | `20` |
-| `radius-3xl` | `24` |
-| `radius-4xl` | `32` |
-| `radius-5xl` | `40` |
-| `radius-full` | `999` |
+| Token | Value |
+|-------|-------|
+| `radius-sm` | `4px` |
+| `radius-md` | `6px` |
+| `radius-lg` | `8px` |
+| `radius-xl` | `10px` |
+| `radius-2xl` | `12px` |
+| `radius-3xl` | `16px` |
+| `radius-full` | `9999px` |
+
+---
+
+## Nested Radius Rule
+
+**Formula: R2 = R1 + D** (equivalently, R1 = R2 − D)
+
+When a rectangular element is nested inside a rounded container, the inner element's border-radius (R1) must equal the outer container's border-radius (R2) minus the padding gap between them (D). This ensures the inner corners are geometrically concentric with the outer corners — they look flush and harmonious instead of visually "poking out".
+
+```
+         R2 (outer card)
+        ╭──────────────╮
+        │  D (padding) │
+        │  ╭────────╮  │
+        │  │  R1    │  │   R1 = R2 − D
+        │  │ inner  │  │
+        │  ╰────────╯  │
+        │              │
+        ╰──────────────╯
+```
+
+### Lookup table for ACKO cards
+
+Card outer radius is always `--radius-3xl` (16px).
+
+| Card padding prop | D (px) | R2 (px) | R1 = R2 − D | Token to use |
+|-------------------|--------|---------|-------------|--------------|
+| `sm` (`--space-3`) | 12px | 16px | **4px** | `--radius-inset-sm` → `--radius-sm` |
+| `md` (`--space-5`) | 20px | 16px | negative → floor | `--radius-inset-md` → `--radius-sm` (4px) |
+| `lg` (`--space-6`) | 24px | 16px | negative → floor | `--radius-inset-lg` → `--radius-sm` (4px) |
+
+When D ≥ R2 the result would be zero or negative — use `--radius-sm` (4px) as the minimum floor to avoid harsh sharp corners while still being visually distinct from the outer radius.
+
+### Nested radius tokens
+
+| Token | Value | When to use |
+|-------|-------|-------------|
+| `--radius-inset-sm` | `var(--radius-sm)` · 4px | Rectangular inner elements in `padding="sm"` cards |
+| `--radius-inset-md` | `var(--radius-sm)` · 4px | Rectangular inner elements in `padding="md"` cards |
+| `--radius-inset-lg` | `var(--radius-sm)` · 4px | Rectangular inner elements in `padding="lg"` cards |
+
+### What the rule applies to
+
+| Element type | Apply rule? | Notes |
+|---|---|---|
+| Icon wrapper box | ✅ Yes | Square/rectangular container inside a card |
+| Image thumbnail | ✅ Yes | Cropped image block inside a card |
+| Info / demoted panel (`CardInset`) | ✅ Yes | Use `<CardInset>` which applies `--radius-inset-lg` |
+| Inset code block | ✅ Yes | |
+| Pill badge (`radius-full`) | ❌ Exempt | Intentional pill shape, not geometric nesting |
+| Button inside card | ❌ Exempt | Has its own intentional radius |
+| Avatar inside card | ❌ Exempt | Circular by definition |
+
+### Anti-pattern
+
+```css
+/* ❌ Wrong — inner panel uses same radius as outer card */
+.card       { border-radius: 16px; padding: 24px; }
+.inner-panel { border-radius: 16px; }   /* looks wrong — corners don't align */
+
+/* ✅ Correct — inner panel uses nested radius */
+.card       { border-radius: var(--radius-3xl); padding: var(--space-6); }
+.inner-panel { border-radius: var(--radius-inset-lg); }  /* 4px — concentric */
+```
 
 ---
 

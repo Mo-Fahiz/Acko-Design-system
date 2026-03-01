@@ -1,0 +1,182 @@
+/* Tooltip — ACKO Design System */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: var(--z-tooltip);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-tooltip-text);
+  background: var(--color-tooltip-bg);
+  border-radius: var(--radius-xl);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms var(--ease-out-quad), transform 150ms var(--ease-out-quad), visibility 150ms;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Arrow (6px triangle) --- */
+
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+/* --- Side: top --- */
+
+.sideTop {
+  bottom: 100%;
+  margin-bottom: var(--space-2);
+  transform: translateY(8px);
+}
+
+.sideTop.visible {
+  transform: translateY(0);
+}
+
+.sideTop .arrow {
+  bottom: -6px;
+  left: var(--space-2);
+  border-top-color: var(--color-tooltip-bg);
+  border-bottom: none;
+}
+
+/* --- Side: bottom --- */
+
+.sideBottom {
+  top: 100%;
+  margin-top: var(--space-2);
+  transform: translateY(-8px);
+}
+
+.sideBottom.visible {
+  transform: translateY(0);
+}
+
+.sideBottom .arrow {
+  top: -6px;
+  left: var(--space-2);
+  border-bottom-color: var(--color-tooltip-bg);
+  border-top: none;
+}
+
+/* --- Side: left --- */
+
+.sideLeft {
+  right: 100%;
+  margin-right: var(--space-2);
+  transform: translateX(8px);
+}
+
+.sideLeft.visible {
+  transform: translateX(0);
+}
+
+.sideLeft .arrow {
+  right: -6px;
+  top: var(--space-2);
+  border-left-color: var(--color-tooltip-bg);
+  border-right: none;
+}
+
+/* --- Side: right --- */
+
+.sideRight {
+  left: 100%;
+  margin-left: var(--space-2);
+  transform: translateX(-8px);
+}
+
+.sideRight.visible {
+  transform: translateX(0);
+}
+
+.sideRight .arrow {
+  left: -6px;
+  top: var(--space-2);
+  border-right-color: var(--color-tooltip-bg);
+  border-left: none;
+}
+
+/* --- Align: start --- */
+
+.sideTop.alignStart,
+.sideBottom.alignStart {
+  left: 0;
+}
+
+.sideLeft.alignStart,
+.sideRight.alignStart {
+  top: 0;
+}
+
+/* --- Align: center --- */
+
+.sideTop.alignCenter,
+.sideBottom.alignCenter {
+  left: 50%;
+  transform: translate(-50%, 8px);
+}
+
+.sideTop.alignCenter.visible,
+.sideBottom.alignCenter.visible {
+  transform: translate(-50%, 0);
+}
+
+.sideTop.alignCenter .arrow,
+.sideBottom.alignCenter .arrow {
+  left: 50%;
+  margin-left: -6px;
+}
+
+.sideLeft.alignCenter,
+.sideRight.alignCenter {
+  top: 50%;
+  transform: translate(8px, -50%);
+}
+
+.sideLeft.alignCenter.visible,
+.sideRight.alignCenter.visible {
+  transform: translate(0, -50%);
+}
+
+.sideRight.alignCenter {
+  transform: translate(-8px, -50%);
+}
+
+.sideRight.alignCenter.visible {
+  transform: translate(0, -50%);
+}
+
+.sideLeft.alignCenter .arrow,
+.sideRight.alignCenter .arrow {
+  top: 50%;
+  margin-top: -6px;
+}
+
+/* --- Align: end --- */
+
+.sideTop.alignEnd,
+.sideBottom.alignEnd {
+  right: 0;
+  left: auto;
+}
+
+.sideLeft.alignEnd,
+.sideRight.alignEnd {
+  bottom: 0;
+  top: auto;
+}

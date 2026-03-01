@@ -1,0 +1,90 @@
+/* Card — ACKO Design System */
+
+.card {
+  border-radius: var(--radius-3xl);
+  box-sizing: border-box;
+}
+
+/* --- Variants --- */
+
+.default {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--color-card-outline-border);
+}
+
+.elevated {
+  background-color: var(--color-card-elevated-bg);
+  border: none;
+  box-shadow: var(--shadow-card);
+}
+
+.demoted {
+  background-color: var(--color-card-demoted-bg);
+  border: 1px solid var(--color-card-demoted-border);
+}
+
+/* --- Padding --- */
+
+.padding_none {
+  padding: 0;
+}
+
+.padding_sm {
+  padding: var(--space-3);
+}
+
+.padding_md {
+  padding: var(--space-5);
+}
+
+.padding_lg {
+  padding: var(--space-6);
+}
+
+/* --- Sub-components --- */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.content {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* --- Inset panel (nested element inside a card) ---
+   Applies the nested radius rule: R1 = R2 − D.
+   Since card padding (sm=12px, md=20px, lg=24px) meets or exceeds R2 (16px),
+   all inset panels use the 4px floor → --radius-inset-lg / --radius-sm.
+   Use this class on icon boxes, image thumbnails, or demoted info panels
+   placed inside a Card. Never use --radius-3xl on nested rectangular elements. */
+.inset {
+  border-radius: var(--radius-inset-lg);
+  background-color: var(--color-card-demoted-bg);
+  border: 1px solid var(--color-card-demoted-border);
+  padding: var(--space-3);
+}
+
+:global([data-theme="dark"]) .elevated {
+  box-shadow: var(--shadow-card);
+}

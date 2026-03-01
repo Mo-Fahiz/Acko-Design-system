@@ -72,6 +72,7 @@ input,
 select,
 textarea {
   touch-action: manipulation;
+  font-family: inherit;
 }
 
 /* --- Reduced motion --- */

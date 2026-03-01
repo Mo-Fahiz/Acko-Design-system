@@ -56,7 +56,7 @@ For displaying information blocks (policy cards, plan options, claim status):
 │  │  [Badge]  Title           │ │
 │  │  Subtitle (muted)         │ │
 │  └───────────────────────────┘ │
-│  ─── Divider (onyx-300) ───── │
+│  ─── Divider (--color-border-subtle) ───── │
 │  ┌─ Card Body ───────────────┐ │ ← space-6 padding
 │  │  Content                  │ │
 │  └───────────────────────────┘ │
@@ -68,11 +68,22 @@ For displaying information blocks (policy cards, plan options, claim status):
 
 **Rules:**
 - Card padding: `space-6` (24px)
-- Card border-radius: `radius-2xl` (12px)
-- Card border: `--shadow-border` (box-shadow, not border)
+- Card border-radius: `radius-3xl` (16px)
+- Card default: `--color-card-bg` fill + `--color-card-border` highlight edge (1px solid)
 - Cards in a grid: `space-4` (16px) gap on mobile, `space-6` (24px) on desktop
 - Never nest a card inside another card
 - Footer buttons: right-aligned, primary on the right
+
+**Nested radius rule (R2 = R1 + D):**
+
+Any rectangular element placed inside a card must have its border-radius calculated as `R1 = R2 − D`, where R2 is the card's outer radius (16px) and D is the padding separating the outer edge from the inner element. Because ACKO card padding values (12–24px) meet or exceed the outer radius, all inner rectangular elements floor to `--radius-sm` (4px).
+
+| Element | Apply? | Token |
+|---------|--------|-------|
+| Icon wrapper box | ✅ | `border-radius: var(--radius-inset-lg)` |
+| Image thumbnail | ✅ | `border-radius: var(--radius-inset-lg)` |
+| Inset info panel | ✅ | Use `<CardInset>` — applies it automatically |
+| Badge, Button, Avatar | ❌ Exempt | Intentional pill / circular shape |
 
 ### Wizard/Flow Layout
 
@@ -145,6 +156,7 @@ For landing pages, promotional sections:
 | Ghost button as the main CTA | Too subtle, users miss it | Use primary for main actions |
 | Badge inside a button | Breaks tap target and readability | Place badge next to the button |
 | Card inside a card | Creates visual nesting confusion | Use a divider or section within the card |
+| Same border-radius on a nested rectangular element as its parent card | Inner corners visually "poke out" — breaks geometric harmony | Apply `--radius-inset-lg` (4px) or use `<CardInset>` |
 | Disabled button without explanation | User doesn't know why they can't proceed | Add helper text explaining what's needed |
 | Text input without a label | Accessibility failure, placeholder is not a label | Always include a label |
 | More than 5 wizard steps visible | Overwhelming — users abandon | Group into fewer high-level steps |

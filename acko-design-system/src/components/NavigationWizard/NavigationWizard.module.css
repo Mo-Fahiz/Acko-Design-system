@@ -87,8 +87,8 @@
 }
 
 .upcoming .stepLabel { color: var(--color-wizard-upcoming-text); }
-.current .stepLabel { color: var(--color-text-strong); }
-.completed .stepLabel { color: var(--color-text-strong); }
+.current .stepLabel { color: var(--color-text-default); }
+.completed .stepLabel { color: var(--color-text-default); }
 .error .stepLabel { color: var(--color-error-text); }
 
 .stepDescription {
@@ -151,8 +151,8 @@
 }
 
 .upcoming .verticalLabel { color: var(--color-wizard-upcoming-text); }
-.current .verticalLabel { color: var(--color-text-strong); }
-.completed .verticalLabel { color: var(--color-text-strong); }
+.current .verticalLabel { color: var(--color-text-default); }
+.completed .verticalLabel { color: var(--color-text-default); }
 .error .verticalLabel { color: var(--color-error-text); }
 
 .verticalDescription {
@@ -185,7 +185,7 @@
 .compactLabel {
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-strong);
+  color: var(--color-text-default);
 }
 
 .compactCount {

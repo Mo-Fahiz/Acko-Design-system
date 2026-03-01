@@ -14,21 +14,18 @@
 /* --- Sizes --- */
 
 .sm {
-  padding: 2px 8px;
+  padding: 4px;
   font-size: 11px;
-  height: 18px;
 }
 
 .md {
-  padding: 4px 10px;
+  padding: 6px;
   font-size: 12px;
-  height: 22px;
 }
 
 .lg {
-  padding: 6px 12px;
+  padding: 8px;
   font-size: 14px;
-  height: 28px;
 }
 
 /* --- Solid variant colors --- */
@@ -36,87 +33,75 @@
 .solidPurple {
   background-color: var(--color-badge-purple-bg);
   color: var(--color-badge-purple-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-purple-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-purple-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-purple-shadow-top);
 }
 
 .solidGreen {
   background-color: var(--color-badge-green-bg);
   color: var(--color-badge-green-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-green-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-green-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-green-shadow-top);
 }
 
 .solidBlue {
   background-color: var(--color-badge-blue-bg);
   color: var(--color-badge-blue-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-blue-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-blue-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-blue-shadow-top);
 }
 
 .solidOrange {
   background-color: var(--color-badge-orange-bg);
   color: var(--color-badge-orange-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-orange-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-orange-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-orange-shadow-top);
 }
 
 .solidPink {
   background-color: var(--color-badge-pink-bg);
   color: var(--color-badge-pink-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-pink-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-pink-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-pink-shadow-top);
 }
 
 .solidGray {
   background-color: var(--color-badge-gray-bg);
   color: var(--color-badge-gray-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-gray-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-gray-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-gray-shadow-top);
 }
 
 /* --- Outline variant --- */
 
 .outlinePurple {
   background-color: transparent;
-  color: var(--color-badge-purple-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-purple-shadow-top);
+  color: var(--color-badge-purple-outline-color);
+  border: 1px solid var(--color-badge-purple-outline-color);
 }
 
 .outlineGreen {
   background-color: transparent;
-  color: var(--color-badge-green-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-green-shadow-top);
+  color: var(--color-badge-green-outline-color);
+  border: 1px solid var(--color-badge-green-outline-color);
 }
 
 .outlineBlue {
   background-color: transparent;
-  color: var(--color-badge-blue-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-blue-shadow-top);
+  color: var(--color-badge-blue-outline-color);
+  border: 1px solid var(--color-badge-blue-outline-color);
 }
 
 .outlineOrange {
   background-color: transparent;
-  color: var(--color-badge-orange-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-orange-shadow-top);
+  color: var(--color-badge-orange-outline-color);
+  border: 1px solid var(--color-badge-orange-outline-color);
 }
 
 .outlinePink {
   background-color: transparent;
-  color: var(--color-badge-pink-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-pink-shadow-top);
+  color: var(--color-badge-pink-outline-color);
+  border: 1px solid var(--color-badge-pink-outline-color);
 }
 
 .outlineGray {
   background-color: transparent;
-  color: var(--color-badge-gray-text);
-  box-shadow: inset 0 0 0 1px var(--color-badge-gray-shadow-top);
+  color: var(--color-badge-gray-outline-color);
+  border: 1px solid var(--color-badge-gray-outline-color);
 }
 
 /* --- Dot variant --- */
@@ -138,49 +123,37 @@
 .dotPurple {
   background-color: var(--color-badge-purple-bg);
   color: var(--color-badge-purple-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-purple-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-purple-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-purple-shadow-top);
 }
 
 .dotGreen {
   background-color: var(--color-badge-green-bg);
   color: var(--color-badge-green-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-green-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-green-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-green-shadow-top);
 }
 
 .dotBlue {
   background-color: var(--color-badge-blue-bg);
   color: var(--color-badge-blue-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-blue-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-blue-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-blue-shadow-top);
 }
 
 .dotOrange {
   background-color: var(--color-badge-orange-bg);
   color: var(--color-badge-orange-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-orange-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-orange-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-orange-shadow-top);
 }
 
 .dotPink {
   background-color: var(--color-badge-pink-bg);
   color: var(--color-badge-pink-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-pink-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-pink-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-pink-shadow-top);
 }
 
 .dotGray {
   background-color: var(--color-badge-gray-bg);
   color: var(--color-badge-gray-text);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-badge-gray-shadow-top),
-    inset 0 1px 1px 0 var(--color-badge-gray-shadow-bottom);
+  box-shadow: inset 0 1px 4px 0 var(--color-badge-gray-shadow-top);
 }
 
 /* --- Removable --- */
@@ -229,21 +202,15 @@
 
 .counterPurple {
   background-color: var(--color-counter-purple-bg);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-counter-purple-shadow-bottom),
-    inset 0 1px 1px 0 var(--color-counter-purple-shadow-top);
+  box-shadow: inset 0 1px 4px 0 var(--color-counter-purple-shadow-top);
 }
 
 .counterPink {
   background-color: var(--color-counter-pink-bg);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-counter-pink-shadow-bottom),
-    inset 0 1px 1px 0 var(--color-counter-pink-shadow-top);
+  box-shadow: inset 0 1px 4px 0 var(--color-counter-pink-shadow-top);
 }
 
 .counterBlue {
   background-color: var(--color-counter-blue-bg);
-  box-shadow:
-    inset 0 -1px 2px 0 var(--color-counter-blue-shadow-bottom),
-    inset 0 1px 1px 0 var(--color-counter-blue-shadow-top);
+  box-shadow: inset 0 1px 4px 0 var(--color-counter-blue-shadow-top);
 }

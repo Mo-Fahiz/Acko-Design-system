@@ -1,0 +1,143 @@
+/* Tabs — ACKO Design System */
+
+.tabList {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  transition: color 200ms var(--ease-out-cubic), background-color 200ms var(--ease-out-cubic),
+    border-color 200ms var(--ease-out-cubic);
+}
+
+/* Underline variant (default) */
+.tabListUnderline {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.tabUnderline {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color 200ms var(--ease-out-cubic), border-color 200ms var(--ease-out-cubic);
+}
+
+.tabUnderline:hover:not(:disabled) {
+  color: var(--color-text-default);
+}
+
+.tabUnderlineActive {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Pill variant */
+.tabListPill {
+  background: var(--color-tab-pill-bg);
+  border-radius: var(--radius-full);
+  padding: 3px;
+}
+
+.tabPill {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color 200ms var(--ease-out-cubic), background-color 200ms var(--ease-out-cubic),
+    box-shadow 200ms var(--ease-out-cubic);
+}
+
+.tabPill:hover:not(:disabled) {
+  color: var(--color-text-default);
+}
+
+.tabPillActive {
+  background: var(--color-tab-pill-active-bg);
+  color: var(--color-text-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Enclosed variant */
+.tabListEnclosed {
+  gap: 0;
+}
+
+.tabEnclosed {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  margin-bottom: -1px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color 200ms var(--ease-out-cubic), background-color 200ms var(--ease-out-cubic),
+    border-color 200ms var(--ease-out-cubic);
+}
+
+.tabEnclosed:hover:not(:disabled) {
+  color: var(--color-text-default);
+}
+
+.tabEnclosedActive {
+  background: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-card-bg);
+  color: var(--color-text-strong);
+}
+
+/* Size: sm */
+.tabSm {
+  font-size: 12px;
+  padding: var(--space-1) var(--space-3);
+}
+
+.tabUnderline.tabSm {
+  padding: var(--space-1) var(--space-3);
+}
+
+.tabPill.tabSm {
+  padding: var(--space-1) var(--space-3);
+}
+
+.tabEnclosed.tabSm {
+  padding: var(--space-1) var(--space-3);
+}
+
+/* Full width */
+.tabFullWidth {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Disabled */
+.tabDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon in tab */
+.tabIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
