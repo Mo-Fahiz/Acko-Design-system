@@ -1,0 +1,42 @@
+{
+  "name": "@acko/css",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./button.css": "./src/button.css",
+    "./badge.css": "./src/badge.css",
+    "./radio.css": "./src/radio.css",
+    "./checkbox.css": "./src/checkbox.css",
+    "./text-input.css": "./src/text-input.css",
+    "./breadcrumb.css": "./src/breadcrumb.css",
+    "./dropdown.css": "./src/dropdown.css",
+    "./calendar.css": "./src/calendar.css",
+    "./textarea.css": "./src/textarea.css",
+    "./input-group.css": "./src/input-group.css",
+    "./scroll-area.css": "./src/scroll-area.css",
+    "./card.css": "./src/card.css",
+    "./typography.css": "./src/typography.css",
+    "./alert.css": "./src/alert.css",
+    "./progress.css": "./src/progress.css",
+    "./switch.css": "./src/switch.css",
+    "./separator.css": "./src/separator.css",
+    "./label.css": "./src/label.css",
+    "./field.css": "./src/field.css",
+    "./accordion.css": "./src/accordion.css",
+    "./tabs.css": "./src/tabs.css",
+    "./toggle.css": "./src/toggle.css",
+    "./tooltip.css": "./src/tooltip.css",
+    "./table.css": "./src/table.css",
+    "./avatar.css": "./src/avatar.css",
+    "./skeleton.css": "./src/skeleton.css",
+    "./navigation-wizard.css": "./src/navigation-wizard.css",
+    "./pagination.css": "./src/pagination.css"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@acko/tokens": "workspace:*"
+  }
+}

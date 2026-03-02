@@ -1,0 +1,34 @@
+---
+description: Alert visual spec — CSS classes, variants, icons, dismiss
+globs: "**/alert/**,**/Alert/**"
+---
+
+# Alert — Styles
+
+CSS file: `@acko/css/alert.css`
+
+## Architecture
+
+ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `clsx`. Inline SVGs for default icons (no lucide-react).
+
+## CSS Classes
+
+### Base
+`.acko-alert` — `@apply flex gap-3 relative`, padding `--space-4`, border-radius `--radius-3xl`, border 1px solid
+
+### Variants
+| Class | Background | Border |
+|-------|------------|--------|
+| `.acko-alert-info` | `--color-info-subtle` | `--color-info-border` |
+| `.acko-alert-success` | `--color-success-subtle` | `--color-success-border` |
+| `.acko-alert-warning` | `--color-warning-subtle` | `--color-warning-border` |
+| `.acko-alert-error` | `--color-error-subtle` | `--color-error-border` |
+
+Icon and title use variant text color (e.g. `--color-info-text`).
+
+### Children
+- `.acko-alert-icon` — `--scale-20` size, color inherited from variant
+- `.acko-alert-content` — flex-1, flex flex-col gap-1
+- `.acko-alert-title` — `--font-body-sm-size`, font-weight 600
+- `.acko-alert-body` — `--font-body-sm-size`, color `--color-text-default`
+- `.acko-alert-dismiss` — absolute top/right `--space-3`, `--scale-24` size, opacity 0.7, hover opacity 1

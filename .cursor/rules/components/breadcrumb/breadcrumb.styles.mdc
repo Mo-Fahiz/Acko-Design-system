@@ -1,0 +1,25 @@
+---
+description: Breadcrumb visual spec — CSS classes and token usage
+globs: "**/breadcrumb/**,**/Breadcrumb/**"
+---
+
+# Breadcrumb — Styles
+
+CSS file: `@acko/css/breadcrumb.css`
+
+## CSS Classes
+
+- `.acko-breadcrumb` — nav wrapper, full width
+- `.acko-breadcrumb-list` — flex row, items-center, flex-wrap, gap-1, no list style
+- `.acko-breadcrumb-link` — body-sm font, `--color-breadcrumb-link`, hover underline
+- `.acko-breadcrumb-current` — label-lg weight, `--color-breadcrumb-current`, `aria-current="page"`
+- `.acko-breadcrumb-separator-item` — flex, margin 0 space-1, `--color-breadcrumb-separator`
+- `.acko-breadcrumb-ellipsis` — button, rounded-full, hover bg raised-hover
+- `.acko-breadcrumb-icon` — flex icon slot inside items
+
+## Tokens Used
+
+- `--color-breadcrumb-link`, `--color-breadcrumb-link-hover`, `--color-breadcrumb-current`
+- `--color-breadcrumb-separator`, `--color-breadcrumb-text`
+- `--color-surface-raised-hover` (ellipsis hover)
+- `--font-body-sm-size`, `--font-label-lg-weight`

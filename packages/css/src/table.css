@@ -1,0 +1,54 @@
+/* Table — @acko/css/table.css */
+
+.acko-table-wrapper {
+  @apply overflow-x-auto w-full;
+  border: 1px solid var(--color-table-border);
+  border-radius: var(--radius-3xl);
+}
+
+.acko-table {
+  @apply w-full;
+  border-collapse: collapse;
+  font-size: var(--font-body-sm-size);
+}
+
+.acko-table-head {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-table-header-bg);
+  color: var(--color-table-header-text);
+  font-weight: var(--font-label-lg-weight);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-label-md-size);
+  border-bottom: 1px solid var(--color-table-border);
+  text-align: left;
+}
+
+.acko-table-cell {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-default);
+  border-bottom: 1px solid var(--color-table-border);
+}
+
+.acko-table-body .acko-table-row:last-child .acko-table-cell {
+  border-bottom: none;
+}
+
+.acko-table-striped .acko-table-body .acko-table-row:nth-child(even) {
+  background: var(--color-table-stripe);
+}
+
+.acko-table-hoverable .acko-table-body .acko-table-row {
+  transition: background 150ms var(--ease-out-quad);
+}
+
+.acko-table-hoverable .acko-table-body .acko-table-row:hover {
+  background: var(--color-table-row-hover);
+}
+
+.acko-table-caption {
+  padding: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-body-sm-size);
+  caption-side: bottom;
+}

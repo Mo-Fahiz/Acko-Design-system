@@ -1,0 +1,294 @@
+/* Calendar — @acko/css/calendar.css */
+
+.acko-cal-wrapper {
+  @apply relative inline-block;
+}
+
+/* --- Trigger --- */
+
+.acko-cal-trigger {
+  @apply flex items-center justify-between w-full cursor-pointer;
+  min-width: 200px;
+  height: var(--scale-48);
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  font-family: inherit;
+  font-size: var(--font-body-md-size);
+  line-height: var(--font-body-md-line);
+  color: var(--color-text-strong);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.acko-cal-trigger:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.acko-cal-trigger-open {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.acko-cal-trigger-placeholder {
+  color: var(--color-text-muted);
+}
+
+.acko-cal-trigger-icon {
+  @apply flex items-center;
+  color: var(--color-text-muted);
+}
+
+/* --- Panel --- */
+
+.acko-cal-panel {
+  width: 340px;
+  min-width: 340px;
+  box-sizing: border-box;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-4);
+  @apply select-none;
+}
+
+.acko-cal-panel-dropdown {
+  @apply absolute left-0;
+  top: 100%;
+  margin-top: 4px;
+  z-index: var(--z-dropdown);
+  animation: acko-cal-enter 150ms var(--ease-out-cubic);
+}
+
+@keyframes acko-cal-enter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Header --- */
+
+.acko-cal-header {
+  @apply flex items-center justify-between;
+  margin-bottom: var(--space-3);
+}
+
+.acko-cal-header-label {
+  font-size: var(--font-label-lg-size);
+  font-weight: 600;
+  color: var(--color-text-strong);
+  @apply bg-transparent border-none cursor-pointer;
+  font-family: inherit;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-lg);
+  transition: background-color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-cal-header-label:hover {
+    background-color: var(--color-cal-cell-hover-bg);
+  }
+}
+
+.acko-cal-header-label:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+.acko-cal-nav-btn {
+  @apply flex items-center justify-center border-none bg-transparent cursor-pointer;
+  width: var(--scale-36);
+  height: var(--scale-36);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-default);
+  transition: background-color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-cal-nav-btn:hover {
+    background-color: var(--color-cal-cell-hover-bg);
+  }
+}
+
+.acko-cal-nav-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+/* --- Weekday headers --- */
+
+.acko-cal-weekdays {
+  @apply grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: var(--space-1);
+}
+
+.acko-cal-weekday {
+  @apply flex items-center justify-center uppercase;
+  min-width: 0;
+  font-size: var(--font-label-sm-size);
+  font-weight: var(--font-label-sm-weight);
+  letter-spacing: var(--font-label-sm-spacing);
+  color: var(--color-text-muted);
+  height: var(--scale-32);
+}
+
+/* --- Day grid --- */
+
+.acko-cal-days {
+  @apply grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--scale-2);
+}
+
+.acko-cal-day {
+  @apply flex items-center justify-center w-full border-none bg-transparent cursor-pointer;
+  height: var(--scale-40);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: var(--font-body-sm-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-strong);
+  transition: background-color 100ms ease, color 100ms ease;
+}
+
+.acko-cal-day:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-cal-day:hover:not(:disabled):not(.acko-cal-selected):not(.acko-cal-range-start):not(.acko-cal-range-end) {
+    background-color: var(--color-cal-cell-hover-bg);
+  }
+}
+
+.acko-cal-today {
+  color: var(--color-cal-today-text);
+  font-weight: 700;
+}
+
+.acko-cal-selected {
+  background-color: var(--color-cal-selected-bg);
+  color: var(--color-cal-selected-text);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+
+.acko-cal-range-start {
+  background-color: var(--color-cal-selected-bg);
+  color: var(--color-cal-selected-text);
+  font-weight: 700;
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.acko-cal-range-end {
+  background-color: var(--color-cal-selected-bg);
+  color: var(--color-cal-selected-text);
+  font-weight: 700;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+.acko-cal-range-middle {
+  background-color: var(--color-cal-range-bg);
+  color: var(--color-cal-range-text);
+  border-radius: 0;
+}
+
+.acko-cal-day-disabled {
+  color: var(--color-text-muted);
+  @apply cursor-not-allowed;
+}
+
+.acko-cal-day-disabled:hover {
+  @apply bg-transparent;
+}
+
+.acko-cal-outside {
+  color: var(--color-text-disabled);
+}
+
+/* --- Month / Year picker --- */
+
+.acko-cal-picker-grid {
+  @apply grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+}
+
+.acko-cal-picker-cell {
+  @apply flex items-center justify-center border-none bg-transparent cursor-pointer;
+  height: var(--scale-48);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-strong);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-cal-picker-cell:hover:not(:disabled):not(.acko-cal-picker-cell-selected) {
+    background-color: var(--color-cal-cell-hover-bg);
+  }
+}
+
+.acko-cal-picker-cell:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+.acko-cal-picker-cell-selected {
+  background-color: var(--color-cal-selected-bg);
+  color: var(--color-cal-selected-text);
+  font-weight: 700;
+}
+
+.acko-cal-picker-cell-current {
+  color: var(--color-cal-today-text);
+  font-weight: 700;
+}
+
+/* --- Dark theme --- */
+
+[data-theme="dark"] .acko-cal-trigger {
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .acko-cal-panel {
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-border);
+}
+
+/* --- Elevated theme --- */
+
+[data-theme="elevated"] .acko-cal-trigger {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
+    var(--elevated-border-gradient) border-box;
+  box-shadow: var(--elevated-glow);
+  backdrop-filter: blur(14px);
+}
+
+[data-theme="elevated"] .acko-cal-trigger-open,
+[data-theme="elevated"] .acko-cal-trigger:focus-visible {
+  border-color: transparent;
+  box-shadow: var(--elevated-focus-ring);
+}
+
+[data-theme="elevated"] .acko-cal-panel {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
+    var(--elevated-border-gradient) border-box;
+  box-shadow: none;
+  backdrop-filter: blur(18px);
+}

@@ -1,0 +1,144 @@
+---
+description: Card React implementation — compound component pattern, sub-components, props
+globs: "**/card/**,**/Card/**"
+---
+
+# Card — React
+
+Package: `@acko/card`
+Directive: none (pure presentational — no interactivity, works in RSC)
+
+## Props Interfaces
+
+```typescript
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'outline' | 'elevated' | 'demoted'; // default: 'default'
+  padding?: 'none' | 'sm' | 'md' | 'lg';                    // default: 'lg'
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface CardInsetProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+}
+```
+
+## Component Pattern
+
+```tsx
+export const Card = forwardRef<HTMLDivElement, CardProps>(
+  ({ variant = 'default', padding = 'lg', className, children, ...rest }, ref) => (
+    <div
+      ref={ref}
+      className={clsx(
+        'acko-card',
+        `acko-card-${variant}`,
+        `acko-card-pad-${padding}`,
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+    </div>
+  )
+);
+
+export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
+  ({ className, children, ...rest }, ref) => (
+    <div ref={ref} className={clsx('acko-card-header', 'flex items-center gap-3', className)} {...rest}>
+      {children}
+    </div>
+  )
+);
+
+export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
+  ({ className, children, ...rest }, ref) => (
+    <div ref={ref} className={clsx('acko-card-content', className)} {...rest}>
+      {children}
+    </div>
+  )
+);
+
+export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
+  ({ className, children, ...rest }, ref) => (
+    <div ref={ref} className={clsx('acko-card-footer', 'flex items-center justify-end gap-3', className)} {...rest}>
+      {children}
+    </div>
+  )
+);
+
+export const CardInset = forwardRef<HTMLDivElement, CardInsetProps>(
+  ({ className, children, ...rest }, ref) => (
+    <div ref={ref} className={clsx('acko-card-inset', className)} {...rest}>
+      {children}
+    </div>
+  )
+);
+```
+
+## Hooks
+
+None. Card and all sub-components are purely presentational.
+
+## State Management
+
+None. Fully controlled by props and children.
+
+## Accessibility
+
+No special ARIA needed. Uses native `<div>` semantics. Consumers add semantic structure via children (headings, lists, etc.).
+
+## Compound Component Usage
+
+```tsx
+<Card variant="default" padding="lg">
+  <CardHeader>
+    <div className="acko-card-inset">
+      <CarIcon size={18} />
+    </div>
+    <div>
+      <span>Car Insurance</span>
+      <Badge color="green" size="sm">Active</Badge>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <CardInset>
+      {/* Data grid */}
+    </CardInset>
+  </CardContent>
+  <CardFooter>
+    <Button variant="ghost" size="sm">View</Button>
+    <Button variant="primary" size="sm">Renew</Button>
+  </CardFooter>
+</Card>
+```
+
+## Dependencies
+
+| Package | Type | Reason |
+|---------|------|--------|
+| `clsx` | dependency | Class composition |
+| `react` | peer | React 18+ |
+
+## Exports
+
+```typescript
+export { Card, CardHeader, CardContent, CardFooter, CardInset } from './Card';
+export type { CardProps, CardHeaderProps, CardContentProps, CardFooterProps, CardInsetProps } from './Card';
+```

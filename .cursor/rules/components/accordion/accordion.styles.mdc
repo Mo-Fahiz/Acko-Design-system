@@ -1,0 +1,32 @@
+---
+description: Accordion — CSS classes, variants, states, animation
+globs: "**/accordion*.css"
+alwaysApply: false
+---
+
+# Accordion — Style Spec
+
+## CSS Classes
+
+| Class | Element | Notes |
+|-------|---------|-------|
+| `.acko-accordion` | Root wrapper | `flex column`, full width |
+| `.acko-accordion-item` | Each item section | `border-bottom` separator, last-child none |
+| `.acko-accordion-item-disabled` | Disabled item | Muted text, `cursor: not-allowed` |
+| `.acko-accordion-trigger` | Trigger button | Full-width flex row, `--font-body-md-size`, weight 500 |
+| `.acko-accordion-chevron` | Icon wrapper | Rotate 180deg when open |
+| `.acko-accordion-chevron-open` | Open state | `transform: rotate(180deg)` |
+| `.acko-accordion-content-wrapper` | Animated container | `overflow: hidden`, `max-height` transition |
+| `.acko-accordion-content` | Inner content | `--font-body-sm-size`, `padding-bottom: --space-4` |
+
+## Animation
+- Content reveal: `max-height` transition, 200ms `--ease-out-quad`
+- Chevron rotation: 200ms `--ease-out-quad`
+- Trigger hover color: 150ms ease
+
+## Token Usage
+- Text: `--color-text-strong`, `--color-text-default`, `--color-text-muted`, `--color-text-disabled`
+- Borders: `--color-border-subtle`
+- Hover: `--color-primary`
+- Spacing: `--space-4`
+- Font: `--font-body-md-size` (trigger), `--font-body-sm-size` (content)

@@ -1,0 +1,187 @@
+/* ============================================================
+   Typography — @acko/css/typography.css
+   Import: @import "@acko/css/typography.css"
+   ============================================================ */
+
+.acko-text {
+  font-family: inherit;
+}
+
+/* Variants — font-size, line-height, letter-spacing, font-weight from tokens */
+.acko-text-display-xl {
+  font-size: var(--font-display-xl-size);
+  line-height: var(--font-display-xl-line);
+  letter-spacing: var(--font-display-xl-spacing);
+  font-weight: var(--font-display-xl-weight, 700);
+}
+
+.acko-text-display-lg {
+  font-size: var(--font-display-lg-size);
+  line-height: var(--font-display-lg-line);
+  letter-spacing: var(--font-display-lg-spacing);
+  font-weight: var(--font-display-lg-weight, 700);
+}
+
+.acko-text-display-md {
+  font-size: var(--font-display-md-size);
+  line-height: var(--font-display-md-line);
+  letter-spacing: var(--font-display-md-spacing);
+  font-weight: var(--font-display-md-weight, 700);
+}
+
+.acko-text-display-sm {
+  font-size: var(--font-display-sm-size);
+  line-height: var(--font-display-sm-line);
+  letter-spacing: var(--font-display-sm-spacing);
+  font-weight: var(--font-display-sm-weight, 600);
+}
+
+.acko-text-heading-xl {
+  font-size: var(--font-heading-xl-size);
+  line-height: var(--font-heading-xl-line);
+  letter-spacing: var(--font-heading-xl-spacing);
+  font-weight: var(--font-heading-xl-weight, 600);
+}
+
+.acko-text-heading-lg {
+  font-size: var(--font-heading-lg-size);
+  line-height: var(--font-heading-lg-line);
+  letter-spacing: var(--font-heading-lg-spacing);
+  font-weight: var(--font-heading-lg-weight, 600);
+}
+
+.acko-text-heading-md {
+  font-size: var(--font-heading-md-size);
+  line-height: var(--font-heading-md-line);
+  letter-spacing: var(--font-heading-md-spacing);
+  font-weight: var(--font-heading-md-weight, 600);
+}
+
+.acko-text-heading-sm {
+  font-size: var(--font-heading-sm-size);
+  line-height: var(--font-heading-sm-line);
+  letter-spacing: var(--font-heading-sm-spacing);
+  font-weight: var(--font-heading-sm-weight, 600);
+}
+
+.acko-text-body-lg {
+  font-size: var(--font-body-lg-size);
+  line-height: var(--font-body-lg-line);
+  letter-spacing: var(--font-body-lg-spacing);
+  font-weight: var(--font-body-lg-weight, 400);
+}
+
+.acko-text-body-md {
+  font-size: var(--font-body-md-size);
+  line-height: var(--font-body-md-line);
+  letter-spacing: var(--font-body-md-spacing);
+  font-weight: var(--font-body-md-weight, 400);
+}
+
+.acko-text-body-sm {
+  font-size: var(--font-body-sm-size);
+  line-height: var(--font-body-sm-line);
+  letter-spacing: var(--font-body-sm-spacing);
+  font-weight: var(--font-body-sm-weight, 400);
+}
+
+.acko-text-label-lg {
+  font-size: var(--font-label-lg-size);
+  line-height: var(--font-label-lg-line);
+  letter-spacing: var(--font-label-lg-spacing);
+  font-weight: var(--font-label-lg-weight, 500);
+}
+
+.acko-text-label-md {
+  font-size: var(--font-label-md-size);
+  line-height: var(--font-label-md-line);
+  letter-spacing: var(--font-label-md-spacing);
+  font-weight: var(--font-label-md-weight, 500);
+}
+
+.acko-text-label-sm {
+  font-size: var(--font-label-sm-size);
+  line-height: var(--font-label-sm-line);
+  letter-spacing: var(--font-label-sm-spacing);
+  font-weight: var(--font-label-sm-weight, 500);
+}
+
+.acko-text-caption {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  letter-spacing: var(--font-caption-spacing);
+  font-weight: var(--font-caption-weight, 400);
+}
+
+.acko-text-overline {
+  font-size: var(--font-overline-size);
+  line-height: var(--font-overline-line);
+  letter-spacing: var(--font-overline-spacing);
+  font-weight: var(--font-overline-weight, 600);
+  text-transform: uppercase;
+}
+
+/* Colors */
+.acko-text-color-default {
+  color: var(--color-text-default);
+}
+
+.acko-text-color-strong {
+  color: var(--color-text-strong);
+}
+
+.acko-text-color-muted {
+  color: var(--color-text-muted);
+}
+
+.acko-text-color-disabled {
+  color: var(--color-text-disabled);
+}
+
+.acko-text-color-primary {
+  color: var(--color-primary);
+}
+
+.acko-text-color-error {
+  color: var(--color-error-text);
+}
+
+.acko-text-color-success {
+  color: var(--color-success-text);
+}
+
+/* Weight overrides */
+.acko-text-weight-regular {
+  font-weight: 400;
+}
+
+.acko-text-weight-medium {
+  font-weight: 500;
+}
+
+.acko-text-weight-semibold {
+  font-weight: 600;
+}
+
+.acko-text-weight-bold {
+  font-weight: 700;
+}
+
+/* Align */
+.acko-text-align-left {
+  text-align: left;
+}
+
+.acko-text-align-center {
+  text-align: center;
+}
+
+.acko-text-align-right {
+  text-align: right;
+}
+
+/* Truncate */
+.acko-text-truncate {
+  @apply overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}

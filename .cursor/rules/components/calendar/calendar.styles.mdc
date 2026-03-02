@@ -1,0 +1,114 @@
+---
+description: Calendar visual specification — CSS classes, variants, states, and tokens
+globs: "**/calendar*"
+alwaysApply: false
+---
+
+# Calendar — Visual Specification
+
+## Architecture
+
+All visual styling lives in `packages/css/src/calendar.css` using `@apply` for structural utilities and raw CSS for transitions, animations, and theme overrides.
+
+---
+
+## Class Inventory
+
+### Wrapper & Trigger (dropdown mode)
+| Class | Purpose |
+|---|---|
+| `.acko-cal-wrapper` | Dropdown wrapper — `relative inline-block` |
+| `.acko-cal-trigger` | Trigger button — `flex items-center justify-between w-full cursor-pointer` |
+| `.acko-cal-trigger-open` | Active state — primary border + ring |
+| `.acko-cal-trigger-placeholder` | Placeholder — `color: var(--color-text-muted)` |
+| `.acko-cal-trigger-icon` | Calendar icon — `flex items-center`, muted color |
+
+### Panel
+| Class | Purpose |
+|---|---|
+| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `--radius-3xl`, `--shadow-md`, `--space-4` padding |
+| `.acko-cal-panel-dropdown` | Dropdown positioning — `absolute left-0`, z-index, enter animation |
+
+### Header
+| Class | Purpose |
+|---|---|
+| `.acko-cal-header` | Header row — `flex items-center justify-between` |
+| `.acko-cal-header-label` | Month/Year label — clickable, drills into month → year picker |
+| `.acko-cal-nav-btn` | Prev/Next nav — `--scale-36` square, transparent bg, hover bg |
+
+### Day Grid
+| Class | Purpose |
+|---|---|
+| `.acko-cal-weekdays` | 7-column grid for weekday headers |
+| `.acko-cal-weekday` | Single weekday header — uppercase, muted, label-sm |
+| `.acko-cal-days` | 7-column grid for day buttons (6 rows × 7 = 42 cells) |
+| `.acko-cal-day` | Day button — `--scale-40` tall, full-radius, `--font-body-sm-size`, tabular-nums |
+
+### Day States
+| Class | Effect |
+|---|---|
+| `.acko-cal-today` | Today — `color: var(--color-cal-today-text); font-weight: 700` |
+| `.acko-cal-selected` | Selected single — `bg: var(--color-cal-selected-bg); color: var(--color-cal-selected-text)` |
+| `.acko-cal-range-start` | Range start — half-pill left (full-radius left, 0 right) |
+| `.acko-cal-range-end` | Range end — half-pill right (0 left, full-radius right) |
+| `.acko-cal-range-middle` | Range between — `bg: var(--color-cal-range-bg); border-radius: 0` |
+| `.acko-cal-outside` | Dates outside current month — `color: var(--color-text-disabled)` |
+| `.acko-cal-day-disabled` | Disabled — `color: var(--color-text-muted); cursor-not-allowed` |
+
+### Month/Year Picker
+| Class | Purpose |
+|---|---|
+| `.acko-cal-picker-grid` | 3-column grid for month or year buttons |
+| `.acko-cal-picker-cell` | Picker button — `--scale-48` tall, pill radius, `--font-body-sm-size`, 500 weight |
+| `.acko-cal-picker-cell-selected` | Active pick — selected bg + text, 700 weight |
+| `.acko-cal-picker-cell-current` | Current month/year — today text color, 700 weight |
+
+---
+
+## Animations
+
+| Keyframe | Purpose |
+|---|---|
+| `acko-cal-enter` | Panel fade-in + translateY(-8px → 0) over 150ms |
+
+---
+
+## Tokens Used
+
+| Token | Usage |
+|---|---|
+| `--color-card-bg` | Panel background |
+| `--color-card-border` | Panel border |
+| `--color-surface` | Trigger background |
+| `--color-surface-raised` | Dark mode trigger bg |
+| `--color-border` | Trigger border, dark panel border |
+| `--color-primary` | Open/focus border and ring |
+| `--color-primary-ring` | Focus-visible ring on nav/header |
+| `--color-text-strong` | Day text, header label, picker cell text |
+| `--color-text-muted` | Weekday headers, placeholder, disabled days, trigger icon |
+| `--color-text-disabled` | Outside-month days |
+| `--color-cal-today-text` | Today highlight text |
+| `--color-cal-selected-bg` | Selected day background |
+| `--color-cal-selected-text` | Selected day text |
+| `--color-cal-range-bg` | Range middle band background |
+| `--color-cal-range-text` | Range middle band text |
+| `--color-cal-cell-hover-bg` | Day/month/year cell hover, header label hover |
+| `--shadow-md` | Panel box shadow |
+| `--z-dropdown` | Dropdown panel z-index |
+| `--radius-full` | Day cells, trigger, picker cells |
+| `--radius-3xl` | Panel corner radius |
+| `--radius-lg` | Nav button, header label corners |
+| `--ease-out-cubic` | Enter animation easing |
+
+---
+
+## Dark Theme Overrides
+
+- Trigger: `var(--color-surface-raised)` bg, `var(--color-border)` border
+- Panel: `var(--color-surface-raised)` bg, `var(--color-border)` border
+
+## Elevated Theme Overrides
+
+- Trigger: Glass background with gradient border, backdrop blur, glow
+- Open/focus: `var(--elevated-focus-ring)` shadow
+- Panel: Glass background, gradient border, 18px blur

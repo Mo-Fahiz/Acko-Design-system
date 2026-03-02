@@ -1,0 +1,66 @@
+/* ============================================================
+   Progress — @acko/css/progress.css
+   Import: @import "@acko/css/progress.css"
+   ============================================================ */
+
+.acko-progress {
+  @apply w-full;
+}
+
+.acko-progress-label-wrapper {
+  @apply flex justify-between;
+  margin-bottom: var(--space-1);
+}
+
+.acko-progress-label {
+  font-size: var(--font-caption-size);
+  color: var(--color-text-muted);
+}
+
+.acko-progress-track {
+  @apply w-full rounded-full overflow-hidden;
+  background-color: var(--color-border-subtle);
+}
+
+.acko-progress-track-sm {
+  height: var(--scale-4);
+}
+
+.acko-progress-track-md {
+  height: var(--scale-8);
+}
+
+.acko-progress-track-lg {
+  height: var(--scale-12);
+}
+
+.acko-progress-bar {
+  @apply h-full rounded-full;
+  transition: width 500ms var(--ease-out-cubic);
+}
+
+.acko-progress-bar-primary {
+  background-color: var(--color-primary);
+}
+
+.acko-progress-bar-success {
+  background-color: var(--color-success);
+}
+
+.acko-progress-bar-error {
+  background-color: var(--color-error);
+}
+
+.acko-progress-animated .acko-progress-bar {
+  animation: acko-progress-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes acko-progress-shimmer {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

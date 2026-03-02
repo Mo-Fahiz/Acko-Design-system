@@ -1,0 +1,335 @@
+/* ============================================================
+   Button — @acko/css/button.css
+   Import per-component:  @import "@acko/css/button.css"
+   ============================================================ */
+
+/* --- Base --- */
+
+.acko-btn {
+  @apply inline-flex items-center justify-center gap-2 font-medium
+         leading-none border-none cursor-pointer select-none
+         whitespace-nowrap no-underline relative;
+  font-family: inherit;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease,
+    box-shadow 150ms ease;
+}
+
+.acko-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.acko-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* --- Sizes --- */
+
+.acko-btn-xs { @apply h-8 px-4 text-xs rounded-full; line-height: 16px; }
+.acko-btn-sm { @apply h-10 px-4 text-sm rounded-full; line-height: 18px; }
+.acko-btn-md { @apply h-12 px-4 text-base leading-6 rounded-full; }
+.acko-btn-lg { @apply h-14 px-6 text-lg rounded-full; line-height: 28px; }
+.acko-btn-xl { @apply h-16 px-8 text-xl rounded-full; line-height: 32px; }
+
+/* --- Icon sizing per size --- */
+
+.acko-btn-icon { @apply inline-flex items-center justify-center shrink-0; }
+
+.acko-btn-xs .acko-btn-icon { @apply size-3; }
+.acko-btn-sm .acko-btn-icon { @apply size-3.5; }
+.acko-btn-md .acko-btn-icon { @apply size-4; }
+.acko-btn-lg .acko-btn-icon { width: var(--font-body-lg-size); height: var(--font-body-lg-size); }
+.acko-btn-xl .acko-btn-icon { @apply size-5; }
+
+/* --- Icon-only (square) --- */
+
+.acko-btn-icon-only.acko-btn-xs { @apply w-8 p-0; }
+.acko-btn-icon-only.acko-btn-sm { @apply w-10 p-0; }
+.acko-btn-icon-only.acko-btn-md { @apply w-12 p-0; }
+.acko-btn-icon-only.acko-btn-lg { @apply w-14 p-0; }
+.acko-btn-icon-only.acko-btn-xl { @apply w-16 p-0; }
+
+/* --- Full width --- */
+
+.acko-btn-full-width { @apply w-full; }
+
+/* --- Variants --- */
+
+.acko-btn-primary {
+  @apply bg-primary text-on-primary shadow-btn-inner;
+}
+
+.acko-btn-secondary {
+  @apply bg-btn-secondary-bg text-primary shadow-btn-inner;
+}
+
+.acko-btn-outline {
+  @apply bg-transparent text-btn-outline-color;
+  box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
+}
+
+.acko-btn-outline:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px var(--color-btn-outline-color),
+    var(--shadow-focus-ring);
+}
+
+.acko-btn-ghost {
+  @apply bg-transparent text-btn-ghost-color;
+}
+
+.acko-btn-danger {
+  @apply bg-transparent text-error;
+  box-shadow: inset 0 0 0 1px var(--color-error);
+}
+
+.acko-btn-danger:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px var(--color-error),
+    0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent);
+}
+
+/* --- Hover (pointer devices only) --- */
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-btn-primary:hover:not(:disabled) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
+    box-shadow:
+      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.28),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .acko-btn-secondary:hover:not(:disabled) {
+    @apply bg-surface-raised-hover;
+    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.48);
+  }
+
+  .acko-btn-outline:hover:not(:disabled) {
+    @apply bg-btn-outline-hover-bg;
+    box-shadow:
+      inset 0 0 0 1px var(--color-btn-outline-color),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .acko-btn-ghost:hover:not(:disabled) {
+    @apply bg-btn-ghost-hover-bg;
+  }
+
+  .acko-btn-danger:hover:not(:disabled) {
+    @apply bg-error-subtle;
+    box-shadow:
+      inset 0 0 0 1px var(--color-error),
+      0px 4px 8px 0px color-mix(in srgb, var(--color-error) 8%, transparent);
+  }
+}
+
+/* --- Disabled --- */
+
+.acko-btn-disabled,
+.acko-btn:disabled {
+  @apply cursor-not-allowed;
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  box-shadow: none !important;
+  opacity: 1;
+}
+
+.acko-btn-disabled:active,
+.acko-btn:disabled:active {
+  transform: none;
+}
+
+/* ============================================================
+   Dark theme overrides
+   ============================================================ */
+
+[data-theme="dark"] .acko-btn-primary {
+  @apply bg-primary text-on-primary;
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .acko-btn-secondary {
+  @apply bg-btn-secondary-bg text-text-default;
+  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .acko-btn-outline {
+  @apply bg-transparent text-btn-outline-color;
+  box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
+}
+
+[data-theme="dark"] .acko-btn-ghost {
+  @apply bg-transparent text-btn-ghost-color;
+}
+
+[data-theme="dark"] .acko-btn-danger {
+  @apply bg-transparent text-error;
+  box-shadow: inset 0 0 0 1px var(--color-error);
+}
+
+[data-theme="dark"] .acko-btn:disabled {
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="dark"] .acko-btn-primary:hover:not(:disabled) {
+    background-color: var(--color-btn-primary-hover-bg);
+    background-image: none;
+    box-shadow:
+      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.18),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  [data-theme="dark"] .acko-btn-secondary:hover:not(:disabled) {
+    @apply bg-surface-raised-hover;
+    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.08);
+  }
+
+  [data-theme="dark"] .acko-btn-outline:hover:not(:disabled) {
+    @apply bg-btn-outline-hover-bg;
+    box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
+  }
+
+  [data-theme="dark"] .acko-btn-ghost:hover:not(:disabled) {
+    @apply bg-btn-ghost-hover-bg;
+  }
+
+  [data-theme="dark"] .acko-btn-danger:hover:not(:disabled) {
+    @apply bg-error-subtle;
+    box-shadow: inset 0 0 0 1px var(--color-error);
+  }
+}
+
+/* ============================================================
+   Elevated theme overrides
+   ============================================================ */
+
+[data-theme="elevated"] .acko-btn-primary {
+  background: var(--elevated-primary-gradient);
+  box-shadow: var(--elevated-primary-shadow);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="elevated"] .acko-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--elevated-convex-overlay);
+  pointer-events: none;
+}
+
+[data-theme="elevated"] .acko-btn-danger {
+  background: var(--elevated-danger-gradient);
+  color: var(--color-on-primary);
+  box-shadow: var(--elevated-danger-shadow);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="elevated"] .acko-btn-danger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--elevated-convex-overlay);
+  pointer-events: none;
+}
+
+[data-theme="elevated"] .acko-btn-secondary {
+  background-color: var(--elevated-glass-bg);
+  box-shadow: none;
+  backdrop-filter: blur(14px);
+}
+
+[data-theme="elevated"] .acko-btn-outline {
+  border: 1px solid transparent;
+  box-shadow: none;
+  background:
+    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
+    var(--elevated-border-gradient) border-box;
+  @apply text-text-strong;
+  backdrop-filter: blur(14px);
+}
+
+[data-theme="elevated"] .acko-btn-ghost {
+  color: var(--color-primary-active);
+}
+
+[data-theme="elevated"] .acko-btn:focus-visible {
+  box-shadow: var(--elevated-focus-ring);
+}
+
+[data-theme="elevated"] .acko-btn-primary:focus-visible {
+  box-shadow: var(--elevated-primary-shadow), var(--elevated-focus-ring);
+}
+
+[data-theme="elevated"] .acko-btn-danger:focus-visible {
+  box-shadow: var(--elevated-danger-shadow), var(--elevated-focus-ring);
+}
+
+[data-theme="elevated"] .acko-btn-outline:focus-visible {
+  box-shadow: var(--elevated-focus-ring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="elevated"] .acko-btn-primary:hover:not(:disabled) {
+    background: var(--elevated-primary-gradient-hover);
+    background-image: none;
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-primary-shadow-hover);
+  }
+
+  [data-theme="elevated"] .acko-btn-secondary:hover:not(:disabled) {
+    background-color: var(--elevated-glass-bg-hover);
+    box-shadow: var(--elevated-glow-hover);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="elevated"] .acko-btn-outline:hover:not(:disabled) {
+    background:
+      linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
+      var(--elevated-border-gradient) border-box;
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-glow-hover);
+  }
+
+  [data-theme="elevated"] .acko-btn-danger:hover:not(:disabled) {
+    background: var(--elevated-danger-gradient-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--elevated-danger-shadow-hover);
+  }
+}
+
+/* --- Loading --- */
+
+.acko-btn-loading {
+  @apply pointer-events-none;
+  color: transparent !important;
+}
+
+.acko-btn-spinner {
+  @apply absolute rounded-full;
+  width: var(--font-body-lg-size);
+  height: var(--font-body-lg-size);
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: acko-spin 600ms linear infinite;
+}
+
+.acko-btn-primary .acko-btn-spinner { color: var(--color-on-primary); }
+.acko-btn-secondary .acko-btn-spinner { color: var(--color-text-default); }
+.acko-btn-outline .acko-btn-spinner { color: var(--color-text-default); }
+.acko-btn-ghost .acko-btn-spinner { color: var(--color-btn-ghost-color); }
+.acko-btn-danger .acko-btn-spinner { color: var(--color-error); }
+
+@keyframes acko-spin {
+  to { transform: rotate(360deg); }
+}

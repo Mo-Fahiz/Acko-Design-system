@@ -1,0 +1,44 @@
+---
+description: Radio visual spec — CSS classes, variants, sizes, states, and token usage
+globs: "**/radio/**,**/Radio/**"
+---
+
+# Radio — Styles
+
+CSS file: `@acko/css/radio.css`
+
+## CSS Classes
+
+### Group
+- `.acko-radio-group` — flex column, gap-2
+- `.acko-radio-group-label` — label-lg typography
+- `.acko-radio-options` — flex container
+- `.acko-radio-vertical` / `.acko-radio-horizontal` — orientation
+
+### Item (default variant)
+- `.acko-radio-item` — inline-flex, items-start, gap-3, cursor-pointer
+- `.acko-radio-item-selected` — selected state
+- `.acko-radio-item-disabled` — disabled state
+- `.acko-radio-error` — error state
+
+### Circle + Dot
+- `.acko-radio-circle` — border 2px `--color-control-border-selector`, rounded-full
+- `.acko-radio-dot` — inner dot, animated bounce on selection
+
+### Sizes (via `.acko-radio-{size}`)
+| Size | Circle | Dot | Label Font |
+|------|--------|-----|------------|
+| sm | `--scale-16` | `--scale-8` | `--font-body-sm-size` |
+| md | `--scale-20` | `--scale-10` | `--font-body-md-size` |
+| lg | `--scale-24` | `--scale-12` | `--font-body-lg-size` |
+
+### Card Variant
+- `.acko-radio-card-item` — border, rounded-3xl, padding, card-bg
+- Uses `--color-radio-card-*` tokens for hover/active states
+
+### States (raw CSS)
+- Selected: circle fills `--color-primary`, scale(1.08)
+- Hover: `@media (hover:hover)` — muted border, subtle bg
+- Focus: `box-shadow: --shadow-focus-ring` via `:focus-visible`
+- Disabled: subtle border, raised bg, muted text
+- Error: error border color

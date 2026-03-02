@@ -1,0 +1,57 @@
+/* Accordion — @acko/css/accordion.css */
+
+.acko-accordion {
+  @apply flex flex-col w-full;
+}
+
+.acko-accordion-item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.acko-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.acko-accordion-trigger {
+  @apply flex items-center justify-between w-full gap-3;
+  padding: var(--space-4) 0;
+  font-size: var(--font-body-md-size);
+  font-weight: 500;
+  color: var(--color-text-strong);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 150ms ease;
+}
+
+.acko-accordion-trigger:hover {
+  color: var(--color-primary);
+}
+
+.acko-accordion-item-disabled .acko-accordion-trigger {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.acko-accordion-chevron {
+  @apply flex-shrink-0;
+  color: var(--color-text-muted);
+  transition: transform 200ms var(--ease-out-quad);
+}
+
+.acko-accordion-chevron-open {
+  transform: rotate(180deg);
+}
+
+.acko-accordion-content-wrapper {
+  overflow: hidden;
+  transition: max-height 200ms var(--ease-out-quad);
+}
+
+.acko-accordion-content {
+  padding-bottom: var(--space-4);
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-default);
+  line-height: 1.6;
+}

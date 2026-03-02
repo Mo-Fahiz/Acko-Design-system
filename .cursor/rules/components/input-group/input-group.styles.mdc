@@ -1,0 +1,29 @@
+---
+description: InputGroup — CSS classes, sizes, states
+globs: "**/input-group*.css"
+alwaysApply: false
+---
+
+# InputGroup — Style Spec
+
+## CSS Classes
+
+| Class | Element | Notes |
+|-------|---------|-------|
+| `.acko-input-group` | Root wrapper | `flex row`, border, rounded-full |
+| `.acko-input-group-sm` | Small size | Height: 36px |
+| `.acko-input-group-md` | Medium size | Height: 44px |
+| `.acko-input-group-lg` | Large size | Height: 52px |
+| `.acko-input-group-prefix` | Left addon | `padding: 0 --space-3`, border-right separator |
+| `.acko-input-group-suffix` | Right addon | `padding: 0 --space-3`, border-left separator |
+| `.acko-input-group-input` | Inner input | `flex: 1`, transparent bg |
+| `.acko-input-group-error` | Error state | `border-color: --color-error` |
+| `.acko-input-group-disabled` | Disabled state | `opacity: 0.5`, `pointer-events: none` |
+
+## Token Usage
+- Border: `--color-input-border`
+- Background: `--color-input-bg`
+- Focus: `--color-primary` border, `--color-primary-ring` shadow
+- Error: `--color-error`
+- Addon text: `--color-text-muted`
+- Input text: `--color-text-default`

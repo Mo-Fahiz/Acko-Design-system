@@ -1,0 +1,128 @@
+---
+description: Button React implementation — props, behavior, accessibility, and component pattern
+globs: "**/button/**,**/Button/**"
+---
+
+# Button — React
+
+Package: `@acko/button`
+Directive: `"use client"` (interactive)
+
+## Architecture
+
+The React component contains **zero Tailwind utilities**. All visual styling is in `@acko/css/button.css`. The component only composes CSS class names via `clsx`.
+
+## Props Interface
+
+```typescript
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';           // default: 'md'
+  disabled?: boolean;
+  loading?: boolean;
+  iconLeft?: ReactNode;
+  iconRight?: ReactNode;
+  iconOnly?: boolean;
+  fullWidth?: boolean;
+  type?: 'button' | 'submit' | 'reset';                // default: 'button'
+  children: ReactNode;
+  className?: string;
+}
+```
+
+## Component Pattern
+
+```tsx
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, size = 'md', disabled, loading, iconLeft, iconRight,
+     iconOnly, fullWidth, type = 'button', className, children, ...rest }, ref) => {
+
+    const isDisabled = disabled || loading;
+
+    return (
+      <button
+        ref={ref}
+        type={type}
+        disabled={isDisabled}
+        aria-busy={loading || undefined}
+        aria-disabled={isDisabled || undefined}
+        className={clsx(
+          'acko-btn',
+          `acko-btn-${variant}`,
+          `acko-btn-${size}`,
+          iconOnly && 'acko-btn-icon-only',
+          loading && 'acko-btn-loading',
+          isDisabled && 'acko-btn-disabled',
+          fullWidth && 'acko-btn-full-width',
+          className,
+        )}
+        {...rest}
+      >
+        {iconLeft && <span className="acko-btn-icon" aria-hidden="true">{iconLeft}</span>}
+        {children}
+        {iconRight && <span className="acko-btn-icon" aria-hidden="true">{iconRight}</span>}
+        {loading && (
+          <>
+            <span className="acko-btn-spinner" aria-hidden="true" />
+            <span className="sr-only">Loading, please wait</span>
+          </>
+        )}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
+```
+
+**Key difference from old pattern:** No Tailwind utility classes in `className`. Everything — layout (`inline-flex items-center justify-center`), spacing (`gap-2`), typography (`font-medium`), radius (`rounded-full`), cursor, select, position — is in the CSS file via `@apply`.
+
+## Hooks
+
+None. Button is stateless — all behavior is props-driven.
+
+## State Management
+
+Stateless. `disabled` and `loading` come from props. No internal state.
+
+## Event Handling
+
+- `onClick` passed via `...rest` spread
+- When `loading={true}`: component sets `disabled` on the native element + CSS `pointer-events: none`
+
+## Accessibility
+
+| Attribute | When | Value |
+|-----------|------|-------|
+| `aria-busy` | `loading` | `true` |
+| `aria-disabled` | `disabled \|\| loading` | `true` |
+| `aria-hidden` | On icon spans, spinner | `true` |
+| `role` | — | Native `<button>` semantics |
+| Screen reader | `loading` | `<span className="sr-only">Loading, please wait</span>` |
+
+Focus ring: handled in CSS via `:focus-visible` → `--shadow-focus-ring`.
+
+## Keyboard
+
+Native `<button>` keyboard behavior — Enter and Space trigger click. No custom keyboard handling needed.
+
+## Dependencies
+
+| Package | Type | Reason |
+|---------|------|--------|
+| `clsx` | dependency | Class composition |
+| `react` | peer | React 18+ |
+| `lucide-react` | peer (optional) | Only if icons are passed by consumer |
+
+## Responsive Behavior
+
+- Below 640px: consumers should apply `fullWidth` prop for primary/secondary CTAs
+- Touch targets: minimum 44px height — xs (32px) should only be used for compact desktop UIs
+
+## Exports
+
+```typescript
+// index.ts
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
+```

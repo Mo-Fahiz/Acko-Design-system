@@ -1,0 +1,96 @@
+/* ============================================================
+   Tooltip — @acko/css/tooltip.css
+   Import:  @import "@acko/css/tooltip.css"
+   ============================================================ */
+
+.acko-tooltip-trigger {
+  @apply inline-flex;
+}
+
+.acko-tooltip {
+  @apply fixed pointer-events-none whitespace-nowrap;
+  z-index: var(--z-tooltip);
+  background: var(--color-tooltip-bg);
+  color: var(--color-tooltip-text);
+  font-size: var(--font-caption-size);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xl);
+  opacity: 0;
+  transform: translateY(var(--scale-8));
+  transition: opacity 150ms var(--ease-out-quad),
+    transform 150ms var(--ease-out-quad);
+}
+
+.acko-tooltip-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enter from different sides */
+.acko-tooltip-top {
+  transform: translateY(var(--scale-8));
+}
+
+.acko-tooltip-top.acko-tooltip-visible {
+  transform: translateY(0);
+}
+
+.acko-tooltip-bottom {
+  transform: translateY(calc(-1 * var(--scale-8)));
+}
+
+.acko-tooltip-bottom.acko-tooltip-visible {
+  transform: translateY(0);
+}
+
+.acko-tooltip-left {
+  transform: translateX(var(--scale-8));
+}
+
+.acko-tooltip-left.acko-tooltip-visible {
+  transform: translateX(0);
+}
+
+.acko-tooltip-right {
+  transform: translateX(calc(-1 * var(--scale-8)));
+}
+
+.acko-tooltip-right.acko-tooltip-visible {
+  transform: translateX(0);
+}
+
+/* Arrow — CSS triangle */
+.acko-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: calc(var(--scale-6) / 2) solid transparent;
+}
+
+.acko-tooltip-arrow-top {
+  bottom: calc(-1 * var(--scale-6));
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--color-tooltip-bg);
+}
+
+.acko-tooltip-arrow-bottom {
+  top: calc(-1 * var(--scale-6));
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--color-tooltip-bg);
+}
+
+.acko-tooltip-arrow-left {
+  right: calc(-1 * var(--scale-6));
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--color-tooltip-bg);
+}
+
+.acko-tooltip-arrow-right {
+  left: calc(-1 * var(--scale-6));
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--color-tooltip-bg);
+}

@@ -1,0 +1,16 @@
+---
+description: Label visual spec — CSS classes, sizes, states, and token usage
+globs: "**/label/**,**/Label/**"
+---
+
+# Label — Styles
+
+CSS file: `@acko/css/label.css`
+
+## CSS Classes
+
+- `.acko-label` — `font-weight: 500; cursor: default; color: var(--color-text-strong)`
+- `.acko-label-sm` — `font-size: var(--font-caption-size)`
+- `.acko-label-md` — `font-size: var(--font-body-sm-size)`
+- `.acko-label-disabled` — `color: var(--color-text-disabled)`
+- `.acko-label-required` — `color: var(--color-error); margin-left: 2px` (for asterisk)

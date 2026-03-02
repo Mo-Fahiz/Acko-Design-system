@@ -1,0 +1,113 @@
+/* NavigationWizard — @acko/css/navigation-wizard.css */
+
+.acko-wizard {
+  @apply flex items-center;
+}
+
+.acko-wizard-vertical {
+  @apply flex-col items-start;
+}
+
+.acko-wizard-step {
+  @apply flex items-center;
+}
+
+.acko-wizard-vertical .acko-wizard-step {
+  @apply flex-row items-start;
+}
+
+.acko-wizard-circle {
+  @apply inline-flex items-center justify-center flex-shrink-0;
+  width: var(--scale-32);
+  height: var(--scale-32);
+  border-radius: var(--radius-full);
+  font-size: var(--font-body-sm-size);
+  font-weight: 600;
+  transition: all 200ms ease;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.acko-wizard-circle:disabled {
+  cursor: default;
+}
+
+.acko-wizard-circle-upcoming {
+  background-color: var(--color-surface-raised-hover);
+  color: var(--color-text-muted);
+}
+
+.acko-wizard-circle-current {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-ring);
+}
+
+.acko-wizard-circle-completed {
+  background-color: var(--color-success);
+  color: var(--color-on-primary);
+}
+
+.acko-wizard-circle-error {
+  background-color: var(--color-error-text);
+  color: var(--color-on-primary);
+}
+
+.acko-wizard-connector {
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-border-subtle);
+  transition: background-color 200ms ease;
+}
+
+.acko-wizard-connector-completed {
+  background-color: var(--color-success);
+}
+
+.acko-wizard-vertical .acko-wizard-connector {
+  width: 2px;
+  height: 32px;
+  margin-left: 15px;
+}
+
+.acko-wizard-label {
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 200ms ease;
+}
+
+.acko-wizard-label-current,
+.acko-wizard-label-completed {
+  color: var(--color-text-strong);
+}
+
+.acko-wizard-label-error {
+  color: var(--color-error-text);
+}
+
+.acko-wizard-description {
+  font-size: var(--font-caption-size);
+  color: var(--color-text-muted);
+}
+
+.acko-wizard-step-info {
+  @apply flex flex-col;
+  margin-left: var(--space-2);
+}
+
+.acko-wizard-compact .acko-wizard-circle {
+  width: var(--scale-24);
+  height: var(--scale-24);
+  font-size: var(--font-label-sm-size);
+}
+
+.acko-wizard-compact .acko-wizard-connector {
+  width: 40px;
+}
+
+.acko-wizard-compact .acko-wizard-label {
+  font-size: var(--font-caption-size);
+}

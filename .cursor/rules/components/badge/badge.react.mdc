@@ -1,0 +1,44 @@
+---
+description: Badge React implementation — props, behavior, accessibility
+globs: "**/badge/**,**/Badge/**"
+---
+
+# Badge — React
+
+Package: `@acko/badge`
+Directive: None (presentational)
+
+## Props Interface
+
+```typescript
+interface BadgeProps {
+  variant?: 'solid' | 'outline' | 'dot';
+  color?: 'purple' | 'green' | 'blue' | 'orange' | 'pink' | 'gray';
+  size?: 'sm' | 'md' | 'lg';
+  removable?: boolean;
+  onRemove?: () => void;
+  className?: string;
+  children: ReactNode;
+}
+
+interface CounterBadgeProps {
+  count: number;
+  max?: number;
+  color?: 'purple' | 'pink' | 'blue';
+  className?: string;
+}
+```
+
+## Component Pattern
+
+Zero Tailwind utilities. Pure `clsx` class composition:
+- `acko-badge`, `acko-badge-{size}`, `acko-badge-{variant}-{color}`
+
+## Exports
+
+```typescript
+export { Badge } from './Badge';
+export type { BadgeProps } from './Badge';
+export { CounterBadge } from './Badge';
+export type { CounterBadgeProps } from './Badge';
+```

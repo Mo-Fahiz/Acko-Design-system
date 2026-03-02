@@ -1,0 +1,182 @@
+---
+description: Button visual spec — CSS classes, variants, sizes, states, and token usage. All styling via @apply and raw CSS.
+globs: "**/button/**,**/Button/**"
+---
+
+# Button — Styles
+
+CSS file: `@acko/css/button.css`
+
+## Architecture
+
+ALL visual styling lives in the CSS file. React components compose CSS class names only via `clsx` — no Tailwind utilities in React.
+
+- **`@apply`**: layout, alignment, spacing, sizing, typography, radius, colors, basic shadows, cursor, select, whitespace, position
+- **Raw CSS**: multi-property `transition`, `@keyframes`, `[data-theme]` overrides, `@media (hover:hover)` hover blocks, `::before`/`::after` pseudo-elements, compound `box-shadow` stacks, `backdrop-filter`
+
+## CSS Classes
+
+### Base
+
+```css
+.acko-btn {
+  @apply inline-flex items-center justify-center gap-2 font-medium
+         leading-none border-none cursor-pointer select-none
+         whitespace-nowrap no-underline relative;
+  font-family: inherit;
+  transition: background-color 150ms ease, color 150ms ease,
+              border-color 150ms ease, transform 100ms ease,
+              box-shadow 150ms ease;
+}
+```
+
+### Sizes (via `@apply` for height, padding, font, radius)
+
+| Class | Implementation |
+|-------|---------------|
+| `.acko-btn-xs` | `@apply h-8 px-4 text-xs rounded-full; line-height: 16px;` |
+| `.acko-btn-sm` | `@apply h-10 px-4 text-sm rounded-full; line-height: 18px;` |
+| `.acko-btn-md` | `@apply h-12 px-4 text-base leading-6 rounded-full;` |
+| `.acko-btn-lg` | `@apply h-14 px-6 text-lg rounded-full; line-height: 28px;` |
+| `.acko-btn-xl` | `@apply h-16 px-8 text-xl rounded-full; line-height: 32px;` |
+
+### Variants (via `@apply` for colors + raw CSS for complex shadows)
+
+| Class | Background | Text | Shadow |
+|-------|-----------|------|--------|
+| `.acko-btn-primary` | `bg-primary` | `text-on-primary` | `shadow-btn-inner` |
+| `.acko-btn-secondary` | `bg-btn-secondary-bg` | `text-primary` | `shadow-btn-inner` |
+| `.acko-btn-outline` | `bg-transparent` | `text-btn-outline-color` | `inset 0 0 0 1px var(--color-btn-outline-color)` |
+| `.acko-btn-ghost` | `bg-transparent` | `text-btn-ghost-color` | none |
+| `.acko-btn-danger` | `bg-transparent` | `text-error` | `inset 0 0 0 1px var(--color-error)` |
+
+### Icon Sizing (inside CSS via `@apply`)
+
+```css
+.acko-btn-icon { @apply inline-flex items-center justify-center shrink-0; }
+.acko-btn-xs .acko-btn-icon { @apply size-3; }
+.acko-btn-sm .acko-btn-icon { @apply size-3.5; }
+.acko-btn-md .acko-btn-icon { @apply size-4; }
+.acko-btn-lg .acko-btn-icon { @apply size-[18px]; }
+.acko-btn-xl .acko-btn-icon { @apply size-5; }
+```
+
+### Icon-Only (square button via `@apply`)
+
+```css
+.acko-btn-icon-only.acko-btn-xs { @apply w-8 p-0; }
+.acko-btn-icon-only.acko-btn-sm { @apply w-10 p-0; }
+.acko-btn-icon-only.acko-btn-md { @apply w-12 p-0; }
+.acko-btn-icon-only.acko-btn-lg { @apply w-14 p-0; }
+.acko-btn-icon-only.acko-btn-xl { @apply w-16 p-0; }
+```
+
+### Full Width
+
+```css
+.acko-btn-full-width { @apply w-full; }
+```
+
+### States
+
+#### Loading
+```css
+.acko-btn-loading { @apply pointer-events-none; color: transparent !important; }
+```
+
+#### Disabled
+```css
+.acko-btn-disabled,
+.acko-btn:disabled {
+  @apply cursor-not-allowed opacity-100;
+  background-color: var(--color-disabled-bg) !important;
+  color: var(--color-disabled-text) !important;
+  box-shadow: none !important;
+}
+```
+
+### Spinner (raw CSS — animation)
+
+```css
+.acko-btn-spinner {
+  @apply absolute size-[18px] rounded-full;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: acko-spin 600ms linear infinite;
+}
+```
+
+Spinner colors per variant via raw CSS:
+| Variant | Spinner `color` |
+|---------|----------------|
+| primary | `--color-on-primary` |
+| secondary | `--color-text-default` |
+| outline | `--color-text-default` |
+| ghost | `--color-btn-ghost-color` |
+| danger | `--color-error` |
+
+## Hover States (raw CSS — `@media (hover: hover)`)
+
+Wrapped in `@media (hover: hover) and (pointer: fine)`:
+
+| Variant | Hover treatment |
+|---------|----------------|
+| primary | dark overlay gradient + compound `box-shadow` (inner + hover) |
+| secondary | `bg-surface-raised-hover` + `shadow-btn-secondary-hover` |
+| outline | `bg-btn-outline-hover-bg` + compound inset + hover shadow |
+| ghost | `bg-btn-ghost-hover-bg` |
+| danger | `bg-error-subtle` + compound inset + error glow shadow |
+
+## Active State (raw CSS)
+
+`:active:not(:disabled)` → `transform: scale(0.97)`.
+
+## Focus State (raw CSS)
+
+`:focus-visible` → `outline: none; box-shadow: var(--shadow-focus-ring)`.
+Outline variant adds compound shadow: inset border + focus ring.
+
+## Dark Theme Overrides (raw CSS)
+
+Scoped under `[data-theme="dark"]`:
+- secondary: text changes to `text-default` (via `--color-text-default`)
+- primary hover: uses `--color-btn-primary-hover-bg`, no gradient overlay
+- secondary hover: lighter inner shadow `rgba(255,255,255,0.08)`
+- shadows switch automatically via semantic token remapping in `tokens.css`
+
+## Elevated Theme Overrides (raw CSS)
+
+Scoped under `[data-theme="elevated"]`:
+
+### Primary
+- `background: var(--elevated-primary-gradient)` + `box-shadow: var(--elevated-primary-shadow)`
+- `::before` pseudo for convex overlay
+- Hover: `translateY(-1px)` lift + intensified gradient/shadow
+
+### Secondary
+- Glass background via `backdrop-filter: blur(14px)`
+
+### Outline
+- Border gradient via `background: padding-box + border-box` technique
+
+### Ghost
+- Uses `--color-primary-active` for text
+
+### Focus
+- `--elevated-focus-ring` (includes glass border stroke)
+
+## Transitions (raw CSS)
+
+```css
+transition: background-color 150ms ease,
+            color 150ms ease,
+            border-color 150ms ease,
+            transform 100ms ease,
+            box-shadow 150ms ease;
+```
+
+## Keyframes (raw CSS)
+
+```css
+@keyframes acko-spin { to { transform: rotate(360deg); } }
+```

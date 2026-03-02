@@ -1,0 +1,13 @@
+# Tabs — Visual Spec
+
+## CSS classes
+
+- `.acko-tabs` — base wrapper
+- `.acko-tabs-list` — flex
+- Underline: `.acko-tabs-list-underline`, `.acko-tab-underline`, `.acko-tab-underline-active`
+- Pill: `.acko-tabs-list-pill`, `.acko-tab-pill`, `.acko-tab-pill-active`
+- Enclosed: `.acko-tab-enclosed`, `.acko-tab-enclosed-active`
+- Sizes: `.acko-tab-sm`, `.acko-tab-md`
+- `.acko-tab-icon` — scale-16
+- `.acko-tab-full-width .acko-tab-*` — flex-1 justify-center
+- `.acko-tab-disabled` — opacity, cursor, pointer-events

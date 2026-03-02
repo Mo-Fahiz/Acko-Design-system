@@ -1,0 +1,30 @@
+---
+description: Textarea visual spec — CSS classes, resize options, states, and token usage
+globs: "**/textarea/**,**/Textarea/**"
+---
+
+# Textarea — Styles
+
+CSS file: `@acko/css/textarea.css`
+
+## CSS Classes
+
+### Structure
+- `.acko-textarea` — flex column, gap var(--space-2)
+- `.acko-textarea-label` — label-lg typography, color-text-default
+- `.acko-textarea-el` — the `<textarea>` element
+
+### Resize (via `.acko-textarea-resize-{vertical|horizontal|both|none}`)
+Uses native CSS `resize` property.
+
+### States (on `.acko-textarea-el`)
+- Focus: `border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary)`
+- Error: `border-color: var(--color-error)`
+- Success: `border-color: var(--color-success)`
+- Disabled: `background: var(--color-surface-raised); border-color: var(--color-border-subtle); cursor: not-allowed; color: var(--color-text-disabled)`
+
+### Footer
+- `.acko-textarea-footer` — flex justify-between
+- `.acko-textarea-helper-text` / `.acko-textarea-error-text` — caption font
+- `.acko-textarea-count` — caption font, color-text-muted
+- `.acko-textarea-required` — red asterisk

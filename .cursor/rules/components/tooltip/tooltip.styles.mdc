@@ -1,0 +1,9 @@
+# Tooltip — Visual Spec
+
+## CSS classes
+
+- `.acko-tooltip-trigger` — inline-flex
+- `.acko-tooltip` — fixed, pointer-events-none, z-tooltip, background, color, font-caption, padding, radius-xl
+- `.acko-tooltip-arrow` — CSS triangle var(--scale-6), positioned per side
+- Enter animations per side: top/bottom/left/right with translate
+- Animation: 150ms var(--ease-out-quad)

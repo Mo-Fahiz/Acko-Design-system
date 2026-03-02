@@ -1,0 +1,113 @@
+---
+description: Typography tokens — font family, type scale, weight rules, and sizing guidelines
+globs: "**/*.css,**/*.tsx"
+---
+
+# Typography Tokens
+
+## Font Family
+
+**Euclid Circular B** — all text across the system.
+
+```css
+font-family: 'Euclid Circular B', -apple-system, BlinkMacSystemFont, sans-serif;
+```
+
+CDN base: `https://pub-c050457d48794d5bb9ffc2b4649de2c1.r2.dev/Euclid%20Font/`
+
+Weights: Light (300), Regular (400), Medium (500), Semibold (600), Bold (700).
+
+## Type Scale
+
+Each level is expressed as 4 sub-tokens in `tokens.css`:
+- `--font-{level}-size` — font-size
+- `--font-{level}-line` — line-height
+- `--font-{level}-spacing` — letter-spacing
+- `--font-{level}-weight` — font-weight
+
+### Display (marketing, heroes)
+
+| Level | Size | Line Height | Letter Spacing | Weight |
+|-------|------|-------------|----------------|--------|
+| `--font-display-xl-*` | 72px | 80px | -2px | Bold 700 |
+| `--font-display-lg-*` | 56px | 64px | -1.5px | Bold 700 |
+| `--font-display-md-*` | 48px | 56px | -1px | Bold 700 |
+| `--font-display-sm-*` | 40px | 48px | -0.5px | Semibold 600 |
+
+### Heading (UI sections)
+
+| Level | Size | Line Height | Letter Spacing | Weight |
+|-------|------|-------------|----------------|--------|
+| `--font-heading-xl-*` | 32px | 40px | -0.5px | Semibold 600 |
+| `--font-heading-lg-*` | 24px | 32px | -0.3px | Semibold 600 |
+| `--font-heading-md-*` | 20px | 28px | -0.2px | Semibold 600 |
+| `--font-heading-sm-*` | 18px | 24px | 0px | Semibold 600 |
+
+### Body (content)
+
+| Level | Size | Line Height | Letter Spacing | Weight |
+|-------|------|-------------|----------------|--------|
+| `--font-body-lg-*` | 18px | 28px | 0px | Regular 400 |
+| `--font-body-md-*` | 16px | 24px | 0px | Regular 400 |
+| `--font-body-sm-*` | 14px | 20px | 0px | Regular 400 |
+
+### Labels & Utility
+
+| Level | Size | Line Height | Letter Spacing | Weight |
+|-------|------|-------------|----------------|--------|
+| `--font-label-lg-*` | 14px | 20px | 0.1px | Medium 500 |
+| `--font-label-md-*` | 12px | 16px | 0.2px | Medium 500 |
+| `--font-label-sm-*` | 11px | 14px | 0.3px | Medium 500 |
+| `--font-caption-*` | 12px | 16px | 0px | Regular 400 |
+| `--font-overline-*` | 11px | 16px | 0.5px | Semibold 600 |
+
+### Example usage in CSS
+
+```css
+.my-heading {
+  font-size: var(--font-heading-lg-size);
+  line-height: var(--font-heading-lg-line);
+  letter-spacing: var(--font-heading-lg-spacing);
+  font-weight: var(--font-heading-lg-weight);
+}
+```
+
+## Tailwind Mapping
+
+| Token | Tailwind equivalent |
+|-------|-------------------|
+| 11px | `text-[11px]` |
+| 12px / `--font-caption-size` | `text-xs` |
+| 14px / `--font-body-sm-size` | `text-sm` |
+| 16px / `--font-body-md-size` | `text-base` |
+| 18px / `--font-body-lg-size` | `text-lg` |
+| 20px / `--font-heading-md-size` | `text-xl` |
+| 24px / `--font-heading-lg-size` | `text-2xl` |
+| Weight 400 | `font-normal` |
+| Weight 500 | `font-medium` |
+| Weight 600 | `font-semibold` |
+| Weight 700 | `font-bold` |
+
+## Button Font Sizes (Intentionally Hardcoded)
+
+Buttons use their own scale — not body tokens:
+
+| Size | Font | Tailwind |
+|------|------|----------|
+| xs | 12px | `text-xs` |
+| sm | 14px | `text-sm` |
+| md | 16px | `text-base` |
+| lg | 18px | `text-lg` |
+| xl | 20px | `text-xl` |
+
+## Rules
+
+- Sentence case everywhere (headings, buttons, labels, nav)
+- Minimum 14px for body text, 12px for labels, 11px absolute minimum
+- Medium (500) for emphasis in body — not Bold
+- Semibold (600) for headings, Bold (700) only for display
+- Tighter letter-spacing for large text, looser for small text
+- Use `text-wrap: balance` on headings
+- `font-variant-numeric: tabular-nums` for dynamic numbers
+
+Typography tokens are **theme-agnostic** — they do not change between themes.

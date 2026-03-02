@@ -1,0 +1,45 @@
+---
+description: Checkbox React implementation — props, behavior, accessibility
+globs: "**/checkbox/**,**/Checkbox/**"
+---
+
+# Checkbox — React
+
+Package: `@acko/checkbox`
+Directive: `"use client"` (interactive)
+
+## Props Interface
+
+```typescript
+interface CheckboxProps {
+  label?: string;
+  description?: string;
+  checked: boolean;
+  indeterminate?: boolean;
+  onChange: (checked: boolean) => void;
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  error?: boolean;
+  className?: string;
+}
+```
+
+## Key Behaviors
+
+- `indeterminate` is set via ref callback on the native input
+- Inline SVG for check (checkmark) and minus (indeterminate) icons — no icon library dependency
+- `forwardRef` on the `<label>` wrapper
+
+## Accessibility
+
+- Hidden native checkbox for screen readers
+- `aria-invalid` when error
+- `aria-describedby` links to description text
+- `:focus-visible` on native input targets the custom box
+
+## Exports
+
+```typescript
+export { Checkbox } from './Checkbox';
+export type { CheckboxProps } from './Checkbox';
+```

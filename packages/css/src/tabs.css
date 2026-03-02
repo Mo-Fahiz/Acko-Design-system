@@ -1,0 +1,120 @@
+/* ============================================================
+   Tabs — @acko/css/tabs.css
+   Import:  @import "@acko/css/tabs.css"
+   ============================================================ */
+
+.acko-tabs {
+  @apply w-full;
+}
+
+.acko-tabs-list {
+  @apply flex;
+}
+
+/* --- Underline variant --- */
+
+.acko-tabs-list-underline {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.acko-tab {
+  @apply inline-flex items-center gap-2 cursor-pointer border-none bg-transparent;
+  font: inherit;
+}
+
+.acko-tab-underline {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: color 200ms, border-color 200ms;
+}
+
+.acko-tab-underline-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* --- Pill variant --- */
+
+.acko-tabs-list-pill {
+  background: var(--color-tab-pill-bg);
+  border-radius: var(--radius-full);
+  padding: 3px;
+}
+
+.acko-tab-pill {
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: all 200ms;
+}
+
+.acko-tab-pill-active {
+  background: var(--color-tab-pill-active-bg);
+  color: var(--color-text-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Enclosed variant --- */
+
+.acko-tab-enclosed {
+  border: 1px solid var(--color-border-subtle);
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.acko-tab-enclosed-active {
+  background: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-card-bg);
+  color: var(--color-text-strong);
+}
+
+/* --- Sizes --- */
+
+.acko-tab-sm {
+  font-size: var(--font-caption-size);
+  padding: var(--space-1) var(--space-3);
+}
+
+.acko-tab-md {
+  font-size: var(--font-body-sm-size);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* Override variant padding for sizes */
+.acko-tab-underline.acko-tab-sm {
+  padding: var(--space-1) var(--space-3);
+}
+
+.acko-tab-underline.acko-tab-md {
+  padding: var(--space-2) var(--space-4);
+}
+
+.acko-tab-pill.acko-tab-sm {
+  padding: var(--space-1) var(--space-3);
+}
+
+.acko-tab-pill.acko-tab-md {
+  padding: var(--space-1) var(--space-4);
+}
+
+.acko-tab-icon {
+  width: var(--scale-16);
+  height: var(--scale-16);
+  @apply shrink-0;
+}
+
+.acko-tab-full-width .acko-tab-underline,
+.acko-tab-full-width .acko-tab-pill,
+.acko-tab-full-width .acko-tab-enclosed {
+  @apply flex-1 justify-center;
+}
+
+.acko-tab-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

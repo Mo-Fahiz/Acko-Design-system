@@ -1,0 +1,121 @@
+---
+description: Dropdown visual specification — CSS classes, variants, sizes, states, and tokens
+globs: "**/dropdown*"
+alwaysApply: false
+---
+
+# Dropdown — Visual Specification
+
+## Architecture
+
+All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for structural utilities and raw CSS for transitions, animations, and theme overrides.
+
+---
+
+## Class Inventory
+
+### Base
+| Class | Purpose |
+|---|---|
+| `.acko-dropdown` | Wrapper — `flex flex-col gap-1 relative` |
+| `.acko-dropdown-label` | Label — typography tokens, `color: var(--color-text-default)` |
+| `.acko-dropdown-required` | Required asterisk — `color: var(--color-error)` |
+| `.acko-dropdown-trigger` | Trigger button — `flex items-center justify-between w-full rounded-full` |
+| `.acko-dropdown-value` | Selected value — `flex-1 min-w-0 overflow-hidden text-overflow:ellipsis` |
+| `.acko-dropdown-placeholder` | Placeholder text — `color: var(--color-text-muted)` |
+| `.acko-dropdown-chevron` | Chevron icon — `shrink-0 flex items-center ml-2` |
+| `.acko-dropdown-menu` | Dropdown menu — `absolute list-none`, shadow, rounded, animated |
+| `.acko-dropdown-option` | Single option — `flex items-center gap-2 cursor-pointer` |
+| `.acko-dropdown-search` | Search input inside menu — `w-full rounded-full` |
+
+### Sizes
+| Class | Height | Padding | Font Size |
+|---|---|---|---|
+| `.acko-dropdown-trigger-sm` | `h-10` (40px) | `px-4` | `var(--font-body-sm-size)` |
+| `.acko-dropdown-trigger-md` | `h-12` (48px) | `px-5` | `var(--font-body-md-size)` |
+| `.acko-dropdown-trigger-lg` | `h-14` (56px) | `px-6` | `var(--font-body-lg-size)` |
+
+### Variants
+| Variant | Behavior |
+|---|---|
+| `single` | Select one option, menu closes on select |
+| `multi` | Select multiple, shows tags with remove button |
+| `searchable` | Adds search input at top of menu |
+| `grouped` | Options grouped under headers |
+
+### States
+| Class | Effect |
+|---|---|
+| `.acko-dropdown-trigger-open` | Active/open — `border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary)` |
+| `.acko-dropdown-trigger-error` | Error — `border-color: var(--color-error)`, shake animation |
+| `.acko-dropdown-trigger-filled` | Has value — `border-color: var(--color-border-strong)` |
+| `.acko-dropdown-trigger:disabled` | Disabled — `cursor-not-allowed`, muted colors |
+| `.acko-dropdown-label-open` | Label when open — `color: var(--color-primary)` |
+| `.acko-dropdown-label-error` | Label on error — `color: var(--color-error-text)` |
+| `.acko-dropdown-option-focused` | Keyboard-focused — `background-color: var(--color-primary-subtle)` |
+| `.acko-dropdown-option-selected` | Selected — `var(--color-primary-subtle)` bg, `font-weight: 500` |
+| `.acko-dropdown-option-disabled` | Disabled option — `color: var(--color-text-muted); cursor-not-allowed` |
+
+### Multi-select Tags
+| Class | Purpose |
+|---|---|
+| `.acko-dropdown-tags` | Container — `flex flex-wrap gap: --scale-4` |
+| `.acko-dropdown-tag` | Individual tag — `inline-flex rounded-full`, primary-subtle bg |
+| `.acko-dropdown-tag-remove` | Remove button — `inline-flex bg-transparent`, hover opacity |
+
+### Helper/Error Text
+| Class | Color |
+|---|---|
+| `.acko-dropdown-helper-text` | `var(--color-text-muted)` |
+| `.acko-dropdown-error-text` | `var(--color-error-text)` |
+
+---
+
+## Animations
+
+| Keyframe | Purpose |
+|---|---|
+| `acko-dropdown-menu-enter` | Menu fade-in + translateY(-8px → 0) over 150ms |
+| `acko-dropdown-shake` | Error shake — 300ms horizontal oscillation |
+
+---
+
+## Tokens Used
+
+| Token | Usage |
+|---|---|
+| `--color-input-border` | Default trigger border |
+| `--color-surface` | Trigger and menu background |
+| `--color-surface-raised` | Dark theme trigger bg |
+| `--color-primary` | Open state border, chevron, focus ring |
+| `--color-primary-subtle` | Option hover/selected/focused bg |
+| `--color-primary-active` | Multi-select tag text |
+| `--color-border-strong` | Hover and filled trigger border |
+| `--color-text-strong` | Value and option text |
+| `--color-text-muted` | Placeholder, helper text, chevron, disabled option |
+| `--color-text-disabled` | Disabled trigger text |
+| `--color-error` | Required asterisk |
+| `--color-error-text` | Error label and text |
+| `--shadow-dropdown` | Menu shadow |
+| `--z-dropdown` | Menu z-index |
+| `--radius-full` | Trigger and tag border-radius |
+| `--radius-3xl` | Menu border-radius |
+| `--radius-lg` | Option border-radius |
+| `--ease-out-cubic` | Chevron rotation, menu animation |
+
+---
+
+## Dark Theme Overrides
+
+- Trigger: `background-color: var(--color-surface-raised)`, `border-color: var(--color-input-border)`
+- Error trigger: `border-color: var(--color-error-text)`
+- Disabled trigger: `background-color: var(--color-disabled-bg)`
+- Menu: `var(--color-surface-raised)` background
+- Search: `var(--color-surface)` background
+
+## Elevated Theme Overrides
+
+- Trigger: glass background with gradient border using `padding-box/border-box`, backdrop blur
+- Open/focus: `var(--elevated-focus-ring)` shadow
+- Hover: `var(--elevated-glow-hover)` shadow
+- Menu: glass background + gradient border, 18px blur

@@ -1,0 +1,5 @@
+{
+  "extends": "@acko/tsconfig/react-library.json",
+  "compilerOptions": { "outDir": "dist", "rootDir": "src", "declaration": true, "declarationMap": true },
+  "include": ["src"]
+}

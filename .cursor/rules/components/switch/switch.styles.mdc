@@ -1,0 +1,28 @@
+---
+description: Switch — CSS classes, sizes, states
+globs: "**/switch*.css"
+alwaysApply: false
+---
+
+# Switch — Style Spec
+
+## CSS Classes
+
+| Class | Element | Notes |
+|-------|---------|-------|
+| `.acko-switch` | Root label wrapper | `inline-flex items-center gap-2, cursor-pointer` |
+| `.acko-switch-sm` | Small size modifier | Track: 36×20, thumb: 16px |
+| `.acko-switch-md` | Medium size modifier | Track: 44×24, thumb: 20px |
+| `.acko-switch-native` | Hidden checkbox input | `sr-only` |
+| `.acko-switch-track` | Track background | Rounded full, transitions bg 150ms |
+| `.acko-switch-thumb` | Sliding circle | Absolute positioned, transitions transform |
+| `.acko-switch-checked` | Checked state | Track gets `--color-primary`, thumb slides right |
+| `.acko-switch-disabled` | Disabled state | Reduced opacity, `cursor: not-allowed` |
+| `.acko-switch-label` | Text label | `--font-body-sm-size`, `--color-text-default` |
+
+## Token Usage
+- Track unchecked: `--color-border-strong`
+- Track checked: `--color-primary`
+- Thumb: `--color-on-primary` (white)
+- Disabled: `--opacity-48`
+- Focus ring: `--color-primary-ring`

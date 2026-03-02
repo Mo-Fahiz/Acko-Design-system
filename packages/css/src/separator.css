@@ -1,0 +1,63 @@
+/* ============================================================
+   Separator — @acko/css/separator.css
+   Import: @import "@acko/css/separator.css"
+   ============================================================ */
+
+/* --- Base --- */
+
+.acko-separator {
+  flex-shrink: 0;
+}
+
+.acko-separator-horizontal {
+  @apply w-full;
+  height: 1px;
+  background: var(--color-control-border-selector);
+}
+
+.acko-separator-vertical {
+  height: 100%;
+  width: 1px;
+  background: var(--color-control-border-selector);
+}
+
+/* --- With label --- */
+
+.acko-separator-with-label {
+  @apply flex items-center gap-3;
+}
+
+.acko-separator-with-label.acko-separator-horizontal {
+  height: auto;
+  background: transparent;
+}
+
+.acko-separator-line {
+  @apply flex-1;
+  background: var(--color-control-border-selector);
+}
+
+.acko-separator-horizontal .acko-separator-line {
+  height: 1px;
+  min-width: 0;
+}
+
+.acko-separator-vertical .acko-separator-line {
+  width: 1px;
+  min-height: 0;
+}
+
+.acko-separator-with-label.acko-separator-vertical {
+  @apply flex-col;
+}
+
+.acko-separator-with-label.acko-separator-vertical .acko-separator-line {
+  width: 1px;
+  min-height: var(--space-4);
+}
+
+.acko-separator-label-text {
+  font-size: var(--font-caption-size);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}

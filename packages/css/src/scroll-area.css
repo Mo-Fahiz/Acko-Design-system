@@ -1,0 +1,36 @@
+/* ScrollArea — @acko/css/scroll-area.css */
+
+.acko-scroll-area {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Orientation */
+.acko-scroll-area-vertical {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.acko-scroll-area-horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.acko-scroll-area-both {
+  overflow: auto;
+}
+
+/* WebKit scrollbar */
+.acko-scroll-area::-webkit-scrollbar {
+  width: var(--scale-6);
+  height: var(--scale-6);
+}
+.acko-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.acko-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+.acko-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-strong);
+}

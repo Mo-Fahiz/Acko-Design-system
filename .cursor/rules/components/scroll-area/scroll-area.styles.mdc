@@ -1,0 +1,24 @@
+---
+description: ScrollArea visual spec — CSS classes, orientation, and scrollbar styling
+globs: "**/scroll-area/**,**/ScrollArea/**"
+---
+
+# ScrollArea — Styles
+
+CSS file: `@acko/css/scroll-area.css`
+
+## CSS Classes
+
+### Structure
+- `.acko-scroll-area` — smooth scroll, thin scrollbar, semantic colors
+
+### Orientation (via `.acko-scroll-area-{vertical|horizontal|both}`)
+| Orientation | Overflow |
+|-------------|----------|
+| vertical | overflow-y: auto; overflow-x: hidden |
+| horizontal | overflow-x: auto; overflow-y: hidden |
+| both | overflow: auto |
+
+### Scrollbar (design tokens)
+- Firefox: scrollbar-width: thin; scrollbar-color: var(--color-border) transparent
+- WebKit: width/height var(--scale-6), thumb var(--color-border), thumb:hover var(--color-border-strong), border-radius var(--radius-full)

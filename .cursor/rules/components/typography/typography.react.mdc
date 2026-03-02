@@ -1,0 +1,41 @@
+---
+description: Typography React implementation — props, polymorphic as, defaults
+globs: "**/typography/**,**/Typography/**"
+---
+
+# Typography — React
+
+Package: `@acko/typography`
+Directive: None (presentational)
+
+## Props Interface
+
+```typescript
+interface TypographyProps {
+  variant: 'display-xl' | 'display-lg' | 'display-md' | 'display-sm' | 'heading-xl' | 'heading-lg' | 'heading-md' | 'heading-sm' | 'body-lg' | 'body-md' | 'body-sm' | 'label-lg' | 'label-md' | 'label-sm' | 'caption' | 'overline';
+  as?: React.ElementType;
+  color?: 'default' | 'strong' | 'muted' | 'disabled' | 'primary' | 'error' | 'success';
+  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+  align?: 'left' | 'center' | 'right';
+  truncate?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}
+```
+
+## Default `as` Mapping
+
+- display-* → h1
+- heading-xl/lg → h2
+- heading-md/sm → h3
+- body-* → p
+- label-* → span
+- caption → span
+- overline → span
+
+## Exports
+
+```typescript
+export { Typography } from './Typography';
+export type { TypographyProps, TypographyVariant, TypographyColor, TypographyWeight, TypographyAlign } from './Typography';
+```

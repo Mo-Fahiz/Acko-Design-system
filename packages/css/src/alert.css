@@ -1,0 +1,71 @@
+/* ============================================================
+   Alert — @acko/css/alert.css
+   Import: @import "@acko/css/alert.css"
+   ============================================================ */
+
+.acko-alert {
+  @apply flex gap-3 relative;
+  padding: var(--space-4);
+  border-radius: var(--radius-3xl);
+  border: 1px solid;
+}
+
+.acko-alert-info {
+  background-color: var(--color-info-subtle);
+  border-color: var(--color-info-border);
+  color: var(--color-info-text);
+}
+
+.acko-alert-success {
+  background-color: var(--color-success-subtle);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+.acko-alert-warning {
+  background-color: var(--color-warning-subtle);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning-text);
+}
+
+.acko-alert-error {
+  background-color: var(--color-error-subtle);
+  border-color: var(--color-error-border);
+  color: var(--color-error-text);
+}
+
+.acko-alert-icon {
+  @apply shrink-0 flex items-center;
+  width: var(--scale-20);
+  height: var(--scale-20);
+  color: inherit;
+}
+
+.acko-alert-content {
+  @apply flex-1 flex flex-col gap-1;
+}
+
+.acko-alert-title {
+  font-size: var(--font-body-sm-size);
+  font-weight: 600;
+}
+
+.acko-alert-body {
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-default);
+}
+
+.acko-alert-dismiss {
+  @apply absolute border-none bg-transparent cursor-pointer;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: var(--scale-24);
+  height: var(--scale-24);
+  opacity: 0.7;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-alert-dismiss:hover {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "acko-design-system",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r --filter=!playground build",
+    "dev": "pnpm --filter=playground dev",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "pnpm -r exec rm -rf dist"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  }
+}

@@ -1,0 +1,39 @@
+---
+description: Border radius tokens and nested radius rule
+---
+
+# Border Radius Tokens
+
+| Token | Value | Use Case | Tailwind |
+|-------|-------|----------|----------|
+| `--radius-sm` | 4px | Nested insets | `rounded` |
+| `--radius-md` | 6px | Checkboxes md/lg | `rounded-md` |
+| `--radius-lg` | 8px | Options, table cells | `rounded-lg` |
+| `--radius-xl` | 10px | Tooltip | `rounded-xl` |
+| `--radius-2xl` | 12px | — | `rounded-2xl` |
+| `--radius-3xl` | 16px | Cards, menus, alerts | `rounded-2xl` (use `rounded-[16px]`) |
+| `--radius-full` | 9999px | Buttons, inputs, pills | `rounded-full` |
+
+## Nested Radius Rule
+
+When a rectangular element is nested inside a rounded container:
+
+```
+R1 = R2 − D    (inner radius = outer radius − padding)
+```
+
+Card outer radius is always `--radius-3xl` (16px). Because ACKO card padding (12–24px) meets or exceeds the outer radius, all inner rectangles floor to `--radius-sm` (4px).
+
+| Token | Value | When |
+|-------|-------|------|
+| `--radius-inset-sm` | 4px | Inner elements in `padding="sm"` cards |
+| `--radius-inset-md` | 4px | Inner elements in `padding="md"` cards |
+| `--radius-inset-lg` | 4px | Inner elements in `padding="lg"` cards |
+
+### Applies to
+- Icon wrapper boxes, image thumbnails, inset panels (`<CardInset>`)
+
+### Exempt (keep their own radius)
+- Buttons, badges, avatars — intentional pill/circular shape
+
+Radius tokens are **theme-agnostic**.

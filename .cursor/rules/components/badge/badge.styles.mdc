@@ -1,0 +1,47 @@
+---
+description: Badge visual spec — CSS classes, variants, colors, sizes, and token usage
+globs: "**/badge/**,**/Badge/**"
+---
+
+# Badge — Styles
+
+CSS file: `@acko/css/badge.css`
+
+## Architecture
+
+ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `clsx`.
+
+## CSS Classes
+
+### Base
+`.acko-badge` — `inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none`
+
+### Sizes
+| Class | Padding | Font |
+|-------|---------|------|
+| `.acko-badge-sm` | `--space-1` (4px) | `--font-label-sm-size` |
+| `.acko-badge-md` | `--scale-6` (6px) | `--font-caption-size` |
+| `.acko-badge-lg` | `--space-2` (8px) | `--font-body-sm-size` |
+
+### Solid Variant Colors
+Pattern: `.acko-badge-solid-{color}` where color = `purple | green | blue | orange | pink | gray`
+
+Uses tokens: `--color-badge-{color}-bg`, `--color-badge-{color}-text`, `--color-badge-{color}-shadow-top`
+
+### Outline Variant Colors
+Pattern: `.acko-badge-outline-{color}`
+
+Uses token: `--color-badge-{color}-outline-color` for both text and border
+
+### Dot Variant Colors
+Pattern: `.acko-badge-dot-{color}`
+
+Same bg as solid + `.acko-badge-dot` child element (`--scale-6` circle in `currentColor`)
+
+### Children
+- `.acko-badge-dot` — `--scale-6` circle indicator
+- `.acko-badge-remove` — remove button with X icon (`--scale-12` SVG)
+
+### Counter Badge
+- `.acko-counter-badge` — pill with min-width `--scale-20`, height `--scale-20`, padding `0 --scale-6`, font `--font-label-sm-size`, tabular-nums
+- `.acko-counter-badge-{color}` — purple, pink, blue

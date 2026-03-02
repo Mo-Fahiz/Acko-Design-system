@@ -1,0 +1,29 @@
+/* ============================================================
+   Label — @acko/css/label.css
+   Import: @import "@acko/css/label.css"
+   ============================================================ */
+
+/* --- Base --- */
+
+.acko-label {
+  font-weight: 500;
+  cursor: default;
+  color: var(--color-text-strong);
+}
+
+.acko-label-sm {
+  font-size: var(--font-caption-size);
+}
+
+.acko-label-md {
+  font-size: var(--font-body-sm-size);
+}
+
+.acko-label-disabled {
+  color: var(--color-text-disabled);
+}
+
+.acko-label-required {
+  color: var(--color-error);
+  margin-left: 2px;
+}

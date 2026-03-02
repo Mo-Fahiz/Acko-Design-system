@@ -1,0 +1,198 @@
+/* TextInput — @acko/css/text-input.css */
+
+.acko-text-input {
+  @apply flex flex-col gap-1;
+}
+
+/* --- Label --- */
+.acko-text-input-label {
+  font-size: var(--font-label-lg-size);
+  font-weight: var(--font-label-lg-weight);
+  letter-spacing: var(--font-label-lg-spacing);
+  line-height: var(--font-label-lg-line);
+  color: var(--color-text-default);
+  transition: color 150ms ease;
+}
+
+.acko-text-input-label-focused { color: var(--color-primary); }
+.acko-text-input-label-error { color: var(--color-error-text); }
+.acko-text-input-label-disabled { color: var(--color-text-muted); }
+
+.acko-text-input-required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+/* --- Input wrapper --- */
+.acko-text-input-wrapper {
+  @apply flex items-center rounded-full;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-surface);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+/* Sizes */
+.acko-text-input-wrapper-sm { @apply h-10 px-4; }
+.acko-text-input-wrapper-md { @apply h-12 px-5; }
+.acko-text-input-wrapper-lg { @apply h-14 px-6; }
+
+/* --- Input element --- */
+.acko-text-input-el {
+  @apply flex-1 border-none bg-transparent font-normal outline-none w-full min-w-0 p-0;
+  font-family: inherit;
+  color: var(--color-text-strong);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.acko-text-input-el:focus { outline: none; box-shadow: none; }
+
+.acko-text-input-el::placeholder {
+  color: var(--color-text-muted);
+  transition: color 200ms ease;
+}
+
+.acko-text-input-focused .acko-text-input-el::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.acko-text-input-el-sm { font-size: var(--font-body-sm-size); line-height: var(--font-body-sm-line); }
+.acko-text-input-el-md { font-size: var(--font-body-md-size); line-height: var(--font-body-md-line); }
+.acko-text-input-el-lg { font-size: var(--font-body-lg-size); line-height: var(--font-body-lg-line); }
+
+/* --- Prefix / Suffix --- */
+.acko-text-input-prefix,
+.acko-text-input-suffix {
+  @apply shrink-0 select-none;
+  font-size: var(--font-body-sm-size);
+  color: var(--color-text-muted);
+}
+.acko-text-input-prefix { @apply mr-2; }
+.acko-text-input-suffix { @apply ml-2; }
+
+/* --- Icons --- */
+.acko-text-input-icon-left,
+.acko-text-input-icon-right {
+  @apply shrink-0 inline-flex items-center justify-center;
+  color: var(--color-text-muted);
+  transition: color 150ms ease;
+}
+.acko-text-input-icon-left { @apply mr-2; }
+.acko-text-input-icon-right { @apply ml-2; }
+
+.acko-text-input-wrapper-sm .acko-text-input-icon-left,
+.acko-text-input-wrapper-sm .acko-text-input-icon-right { width: var(--font-body-sm-size); height: var(--font-body-sm-size); }
+.acko-text-input-wrapper-md .acko-text-input-icon-left,
+.acko-text-input-wrapper-md .acko-text-input-icon-right { width: var(--font-body-md-size); height: var(--font-body-md-size); }
+.acko-text-input-wrapper-lg .acko-text-input-icon-left,
+.acko-text-input-wrapper-lg .acko-text-input-icon-right { width: var(--font-body-lg-size); height: var(--font-body-lg-size); }
+
+/* --- Helper / Error text --- */
+.acko-text-input-helper-text {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-muted);
+}
+.acko-text-input-error-text {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-error-text);
+}
+.acko-text-input-char-count {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-muted);
+  @apply text-right;
+}
+
+/* --- States --- */
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-text-input-wrapper:hover:not(.acko-text-input-disabled):not(.acko-text-input-error):not(.acko-text-input-success):not(.acko-text-input-readonly):not(.acko-text-input-focused) {
+    border-color: var(--color-input-hover-border);
+  }
+}
+
+.acko-text-input-focused {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.acko-text-input-focused .acko-text-input-icon-left,
+.acko-text-input-focused .acko-text-input-icon-right {
+  color: var(--color-primary);
+}
+
+.acko-text-input-filled:not(.acko-text-input-error):not(.acko-text-input-success) {
+  border-color: var(--color-input-hover-border);
+}
+
+/* Error */
+.acko-text-input-error {
+  border-color: var(--color-error);
+  animation: acko-text-input-shake 300ms ease-out;
+}
+
+@keyframes acko-text-input-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+/* Success */
+.acko-text-input-success {
+  border-color: var(--color-input-hover-border);
+}
+
+.acko-text-input-success-icon {
+  @apply inline-flex items-center justify-center ml-2;
+  color: var(--color-success);
+  animation: acko-text-input-check-pop 300ms ease-out;
+}
+
+@keyframes acko-text-input-check-pop {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Disabled */
+.acko-text-input-disabled {
+  border-color: var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+  @apply cursor-not-allowed;
+}
+.acko-text-input-disabled .acko-text-input-el { color: var(--color-text-disabled); @apply cursor-not-allowed; }
+.acko-text-input-disabled .acko-text-input-icon-left,
+.acko-text-input-disabled .acko-text-input-icon-right { color: var(--color-text-disabled); }
+
+/* Read-only */
+.acko-text-input-readonly {
+  border-color: var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+}
+.acko-text-input-readonly .acko-text-input-el { color: var(--color-text-secondary); }
+
+/* Dark theme */
+[data-theme="dark"] .acko-text-input-wrapper {
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-input-border);
+}
+
+[data-theme="dark"] .acko-text-input-error {
+  border-color: var(--color-error-text);
+}
+
+[data-theme="dark"] .acko-text-input-success-icon {
+  color: var(--color-success-text);
+}
+
+[data-theme="dark"] .acko-text-input-disabled {
+  background-color: var(--color-disabled-bg);
+  border-color: var(--color-disabled-bg);
+}

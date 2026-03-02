@@ -1,0 +1,70 @@
+---
+description: Layout patterns, component combination rules, and page templates
+---
+
+# Composition Patterns
+
+Rules for how components combine into layouts. Prevents structurally wrong UI.
+
+## Core Principles
+
+1. **One primary action per view** — at most ONE primary button per page/modal/step
+2. **Mobile first** — 360px baseline, enhance for larger viewports
+3. **Progressive disclosure** — wizards for multi-step, accordions for optional details
+4. **Proximity = relationship** — related elements closer together
+
+## Layout Patterns
+
+### Form Layout
+- `--space-5` (20px) between form fields
+- `--space-8` (32px) between heading block and form, and between form and actions
+- Primary button full-width on mobile
+- Secondary/back action below primary on mobile, not beside it
+
+### Card Layout
+- Card padding: `--space-6` (24px) default
+- Card gap in grid: `--space-4` mobile, `--space-6` desktop
+- Footer buttons: right-aligned, primary on the right
+- Never nest a card inside another card
+
+### Wizard Layout
+- Wizard nav sticky at top on mobile
+- Action bar sticky at bottom with top border
+- "Back" = ghost/outline, "Next" = primary
+- Max 5 visible steps
+
+## Component Combination Rules
+
+### Do
+| Combination | Pattern |
+|-------------|---------|
+| Form field + error | TextInput `state="error"` + `errorText` |
+| Card + Badge | Badge inside CardHeader for status |
+| Wizard + Form | One form section per step, validate per step |
+| Button pair | Primary + Secondary side by side, primary on right |
+| Calendar + Input | Calendar `display="dropdown"` for date fields |
+| Table + Pagination | Pagination below table, right-aligned desktop |
+
+### Don't
+| Anti-pattern | Fix |
+|-------------|-----|
+| Two primary buttons on one page | Make one secondary/outline |
+| Ghost button as main CTA | Use primary for main actions |
+| Badge inside a button | Place badge next to button |
+| Card inside a card | Use divider or section within card |
+| Same radius on nested rect as parent card | Use `--radius-inset-lg` (4px) |
+| Disabled button without explanation | Add helper text |
+| Text input without label | Always include label |
+| Alert inside modal | Use inline error styling |
+
+## Spacing Quick Reference
+
+| Between | Spacing |
+|---------|---------|
+| Label → input | `--space-2` (8px) |
+| Input → helper/error | `--space-2` (8px) |
+| Form fields | `--space-5` (20px) |
+| Section heading → content | `--space-8` (32px) |
+| Cards in grid | `--space-4` / `--space-6` |
+| Page sections | `--space-16` (64px) |
+| Buttons in group | `--space-3` (12px) |

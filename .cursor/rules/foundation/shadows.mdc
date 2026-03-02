@@ -1,0 +1,51 @@
+---
+description: Shadow tokens — primitive and semantic shadows for elevation hierarchy
+---
+
+# Shadow Tokens
+
+## Primitive Shadows
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | `0 1px 3px rgba(0,0,0,0.3)` |
+| `--shadow-md` | `0 4px 12px rgba(0,0,0,0.08)` | `0 4px 16px rgba(0,0,0,0.4)` |
+| `--shadow-lg` | `0 4px 24px rgba(0,0,0,0.12)` | `0 4px 28px rgba(0,0,0,0.5)` |
+| `--shadow-xl` | `0 8px 40px rgba(0,0,0,0.16)` | `0 8px 44px rgba(0,0,0,0.6)` |
+| `--shadow-border` | `0 0 0 1px rgba(0,0,0,0.08)` | `0 0 0 1px rgba(255,255,255,0.06)` |
+
+## Semantic Shadows
+
+| Token | Maps to | Use Case |
+|-------|---------|----------|
+| `--shadow-card` | `--shadow-md` | Elevated cards |
+| `--shadow-dropdown` | `--shadow-lg` | Dropdown menus, popovers |
+| `--shadow-modal` | `--shadow-xl` | Modals, dialogs |
+| `--shadow-subtle` | `--shadow-sm` | Small element depth |
+
+## Component Shadows
+
+| Token | Light | Dark | Used by |
+|-------|-------|------|---------|
+| `--shadow-btn-inner` | `inset 0 1px 2px rgba(255,255,255,0.28)` | `inset 0 1px 2px rgba(255,255,255,0.15)` | Primary, secondary buttons |
+| `--shadow-btn-hover` | `0 4px 8px rgba(0,0,0,0.08)` | `0 4px 8px rgba(0,0,0,0.3)` | Button hover |
+| `--shadow-btn-secondary-hover` | `inset 0 2px 4px rgba(255,255,255,0.48)` | `inset 0 2px 4px rgba(0,0,0,0.2)` | Secondary hover |
+| `--shadow-focus-ring` | `0 0 0 3px var(--color-primary-ring)` | same | All focusable elements |
+
+> **Dark mode note:** `--shadow-btn-secondary-hover` uses `rgba(0,0,0,0.2)` in dark — matching the original `Button.module.css` `inset 0px 2px 4px 0px rgba(255,255,255,0.08)` for the dark hover was updated to use darker inset shadows that work better on dark surfaces.
+
+## Badge Inner Shadow Pattern
+
+All solid badges use a dual inner shadow for a convex effect:
+
+```css
+box-shadow:
+  inset 0 -1px 2px 0 var(--color-badge-{color}-shadow-bottom),
+  inset 0 1px 1px 0 var(--color-badge-{color}-shadow-top);
+```
+
+## Rules
+
+- Shadows are heavier in dark mode to remain visible on dark surfaces
+- Prefer `box-shadow` over `border` for hairline edges
+- Never use harsh drop shadows — keep them diffused

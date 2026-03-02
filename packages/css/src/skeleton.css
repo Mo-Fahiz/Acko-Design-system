@@ -1,0 +1,64 @@
+/* Skeleton — @acko/css/skeleton.css */
+
+.acko-skeleton {
+  background-color: var(--color-disabled-bg);
+}
+
+.acko-skeleton-text {
+  width: 100%;
+  height: 16px;
+  border-radius: var(--radius-sm);
+}
+
+.acko-skeleton-circular {
+  width: var(--scale-40);
+  height: var(--scale-40);
+  border-radius: 50%;
+}
+
+.acko-skeleton-rectangular {
+  border-radius: 0;
+}
+
+.acko-skeleton-rounded {
+  border-radius: var(--radius-3xl);
+}
+
+.acko-skeleton-pulse {
+  animation: acko-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes acko-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.acko-skeleton-wave {
+  background: linear-gradient(
+    90deg,
+    var(--color-disabled-bg) 25%,
+    var(--color-surface) 50%,
+    var(--color-disabled-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: acko-skeleton-wave 1.5s linear infinite;
+}
+
+@keyframes acko-skeleton-wave {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.acko-skeleton-lines {
+  @apply flex flex-col;
+  gap: var(--space-2);
+}

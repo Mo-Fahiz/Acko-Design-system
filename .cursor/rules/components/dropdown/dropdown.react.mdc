@@ -1,0 +1,114 @@
+---
+description: Dropdown React implementation spec — props, behavior, accessibility
+globs: "**/dropdown*"
+alwaysApply: false
+---
+
+# Dropdown — React Implementation
+
+## Package
+
+`@acko/dropdown` — `packages/dropdown/src/Dropdown.tsx`
+
+## Directive
+
+`"use client"` — interactive component with state management.
+
+## Props Interface
+
+```ts
+interface DropdownOption {
+  value: string;
+  label: string;
+  icon?: ReactNode;
+  disabled?: boolean;
+  group?: string;
+}
+
+interface DropdownProps {
+  label: string;
+  placeholder?: string;         // default: "Select an option"
+  options: DropdownOption[];
+  value: string | string[];
+  onChange: (value: string | string[]) => void;
+  variant?: 'single' | 'multi' | 'searchable' | 'grouped';  // default: 'single'
+  size?: 'sm' | 'md' | 'lg';   // default: 'md'
+  state?: 'default' | 'error';  // default: 'default'
+  disabled?: boolean;
+  required?: boolean;
+  helperText?: string;
+  errorText?: string;
+  className?: string;
+}
+```
+
+## Component Pattern
+
+```tsx
+<div ref={ref} className={clsx('acko-dropdown', className)} onKeyDown={handleKeyDown} {...rest}>
+  <span className={clsx('acko-dropdown-label', isOpen && 'acko-dropdown-label-open', isError && 'acko-dropdown-label-error')}>
+    {label}
+    {required && <span className="acko-dropdown-required">*</span>}
+  </span>
+  <button
+    className={clsx(
+      'acko-dropdown-trigger',
+      `acko-dropdown-trigger-${size}`,
+      isOpen && 'acko-dropdown-trigger-open',
+      isError && 'acko-dropdown-trigger-error',
+      hasFilled && 'acko-dropdown-trigger-filled',
+    )}
+    ...
+  >
+    {displayValue}
+    <span className={clsx('acko-dropdown-chevron', isOpen && 'acko-dropdown-chevron-open')}>…</span>
+  </button>
+  {isOpen && <ul className="acko-dropdown-menu">…</ul>}
+</div>
+```
+
+## Key Behaviors
+
+1. **Single select**: `onChange(string)`, menu closes on selection
+2. **Multi select**: `onChange(string[])`, menu stays open, selected items shown as tags
+3. **Searchable**: Search input appears at top of menu, filters options in real-time
+4. **Grouped**: Options grouped by `group` property with section headers
+5. **Outside click**: Closes menu when clicking outside the wrapper
+6. **Keyboard navigation**: Arrow keys, Enter/Space to select, Home/End, Escape to close
+7. **Scroll into view**: Focused option auto-scrolls into view
+8. **Tag removal**: Multi-select tags have X button to remove individual selections
+
+## Accessibility
+
+- Trigger: `role="combobox"`, `aria-expanded`, `aria-haspopup="listbox"`, `aria-controls`
+- Menu: `role="listbox"`, `aria-labelledby`, `aria-multiselectable` for multi
+- Options: `role="option"`, `aria-selected`, `aria-disabled`
+- Search: `aria-label="Search options"`
+- Error text: `role="alert"`
+- Label connected via `aria-labelledby`
+
+## Icons
+
+Inline SVGs only — no `lucide-react` dependency.
+
+- Chevron down (18×18) for trigger
+- Check mark (16×16) for selected option indicator
+- X mark (10×10) for tag removal button
+
+## Consumer Usage
+
+```tsx
+import '@acko/css/dropdown.css';
+import { Dropdown } from '@acko/dropdown';
+
+<Dropdown
+  label="City"
+  options={[
+    { value: 'mum', label: 'Mumbai' },
+    { value: 'del', label: 'Delhi' },
+  ]}
+  value={city}
+  onChange={setCity}
+  size="md"
+/>
+```

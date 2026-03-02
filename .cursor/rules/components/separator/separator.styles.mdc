@@ -1,0 +1,22 @@
+---
+description: Separator visual spec — CSS classes, orientation, and token usage
+globs: "**/separator/**,**/Separator/**"
+---
+
+# Separator — Styles
+
+CSS file: `@acko/css/separator.css`
+
+## CSS Classes
+
+- `.acko-separator` — base
+- `.acko-separator-horizontal` — `@apply w-full`, `height: 1px`, `background: var(--color-control-border-selector)`
+- `.acko-separator-vertical` — `height: 100%`, `width: 1px`, `background: var(--color-control-border-selector)`
+- `.acko-separator-with-label` — `@apply flex items-center gap-3`
+- `.acko-separator-line` — `@apply flex-1`, same background as base
+- `.acko-separator-label-text` — `font-size: var(--font-caption-size); color: var(--color-text-muted); white-space: nowrap`
+
+## Accessibility
+
+- When `decorative: true` — `role="none"`
+- When `decorative: false` — `role="separator"` with `aria-orientation`

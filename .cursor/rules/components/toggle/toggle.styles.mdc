@@ -1,0 +1,16 @@
+# Toggle — Visual Spec
+
+## CSS classes
+
+- `.acko-toggle` — base, inline-flex, rounded-full, transition
+- `.acko-toggle-sm` — scale-32, font-label-md
+- `.acko-toggle-md` — scale-40, font-body-sm
+- `.acko-toggle-lg` — scale-48, font-body-md
+- `.acko-toggle-default` — toggle-bg, toggle-text
+- `.acko-toggle-default.acko-toggle-pressed` — toggle-active-bg, toggle-active-text
+- `.acko-toggle-outline` — transparent, border
+- `.acko-toggle-outline.acko-toggle-pressed` — toggle-active-bg
+- Hover: toggle-bg-hover
+- Focus: box-shadow primary-ring
+- `.acko-toggle-disabled` — opacity, cursor
+- `.acko-toggle-group` — inline-flex, gap space-1

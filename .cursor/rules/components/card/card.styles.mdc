@@ -1,0 +1,59 @@
+---
+description: Card visual spec — CSS classes, variants, padding, sub-components, nested radius
+globs: "**/card/**,**/Card/**"
+---
+
+# Card — Styles
+
+CSS file: `@acko/css/card.css`
+
+## CSS Classes
+
+### Base
+`.acko-card` — border-radius `--radius-3xl` (16px), overflow hidden.
+
+### Variants
+| Class | Fill | Stroke | Shadow |
+|-------|------|--------|--------|
+| `.acko-card-default` | `--color-card-bg` | `1px solid --color-card-border` | none |
+| `.acko-card-outline` | `transparent` | `1px solid --color-card-outline-border` | none |
+| `.acko-card-elevated` | `--color-card-elevated-bg` | none | `--shadow-card` |
+| `.acko-card-demoted` | `--color-card-demoted-bg` | `1px solid --color-card-demoted-border` | none |
+
+Design intent: On `--color-surface` (grey-100) page, default cards use grey-50 fill with a white border — the border is *lighter* than the fill, creating a floating highlight edge.
+
+### Padding
+| Class | Value | px |
+|-------|-------|----|
+| `.acko-card-pad-none` | 0 | 0 |
+| `.acko-card-pad-sm` | `var(--space-3)` | 12px |
+| `.acko-card-pad-md` | `var(--space-5)` | 20px |
+| `.acko-card-pad-lg` | `var(--space-6)` | 24px |
+
+### Sub-component Classes
+
+| Class | Padding | Border | Layout |
+|-------|---------|--------|--------|
+| `.acko-card-header` | `padding-bottom: --space-4` | `border-bottom: 1px solid --color-border-subtle` | `flex`, `gap: --space-3` |
+| `.acko-card-content` | `padding: --space-5 0` | none | block |
+| `.acko-card-footer` | `padding-top: --space-4` | `border-top: 1px solid --color-border-subtle` | `flex`, `justify-content: flex-end`, `gap: --space-3` |
+| `.acko-card-inset` | `padding: --space-3` | `1px solid --color-card-demoted-border` | `bg: --color-card-demoted-bg`, `border-radius: --radius-inset-lg` |
+
+### Nested Radius Rule
+
+Any rectangular child element (icon box, image, inset panel) uses `--radius-inset-lg` (4px), NOT the card's outer radius.
+
+**Exempt**: Buttons, badges, avatars — keep their own intentional radius.
+
+## Dark Theme (CSS)
+
+Automatic via semantic tokens. Elevated variant uses `--shadow-card` which remaps to heavier dark shadow.
+
+## Tailwind Utilities (applied in React)
+
+```
+overflow-hidden rounded-2xl     (base — but CSS handles exact 16px)
+flex items-center               (header, footer layout)
+```
+
+Since Card is purely presentational with no state-dependent styling, most classes are in CSS. Tailwind used only for structural layout in sub-components if needed.

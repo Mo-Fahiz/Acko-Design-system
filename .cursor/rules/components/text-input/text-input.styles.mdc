@@ -1,0 +1,41 @@
+---
+description: TextInput visual spec — CSS classes, sizes, states, and token usage
+globs: "**/text-input/**,**/TextInput/**"
+---
+
+# TextInput — Styles
+
+CSS file: `@acko/css/text-input.css`
+
+## CSS Classes
+
+### Structure
+- `.acko-text-input` — flex column wrapper, gap-1
+- `.acko-text-input-label` — label-lg typography tokens
+- `.acko-text-input-wrapper` — flex row, border, rounded-full
+- `.acko-text-input-el` — the actual `<input>` element
+
+### Sizes (via `.acko-text-input-wrapper-{size}`)
+| Size | Height | Padding | Font | Icon size |
+|------|--------|---------|------|-----------|
+| sm | `--scale-40` (h-10) | px-4 | `--font-body-sm-size` | `--font-body-sm-size` |
+| md | `--scale-48` (h-12) | px-5 | `--font-body-md-size` | `--font-body-md-size` |
+| lg | `--scale-56` (h-14) | px-6 | `--font-body-lg-size` | `--font-body-lg-size` |
+
+### Variants / Children
+- `.acko-text-input-icon-left` / `.acko-text-input-icon-right` — icon slots, sized to match the size variant's font token
+- `.acko-text-input-prefix` / `.acko-text-input-suffix` — text addons
+- `.acko-text-input-helper-text` / `.acko-text-input-error-text` — below input
+- `.acko-text-input-char-count` — right-aligned character count
+- `.acko-text-input-required` — red asterisk
+
+### States (raw CSS)
+- `.acko-text-input-focused` — primary border + 1px ring
+- `.acko-text-input-filled` — slightly darker border
+- `.acko-text-input-error` — error border + shake animation
+- `.acko-text-input-success` — normal border + animated checkmark
+- `.acko-text-input-disabled` — raised bg, subtle border, not-allowed cursor
+- `.acko-text-input-readonly` — raised bg, subtle border
+
+### Dark Theme Overrides
+Scoped under `[data-theme="dark"]` for wrapper bg, borders, and icon colors.
