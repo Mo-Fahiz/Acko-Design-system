@@ -28,7 +28,7 @@
 .acko-dropdown-trigger {
   @apply flex items-center justify-between w-full rounded-full cursor-pointer text-left;
   border: 1px solid var(--color-input-border);
-  background-color: var(--color-surface);
+  background-color: var(--color-input-bg);
   font-family: inherit;
   transition:
     border-color 200ms ease,
@@ -43,16 +43,16 @@
 .acko-dropdown-value {
   @apply flex-1 min-w-0 overflow-hidden whitespace-nowrap;
   text-overflow: ellipsis;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 .acko-dropdown-placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-dropdown-chevron {
   @apply shrink-0 flex items-center ml-2;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   transition: transform 150ms var(--ease-out-cubic), color 150ms ease;
 }
 
@@ -64,22 +64,22 @@
 /* Trigger states */
 @media (hover: hover) and (pointer: fine) {
   .acko-dropdown-trigger:hover:not(:disabled):not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-input-hover-border);
   }
   .acko-dropdown-trigger:hover:not(:disabled):not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) .acko-dropdown-chevron {
-    color: var(--color-text-secondary);
+    color: var(--color-text-supporting);
   }
 }
 
 .acko-dropdown-trigger-open {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 1px var(--color-input-focus-border);
 }
 
 .acko-dropdown-trigger:focus-visible {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 1px var(--color-input-focus-border);
 }
 
 .acko-dropdown-trigger:disabled {
@@ -100,7 +100,7 @@
 }
 
 .acko-dropdown-trigger-filled:not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) {
-  border-color: var(--color-border-strong);
+  border-color: var(--color-input-filled-border);
 }
 
 @keyframes acko-dropdown-shake {
@@ -117,7 +117,7 @@
   @apply absolute left-0 right-0 list-none p-0 m-0;
   top: 100%;
   margin-top: 4px;
-  background-color: var(--color-surface);
+  background-color: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-3xl);
   box-shadow: var(--shadow-dropdown);
@@ -147,18 +147,18 @@
   padding: var(--space-2) var(--space-4);
   font-family: inherit;
   font-size: var(--font-body-sm-size);
-  background-color: var(--color-surface);
-  color: var(--color-text-strong);
+  background-color: var(--color-input-bg);
+  color: var(--color-text-primary);
   transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .acko-dropdown-search:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 1px var(--color-input-focus-border);
 }
 
 .acko-dropdown-search::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 /* --- Group header --- */
@@ -168,7 +168,7 @@
   font-size: var(--font-label-sm-size);
   font-weight: var(--font-label-sm-weight);
   letter-spacing: var(--font-label-sm-spacing);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
 }
 
@@ -178,7 +178,7 @@
   @apply flex items-center gap-2 cursor-pointer;
   padding: var(--space-2) var(--space-3);
   font-size: var(--font-body-sm-size);
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   min-height: var(--scale-40);
   border-radius: var(--radius-lg);
   transition: background-color 100ms ease;
@@ -201,7 +201,7 @@
 }
 
 .acko-dropdown-option-disabled {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   @apply cursor-not-allowed;
 }
 
@@ -248,7 +248,7 @@
 .acko-dropdown-helper-text {
   font-size: var(--font-caption-size);
   line-height: var(--font-caption-line);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-dropdown-error-text {
@@ -260,14 +260,14 @@
 .acko-dropdown-no-results {
   @apply text-center;
   padding: var(--space-4) var(--space-3);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-size: var(--font-body-sm-size);
 }
 
 /* --- Dark theme --- */
 
 [data-theme="dark"] .acko-dropdown-trigger {
-  background-color: var(--color-surface-raised);
+  background-color: var(--color-input-bg);
   border-color: var(--color-input-border);
 }
 
@@ -276,8 +276,8 @@
 }
 
 [data-theme="dark"] .acko-dropdown-trigger:disabled {
-  background-color: var(--color-disabled-bg);
-  border-color: var(--color-disabled-bg);
+  background-color: var(--color-input-disabled-bg);
+  border-color: var(--color-input-disabled-border);
 }
 
 [data-theme="dark"] .acko-dropdown-menu {

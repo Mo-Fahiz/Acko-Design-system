@@ -21,9 +21,10 @@ alwaysApply: false
 | `.acko-input-group-disabled` | Disabled state | `opacity: 0.5`, `pointer-events: none` |
 
 ## Token Usage
-- Border: `--color-input-border`
-- Background: `--color-input-bg`
-- Focus: `--color-primary` border, `--color-primary-ring` shadow
+- Border: `--color-input-border` (`grey-150` light / `grey-600` dark)
+- Background: `--color-input-bg` (`grey-white` light / `grey-750` dark)
+- Hover: `--color-input-hover-border` (`grey-300` light / `grey-550` dark)
+- Focus: `--color-input-focus-border` (`purple-400` light / `purple-900` dark) border, `--color-primary-ring` shadow
 - Error: `--color-error`
-- Addon text: `--color-text-muted`
+- Addon text: `--color-text-secondary`
 - Input text: `--color-text-default`

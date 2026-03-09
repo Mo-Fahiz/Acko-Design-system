@@ -31,7 +31,13 @@
     "./avatar.css": "./src/avatar.css",
     "./skeleton.css": "./src/skeleton.css",
     "./navigation-wizard.css": "./src/navigation-wizard.css",
-    "./pagination.css": "./src/pagination.css"
+    "./pagination.css": "./src/pagination.css",
+    "./dialog.css": "./src/dialog.css",
+    "./toast.css": "./src/toast.css",
+    "./slider.css": "./src/slider.css",
+    "./otp-input.css": "./src/otp-input.css",
+    "./drawer.css": "./src/drawer.css",
+    "./form.css": "./src/form.css"
   },
   "files": [
     "src"

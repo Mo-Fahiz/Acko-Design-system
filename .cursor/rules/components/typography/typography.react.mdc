@@ -14,7 +14,7 @@ Directive: None (presentational)
 interface TypographyProps {
   variant: 'display-xl' | 'display-lg' | 'display-md' | 'display-sm' | 'heading-xl' | 'heading-lg' | 'heading-md' | 'heading-sm' | 'body-lg' | 'body-md' | 'body-sm' | 'label-lg' | 'label-md' | 'label-sm' | 'caption' | 'overline';
   as?: React.ElementType;
-  color?: 'default' | 'strong' | 'muted' | 'disabled' | 'primary' | 'error' | 'success';
+  color?: 'primary' | 'secondary' | 'invert' | 'brand' | 'error' | 'success' | 'static';
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   align?: 'left' | 'center' | 'right';
   truncate?: boolean;
@@ -22,6 +22,18 @@ interface TypographyProps {
   children: React.ReactNode;
 }
 ```
+
+## Color Prop
+
+| Value | CSS class | Token | Use case |
+|-------|-----------|-------|----------|
+| `primary` (default) | `acko-text-color-primary` | `--color-text-primary` | General use — headings, values, main content |
+| `secondary` | `acko-text-color-secondary` | `--color-text-secondary` | Subtext — helpers, captions, descriptions |
+| `invert` | `acko-text-color-invert` | `--color-text-invert` | Text on dark/filled backgrounds regardless of theme |
+| `brand` | `acko-text-color-brand` | `--color-text-brand` | Brand-colored text — links, emphasis |
+| `error` | `acko-text-color-error` | `--color-text-error` | Error messages |
+| `success` | `acko-text-color-success` | `--color-text-success` | Success messages |
+| `static` | `acko-text-color-static` | `--color-text-static` | Fixed color across themes — does not change |
 
 ## Default `as` Mapping
 

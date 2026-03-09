@@ -1,0 +1,47 @@
+---
+description: OTP Input component React API — now part of @acko/text-input
+globs: "packages/text-input/src/OtpInput.tsx"
+alwaysApply: false
+---
+
+# OTP Input — React API
+
+> **Merged into `@acko/text-input`**
+> Import: `import { OtpInput } from '@acko/text-input'`
+> CSS: included in `@acko/css/text-input.css` — no separate import needed.
+
+## Props
+```tsx
+interface OtpInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  length?: number;               // default: 6
+  disabled?: boolean;            // default: false
+  error?: boolean;               // default: false
+  size?: 'sm' | 'md' | 'lg';    // default: 'md'
+  type?: 'numeric' | 'alphanumeric';  // default: 'numeric'
+  masked?: boolean;              // renders as password inputs
+  className?: string;
+  'aria-label'?: string;         // default: 'One-time password'
+}
+```
+
+## Behaviour
+- Auto-advances focus to next cell on valid input
+- Backspace: clears current cell; if empty, moves back and clears previous
+- ArrowLeft / ArrowRight: navigate between cells
+- Paste: strips invalid chars, distributes across cells, advances focus
+- Numeric type: allows only `[0-9]`; alphanumeric: `[a-zA-Z0-9]` (auto-uppercased)
+- First cell has `autoComplete="one-time-code"` for SMS OTP autofill
+- Group: `role="group"`, each cell `aria-label="Digit N of M"`
+
+## Usage
+```tsx
+const [otp, setOtp] = useState('');
+<OtpInput
+  value={otp}
+  onChange={setOtp}
+  length={6}
+  aria-label="Verification code"
+/>
+```

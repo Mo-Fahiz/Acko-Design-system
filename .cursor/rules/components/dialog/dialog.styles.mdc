@@ -1,0 +1,42 @@
+---
+description: Dialog/Modal component styles and tokens
+globs: "packages/css/src/dialog.css"
+alwaysApply: false
+---
+
+# Dialog — Styles
+
+## Class structure
+- `.acko-dialog-backdrop` — fixed fullscreen overlay, `z-index: var(--z-modal)`
+- `.acko-dialog` — panel container, flex column, `border-radius: var(--radius-2xl)`
+- `.acko-dialog-header` — flex row, title + close button
+- `.acko-dialog-title` — `font-size: var(--font-body-lg-size)`, weight 600
+- `.acko-dialog-description` — `font-size: var(--font-body-sm-size)`, `color: var(--color-text-secondary)`
+- `.acko-dialog-close` — icon button, `width/height: var(--scale-32)`, pill shape
+- `.acko-dialog-body` — scrollable content area, `overflow-y: auto`
+- `.acko-dialog-footer` — `border-top: 1px solid var(--color-border-subtle)`, actions right-aligned
+
+## Size variants
+| Class | Max-width |
+|-------|-----------|
+| `.acko-dialog-sm` | `var(--scale-360)` |
+| `.acko-dialog-md` | `var(--scale-480)` |
+| `.acko-dialog-lg` | `var(--scale-600)` |
+| `.acko-dialog-xl` | `var(--scale-760)` |
+| `.acko-dialog-full` | 100%, no radius |
+
+## Tokens used
+- `--z-modal`
+- `--color-surface-overlay`
+- `--color-surface-raised`
+- `--shadow-modal`
+- `--radius-2xl`
+- `--color-text-default`, `--color-text-secondary`
+- `--color-border-subtle`
+- `--color-surface-hover`
+- `--shadow-focus-ring`
+- `--ease-out-cubic`, `--ease-out-quart`
+
+## Animations
+- Backdrop: `acko-dialog-backdrop-in` — `opacity 0 → 1`, 200ms
+- Panel: `acko-dialog-in` — `opacity 0, scale 0.95, translateY(var(--space-2)) → 1, scale(1), 0`, 250ms

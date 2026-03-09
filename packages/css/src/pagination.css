@@ -6,7 +6,7 @@
 
 .acko-pagination-info {
   font-size: var(--font-body-sm-size);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   @apply px-2;
 }
 
@@ -27,7 +27,7 @@
 
 .acko-pagination-btn:hover:not(:disabled):not(.acko-pagination-btn-current) {
   background: var(--color-primary-subtle);
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 .acko-pagination-btn-current {
@@ -38,7 +38,7 @@
 
 .acko-pagination-btn:disabled {
   opacity: var(--opacity-48);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   cursor: not-allowed;
 }
 
@@ -68,7 +68,7 @@
   @apply inline-flex items-center justify-center;
   width: var(--scale-40);
   height: var(--scale-40);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-size: var(--font-body-sm-size);
 }
 

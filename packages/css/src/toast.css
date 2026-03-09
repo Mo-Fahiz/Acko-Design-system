@@ -1,0 +1,110 @@
+/* ============================================================
+   Toast — @acko/css/toast.css
+   ============================================================ */
+
+/* --- Region (portal container) --- */
+
+.acko-toast-region {
+  position: fixed;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  pointer-events: none;
+  width: 360px;
+  max-width: calc(100vw - var(--space-8));
+}
+
+.acko-toast-region > * { pointer-events: auto; }
+
+/* Position variants */
+.acko-toast-region-top-right     { top: var(--space-5); right: var(--space-5); }
+.acko-toast-region-top-left      { top: var(--space-5); left: var(--space-5); }
+.acko-toast-region-top-center    { top: var(--space-5); left: 50%; transform: translateX(-50%); }
+.acko-toast-region-bottom-right  { bottom: var(--space-5); right: var(--space-5); flex-direction: column-reverse; }
+.acko-toast-region-bottom-left   { bottom: var(--space-5); left: var(--space-5); flex-direction: column-reverse; }
+.acko-toast-region-bottom-center { bottom: var(--space-5); left: 50%; transform: translateX(-50%); flex-direction: column-reverse; }
+
+/* --- Toast item --- */
+
+.acko-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid transparent;
+  background: var(--color-surface-raised);
+  animation: acko-toast-in 250ms var(--ease-out-quart) forwards;
+}
+
+@keyframes acko-toast-in {
+  from { opacity: 0; transform: translateY(var(--space-2)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Variant backgrounds */
+.acko-toast-info    { border-color: var(--color-info-border); background: var(--color-info-subtle); color: var(--color-info-text); }
+.acko-toast-success { border-color: var(--color-success-border); background: var(--color-success-subtle); color: var(--color-success-text); }
+.acko-toast-warning { border-color: var(--color-warning-border); background: var(--color-warning-subtle); color: var(--color-warning-text); }
+.acko-toast-error   { border-color: var(--color-error-border); background: var(--color-error-subtle); color: var(--color-error-text); }
+
+/* --- Icon --- */
+
+.acko-toast-icon {
+  @apply shrink-0 inline-flex items-center justify-center;
+  margin-top: var(--space-1);
+}
+
+/* --- Content --- */
+
+.acko-toast-content { flex: 1; display: flex; flex-direction: column; gap: var(--space-1); }
+
+.acko-toast-title {
+  font-size: var(--font-body-sm-size);
+  font-weight: 600;
+  line-height: var(--font-body-sm-line);
+}
+
+.acko-toast-description {
+  font-size: var(--font-body-sm-size);
+  line-height: var(--font-body-sm-line);
+  opacity: 0.85;
+}
+
+/* --- Action button --- */
+
+.acko-toast-action {
+  @apply inline-flex items-center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-body-sm-size);
+  font-weight: 600;
+  color: inherit;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: var(--scale-2);
+}
+
+/* --- Dismiss button --- */
+
+.acko-toast-dismiss {
+  @apply inline-flex items-center justify-center shrink-0 rounded-full;
+  width: var(--scale-24);
+  height: var(--scale-24);
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.acko-toast-dismiss:hover { opacity: 1; }
+
+.acko-toast-dismiss:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}

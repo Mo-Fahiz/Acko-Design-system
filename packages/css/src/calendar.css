@@ -17,7 +17,7 @@
   font-family: inherit;
   font-size: var(--font-body-md-size);
   line-height: var(--font-body-md-line);
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   transition:
     border-color 200ms ease,
     background-color 200ms ease,
@@ -36,12 +36,12 @@
 }
 
 .acko-cal-trigger-placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-cal-trigger-icon {
   @apply flex items-center;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 /* --- Panel --- */
@@ -81,7 +81,7 @@
 .acko-cal-header-label {
   font-size: var(--font-label-lg-size);
   font-weight: 600;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   @apply bg-transparent border-none cursor-pointer;
   font-family: inherit;
   padding: var(--space-1) var(--space-2);
@@ -134,7 +134,7 @@
   font-size: var(--font-label-sm-size);
   font-weight: var(--font-label-sm-weight);
   letter-spacing: var(--font-label-sm-spacing);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   height: var(--scale-32);
 }
 
@@ -153,7 +153,7 @@
   font-family: inherit;
   font-size: var(--font-body-sm-size);
   font-variant-numeric: tabular-nums;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   transition: background-color 100ms ease, color 100ms ease;
 }
 
@@ -201,7 +201,7 @@
 }
 
 .acko-cal-day-disabled {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   @apply cursor-not-allowed;
 }
 
@@ -229,7 +229,7 @@
   font-family: inherit;
   font-size: var(--font-body-sm-size);
   font-weight: 500;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   transition: background-color 120ms ease, color 120ms ease;
 }
 

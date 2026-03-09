@@ -27,7 +27,7 @@ CSS file: `@acko/css/table.css`
 - `.acko-table-row` — base row
 
 ### Caption
-- `.acko-table-caption` — `padding: var(--space-3)`, `--color-text-muted`, `--font-body-sm-size`, `caption-side: bottom`
+- `.acko-table-caption` — `padding: var(--space-3)`, `--color-text-secondary`, `--font-body-sm-size`, `caption-side: bottom`
 
 ### Variants
 - `.acko-table-striped` — even rows `background: --color-table-stripe`

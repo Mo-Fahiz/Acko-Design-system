@@ -56,8 +56,8 @@ alwaysApply: false
 | Token | Role |
 |-------|------|
 | `--color-primary` | Active underline gradient center, active text, navigation active |
-| `--color-text-muted` | Inactive tab text |
-| `--color-text-strong` | Active pill text |
+| `--color-text-secondary` | Inactive tab text |
+| `--color-text-primary` | Active pill text |
 | `--color-tab-pill-bg` | Pill container background |
 | `--color-primary-subtle` | Active pill fill (purple-100 light / purple-900 dark) |
 | `--color-card-bg` | Enclosed active bg, navigation bar bg |

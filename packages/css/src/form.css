@@ -1,0 +1,72 @@
+/* ============================================================
+   Form — @acko/css/form.css
+   ============================================================ */
+
+.acko-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* --- Form item --- */
+
+.acko-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* --- Label --- */
+
+.acko-form-label {
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  line-height: var(--font-body-sm-line);
+  color: var(--color-text-default);
+}
+
+.acko-form-required {
+  color: var(--color-error);
+  margin-left: var(--space-1);
+}
+
+/* --- Error text --- */
+
+.acko-form-error-text {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-error-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.acko-form-error-text::before {
+  content: '';
+  display: inline-block;
+  width: var(--scale-4);
+  height: var(--scale-4);
+  border-radius: var(--radius-full);
+  background: var(--color-error);
+  flex-shrink: 0;
+}
+
+/* --- Error field highlight --- */
+
+.acko-form-item-error .acko-text-input {
+  border-color: var(--color-error-border);
+}
+
+.acko-form-item-error .acko-text-input:focus-within {
+  box-shadow: 0 0 0 3px var(--color-error-subtle);
+}
+
+/* --- Message --- */
+
+.acko-form-message {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-secondary);
+  margin: 0;
+}

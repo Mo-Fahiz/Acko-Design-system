@@ -37,13 +37,18 @@ primitives → semantics → component CSS
 
 ## Text
 
-| Token | Role | Light | Dark |
-|-------|------|-------|------|
-| `--color-text-strong` | Headings, values | `grey-800` | `grey-50` |
-| `--color-text-default` | Labels, body | `grey-700` | `grey-100` |
-| `--color-text-secondary` | Supporting text | `grey-550` | `grey-200` |
-| `--color-text-muted` | Placeholders, helpers | `grey-450` | `grey-350` |
-| `--color-text-disabled` | Disabled text | `grey-300` | `grey-450` |
+| Token | Typography prop | Light | Dark | Role |
+|-------|----------------|-------|------|------|
+| `--color-text-primary` | `primary` (default) | `grey-800` | `grey-50` | Headings, values, main content |
+| `--color-text-default` | — | `grey-700` | `grey-100` | Labels, body text |
+| `--color-text-supporting` | — | `grey-550` | `grey-200` | Supporting text (readonly, chevrons) |
+| `--color-text-secondary` | `secondary` | `grey-450` | `grey-350` | Subtext, placeholders, helpers |
+| `--color-text-disabled` | — | `grey-300` | `grey-450` | Disabled text |
+| `--color-text-invert` | `invert` | `#FFFFFF` | `grey-white` | Text on dark/filled surfaces regardless of theme |
+| `--color-text-brand` | `brand` | `purple-600` | `purple-500` | Brand-colored text — links, emphasis |
+| `--color-text-error` | `error` | `red-700` | `red-400` | Error messages |
+| `--color-text-success` | `success` | `green-700` | `green-400` | Success messages |
+| `--color-text-static` | `static` | `grey-white` | `grey-white` | Fixed color across themes — does not change |
 
 ## Borders
 
@@ -180,15 +185,19 @@ primitives → semantics → component CSS
 | `--color-btn-disabled-text` | `grey-350` | `grey-450` |
 | `--color-btn-primary-hover-bg` | — | `purple-600` |
 
-### Input (shared by TextInput, Dropdown, Textarea, InputGroup)
-| Token | Light | Dark |
-|-------|-------|------|
-| `--color-input-bg` | `grey-white` | `grey-700` |
-| `--color-input-border` | `var(--color-border-subtle)` | `grey-450` |
-| `--color-input-hover-border` | `grey-350` | `grey-500` |
-| `--color-input-option-hover` | `grey-100` | `grey-650` |
-| `--color-input-option-selected-bg` | `purple-100` | `purple-900` |
-| `--color-input-option-selected-text` | `purple-700` | `purple-300` |
+### Input (shared by TextInput, Dropdown, Textarea, InputGroup, OtpInput)
+| Token | Light | Dark | Role |
+|-------|-------|------|------|
+| `--color-input-bg` | `grey-white` | `grey-750` | Default fill |
+| `--color-input-border` | `grey-150` | `grey-600` | Default border |
+| `--color-input-hover-border` | `grey-300` | `grey-550` | Hover border |
+| `--color-input-filled-border` | `grey-200` | `grey-550` | Filled (has value) border |
+| `--color-input-focus-border` | `purple-400` | `purple-900` | Focus/selected border (error excluded) |
+| `--color-input-disabled-bg` | — | `grey-650` | Disabled fill (dark only) |
+| `--color-input-disabled-border` | — | `grey-600` | Disabled border (dark only) |
+| `--color-input-option-hover` | `purple-50` | `grey-650` | Dropdown option hover |
+| `--color-input-option-selected-bg` | `purple-100` | `purple-900` | Selected option bg |
+| `--color-input-option-selected-text` | `purple-700` | `purple-300` | Selected option text |
 
 ### Form Controls
 | Token | Light | Dark |

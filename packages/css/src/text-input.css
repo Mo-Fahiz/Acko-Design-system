@@ -16,7 +16,7 @@
 
 .acko-text-input-label-focused { color: var(--color-primary); }
 .acko-text-input-label-error { color: var(--color-error-text); }
-.acko-text-input-label-disabled { color: var(--color-text-muted); }
+.acko-text-input-label-disabled { color: var(--color-text-secondary); }
 
 .acko-text-input-required {
   color: var(--color-error);
@@ -27,7 +27,7 @@
 .acko-text-input-wrapper {
   @apply flex items-center rounded-full;
   border: 1px solid var(--color-input-border);
-  background-color: var(--color-surface);
+  background-color: var(--color-input-bg);
   transition:
     border-color 200ms ease,
     background-color 200ms ease,
@@ -43,7 +43,7 @@
 .acko-text-input-el {
   @apply flex-1 border-none bg-transparent font-normal outline-none w-full min-w-0 p-0;
   font-family: inherit;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
   -webkit-appearance: none;
   appearance: none;
 }
@@ -51,7 +51,7 @@
 .acko-text-input-el:focus { outline: none; box-shadow: none; }
 
 .acko-text-input-el::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   transition: color 200ms ease;
 }
 
@@ -68,7 +68,7 @@
 .acko-text-input-suffix {
   @apply shrink-0 select-none;
   font-size: var(--font-body-sm-size);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 .acko-text-input-prefix { @apply mr-2; }
 .acko-text-input-suffix { @apply ml-2; }
@@ -77,7 +77,7 @@
 .acko-text-input-icon-left,
 .acko-text-input-icon-right {
   @apply shrink-0 inline-flex items-center justify-center;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   transition: color 150ms ease;
 }
 .acko-text-input-icon-left { @apply mr-2; }
@@ -94,7 +94,7 @@
 .acko-text-input-helper-text {
   font-size: var(--font-caption-size);
   line-height: var(--font-caption-line);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 .acko-text-input-error-text {
   font-size: var(--font-caption-size);
@@ -104,7 +104,7 @@
 .acko-text-input-char-count {
   font-size: var(--font-caption-size);
   line-height: var(--font-caption-line);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   @apply text-right;
 }
 
@@ -117,8 +117,8 @@
 }
 
 .acko-text-input-focused {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 1px var(--color-input-focus-border);
 }
 
 .acko-text-input-focused .acko-text-input-icon-left,
@@ -127,7 +127,7 @@
 }
 
 .acko-text-input-filled:not(.acko-text-input-error):not(.acko-text-input-success) {
-  border-color: var(--color-input-hover-border);
+  border-color: var(--color-input-filled-border);
 }
 
 /* Error */
@@ -176,11 +176,11 @@
   border-color: var(--color-border-subtle);
   background-color: var(--color-surface-raised);
 }
-.acko-text-input-readonly .acko-text-input-el { color: var(--color-text-secondary); }
+.acko-text-input-readonly .acko-text-input-el { color: var(--color-text-supporting); }
 
 /* Dark theme */
 [data-theme="dark"] .acko-text-input-wrapper {
-  background-color: var(--color-surface-raised);
+  background-color: var(--color-input-bg);
   border-color: var(--color-input-border);
 }
 
@@ -193,6 +193,64 @@
 }
 
 [data-theme="dark"] .acko-text-input-disabled {
-  background-color: var(--color-disabled-bg);
-  border-color: var(--color-disabled-bg);
+  background-color: var(--color-input-disabled-bg);
+  border-color: var(--color-input-disabled-border);
+}
+
+/* ============================================================
+   OTP Input — included in @acko/css/text-input.css
+   (OtpInput is exported from @acko/text-input)
+   ============================================================ */
+
+.acko-otp {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.acko-otp-cell {
+  @apply text-center font-semibold outline-none;
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  caret-color: var(--color-primary);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.acko-otp-cell::selection { background: var(--color-primary-subtle); }
+
+.acko-otp-sm .acko-otp-cell { width: var(--scale-36); height: var(--scale-40); font-size: var(--font-body-md-size); }
+.acko-otp-md .acko-otp-cell { width: var(--scale-44); height: var(--scale-52); font-size: var(--font-title-sm-size); }
+.acko-otp-lg .acko-otp-cell { width: var(--scale-52); height: var(--scale-60); font-size: var(--font-title-md-size); }
+
+.acko-otp-cell:focus {
+  border-color: var(--color-input-focus-border);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.acko-otp-cell-filled {
+  border-color: var(--color-input-focus-border);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+
+.acko-otp-error .acko-otp-cell,
+.acko-otp-cell-error {
+  border-color: var(--color-error-border);
+}
+
+.acko-otp-error .acko-otp-cell:focus {
+  box-shadow: 0 0 0 3px var(--color-error-subtle);
+}
+
+.acko-otp-disabled .acko-otp-cell {
+  background: var(--color-btn-disabled-bg);
+  color: var(--color-btn-disabled-text);
+  border-color: var(--color-border-subtle);
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] .acko-otp-cell {
+  background: var(--color-surface-default);
 }

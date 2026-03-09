@@ -36,7 +36,7 @@ CSS file: `@acko/css/progress.css`
 
 ## Labels
 - `.acko-progress-label-wrapper` — flex justify-between, margin-bottom `--space-1`
-- `.acko-progress-label` — `--font-caption-size`, `--color-text-muted`
+- `.acko-progress-label` — `--font-caption-size`, `--color-text-secondary`
 
 ## Animated Shimmer (bar only)
 - `.acko-progress-animated .acko-progress-bar` — `acko-progress-shimmer` keyframe, 1.5s ease-in-out infinite

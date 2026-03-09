@@ -20,13 +20,13 @@ export type TypographyVariant =
   | "overline";
 
 export type TypographyColor =
-  | "default"
-  | "strong"
-  | "muted"
-  | "disabled"
   | "primary"
+  | "secondary"
+  | "invert"
+  | "brand"
   | "error"
-  | "success";
+  | "success"
+  | "static";
 
 export type TypographyWeight =
   | "regular"
@@ -75,7 +75,7 @@ export const Typography = forwardRef<HTMLElement, TypographyProps>(
     {
       variant,
       as,
-      color = "default",
+      color = "primary",
       weight,
       align,
       truncate,

@@ -49,12 +49,12 @@ CSS file: `@acko/css/radio.css`
 - Hover checked: bg `--color-primary-hover`, border `--color-primary-hover`
 - Focus: `box-shadow: var(--shadow-focus-ring)` via `:focus-visible`
 - Disabled unchecked: border `--color-border-subtle`, bg `--color-surface-raised`
-- Disabled checked: border `--color-text-muted`, fill `--color-text-muted`
+- Disabled checked: border `--color-text-secondary`, fill `--color-text-secondary`
 - Error: border `--color-error`
 
 ### Labels
 - `.acko-radio-label-text` — `--color-text-default`
-- `.acko-radio-description` — `--font-caption-size`, `--color-text-muted`
+- `.acko-radio-description` — `--font-caption-size`, `--color-text-secondary`
 - Disabled: both use `--color-text-disabled`
 
 ## Dark Theme

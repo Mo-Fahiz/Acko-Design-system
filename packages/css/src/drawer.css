@@ -1,0 +1,169 @@
+/* ============================================================
+   Drawer — @acko/css/drawer.css
+   ============================================================ */
+
+/* --- Root (visibility wrapper) --- */
+
+.acko-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.acko-drawer-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* --- Backdrop --- */
+
+.acko-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface-overlay);
+  opacity: 0;
+  transition: opacity 250ms var(--ease-out-cubic);
+}
+
+.acko-drawer-open .acko-drawer-backdrop { opacity: 1; }
+
+/* --- Panel --- */
+
+.acko-drawer {
+  position: absolute;
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-modal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  outline: none;
+  transition: transform 300ms var(--ease-out-quart);
+}
+
+/* --- Side variants --- */
+
+.acko-drawer-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+  transform: translateX(100%);
+}
+
+.acko-drawer-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 var(--radius-2xl) var(--radius-2xl) 0;
+  transform: translateX(-100%);
+}
+
+.acko-drawer-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  transform: translateY(100%);
+}
+
+.acko-drawer-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  transform: translateY(-100%);
+}
+
+.acko-drawer-open .acko-drawer { transform: translate(0); }
+
+/* --- Sizes (for left/right drawers) --- */
+
+.acko-drawer-right.acko-drawer-size-sm,
+.acko-drawer-left.acko-drawer-size-sm  { width: 280px; }
+.acko-drawer-right.acko-drawer-size-md,
+.acko-drawer-left.acko-drawer-size-md  { width: 380px; }
+.acko-drawer-right.acko-drawer-size-lg,
+.acko-drawer-left.acko-drawer-size-lg  { width: 520px; }
+.acko-drawer-right.acko-drawer-size-full,
+.acko-drawer-left.acko-drawer-size-full { width: 100%; }
+
+/* --- Sizes (for bottom/top drawers) --- */
+
+.acko-drawer-bottom.acko-drawer-size-sm,
+.acko-drawer-top.acko-drawer-size-sm   { max-height: 30vh; }
+.acko-drawer-bottom.acko-drawer-size-md,
+.acko-drawer-top.acko-drawer-size-md   { max-height: 50vh; }
+.acko-drawer-bottom.acko-drawer-size-lg,
+.acko-drawer-top.acko-drawer-size-lg   { max-height: 75vh; }
+.acko-drawer-bottom.acko-drawer-size-full,
+.acko-drawer-top.acko-drawer-size-full { max-height: 100vh; }
+
+/* --- Header --- */
+
+.acko-drawer-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.acko-drawer-heading { flex: 1; display: flex; flex-direction: column; gap: var(--space-1); }
+
+.acko-drawer-title {
+  font-size: var(--font-body-lg-size);
+  font-weight: 600;
+  line-height: var(--font-body-lg-line);
+  color: var(--color-text-default);
+  margin: 0;
+}
+
+.acko-drawer-description {
+  font-size: var(--font-body-sm-size);
+  line-height: var(--font-body-sm-line);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.acko-drawer-close {
+  @apply inline-flex items-center justify-center shrink-0 rounded-full;
+  width: var(--scale-32);
+  height: var(--scale-32);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.acko-drawer-close:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-default);
+}
+
+.acko-drawer-close:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* --- Body --- */
+
+.acko-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-5);
+  color: var(--color-text-default);
+}
+
+/* --- Footer --- */
+
+.acko-drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border-subtle);
+}

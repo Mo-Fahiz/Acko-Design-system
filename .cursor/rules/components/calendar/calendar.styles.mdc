@@ -20,7 +20,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | `.acko-cal-wrapper` | Dropdown wrapper — `relative inline-block` |
 | `.acko-cal-trigger` | Trigger button — `flex items-center justify-between w-full cursor-pointer` |
 | `.acko-cal-trigger-open` | Active state — primary border + ring |
-| `.acko-cal-trigger-placeholder` | Placeholder — `color: var(--color-text-muted)` |
+| `.acko-cal-trigger-placeholder` | Placeholder — `color: var(--color-text-secondary)` |
 | `.acko-cal-trigger-icon` | Calendar icon — `flex items-center`, muted color |
 
 ### Panel
@@ -53,7 +53,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | `.acko-cal-range-end` | Range end — half-pill right (0 left, full-radius right) |
 | `.acko-cal-range-middle` | Range between — `bg: var(--color-cal-range-bg); border-radius: 0` |
 | `.acko-cal-outside` | Dates outside current month — `color: var(--color-text-disabled)` |
-| `.acko-cal-day-disabled` | Disabled — `color: var(--color-text-muted); cursor-not-allowed` |
+| `.acko-cal-day-disabled` | Disabled — `color: var(--color-text-secondary); cursor-not-allowed` |
 
 ### Month/Year Picker
 | Class | Purpose |
@@ -84,8 +84,8 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | `--color-border` | Trigger border, dark panel border |
 | `--color-primary` | Open/focus border and ring |
 | `--color-primary-ring` | Focus-visible ring on nav/header |
-| `--color-text-strong` | Day text, header label, picker cell text |
-| `--color-text-muted` | Weekday headers, placeholder, disabled days, trigger icon |
+| `--color-text-primary` | Day text, header label, picker cell text |
+| `--color-text-secondary` | Weekday headers, placeholder, disabled days, trigger icon |
 | `--color-text-disabled` | Outside-month days |
 | `--color-cal-today-text` | Today highlight text |
 | `--color-cal-selected-bg` | Selected day background |

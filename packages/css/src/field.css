@@ -13,7 +13,7 @@
 .acko-field-label {
   font-size: var(--font-body-sm-size);
   font-weight: 500;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 .acko-field-label-disabled {
@@ -27,7 +27,7 @@
 
 .acko-field-helper {
   font-size: var(--font-caption-size);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-field-error {

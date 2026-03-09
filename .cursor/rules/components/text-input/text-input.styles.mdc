@@ -33,27 +33,36 @@ CSS file: `@acko/css/text-input.css`
 
 | State | Border | Background | Label | Icon | Extra |
 |-------|--------|-----------|-------|------|-------|
-| `.acko-text-input-focused` | `--color-primary` + `0 0 0 1px var(--color-primary)` ring | `--color-surface` | `--color-primary` | `--color-primary` | Placeholder fades to `--color-text-disabled` (200ms ease) |
-| `.acko-text-input-filled` | `--color-border-strong` (when value.length > 0, not focused) | `--color-surface` | `--color-text-default` | `--color-text-muted` | — |
-| `.acko-text-input-error` | `--color-error` | `--color-surface` | `--color-error-text` | `--color-text-muted` | `animation: acko-shake 300ms ease-out` |
-| `.acko-text-input-success` | `--color-border-strong` | `--color-surface` | `--color-text-default` | `--color-success` checkmark | Replaces `iconRight`; lucide `Check` icon, `strokeWidth: 2.5`; `animation: acko-check-pop 300ms ease-out` |
-| `.acko-text-input-disabled` | `--color-disabled-border` | `--color-surface-raised` | `--color-text-muted` | `--color-text-disabled` | `cursor: not-allowed` |
-| `.acko-text-input-readonly` | `--color-border-subtle` | `--color-surface-raised` | `--color-text-default` | `--color-text-muted` | Input text: `--color-text-secondary` |
+| Default | `--color-input-border` (`grey-150` light / `grey-600` dark) | `--color-input-bg` (`grey-white` light / `grey-750` dark) | `--color-text-default` | `--color-text-secondary` | — |
+| Hover | `--color-input-hover-border` (`grey-300` light / `grey-550` dark) | `--color-input-bg` | unchanged | unchanged | Pointer devices only (`@media hover:hover`) |
+| `.acko-text-input-focused` | `--color-input-focus-border` (`purple-400` light / `purple-900` dark) + `0 0 0 1px` ring | `--color-input-bg` | `--color-primary` | `--color-primary` | Placeholder fades to `--color-text-disabled` (200ms ease) |
+| `.acko-text-input-filled` | `--color-input-filled-border` (`grey-200` light / `grey-550` dark) — when value.length > 0, not focused | `--color-input-bg` | `--color-text-default` | `--color-text-secondary` | — |
+| `.acko-text-input-error` | `--color-error` | `--color-input-bg` | `--color-error-text` | `--color-text-secondary` | `animation: acko-shake 300ms ease-out` |
+| `.acko-text-input-success` | `--color-input-filled-border` | `--color-input-bg` | `--color-text-default` | `--color-success` checkmark | Replaces `iconRight`; lucide `Check` icon, `strokeWidth: 2.5`; `animation: acko-check-pop 300ms ease-out` |
+| `.acko-text-input-disabled` | `--color-disabled-border` (light) / `--color-input-disabled-border` (dark) | `--color-surface-raised` (light) / `--color-input-disabled-bg` (dark) | `--color-text-secondary` | `--color-text-disabled` | `cursor: not-allowed` |
+| `.acko-text-input-readonly` | `--color-border-subtle` | `--color-surface-raised` | `--color-text-default` | `--color-text-secondary` | Input text: `--color-text-supporting` |
 
 ### Character Count
 - Displayed when `maxLength` prop is set
 - Format: `{current}/{max}`
-- Font: `--font-caption-size`, color `--color-text-muted`, right-aligned
+- Font: `--font-caption-size`, color `--color-text-secondary`, right-aligned
 
 ### Transition Timing
 All border/background/shadow transitions use `200ms ease`.
 
 ### Border Consistency Rule
-All non-disabled input field borders MUST use `var(--color-input-border)` consistently. Only the disabled variant gets a toned-down border (`var(--color-border-subtle)` + muted bg). This ensures visual consistency across all input components (TextInput, Textarea, InputGroup, Dropdown).
+All input field borders follow the `--color-input-*` token family:
+- Default: `--color-input-border` (`grey-150` light / `grey-600` dark)
+- Hover: `--color-input-hover-border` (`grey-250` light / `grey-550` dark)
+- Filled: `--color-input-filled-border` (`grey-200` light / `grey-550` dark)
+- Focus: `--color-input-focus-border` (`purple-400` light / `purple-900` dark) — error fields excluded
+This ensures visual consistency across all input components (TextInput, Textarea, InputGroup, Dropdown, OtpInput).
 
 ### Dark Theme Overrides
 Scoped under `[data-theme="dark"]`:
-- Default wrapper bg: `--color-surface-raised` (not `--color-surface`)
-- Disabled: bg `--color-disabled-bg`, border `--color-disabled-border`, text `--color-disabled-text`
+- Default wrapper: bg `--color-input-bg` (`grey-750`), border `--color-input-border` (`grey-600`)
+- Filled: border `--color-input-filled-border` (`grey-550`)
+- Focus: border `--color-input-focus-border` (`purple-900`)
+- Disabled: bg `--color-input-disabled-bg` (`grey-650`), border `--color-input-disabled-border` (`grey-600`)
 - Error border: `--color-error`
 - Success icon: `--color-success`

@@ -1,8 +1,7 @@
 ---
 description: Button React implementation — props, behavior, accessibility, and component pattern
-globs: "**/button/**,**/Button/**"
+alwaysApply: false
 ---
-
 # Button — React
 
 Package: `@acko/button`
@@ -75,9 +74,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 ```
 
+**Key difference from old pattern:** No Tailwind utility classes in `className`. Everything — layout (`inline-flex items-center justify-center`), spacing (`gap-2`), typography (`font-medium`), radius (`rounded-full`), cursor, select, position — is in the CSS file via `@apply`.
+
 ## Hooks
 
 None. Button is stateless — all behavior is props-driven.
+
+## State Management
+
+Stateless. `disabled` and `loading` come from props. No internal state.
+
+## Event Handling
+
+- `onClick` passed via `...rest` spread
+- When `loading={true}`: component sets `disabled` on the native element + CSS `pointer-events: none`
 
 ## Accessibility
 
@@ -93,7 +103,7 @@ Focus ring: handled in CSS via `:focus-visible` → `--shadow-focus-ring`.
 
 ## Keyboard
 
-Native `<button>` keyboard behavior — Enter and Space trigger click.
+Native `<button>` keyboard behavior — Enter and Space trigger click. No custom keyboard handling needed.
 
 ## Dependencies
 
@@ -101,10 +111,17 @@ Native `<button>` keyboard behavior — Enter and Space trigger click.
 |---------|------|--------|
 | `clsx` | dependency | Class composition |
 | `react` | peer | React 18+ |
+| `lucide-react` | peer (optional) | Only if icons are passed by consumer |
+
+## Responsive Behavior
+
+- Below 640px: consumers should apply `fullWidth` prop for primary/secondary CTAs
+- Touch targets: minimum 44px height — xs (32px) should only be used for compact desktop UIs
 
 ## Exports
 
 ```typescript
+// index.ts
 export { Button } from './Button';
 export type { ButtonProps } from './Button';
 ```

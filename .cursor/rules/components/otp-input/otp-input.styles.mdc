@@ -1,0 +1,29 @@
+---
+description: OTP Input styles — now co-located in text-input.css
+globs: "packages/css/src/text-input.css"
+alwaysApply: false
+---
+
+# OTP Input — Styles
+
+> **Co-located in `@acko/css/text-input.css`** — no separate otp-input.css import needed.
+
+## Class structure
+- `.acko-otp` — flex row, `gap: var(--space-2)`
+- `.acko-otp-cell` — individual input, `text-center`, `border: 1.5px solid var(--color-input-border)`, `border-radius: var(--radius-lg)`
+- `.acko-otp-cell-filled` — `border-color: var(--color-primary)`, `background: var(--color-primary-subtle)`, `color: var(--color-primary)`
+- `.acko-otp-cell-error` — `border-color: var(--color-error-border)`
+
+## Size classes
+| Class | Cell size | Font |
+|-------|-----------|------|
+| `.acko-otp-sm` | `var(--scale-36) × var(--scale-40)` | `var(--font-body-md-size)` |
+| `.acko-otp-md` | `var(--scale-44) × var(--scale-52)` | `var(--font-title-sm-size)` |
+| `.acko-otp-lg` | `var(--scale-52) × var(--scale-60)` | `var(--font-title-md-size)` |
+
+## States
+- Default: `border-color: var(--color-input-border)` (`grey-150` light / `grey-600` dark), `background: var(--color-surface-default)`
+- Focus: `border-color: var(--color-input-focus-border)` (`purple-400` light / `purple-900` dark), `box-shadow: var(--shadow-focus-ring)`
+- Filled: `border-color: var(--color-input-focus-border)`, purple-subtle background, primary text color
+- Error: `border-color: var(--color-error-border)`
+- Disabled: `background: var(--color-btn-disabled-bg)`, `color: var(--color-btn-disabled-text)`, `border-color: var(--color-border-subtle)`

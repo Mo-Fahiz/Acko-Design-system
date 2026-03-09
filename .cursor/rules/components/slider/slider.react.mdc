@@ -1,0 +1,45 @@
+---
+description: Slider component React API
+globs: "packages/slider/src/**"
+alwaysApply: false
+---
+
+# Slider — React API
+
+## Props
+```tsx
+interface SliderProps {
+  value: number;
+  onChange: (value: number) => void;
+  min?: number;          // default: 0
+  max?: number;          // default: 100
+  step?: number;         // default: 1
+  disabled?: boolean;    // default: false
+  showValue?: boolean;   // show current value label
+  showTicks?: boolean;   // show tick marks
+  size?: 'sm' | 'md' | 'lg';  // default: 'md'
+  className?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}
+```
+
+## Behaviour
+- Pointer capture for drag (works on touch and mouse)
+- Snaps to nearest `step` value
+- Full keyboard support: Arrow (±step), Page (±10%), Home/End
+- `role="slider"`, `aria-valuemin/max/now`, `aria-disabled` on thumb
+
+## Usage
+```tsx
+const [val, setVal] = useState(50);
+<Slider
+  value={val}
+  onChange={setVal}
+  min={0}
+  max={100}
+  step={5}
+  showValue
+  aria-label="Coverage amount"
+/>
+```

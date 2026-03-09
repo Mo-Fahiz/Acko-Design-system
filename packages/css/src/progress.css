@@ -14,7 +14,7 @@
 
 .acko-progress-label {
   font-size: var(--font-caption-size);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-progress-track {
@@ -89,7 +89,7 @@
 .acko-progress-circular-label {
   font-size: var(--font-caption-size);
   font-weight: 600;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 .acko-progress-circular-lg .acko-progress-circular-label {

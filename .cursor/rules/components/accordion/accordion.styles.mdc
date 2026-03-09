@@ -25,7 +25,7 @@ alwaysApply: false
 - Trigger hover color: 150ms ease
 
 ## Token Usage
-- Text: `--color-text-strong`, `--color-text-default`, `--color-text-muted`, `--color-text-disabled`
+- Text: `--color-text-primary`, `--color-text-default`, `--color-text-secondary`, `--color-text-disabled`
 - Borders: `--color-border-subtle`
 - Hover: `--color-primary`
 - Spacing: `--space-4`

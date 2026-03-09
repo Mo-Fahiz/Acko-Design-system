@@ -27,16 +27,17 @@ CSS file: `@acko/css/textarea.css`
 
 | State | Border | Background | Extra |
 |-------|--------|-----------|-------|
-| Default | `--color-input-border` | `--color-surface` | — |
-| Focus (`.acko-textarea-focused`) | `--color-primary` | `--color-surface` | `box-shadow: 0 0 0 1px var(--color-primary)` |
-| Error (`.acko-textarea-error`) | `--color-error` | `--color-surface` | — |
-| Success (`.acko-textarea-success`) | `--color-success` | `--color-surface` | — |
+| Default | `--color-input-border` (`grey-150` light / `grey-600` dark) | `--color-input-bg` (`grey-white` light / `grey-750` dark) | — |
+| Hover | `--color-input-hover-border` (`grey-300` light / `grey-550` dark) | `--color-input-bg` | Pointer devices only |
+| Focus (`.acko-textarea-focused`) | `--color-input-focus-border` (`purple-400` light / `purple-900` dark) | `--color-input-bg` | `box-shadow: 0 0 0 1px var(--color-input-focus-border)` |
+| Error (`.acko-textarea-error`) | `--color-error` | `--color-input-bg` | — |
+| Success (`.acko-textarea-success`) | `--color-success` | `--color-input-bg` | — |
 | Disabled (`.acko-textarea-disabled`) | `--color-border-subtle` | `--color-surface-raised` | `cursor: not-allowed`, `--color-text-disabled` |
 
 ### Footer
 - `.acko-textarea-footer` — flex justify-between
 - `.acko-textarea-helper-text` / `.acko-textarea-error-text` — `--font-caption-size`
-- `.acko-textarea-count` — `--font-caption-size`, `--color-text-muted`
+- `.acko-textarea-count` — `--font-caption-size`, `--color-text-secondary`
 - `.acko-textarea-required` — `--color-error`
 
 ### Transitions

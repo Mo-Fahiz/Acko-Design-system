@@ -1,0 +1,103 @@
+/* ============================================================
+   Slider — @acko/css/slider.css
+   ============================================================ */
+
+.acko-slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  user-select: none;
+}
+
+/* --- Track --- */
+
+.acko-slider-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.acko-slider-sm .acko-slider-track { height: var(--scale-4); border-radius: var(--radius-full); background: var(--color-border-subtle); }
+.acko-slider-md .acko-slider-track { height: var(--scale-6); border-radius: var(--radius-full); background: var(--color-border-subtle); }
+.acko-slider-lg .acko-slider-track { height: var(--scale-8); border-radius: var(--radius-full); background: var(--color-border-subtle); }
+
+/* --- Fill --- */
+
+.acko-slider-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+/* --- Thumb --- */
+
+.acko-slider-thumb {
+  position: absolute;
+  transform: translateX(-50%);
+  background: var(--color-surface-raised);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  transition: box-shadow 150ms ease, transform 100ms ease;
+  outline: none;
+}
+
+.acko-slider-sm .acko-slider-thumb { width: var(--scale-16); height: var(--scale-16); }
+.acko-slider-md .acko-slider-thumb { width: var(--scale-20); height: var(--scale-20); }
+.acko-slider-lg .acko-slider-thumb { width: var(--scale-24); height: var(--scale-24); }
+
+.acko-slider-thumb:hover {
+  box-shadow: var(--shadow-md), 0 0 0 var(--scale-4) var(--color-primary-ring);
+}
+
+.acko-slider-thumb:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.acko-slider-thumb:active { cursor: grabbing; transform: translateX(-50%) scale(1.1); }
+
+/* --- Ticks --- */
+
+.acko-slider-ticks {
+  position: relative;
+  width: 100%;
+  height: var(--scale-4);
+}
+
+.acko-slider-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  width: var(--scale-2);
+  height: var(--scale-2);
+  border-radius: var(--radius-full);
+  background: var(--color-border-subtle);
+}
+
+.acko-slider-tick-filled { background: var(--color-primary); }
+
+/* --- Value label --- */
+
+.acko-slider-value {
+  font-size: var(--font-body-sm-size);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+/* --- Disabled --- */
+
+.acko-slider-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.acko-slider-disabled .acko-slider-fill { background: var(--color-text-disabled); }
+.acko-slider-disabled .acko-slider-thumb { border-color: var(--color-text-disabled); cursor: not-allowed; }

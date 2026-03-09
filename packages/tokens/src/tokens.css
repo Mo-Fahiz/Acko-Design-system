@@ -309,11 +309,16 @@
   --color-card-outline-border: var(--grey-200);
 
   /* Text */
-  --color-text-strong: var(--grey-800);
+  --color-text-primary: var(--grey-800);
   --color-text-default: var(--grey-700);
-  --color-text-secondary: var(--grey-550);
-  --color-text-muted: var(--grey-450);
+  --color-text-supporting: var(--grey-550);
+  --color-text-secondary: var(--grey-450);
   --color-text-disabled: var(--grey-300);
+  --color-text-invert: var(--color-on-primary);
+  --color-text-brand: var(--color-primary);
+  --color-text-error: var(--color-error-text);
+  --color-text-success: var(--color-success-text);
+  --color-text-static: var(--grey-white);
 
   /* Borders */
   --color-border: var(--grey-300);
@@ -372,8 +377,10 @@
 
   /* Input */
   --color-input-bg: var(--grey-white);
-  --color-input-border: var(--color-border-subtle);
-  --color-input-hover-border: var(--grey-350);
+  --color-input-border: var(--grey-150);
+  --color-input-hover-border: var(--grey-300);
+  --color-input-filled-border: var(--grey-200);
+  --color-input-focus-border: var(--purple-400);
   --color-input-option-hover: var(--purple-50);
   --color-input-option-selected-bg: var(--purple-100);
   --color-input-option-selected-text: var(--purple-700);
@@ -542,11 +549,16 @@
   --color-card-outline-border: var(--grey-600);
 
   /* Text */
-  --color-text-strong: var(--grey-50);
+  --color-text-primary: var(--grey-50);
   --color-text-default: var(--grey-100);
-  --color-text-secondary: var(--grey-200);
-  --color-text-muted: var(--grey-350);
+  --color-text-supporting: var(--grey-200);
+  --color-text-secondary: var(--grey-350);
   --color-text-disabled: var(--grey-450);
+  --color-text-invert: var(--color-on-primary);
+  --color-text-brand: var(--color-primary);
+  --color-text-error: var(--color-error-text);
+  --color-text-success: var(--color-success-text);
+  --color-text-static: var(--grey-white);
 
   /* Borders */
   --color-border: var(--grey-600);
@@ -604,9 +616,13 @@
   --color-toggle-text: var(--grey-350);
 
   /* Input */
-  --color-input-bg: var(--grey-700);
-  --color-input-border: var(--grey-450);
-  --color-input-hover-border: var(--grey-500);
+  --color-input-bg: var(--grey-750);
+  --color-input-border: var(--grey-600);
+  --color-input-filled-border: var(--grey-550);
+  --color-input-hover-border: var(--grey-550);
+  --color-input-focus-border: var(--purple-900);
+  --color-input-disabled-bg: var(--grey-650);
+  --color-input-disabled-border: var(--grey-600);
   --color-input-option-hover: var(--grey-650);
   --color-input-option-selected-bg: var(--purple-900);
   --color-input-option-selected-text: var(--purple-300);

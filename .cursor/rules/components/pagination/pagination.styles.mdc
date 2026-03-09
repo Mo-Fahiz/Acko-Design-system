@@ -24,19 +24,19 @@ CSS file: `@acko/css/pagination.css`
 - Transition: `all 200ms var(--ease-in-out-cubic)`
 
 ### Ellipsis
-- `.acko-pagination-ellipsis` — `var(--scale-40) × var(--scale-40)`, centered, `--color-text-muted`
+- `.acko-pagination-ellipsis` — `var(--scale-40) × var(--scale-40)`, centered, `--color-text-secondary`
 
 ### Info
-- `.acko-pagination-info` — `--font-body-sm-size`, `--color-text-muted`
+- `.acko-pagination-info` — `--font-body-sm-size`, `--color-text-secondary`
 
 ### Page Button States
 
 | State | Background | Text | Extra |
 |-------|-----------|------|-------|
 | Default | transparent | `--color-text-default` | — |
-| Hover | `--color-primary-subtle` | `--color-text-strong` | — |
+| Hover | `--color-primary-subtle` | `--color-text-primary` | — |
 | Current (`.acko-pagination-btn-current`) | `--color-primary-subtle` | `--color-text-default` | font-weight 600 |
-| Disabled | transparent | `--color-text-muted` | `opacity: var(--opacity-48)`, `cursor: not-allowed` |
+| Disabled | transparent | `--color-text-secondary` | `opacity: var(--opacity-48)`, `cursor: not-allowed` |
 
 ### Load More
 - `.acko-pagination-load-more` — `border-radius: var(--radius-full)`, bg `--color-primary`, text `--color-on-primary`

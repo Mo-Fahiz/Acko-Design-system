@@ -60,5 +60,5 @@ Error state box plays `acko-checkbox-shake` 300ms ease-out:
 
 ## Labels
 - `.acko-checkbox-label-text` — `--color-text-default`, line-height 1.4
-- `.acko-checkbox-description` — `--font-caption-size`, `--color-text-muted`
+- `.acko-checkbox-description` — `--font-caption-size`, `--color-text-secondary`
 - Disabled: both use `--color-text-disabled`

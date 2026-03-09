@@ -1,0 +1,30 @@
+---
+description: Form component styles and tokens
+globs: "packages/css/src/form.css"
+alwaysApply: false
+---
+
+# Form — Styles
+
+## Class structure
+- `.acko-form` — flex column, `gap: var(--space-4)`
+- `.acko-form-item` — flex column, `gap: var(--space-2)` — wraps label + input + message
+- `.acko-form-item-error` — highlights child input borders via `.acko-text-input`
+- `.acko-form-label` — `font-size: var(--font-body-sm-size)`, weight 500, `color: var(--color-text-default)`
+- `.acko-form-required` — asterisk, `color: var(--color-error)`, `margin-left: var(--space-1)`
+- `.acko-form-error-text` — `font-size: var(--font-caption-size)`, `color: var(--color-error-text)`, dot prefix
+- `.acko-form-message` — `font-size: var(--font-caption-size)`, `color: var(--color-text-secondary)` — helper text
+
+## Error highlight
+```css
+.acko-form-item-error .acko-text-input { border-color: var(--color-error-border); }
+.acko-form-item-error .acko-text-input:focus-within {
+  box-shadow: 0 0 0 3px var(--color-error-subtle);
+}
+```
+
+## Tokens used
+- `--space-2`, `--space-4`, `--space-1`
+- `--font-body-sm-size`, `--font-body-sm-line`, `--font-caption-size`, `--font-caption-line`
+- `--color-text-default`, `--color-text-secondary`, `--color-error`, `--color-error-text`
+- `--color-error-border`, `--color-error-subtle`, `--scale-4`

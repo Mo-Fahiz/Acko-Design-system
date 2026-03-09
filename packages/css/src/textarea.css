@@ -30,19 +30,19 @@
   font-family: inherit;
   font-size: var(--font-body-md-size);
   line-height: 1.5;
-  color: var(--color-text-strong);
-  background: var(--color-surface);
+  color: var(--color-text-primary);
+  background: var(--color-input-bg);
   transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .acko-textarea-el::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 /* Focus */
 .acko-textarea-focused {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 1px var(--color-input-focus-border);
 }
 
 /* Error */
@@ -71,7 +71,7 @@
 .acko-textarea-helper-text {
   font-size: var(--font-caption-size);
   line-height: var(--font-caption-line);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .acko-textarea-error-text {
@@ -83,5 +83,5 @@
 .acko-textarea-count {
   font-size: var(--font-caption-size);
   line-height: var(--font-caption-line);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }

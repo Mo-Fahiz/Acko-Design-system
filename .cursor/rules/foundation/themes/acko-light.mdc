@@ -27,9 +27,9 @@ Default ACKO brand theme. Applied via `:root` or `[data-theme="light"]`.
 | `--color-on-primary` | — | `#FFFFFF` |
 | `--color-surface` | `grey-100` | `#F5F5F5` |
 | `--color-surface-raised` | `grey-100` | `#F5F5F5` |
-| `--color-text-strong` | `grey-800` | `#0A0A0A` |
+| `--color-text-primary` | `grey-800` | `#0A0A0A` |
 | `--color-text-default` | `grey-700` | `#141414` |
-| `--color-text-muted` | `grey-450` | `#605F63` |
+| `--color-text-secondary` | `grey-450` | `#605F63` |
 | `--color-border` | `grey-300` | `#B7B7B8` |
 | `--color-card-bg` | `grey-50` | `#FBFBFB` |
 | `--color-error` | `red-600` | `#DC2626` |

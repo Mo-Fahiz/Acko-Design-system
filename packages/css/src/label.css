@@ -8,7 +8,7 @@
 .acko-label {
   font-weight: 500;
   cursor: default;
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 .acko-label-sm {

@@ -31,7 +31,7 @@
 .acko-tab-underline {
   padding: var(--space-2) var(--space-4);
   margin-bottom: -1px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-weight: 500;
   transition: color 200ms var(--ease-in-out-cubic);
   position: relative;
@@ -80,7 +80,7 @@
 .acko-tab-pill {
   border-radius: var(--radius-full);
   padding: var(--space-1) var(--space-4);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-weight: 500;
   transition: all 200ms var(--ease-in-out-cubic);
 }
@@ -108,7 +108,7 @@
   @apply flex-col items-center justify-center;
   gap: var(--scale-2);
   padding: var(--space-1) var(--space-3);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-weight: 500;
   font-size: var(--font-caption-size);
   transition: color 200ms var(--ease-in-out-cubic);
@@ -142,7 +142,7 @@
 .acko-tab-enclosed-active {
   background: var(--color-card-bg);
   border-bottom: 1px solid var(--color-card-bg);
-  color: var(--color-text-strong);
+  color: var(--color-text-primary);
 }
 
 /* --- Sizes --- */

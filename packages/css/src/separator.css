@@ -58,6 +58,6 @@
 
 .acko-separator-label-text {
   font-size: var(--font-caption-size);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }

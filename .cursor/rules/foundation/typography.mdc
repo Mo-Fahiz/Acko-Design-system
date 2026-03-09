@@ -111,3 +111,19 @@ Buttons use their own scale — not body tokens:
 - `font-variant-numeric: tabular-nums` for dynamic numbers
 
 Typography tokens are **theme-agnostic** — they do not change between themes.
+
+## Typography Color System
+
+The `<Typography>` component's `color` prop uses 7 intent-based values. Each prop maps 1:1 to a `--color-text-{prop}` token:
+
+| Value | Token | Use case |
+|-------|-------|----------|
+| `primary` (default) | `--color-text-primary` | General use — headings, values, main content |
+| `secondary` | `--color-text-secondary` | Subtext — captions, helpers, descriptions |
+| `invert` | `--color-text-invert` | Text on dark/filled surfaces (opposite of current theme) |
+| `brand` | `--color-text-brand` | Brand-colored text — links, emphasis |
+| `error` | `--color-text-error` | Error messages |
+| `success` | `--color-text-success` | Success messages |
+| `static` | `--color-text-static` | Fixed color across themes — white in both light and dark |
+
+All tokens except `static` auto-adapt across light and dark themes. `static` produces an identical color (`grey-white`) in both themes — use it for text that must remain fixed regardless of theme (e.g., white text on a photo overlay).

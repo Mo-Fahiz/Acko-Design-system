@@ -1,0 +1,39 @@
+---
+description: Toast/Snackbar component styles and tokens
+globs: "packages/css/src/toast.css"
+alwaysApply: false
+---
+
+# Toast — Styles
+
+## Class structure
+- `.acko-toast-region` — fixed position container, `z-index: var(--z-toast)`, `pointer-events: none`
+- `.acko-toast-region > *` — re-enable pointer events on each toast
+- `.acko-toast` — individual item, `border-radius: var(--radius-xl)`, `box-shadow: var(--shadow-lg)`
+- `.acko-toast-icon` — leading icon, `shrink-0`, top-aligned
+- `.acko-toast-content` — flex column, title + description
+- `.acko-toast-title` — `font-size: var(--font-body-sm-size)`, weight 600
+- `.acko-toast-description` — same size, opacity 0.85
+- `.acko-toast-action` — underlined text button, same color as toast
+- `.acko-toast-dismiss` — `width/height: var(--scale-24)`, opacity 0.6 → 1 on hover
+
+## Position variants
+| Class | Position |
+|-------|---------|
+| `.acko-toast-region-top-right` | `top: var(--space-5); right: var(--space-5)` |
+| `.acko-toast-region-top-left` | `top: var(--space-5); left: var(--space-5)` |
+| `.acko-toast-region-top-center` | `top: var(--space-5); left: 50%; transform: translateX(-50%)` |
+| `.acko-toast-region-bottom-right` | `bottom: var(--space-5); right: var(--space-5)` |
+| `.acko-toast-region-bottom-left` | `bottom: var(--space-5); left: var(--space-5)` |
+| `.acko-toast-region-bottom-center` | `bottom: var(--space-5); left: 50%; transform: translateX(-50%)` |
+
+## Variant colors
+| Variant | Border | Background | Text |
+|---------|--------|-----------|------|
+| `info` | `--color-info-border` | `--color-info-subtle` | `--color-info-text` |
+| `success` | `--color-success-border` | `--color-success-subtle` | `--color-success-text` |
+| `warning` | `--color-warning-border` | `--color-warning-subtle` | `--color-warning-text` |
+| `error` | `--color-error-border` | `--color-error-subtle` | `--color-error-text` |
+
+## Animation
+`acko-toast-in`: `opacity 0, translateY(var(--space-2)) → opacity 1, translateY(0)`, 250ms `--ease-out-quart`

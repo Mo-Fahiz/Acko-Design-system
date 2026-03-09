@@ -1,0 +1,65 @@
+/* ============================================================
+   OTP Input — @acko/css/otp-input.css
+   ============================================================ */
+
+.acko-otp {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* --- Cell --- */
+
+.acko-otp-cell {
+  @apply text-center font-semibold outline-none;
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  caret-color: var(--color-primary);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.acko-otp-cell::selection { background: var(--color-primary-subtle); }
+
+/* Sizes */
+.acko-otp-sm .acko-otp-cell { width: var(--scale-36); height: var(--scale-40); font-size: var(--font-body-md-size); }
+.acko-otp-md .acko-otp-cell { width: var(--scale-44); height: var(--scale-52); font-size: var(--font-title-sm-size); }
+.acko-otp-lg .acko-otp-cell { width: var(--scale-52); height: var(--scale-60); font-size: var(--font-title-md-size); }
+
+/* Focus */
+.acko-otp-cell:focus {
+  border-color: var(--color-input-focus-border);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* Filled */
+.acko-otp-cell-filled {
+  border-color: var(--color-input-focus-border);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+
+/* Error */
+.acko-otp-error .acko-otp-cell,
+.acko-otp-cell-error {
+  border-color: var(--color-error-border);
+}
+
+.acko-otp-error .acko-otp-cell:focus {
+  box-shadow: 0 0 0 3px var(--color-error-ring, var(--color-error-subtle));
+}
+
+/* Disabled */
+.acko-otp-disabled .acko-otp-cell {
+  background: var(--color-btn-disabled-bg);
+  color: var(--color-btn-disabled-text);
+  border-color: var(--color-border-subtle);
+  cursor: not-allowed;
+}
+
+/* --- Dark theme --- */
+
+[data-theme="dark"] .acko-otp-cell {
+  background: var(--color-surface-default);
+}

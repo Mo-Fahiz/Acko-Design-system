@@ -122,32 +122,32 @@
 }
 
 /* Colors */
-.acko-text-color-default {
-  color: var(--color-text-default);
-}
-
-.acko-text-color-strong {
-  color: var(--color-text-strong);
-}
-
-.acko-text-color-muted {
-  color: var(--color-text-muted);
-}
-
-.acko-text-color-disabled {
-  color: var(--color-text-disabled);
-}
-
 .acko-text-color-primary {
-  color: var(--color-primary);
+  color: var(--color-text-primary);
+}
+
+.acko-text-color-secondary {
+  color: var(--color-text-secondary);
+}
+
+.acko-text-color-invert {
+  color: var(--color-text-invert);
+}
+
+.acko-text-color-brand {
+  color: var(--color-text-brand);
 }
 
 .acko-text-color-error {
-  color: var(--color-error-text);
+  color: var(--color-text-error);
 }
 
 .acko-text-color-success {
-  color: var(--color-success-text);
+  color: var(--color-text-success);
+}
+
+.acko-text-color-static {
+  color: var(--color-text-static);
 }
 
 /* Weight overrides */

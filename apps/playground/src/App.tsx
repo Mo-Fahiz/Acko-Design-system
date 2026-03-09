@@ -1,4 +1,10 @@
 import { useState, type ReactNode } from "react";
+import { Dialog } from "@acko/dialog";
+import { ToastProvider, useToast } from "@acko/toast";
+import { Slider } from "@acko/slider";
+import { OtpInput } from "@acko/text-input";
+import { Drawer } from "@acko/drawer";
+import { Form, FormItem, FormMessage } from "@acko/form";
 import { Button } from "@acko/button";
 import { Badge, CounterBadge } from "@acko/badge";
 import { RadioGroup } from "@acko/radio";
@@ -66,6 +72,12 @@ const COMPONENT_LIST = [
   "NavigationWizard",
   "Pagination",
   "ScrollArea",
+  "Dialog",
+  "Drawer",
+  "Toast",
+  "Slider",
+  "OtpInput",
+  "Form",
 ] as const;
 
 type ComponentName = (typeof COMPONENT_LIST)[number];
@@ -184,19 +196,18 @@ function ButtonUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Delete Account
           </Typography>
-          <Typography variant="body-sm" color="muted">
+          <Typography variant="body-sm" color="secondary">
             This action is permanent and cannot be undone.
           </Typography>
           <div className="flex gap-3 pt-2">
-            <Button variant="secondary" size="sm">
+            <Button variant="secondary">
               Cancel
             </Button>
             <Button
               variant="danger"
-              size="sm"
               loading={loading}
               onClick={handleClick}
             >
@@ -250,7 +261,7 @@ function BadgeUsage() {
       <CardContent>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <Typography variant="heading-md" color="strong">
+            <Typography variant="heading-md" color="primary">
               Notifications
             </Typography>
             <CounterBadge count={3} color="purple" />
@@ -266,7 +277,7 @@ function BadgeUsage() {
                   {n.label}
                 </Badge>
               </div>
-              <Typography variant="caption" color="muted">
+              <Typography variant="caption" color="secondary">
                 {n.time}
               </Typography>
             </div>
@@ -302,7 +313,7 @@ function AlertUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Form Submission
           </Typography>
           {visible ? (
@@ -317,7 +328,6 @@ function AlertUsage() {
           ) : (
             <Button
               variant="secondary"
-              size="sm"
               onClick={() => setVisible(true)}
             >
               Show Alert
@@ -335,7 +345,7 @@ function CardPreview() {
       {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
         <Card key={v} variant={v} padding="sm">
           <CardContent>
-            <Typography variant="label-md" color="strong">
+            <Typography variant="label-md" color="primary">
               {v} card
             </Typography>
           </CardContent>
@@ -350,7 +360,7 @@ function CardUsage() {
     <Card variant="elevated" padding="md">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Premium Plan
           </Typography>
           <Badge color="orange" variant="solid">
@@ -359,7 +369,7 @@ function CardUsage() {
         </div>
       </CardHeader>
       <CardContent>
-        <Typography variant="body-sm" color="muted">
+        <Typography variant="body-sm" color="secondary">
           Get comprehensive coverage with cashless claims at 8,400+ garages.
         </Typography>
         <div className="pt-3">
@@ -398,38 +408,38 @@ function TypographyPreview() {
     <div className="space-y-6">
       {/* Live examples */}
       <div className="space-y-4">
-        <Typography variant="overline" color="muted">LIVE EXAMPLES</Typography>
+        <Typography variant="overline" color="secondary">LIVE EXAMPLES</Typography>
         <div className="space-y-1">
-          <Typography variant="display-lg" color="strong">Insurance made simple</Typography>
-          <Typography variant="body-lg" color="muted">Protect what matters most with coverage that fits your life.</Typography>
+          <Typography variant="display-lg" color="primary">Insurance made simple</Typography>
+          <Typography variant="body-lg" color="secondary">Protect what matters most with coverage that fits your life.</Typography>
         </div>
         <Separator />
         <div className="space-y-1">
-          <Typography variant="heading-xl" color="strong">Your Dashboard</Typography>
-          <Typography variant="body-md" color="default">Welcome back, Priya. Here's your policy overview.</Typography>
+          <Typography variant="heading-xl" color="primary">Your Dashboard</Typography>
+          <Typography variant="body-md" color="primary">Welcome back, Priya. Here's your policy overview.</Typography>
         </div>
         <Separator />
         <div className="flex items-center gap-3">
-          <Typography variant="label-lg" color="strong">Status:</Typography>
+          <Typography variant="label-lg" color="primary">Status:</Typography>
           <Badge color="green" variant="solid">Active</Badge>
-          <Typography variant="caption" color="muted">Updated 2 hours ago</Typography>
+          <Typography variant="caption" color="secondary">Updated 2 hours ago</Typography>
         </div>
       </div>
 
       {/* Spec reference */}
       <div>
-        <Typography variant="overline" color="muted">SPEC REFERENCE</Typography>
+        <Typography variant="overline" color="secondary">SPEC REFERENCE</Typography>
         <div className="mt-3 space-y-3">
           {specs.map((s) => (
             <div key={s.variant} className="flex items-baseline gap-4">
               <div className="w-40 shrink-0">
-                <Typography variant={s.variant} color="strong">
+                <Typography variant={s.variant} color="primary">
                   Ag
                 </Typography>
               </div>
               <div className="flex-1 min-w-0">
-                <Typography variant="label-sm" color="default">{s.label}</Typography>
-                <Typography variant="caption" color="muted">{s.use}</Typography>
+                <Typography variant="label-sm" color="primary">{s.label}</Typography>
+                <Typography variant="caption" color="secondary">{s.use}</Typography>
               </div>
             </div>
           ))}
@@ -443,17 +453,17 @@ function TypographyUsage() {
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
-        <Typography variant="overline" color="muted">
+        <Typography variant="overline" color="secondary">
           INSURANCE
         </Typography>
-        <Typography variant="heading-xl" color="strong">
+        <Typography variant="heading-xl" color="primary">
           Protect What Matters
         </Typography>
-        <Typography variant="body-md" color="muted">
+        <Typography variant="body-md" color="secondary">
           Simple, affordable insurance for everyone. No paperwork, no hassle.
         </Typography>
         <div className="pt-2">
-          <Button variant="primary" size="sm">
+          <Button variant="primary">
             Get Started
           </Button>
         </div>
@@ -481,7 +491,7 @@ function TextInputUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Login
           </Typography>
           <TextInput label="Email" placeholder="you@example.com" value={email} onChange={setEmail} />
@@ -512,11 +522,11 @@ function TextareaUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Leave Feedback
           </Typography>
           <Textarea label="Your feedback" placeholder="Tell us how we can improve..." value={msg} onChange={setMsg} maxLength={500} showCount helperText="We read every message" />
-          <Button variant="primary" size="sm">
+          <Button variant="primary">
             Submit
           </Button>
         </div>
@@ -544,7 +554,7 @@ function DropdownUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Vehicle Info
           </Typography>
           <Dropdown label="Car Make" placeholder="Select make" options={[{ value: "maruti", label: "Maruti Suzuki" }, { value: "hyundai", label: "Hyundai" }, { value: "tata", label: "Tata Motors" }]} value={make} onChange={(v: string | string[]) => setMake(v as string)} />
@@ -559,12 +569,22 @@ function CheckboxPreview() {
   const [a, setA] = useState(false);
   const [b, setB] = useState(true);
   return (
-    <div className="space-y-3">
-      <Checkbox label="Unchecked" checked={a} onChange={setA} />
-      <Checkbox label="Checked" checked={b} onChange={setB} />
-      <Checkbox label="Indeterminate" checked={false} indeterminate onChange={() => {}} />
-      <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
-      <Checkbox label="Error state" checked={false} onChange={() => {}} error />
+    <div className="flex flex-col gap-5">
+      <div className="pb-4 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Interactive states</Typography>
+        <div className="flex flex-col gap-4">
+          <Checkbox label="Unchecked" checked={a} onChange={setA} />
+          <Checkbox label="Checked" checked={b} onChange={setB} />
+          <Checkbox label="Indeterminate" checked={false} indeterminate onChange={() => {}} />
+        </div>
+      </div>
+      <div>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Disabled & Error</Typography>
+        <div className="flex flex-col gap-4">
+          <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
+          <Checkbox label="Error state" checked={false} onChange={() => {}} error />
+        </div>
+      </div>
     </div>
   );
 }
@@ -576,12 +596,12 @@ function CheckboxUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Preferences
           </Typography>
           <Checkbox label="I agree to terms and conditions" description="Required to continue" checked={terms} onChange={setTerms} />
           <Checkbox label="Send me promotional emails" checked={marketing} onChange={setMarketing} />
-          <Button variant="primary" size="sm" disabled={!terms}>
+          <Button variant="primary" disabled={!terms}>
             Continue
           </Button>
         </div>
@@ -606,7 +626,7 @@ function RadioUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Choose Plan
           </Typography>
           <RadioGroup label="Insurance Type" options={[{ value: "tp", label: "Third Party", description: "₹2,094/yr" }, { value: "comp", label: "Comprehensive", description: "₹4,835/yr" }, { value: "od", label: "Own Damage", description: "₹3,200/yr" }]} value={plan} onChange={setPlan} variant="card" />
@@ -618,11 +638,30 @@ function RadioUsage() {
 
 function SwitchPreview() {
   const [on, setOn] = useState(false);
+  const [sm, setSm] = useState(true);
   return (
-    <div className="space-y-3">
-      <Switch label="Default" checked={on} onChange={setOn} />
-      <Switch label="Small" size="sm" checked={on} onChange={setOn} />
-      <Switch label="Disabled" disabled />
+    <div className="flex flex-col gap-6">
+      <div className="flex items-center justify-between py-2 border-b border-border-subtle">
+        <div>
+          <Typography variant="label-md" color="primary">Default</Typography>
+          <Typography variant="caption" color="secondary">Medium size, click to toggle</Typography>
+        </div>
+        <Switch label="Default" checked={on} onChange={setOn} />
+      </div>
+      <div className="flex items-center justify-between py-2 border-b border-border-subtle">
+        <div>
+          <Typography variant="label-md" color="primary">Small</Typography>
+          <Typography variant="caption" color="secondary">Compact variant</Typography>
+        </div>
+        <Switch label="Small" size="sm" checked={sm} onChange={setSm} />
+      </div>
+      <div className="flex items-center justify-between py-2">
+        <div>
+          <Typography variant="label-md" color="primary">Disabled</Typography>
+          <Typography variant="caption" color="secondary">Non-interactive state</Typography>
+        </div>
+        <Switch label="Disabled" disabled />
+      </div>
     </div>
   );
 }
@@ -634,18 +673,18 @@ function SwitchUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Settings
           </Typography>
           <div className="flex items-center justify-between">
-            <Typography variant="body-sm" color="default">
+            <Typography variant="body-sm" color="primary">
               Push notifications
             </Typography>
             <Switch checked={notif} onChange={setNotif} />
           </div>
           <Separator />
           <div className="flex items-center justify-between">
-            <Typography variant="body-sm" color="default">
+            <Typography variant="body-sm" color="primary">
               Dark mode
             </Typography>
             <Switch checked={dark} onChange={setDark} />
@@ -690,7 +729,7 @@ function ToggleUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Text Alignment
           </Typography>
           <ToggleGroup type="single" value={align} onValueChange={(val: string | string[]) => setAlign(val as string)} variant="outline">
@@ -706,7 +745,7 @@ function ToggleUsage() {
           </ToggleGroup>
           <Typography
             variant="body-sm"
-            color="muted"
+            color="secondary"
             align={align as "left" | "center" | "right"}
           >
             This text follows the selected alignment. Try clicking the buttons
@@ -724,7 +763,7 @@ function TabsPreview() {
     <div className="space-y-6">
       {/* Underline - bottom indicator */}
       <div>
-        <Typography variant="label-sm" color="muted">Underline (bottom)</Typography>
+        <Typography variant="label-sm" color="secondary">Underline (bottom)</Typography>
         <Tabs
           items={[
             { value: "tab1", label: "Overview", icon: <HomeIcon /> },
@@ -740,7 +779,7 @@ function TabsPreview() {
 
       {/* Underline - top indicator */}
       <div>
-        <Typography variant="label-sm" color="muted">Underline (top)</Typography>
+        <Typography variant="label-sm" color="secondary">Underline (top)</Typography>
         <Tabs
           items={[
             { value: "tab1", label: "Overview" },
@@ -756,7 +795,7 @@ function TabsPreview() {
 
       {/* Pill - hugging */}
       <div>
-        <Typography variant="label-sm" color="muted">Pill (fit-content)</Typography>
+        <Typography variant="label-sm" color="secondary">Pill (fit-content)</Typography>
         <Tabs
           items={[
             { value: "tab1", label: "Monthly", icon: <StarIcon /> },
@@ -770,7 +809,7 @@ function TabsPreview() {
 
       {/* Navigation */}
       <div>
-        <Typography variant="label-sm" color="muted">Navigation (bottom tabs)</Typography>
+        <Typography variant="label-sm" color="secondary">Navigation (bottom tabs)</Typography>
         <Tabs
           items={[
             { value: "tab1", label: "Home", icon: <HomeIcon /> },
@@ -796,17 +835,17 @@ function TabsUsage() {
           <Tabs items={[{ value: "details", label: "Details" }, { value: "claims", label: "Claims" }, { value: "docs", label: "Documents" }]} value={tab} onChange={setTab} variant="underline" />
           <div className="pt-2">
             {tab === "details" && (
-              <Typography variant="body-sm" color="muted">
+              <Typography variant="body-sm" color="secondary">
                 Policy #POL-2024-001 — Comprehensive car insurance.
               </Typography>
             )}
             {tab === "claims" && (
-              <Typography variant="body-sm" color="muted">
+              <Typography variant="body-sm" color="secondary">
                 No claims filed yet.
               </Typography>
             )}
             {tab === "docs" && (
-              <Typography variant="body-sm" color="muted">
+              <Typography variant="body-sm" color="secondary">
                 Policy document, ID proof uploaded.
               </Typography>
             )}
@@ -821,22 +860,22 @@ function TooltipPreview() {
   return (
     <div className="flex flex-wrap gap-4">
       <Tooltip content="Top tooltip" side="top">
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary">
           Top
         </Button>
       </Tooltip>
       <Tooltip content="Bottom tooltip" side="bottom">
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary">
           Bottom
         </Button>
       </Tooltip>
       <Tooltip content="Left tooltip" side="left">
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary">
           Left
         </Button>
       </Tooltip>
       <Tooltip content="Right tooltip" side="right">
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary">
           Right
         </Button>
       </Tooltip>
@@ -849,22 +888,22 @@ function TooltipUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Action Toolbar
           </Typography>
           <div className="flex gap-2">
             <Tooltip content="Edit profile">
-              <Button variant="secondary" size="sm">
+              <Button variant="secondary">
                 <EditIcon />
               </Button>
             </Tooltip>
             <Tooltip content="Download report">
-              <Button variant="secondary" size="sm">
+              <Button variant="secondary">
                 <DownloadIcon />
               </Button>
             </Tooltip>
             <Tooltip content="Delete item">
-              <Button variant="danger" size="sm">
+              <Button variant="danger">
                 <TrashIcon />
               </Button>
             </Tooltip>
@@ -880,7 +919,7 @@ function ProgressPreview() {
     <div className="space-y-6">
       {/* Bar variants */}
       <div className="space-y-4">
-        <Typography variant="label-sm" color="muted">Bar</Typography>
+        <Typography variant="label-sm" color="secondary">Bar</Typography>
         <Progress value={30} color="primary" size="sm" label="Small" showLabel />
         <Progress value={65} color="primary" size="md" label="Medium" showLabel animated />
         <Progress value={100} color="success" size="lg" label="Complete" showLabel />
@@ -889,7 +928,7 @@ function ProgressPreview() {
 
       {/* Circular variants */}
       <div>
-        <Typography variant="label-sm" color="muted">Circular</Typography>
+        <Typography variant="label-sm" color="secondary">Circular</Typography>
         <div className="flex items-end gap-6 mt-2">
           <Progress variant="circular" value={75} size="sm" showLabel />
           <Progress variant="circular" value={60} size="md" color="success" showLabel />
@@ -901,7 +940,7 @@ function ProgressPreview() {
 
       {/* Segmented */}
       <div>
-        <Typography variant="label-sm" color="muted">Segmented</Typography>
+        <Typography variant="label-sm" color="secondary">Segmented</Typography>
         <div className="mt-2 space-y-3">
           <Progress variant="segmented" value={40} segments={5} size="md" label="Step 2 of 5" showLabel />
           <Progress variant="segmented" value={75} segments={4} size="lg" color="success" />
@@ -916,7 +955,7 @@ function ProgressUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Profile Completion
           </Typography>
           <div className="flex items-center gap-4">
@@ -924,12 +963,12 @@ function ProgressUsage() {
               <Avatar initials="PS" size="md" shape="circle" />
             </Progress>
             <div>
-              <Typography variant="label-md" color="strong">Priya Sharma</Typography>
-              <Typography variant="caption" color="muted">72% complete — add a photo to finish</Typography>
+              <Typography variant="label-md" color="primary">Priya Sharma</Typography>
+              <Typography variant="caption" color="secondary">72% complete — add a photo to finish</Typography>
             </div>
           </div>
           <Separator />
-          <Typography variant="label-sm" color="muted">Onboarding Progress</Typography>
+          <Typography variant="label-sm" color="secondary">Onboarding Progress</Typography>
           <Progress variant="segmented" value={60} segments={5} size="md" label="Step 3 of 5" showLabel />
         </div>
       </CardContent>
@@ -1001,7 +1040,7 @@ function LabelFieldUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Registration
           </Typography>
           <Field label="Full Name" required>
@@ -1045,7 +1084,7 @@ function InputGroupUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Payment
           </Typography>
           <Field label="Amount">
@@ -1057,7 +1096,7 @@ function InputGroupUsage() {
               />
             </InputGroup>
           </Field>
-          <Button variant="primary" size="sm">
+          <Button variant="primary">
             Pay Now
           </Button>
         </div>
@@ -1068,35 +1107,30 @@ function InputGroupUsage() {
 
 function BreadcrumbPreview() {
   return (
-    <div className="space-y-4">
-      {/* Default */}
-      <div>
-        <Typography variant="label-sm" color="muted">Default</Typography>
+    <div className="flex flex-col gap-6">
+      <div className="pb-5 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Default</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Insurance", href: "#" }, { label: "Car Insurance" }]} />
       </div>
 
-      {/* With icon on first item */}
-      <div>
-        <Typography variant="label-sm" color="muted">With Icon</Typography>
+      <div className="pb-5 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>With icon</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#", icon: <HomeIcon /> }, { label: "Products", href: "#" }, { label: "Health Insurance" }]} />
       </div>
 
-      {/* Custom separator */}
-      <div>
-        <Typography variant="label-sm" color="muted">Custom Separator (/)</Typography>
+      <div className="pb-5 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Custom separator (/)</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Policies", href: "#" }, { label: "POL-2024-001" }]} separator="/" />
       </div>
 
-      {/* Collapsed */}
-      <div>
-        <Typography variant="label-sm" color="muted">Collapsed</Typography>
+      <div className="pb-5 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Collapsed (6 items → 3)</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Products", href: "#" }, { label: "Health", href: "#" }, { label: "Plans", href: "#" }, { label: "Premium", href: "#" }, { label: "Checkout" }]} maxItems={3} />
       </div>
 
-      {/* Contained in a subtle card */}
       <div>
-        <Typography variant="label-sm" color="muted">Contained</Typography>
-        <div className="bg-surface-raised border border-border-subtle rounded-xl px-4 py-2 inline-block">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Contained</Typography>
+        <div style={{ background: "var(--color-surface-raised)", border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-xl)", padding: "var(--space-3) var(--space-4)", display: "inline-block" }}>
           <Breadcrumb items={[{ label: "Dashboard", href: "#", icon: <HomeIcon /> }, { label: "Settings", href: "#" }, { label: "Account" }]} />
         </div>
       </div>
@@ -1110,10 +1144,10 @@ function BreadcrumbUsage() {
       <CardContent>
         <div className="space-y-3">
           <Breadcrumb items={[{ label: "Dashboard", href: "#" }, { label: "Policies", href: "#" }, { label: "POL-2024-001" }]} />
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Policy Details
           </Typography>
-          <Typography variant="body-sm" color="muted">
+          <Typography variant="body-sm" color="secondary">
             Comprehensive Car Insurance — Active
           </Typography>
         </div>
@@ -1141,7 +1175,7 @@ function AccordionUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             FAQ
           </Typography>
           <Accordion
@@ -1163,13 +1197,13 @@ function CalendarPreview() {
   return (
     <div className="space-y-4">
       <div>
-        <Typography variant="label-sm" color="muted">
+        <Typography variant="label-sm" color="secondary">
           Dropdown
         </Typography>
         <Calendar variant="single" display="dropdown" value={d} onChange={(v: Date | DateRange | Date[]) => setD(v as Date)} />
       </div>
       <div>
-        <Typography variant="label-sm" color="muted">
+        <Typography variant="label-sm" color="secondary">
           Inline
         </Typography>
         <Calendar variant="single" display="inline" value={d} onChange={(v: Date | DateRange | Date[]) => setD(v as Date)} />
@@ -1184,11 +1218,11 @@ function CalendarUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Policy Start Date
           </Typography>
           <Calendar variant="single" display="dropdown" value={d} onChange={(v: Date | DateRange | Date[]) => setD(v as Date)} minDate={new Date()} />
-          <Button variant="primary" size="sm">
+          <Button variant="primary">
             Confirm Date
           </Button>
         </div>
@@ -1234,10 +1268,10 @@ function TableUsage() {
       <CardContent>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <Typography variant="heading-md" color="strong">
+            <Typography variant="heading-md" color="primary">
               Recent Policies
             </Typography>
-            <Button variant="secondary" size="sm">
+            <Button variant="secondary">
               Export
             </Button>
           </div>
@@ -1294,7 +1328,7 @@ function AvatarUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Team Members
           </Typography>
           {[
@@ -1305,8 +1339,8 @@ function AvatarUsage() {
             <div key={m.name} className="flex items-center gap-3">
               <Avatar initials={m.name.split(" ").map((w) => w[0]).join("")} size="md" />
               <div>
-                <Typography variant="label-md" color="strong">{m.name}</Typography>
-                <Typography variant="caption" color="muted">{m.role}</Typography>
+                <Typography variant="label-md" color="primary">{m.name}</Typography>
+                <Typography variant="caption" color="secondary">{m.role}</Typography>
               </div>
             </div>
           ))}
@@ -1339,7 +1373,7 @@ function SkeletonUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Loading State
           </Typography>
           <div className="flex items-center gap-3">
@@ -1363,20 +1397,22 @@ function SkeletonUsage() {
 function NavigationWizardPreview() {
   const [step, setStep] = useState(1);
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-8">
       {/* Horizontal */}
-      <div>
-        <Typography variant="label-sm" color="muted">Horizontal</Typography>
-        <NavigationWizard
-          steps={[{ label: "Details" }, { label: "Review" }, { label: "Payment" }, { label: "Done" }]}
-          currentStep={step}
-          onStepClick={setStep}
-        />
-        <div className="flex gap-2 mt-3">
-          <Button variant="secondary" size="sm" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>
+      <div className="pb-6 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Horizontal</Typography>
+        <div style={{ overflow: "auto" }}>
+          <NavigationWizard
+            steps={[{ label: "Details" }, { label: "Review" }, { label: "Payment" }, { label: "Done" }]}
+            currentStep={step}
+            onStepClick={setStep}
+          />
+        </div>
+        <div className="flex gap-3 mt-4">
+          <Button variant="secondary" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>
             Back
           </Button>
-          <Button variant="primary" size="sm" onClick={() => setStep(Math.min(3, step + 1))} disabled={step === 3}>
+          <Button variant="primary" onClick={() => setStep(Math.min(3, step + 1))} disabled={step === 3}>
             Next
           </Button>
         </div>
@@ -1384,7 +1420,7 @@ function NavigationWizardPreview() {
 
       {/* Vertical */}
       <div>
-        <Typography variant="label-sm" color="muted">Vertical</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Vertical</Typography>
         <NavigationWizard
           steps={[{ label: "Personal Info" }, { label: "Vehicle Details" }, { label: "Choose Plan" }, { label: "Payment" }]}
           currentStep={2}
@@ -1404,7 +1440,7 @@ function NavigationWizardUsage() {
             steps={[{ label: "Vehicle" }, { label: "Owner" }, { label: "Plan" }, { label: "Pay" }]}
             currentStep={2}
           />
-          <Typography variant="body-sm" color="muted">
+          <Typography variant="body-sm" color="secondary">
             Step 3 of 4 — Choose your insurance plan
           </Typography>
         </div>
@@ -1418,13 +1454,13 @@ function PaginationPreview() {
   return (
     <div className="space-y-4">
       <div>
-        <Typography variant="label-sm" color="muted">
+        <Typography variant="label-sm" color="secondary">
           Numbered
         </Typography>
         <Pagination totalPages={20} currentPage={p} onPageChange={setP} showInfo />
       </div>
       <div>
-        <Typography variant="label-sm" color="muted">
+        <Typography variant="label-sm" color="secondary">
           Simple
         </Typography>
         <Pagination totalPages={20} currentPage={p} onPageChange={setP} variant="simple" />
@@ -1439,10 +1475,10 @@ function PaginationUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Search Results
           </Typography>
-          <Typography variant="body-sm" color="muted">
+          <Typography variant="body-sm" color="secondary">
             Showing 1-10 of 200 policies
           </Typography>
           <Pagination totalPages={20} currentPage={p} onPageChange={setP} showInfo />
@@ -1469,7 +1505,7 @@ function ScrollAreaUsage() {
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="space-y-3">
-          <Typography variant="heading-md" color="strong">
+          <Typography variant="heading-md" color="primary">
             Activity Log
           </Typography>
           <ScrollArea maxHeight={140} className="border border-border-subtle rounded-xl p-3">
@@ -1489,6 +1525,466 @@ function ScrollAreaUsage() {
               </div>
             ))}
           </ScrollArea>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — Dialog
+   ═══════════════════════════════════════════════════════════════ */
+function DialogPreview() {
+  const [open, setOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="flex flex-col gap-4">
+          <div className="flex gap-3 flex-wrap">
+            <Button variant="primary" onClick={() => setOpen(true)}>
+              Open Dialog
+            </Button>
+            <Button variant="secondary" onClick={() => setConfirmOpen(true)}>
+              Confirm Dialog
+            </Button>
+          </div>
+          <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+            title="Dialog title"
+            description="This is a supporting description for the dialog."
+            footer={
+              <>
+                <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+                <Button variant="primary" onClick={() => setOpen(false)}>Confirm</Button>
+              </>
+            }
+          >
+            <p className="text-sm text-text-muted">
+              This is the dialog body content. You can place any content here — forms, text, lists, or media.
+            </p>
+          </Dialog>
+          <Dialog
+            open={confirmOpen}
+            onClose={() => setConfirmOpen(false)}
+            title="Delete policy?"
+            size="sm"
+            footer={
+              <>
+                <Button variant="ghost" onClick={() => setConfirmOpen(false)}>Cancel</Button>
+                <Button variant="danger" onClick={() => setConfirmOpen(false)}>Delete</Button>
+              </>
+            }
+          >
+            <p className="text-sm text-text-muted">
+              This action cannot be undone. Are you sure you want to delete this policy?
+            </p>
+          </Dialog>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function DialogUsage() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-3">
+          <Typography variant="heading-md" color="primary">Policy update</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Review your auto insurance renewal before it expires.
+          </Typography>
+          <Button variant="primary" onClick={() => setOpen(true)}>
+            View renewal details
+          </Button>
+          <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+            title="Policy renewal"
+            description="Your policy expires on 15 April 2026."
+            footer={
+              <>
+                <Button variant="ghost" onClick={() => setOpen(false)}>Remind later</Button>
+                <Button variant="primary" onClick={() => setOpen(false)}>Renew now</Button>
+              </>
+            }
+          >
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between py-2 border-b border-border-subtle">
+                <span className="text-text-muted">Policy number</span>
+                <span className="font-medium text-text-strong">ACKO-2024-AUTO-88742</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-border-subtle">
+                <span className="text-text-muted">Vehicle</span>
+                <span className="font-medium text-text-strong">Honda City — MH 02 AB 1234</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-text-muted">Premium</span>
+                <span className="font-medium text-text-strong">₹ 8,420 / year</span>
+              </div>
+            </div>
+          </Dialog>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — Drawer
+   ═══════════════════════════════════════════════════════════════ */
+function DrawerPreview() {
+  const [side, setSide] = useState<"right" | "bottom" | "left">("right");
+  const [open, setOpen] = useState(false);
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <Button
+              fullWidth
+              variant={side === "right" ? "primary" : "secondary"}
+              onClick={() => { setSide("right"); setOpen(true); }}
+            >
+              Open Right
+            </Button>
+            <Button
+              fullWidth
+              variant={side === "left" ? "primary" : "secondary"}
+              onClick={() => { setSide("left"); setOpen(true); }}
+            >
+              Open Left
+            </Button>
+            <Button
+              variant={side === "bottom" ? "primary" : "secondary"}
+              onClick={() => { setSide("bottom"); setOpen(true); }}
+            >
+              Open Bottom
+            </Button>
+          </div>
+          <Drawer
+            open={open}
+            onClose={() => setOpen(false)}
+            side={side}
+            title="Drawer panel"
+            description="Supporting description text."
+            footer={
+              <Button variant="primary" onClick={() => setOpen(false)}>
+                Done
+              </Button>
+            }
+          >
+            <p className="text-sm text-text-muted">
+              Drawer content area. Useful for side panels, filters, detail views.
+            </p>
+          </Drawer>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function DrawerUsage() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-3">
+          <Typography variant="heading-md" color="primary">Claims history</Typography>
+          <Typography variant="body-sm" color="secondary">
+            View your full claim details in a side panel.
+          </Typography>
+          <Button variant="secondary" onClick={() => setOpen(true)}>
+            View claim #4821
+          </Button>
+          <Drawer
+            open={open}
+            onClose={() => setOpen(false)}
+            side="right"
+            title="Claim #4821"
+            description="Filed on 10 Jan 2026"
+            footer={
+              <>
+                <Button variant="ghost" onClick={() => setOpen(false)}>Close</Button>
+                <Button variant="primary">Track status</Button>
+              </>
+            }
+          >
+            <div className="space-y-3 text-sm">
+              {[
+                ["Type", "Cashless hospitalisation"],
+                ["Hospital", "Apollo Hospitals, Mumbai"],
+                ["Amount", "₹ 42,000"],
+                ["Status", "Under review"],
+              ].map(([label, val]) => (
+                <div key={label} className="flex justify-between py-2 border-b border-border-subtle last:border-0">
+                  <span className="text-text-muted">{label}</span>
+                  <span className="font-medium text-text-strong">{val}</span>
+                </div>
+              ))}
+            </div>
+          </Drawer>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — Toast (wrapped with provider in App)
+   ═══════════════════════════════════════════════════════════════ */
+function ToastTriggers() {
+  const { toast } = useToast();
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 flex-wrap">
+        {(["success", "error", "warning", "info"] as const).map((v) => (
+          <Button
+            key={v}
+            variant="secondary"
+            onClick={() =>
+              toast({
+                variant: v,
+                title: v.charAt(0).toUpperCase() + v.slice(1),
+                description: `This is a ${v} notification message.`,
+                dismissible: true,
+              })
+            }
+          >
+            {v}
+          </Button>
+        ))}
+      </div>
+      <Button
+        variant="ghost"
+        onClick={() =>
+          toast({
+            variant: "success",
+            title: "Payment successful",
+            description: "₹ 8,420 paid for policy renewal.",
+            action: { label: "View receipt", onClick: () => {} },
+          })
+        }
+      >
+        Toast with action
+      </Button>
+    </div>
+  );
+}
+
+function ToastPreview() {
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <ToastTriggers />
+      </CardContent>
+    </Card>
+  );
+}
+
+function ToastUsage() {
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-3">
+          <Typography variant="heading-md" color="primary">Notifications</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Toasts appear at the top-right and auto-dismiss after 4 seconds.
+          </Typography>
+          <ToastTriggers />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — Slider
+   ═══════════════════════════════════════════════════════════════ */
+function SliderPreview() {
+  const [val, setVal] = useState(40);
+  const [range, setRange] = useState(25);
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="space-y-3 pb-6 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary">Default — value: {val}</Typography>
+        <Slider value={val} onChange={setVal} showValue />
+      </div>
+      <div className="space-y-3 pb-6 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary">With ticks — step 10</Typography>
+        <Slider value={range} onChange={setRange} step={10} showTicks showValue />
+      </div>
+      <div className="space-y-3 pb-6 border-b border-border-subtle">
+        <Typography variant="label-sm" color="secondary">Disabled</Typography>
+        <Slider value={65} onChange={() => {}} disabled />
+      </div>
+      <div>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Size variants</Typography>
+        <div className="flex flex-col gap-6">
+          <div className="space-y-1">
+            <Typography variant="caption" color="secondary">Small</Typography>
+            <Slider value={50} onChange={() => {}} size="sm" />
+          </div>
+          <div className="space-y-1">
+            <Typography variant="caption" color="secondary">Medium</Typography>
+            <Slider value={50} onChange={() => {}} size="md" />
+          </div>
+          <div className="space-y-1">
+            <Typography variant="caption" color="secondary">Large</Typography>
+            <Slider value={50} onChange={() => {}} size="lg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SliderUsage() {
+  const [cover, setCover] = useState(5);
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-4">
+          <Typography variant="heading-md" color="primary">Health coverage</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Select your sum insured amount.
+          </Typography>
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-text-muted">Coverage amount</span>
+              <span className="font-semibold text-primary">₹ {cover} Lakh</span>
+            </div>
+            <Slider value={cover} onChange={setCover} min={1} max={100} step={1} size="md" aria-label="Coverage amount in lakhs" />
+            <div className="flex justify-between text-xs text-text-muted">
+              <span>₹ 1L</span>
+              <span>₹ 100L</span>
+            </div>
+          </div>
+          <Button variant="primary" fullWidth>
+            Get quote for ₹ {cover}L cover
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — OTP Input
+   ═══════════════════════════════════════════════════════════════ */
+function OtpInputPreview() {
+  const [otp, setOtp] = useState("");
+  const [errorOtp, setErrorOtp] = useState("12");
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="flex flex-col gap-6">
+          <div className="space-y-2">
+            <Typography variant="label-sm" color="secondary">Default (6 digits)</Typography>
+            <OtpInput value={otp} onChange={setOtp} length={6} />
+          </div>
+          <div className="space-y-2">
+            <Typography variant="label-sm" color="secondary">Error state</Typography>
+            <OtpInput value={errorOtp} onChange={setErrorOtp} length={6} error />
+          </div>
+          <div className="space-y-2">
+            <Typography variant="label-sm" color="secondary">4-digit masked</Typography>
+            <OtpInput value="" onChange={() => {}} length={4} masked />
+          </div>
+          <div className="space-y-2">
+            <Typography variant="label-sm" color="secondary">Sizes</Typography>
+            <OtpInput value="" onChange={() => {}} length={4} size="sm" />
+            <OtpInput value="" onChange={() => {}} length={4} size="md" />
+            <OtpInput value="" onChange={() => {}} length={4} size="lg" />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function OtpInputUsage() {
+  const [otp, setOtp] = useState("");
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-4">
+          <Typography variant="heading-md" color="primary">Verify your mobile</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Enter the 6-digit OTP sent to +91 98765 43210
+          </Typography>
+          <OtpInput value={otp} onChange={setOtp} length={6} aria-label="Mobile verification OTP" />
+          {otp.length === 6 && (
+            <Button variant="primary" fullWidth>
+              Verify OTP
+            </Button>
+          )}
+          {otp.length < 6 && (
+            <Button variant="ghost" fullWidth disabled>
+              Verify OTP
+            </Button>
+          )}
+          <Typography variant="caption" color="secondary" style={{ textAlign: "center" }}>
+            Didn&apos;t receive? <span style={{ color: "var(--color-primary)", cursor: "pointer" }}>Resend in 28s</span>
+          </Typography>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Phase 1 — Form
+   ═══════════════════════════════════════════════════════════════ */
+function FormPreview() {
+  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="flex flex-col gap-4">
+          <Form onSubmit={() => new Promise((r) => setTimeout(() => { setSubmitted(true); r(undefined); }, 800))}>
+            <FormItem name="name">
+              <TextInput label="Full name" value={name} onChange={setName} id="demo-name" placeholder="Enter your full name" required />
+            </FormItem>
+            <FormItem name="email">
+              <TextInput label="Email address" value={email} onChange={setEmail} id="demo-email" type="email" placeholder="you@example.com" required />
+              <FormMessage>We will never share your email.</FormMessage>
+            </FormItem>
+            <Button variant="primary" type="submit">
+              {submitted ? "Submitted!" : "Submit"}
+            </Button>
+          </Form>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function FormUsage() {
+  const [vehicle, setVehicle] = useState("");
+  const [pincode, setPincode] = useState("");
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent>
+        <div className="space-y-4">
+          <Typography variant="heading-md" color="primary">Get a quote</Typography>
+          <Form onSubmit={() => Promise.resolve()}>
+            <FormItem name="vehicle">
+              <TextInput label="Vehicle number" value={vehicle} onChange={setVehicle} id="vehicle" placeholder="MH 02 AB 1234" required />
+            </FormItem>
+            <FormItem name="pincode">
+              <TextInput label="Pincode" value={pincode} onChange={setPincode} id="pincode" placeholder="400001" />
+              <FormMessage>Enter pincode for location-based pricing.</FormMessage>
+            </FormItem>
+            <Button variant="primary" type="submit" fullWidth>
+              Get my quote
+            </Button>
+          </Form>
         </div>
       </CardContent>
     </Card>
@@ -1532,7 +2028,49 @@ const COMPONENT_REGISTRY: Record<
   },
   Pagination: { preview: PaginationPreview, usage: PaginationUsage },
   ScrollArea: { preview: ScrollAreaPreview, usage: ScrollAreaUsage },
+  Dialog: { preview: DialogPreview, usage: DialogUsage },
+  Drawer: { preview: DrawerPreview, usage: DrawerUsage },
+  Toast: { preview: ToastPreview, usage: ToastUsage },
+  Slider: { preview: SliderPreview, usage: SliderUsage },
+  OtpInput: { preview: OtpInputPreview, usage: OtpInputUsage },
+  Form: { preview: FormPreview, usage: FormUsage },
 };
+
+/* ═══════════════════════════════════════════════════════════════
+   Sidebar categories — Atoms / Molecules / Overlays / Navigation
+   ═══════════════════════════════════════════════════════════════ */
+const CATEGORIES: { label: string; tag: string; items: ComponentName[] }[] = [
+  {
+    label: "Atoms",
+    tag: "atom",
+    items: [
+      "Button", "Badge", "Typography", "Avatar", "Separator",
+      "Skeleton", "Label & Field", "Progress", "Slider",
+    ],
+  },
+  {
+    label: "Inputs",
+    tag: "input",
+    items: [
+      "TextInput", "Textarea", "Checkbox", "Radio", "Switch",
+      "Toggle", "Dropdown", "InputGroup", "OtpInput",
+    ],
+  },
+  {
+    label: "Molecules",
+    tag: "molecule",
+    items: [
+      "Alert", "Card", "Accordion", "Tabs", "Tooltip",
+      "Breadcrumb", "Calendar", "Table", "ScrollArea",
+      "NavigationWizard", "Pagination", "Form",
+    ],
+  },
+  {
+    label: "Overlays",
+    tag: "overlay",
+    items: ["Dialog", "Drawer", "Toast"],
+  },
+];
 
 /* ═══════════════════════════════════════════════════════════════
    App — 3-column layout
@@ -1547,40 +2085,66 @@ function App() {
     document.documentElement.setAttribute("data-theme", next);
   };
 
-  const filtered = COMPONENT_LIST.filter((name) =>
-    name.toLowerCase().includes(search.toLowerCase())
-  );
-
   const entry = COMPONENT_REGISTRY[selected];
   const Preview = entry.preview;
   const Usage = entry.usage;
 
   const isCardComponent = selected === "Card";
 
+  const lc = search.toLowerCase();
+  const isSearching = lc.length > 0;
+
+  const COMPONENT_META: Record<ComponentName, { label: string; tag: string }> = {} as Record<ComponentName, { label: string; tag: string }>;
+  CATEGORIES.forEach(({ tag, items }) =>
+    items.forEach((item) => { COMPONENT_META[item] = { label: item, tag }; })
+  );
+
+  const filteredCategories = CATEGORIES.map((cat) => ({
+    ...cat,
+    items: isSearching
+      ? cat.items.filter((n) => n.toLowerCase().includes(lc))
+      : cat.items,
+  })).filter((cat) => cat.items.length > 0);
+
+  const TAG_COLORS: Record<string, string> = {
+    atom: "bg-purple-subtle text-primary",
+    input: "bg-success-subtle text-success-text",
+    molecule: "bg-info-subtle text-info-text",
+    overlay: "bg-warning-subtle text-warning-text",
+  };
+
   return (
     <div className="h-screen flex flex-col bg-surface text-text-default">
       {/* ── Top bar ── */}
       <header className="shrink-0 flex items-center justify-between px-6 py-3 border-b border-border-subtle bg-surface-raised">
-        <div className="flex items-center gap-4">
-          <h1 className="text-lg font-semibold text-text-strong tracking-tight">
-            Acko Design System
-          </h1>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-lg bg-primary flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </div>
+            <h1 className="text-sm font-semibold text-text-strong tracking-tight">
+              Acko DS
+            </h1>
+          </div>
+          <span className="text-border-strong">|</span>
           <Badge color="purple" variant="outline">
-            {COMPONENT_LIST.length} Components
+            {COMPONENT_LIST.length} components
           </Badge>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-1 p-0.5 rounded-full border border-border-subtle bg-surface">
           {(["light", "dark"] as Theme[]).map((t) => (
             <button
               key={t}
               onClick={() => cycleTheme(t)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
                 theme === t
                   ? "bg-primary text-on-primary shadow-sm"
-                  : "bg-transparent text-text-muted hover:text-text-strong hover:bg-surface"
+                  : "bg-transparent text-text-muted hover:text-text-default"
               }`}
             >
-              {t.charAt(0).toUpperCase() + t.slice(1)}
+              {t === "light" ? "☀️ Light" : "🌙 Dark"}
             </button>
           ))}
         </div>
@@ -1588,77 +2152,126 @@ function App() {
 
       {/* ── 3-column body ── */}
       <div className="flex-1 flex min-h-0">
+
         {/* ── Left: Component list ── */}
-        <aside className="w-56 shrink-0 border-r border-border-subtle bg-surface-raised flex flex-col">
-          <div className="p-3">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-3 py-2 text-sm rounded-lg border border-border-subtle bg-surface placeholder:text-text-disabled focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
-            />
+        <aside className="w-60 shrink-0 border-r border-border-subtle bg-surface-raised flex flex-col">
+          <div className="px-3 pt-4 pb-3">
+            <div className="relative">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-text-disabled pointer-events-none" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                type="text"
+                placeholder="Search components…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-8 pr-3 py-2 text-xs rounded-lg border border-border-subtle bg-surface placeholder:text-text-disabled focus:outline-none focus:border-primary transition-all"
+              />
+            </div>
           </div>
-          <nav className="flex-1 overflow-y-auto px-2 pb-4">
-            {filtered.map((name) => (
-              <button
-                key={name}
-                onClick={() => setSelected(name)}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all mb-0.5 ${
-                  selected === name
-                    ? "bg-primary text-on-primary shadow-sm"
-                    : "text-text-muted hover:text-text-strong hover:bg-surface"
-                }`}
-              >
-                {name}
-              </button>
+          <nav className="flex-1 overflow-y-auto px-2 pb-6 space-y-4">
+            {filteredCategories.map((cat) => (
+              <div key={cat.tag}>
+                <p className="px-2 mb-1 text-[10px] font-semibold uppercase tracking-widest text-text-disabled">
+                  {cat.label}
+                </p>
+                {cat.items.map((name) => (
+                  <button
+                    key={name}
+                    onClick={() => setSelected(name)}
+                    className={`w-full text-left px-3 py-1.5 rounded-lg text-xs font-medium transition-all mb-0.5 flex items-center justify-between group ${
+                      selected === name
+                        ? "bg-primary text-on-primary"
+                        : "text-text-muted hover:text-text-strong hover:bg-surface"
+                    }`}
+                  >
+                    <span>{name}</span>
+                    {selected !== name && (
+                      <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ${TAG_COLORS[COMPONENT_META[name]?.tag ?? "atom"]}`}>
+                        {COMPONENT_META[name]?.tag}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
             ))}
-            {filtered.length === 0 && (
-              <p className="text-sm text-text-disabled text-center py-6">
-                No components found
+            {filteredCategories.length === 0 && (
+              <p className="text-xs text-text-disabled text-center py-8">
+                No results for "{search}"
               </p>
             )}
           </nav>
         </aside>
 
         {/* ── Middle: Component preview ── */}
-        <main className="flex-1 overflow-y-auto p-8 bg-surface">
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-6">
-              <Typography variant="heading-xl" color="strong">
-                {selected}
-              </Typography>
-              <Typography variant="body-sm" color="muted">
-                Component variants, sizes, and states
-              </Typography>
+        <main className="flex-1 overflow-y-auto bg-surface">
+          <div className="max-w-xl mx-auto px-8 py-10">
+            {/* Header */}
+            <div className="flex items-start justify-between mb-8">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Typography variant="heading-xl" color="primary">
+                    {selected}
+                  </Typography>
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${TAG_COLORS[COMPONENT_META[selected]?.tag ?? "atom"]}`}>
+                    {COMPONENT_META[selected]?.tag ?? "atom"}
+                  </span>
+                </div>
+                <Typography variant="body-sm" color="secondary">
+                  Variants, sizes, and states
+                </Typography>
+              </div>
             </div>
+
+            {/* Preview area */}
             {isCardComponent ? (
-              <div className="p-6">
+              <div className="space-y-3">
                 <Preview />
               </div>
             ) : (
-              <div className="rounded-2xl border border-border-subtle bg-card-bg p-6" style={{ borderRadius: 'var(--radius-3xl)' }}>
-                <Preview />
+              <div
+                className="overflow-hidden"
+                style={{
+                  borderRadius: "var(--radius-2xl)",
+                  background: "var(--color-card-bg)",
+                  border: "1px solid var(--color-card-border)",
+                }}
+              >
+                <div className="p-6">
+                  <Preview />
+                </div>
               </div>
             )}
           </div>
         </main>
 
         {/* ── Right: Component in use ── */}
-        <aside className="w-[360px] shrink-0 border-l border-border-subtle overflow-y-auto p-6 bg-surface">
-          <div className="mb-4">
-            <Typography variant="label-lg" color="strong">
-              In Context
-            </Typography>
-            <Typography variant="caption" color="muted">
-              How the component looks in a real UI
+        <aside className="w-[340px] shrink-0 border-l border-border-subtle overflow-y-auto bg-surface-raised">
+          <div className="px-5 pt-6 pb-3 border-b border-border-subtle">
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-4 rounded-full bg-primary" />
+              <Typography variant="label-md" color="primary">
+                In Context
+              </Typography>
+            </div>
+            <Typography variant="caption" color="secondary">
+              Real-world usage example
             </Typography>
           </div>
-          <Usage />
+          <div className="p-5">
+            <Usage />
+          </div>
         </aside>
+
       </div>
     </div>
   );
 }
 
-export default App;
+export default function Root() {
+  return (
+    <ToastProvider position="top-right">
+      <App />
+    </ToastProvider>
+  );
+}
