@@ -10,7 +10,7 @@ export interface TextareaProps
   onChange?: (value: string) => void;
   placeholder?: string;
   rows?: number;
-  resize?: "vertical" | "horizontal" | "both" | "none";
+  resize?: "none";
   maxLength?: number;
   showCount?: boolean;
   state?: "default" | "error" | "success";
@@ -29,7 +29,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange,
       placeholder,
       rows = 4,
-      resize = "vertical",
+      resize = "none",
       maxLength,
       showCount = false,
       state = "default",

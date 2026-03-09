@@ -56,11 +56,58 @@
 }
 
 @keyframes acko-progress-shimmer {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* --- Circular variant --- */
+
+.acko-progress-circular {
+  @apply relative inline-flex items-center justify-center;
+}
+
+.acko-progress-circular-svg {
+  display: block;
+}
+
+.acko-progress-circular-track {
+  stroke: var(--color-border-subtle);
+}
+
+.acko-progress-circular-bar {
+  transition: stroke-dashoffset 500ms var(--ease-out-cubic);
+}
+
+.acko-progress-circular-bar-primary { stroke: var(--color-primary); }
+.acko-progress-circular-bar-success { stroke: var(--color-success); }
+.acko-progress-circular-bar-error { stroke: var(--color-error); }
+
+.acko-progress-circular-content {
+  @apply absolute inset-0 flex items-center justify-center;
+}
+
+.acko-progress-circular-label {
+  font-size: var(--font-caption-size);
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+.acko-progress-circular-lg .acko-progress-circular-label {
+  font-size: var(--font-body-sm-size);
+}
+
+/* --- Segmented variant --- */
+
+.acko-progress-segmented {
+  @apply flex w-full;
+  gap: var(--scale-2);
+}
+
+.acko-progress-segment {
+  @apply flex-1 rounded-full;
+  background-color: var(--color-border-subtle);
+}
+
+.acko-progress-segment-filled {
+  transition: background-color 300ms var(--ease-out-cubic);
 }

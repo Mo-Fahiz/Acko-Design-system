@@ -1,13 +1,75 @@
+---
+description: Tabs visual spec — CSS classes, variants (underline, pill, navigation), gradient indicator, token usage
+globs: "**/tabs*.css,**/Tabs/**"
+alwaysApply: false
+---
+
 # Tabs — Visual Spec
 
-## CSS classes
+## CSS Classes
 
-- `.acko-tabs` — base wrapper
-- `.acko-tabs-list` — flex
-- Underline: `.acko-tabs-list-underline`, `.acko-tab-underline`, `.acko-tab-underline-active`
-- Pill: `.acko-tabs-list-pill`, `.acko-tab-pill`, `.acko-tab-pill-active`
-- Enclosed: `.acko-tab-enclosed`, `.acko-tab-enclosed-active`
-- Sizes: `.acko-tab-sm`, `.acko-tab-md`
-- `.acko-tab-icon` — scale-16
-- `.acko-tab-full-width .acko-tab-*` — flex-1 justify-center
-- `.acko-tab-disabled` — opacity, cursor, pointer-events
+- `.acko-tabs` — base wrapper, `w-full`
+- `.acko-tabs-list` — flex container for tab buttons
+- `.acko-tab` — base tab button, `inline-flex items-center gap-2`, no border, bg-transparent
+
+## Variants
+
+### Underline
+- `.acko-tabs-list-underline` — `border-bottom: 1px solid var(--color-border-subtle)`, `position: relative`
+- `.acko-tab-underline` — padding `var(--space-2) var(--space-4)`, `margin-bottom: -1px`, position relative
+- Active indicator via `::after` pseudo-element:
+  - `background: linear-gradient(90deg, transparent, var(--color-primary), transparent)`
+  - `height: 2px`, `border-radius: 1px`, positioned at bottom
+  - `transition: background 250ms var(--ease-in-out-cubic)`
+- Active text: `--color-primary`
+
+### Underline (top indicator)
+- `.acko-tabs-list-underline-top` — `border-top` instead of `border-bottom`
+- `::after` positioned at top instead of bottom
+
+### Pill
+- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: var(--space-1)`, `width: fit-content`
+- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `var(--space-1) var(--space-4)`
+- Active (light): `background: var(--color-primary-subtle)` (purple-100), `color: var(--color-primary)`, `--shadow-sm`
+- Active (dark): `background: var(--color-primary-subtle)` (purple-900), `color: var(--color-on-primary)` (white)
+
+### Navigation (bottom tabs)
+- `.acko-tabs-list-navigation` — `background: var(--color-card-bg)`, `border-top: 1px solid var(--color-border-subtle)`, `justify-content: space-around`
+- `.acko-tab-navigation` — `flex-col`, icon `var(--scale-24)`, label `--font-caption-size`, `min-width: var(--scale-64)`
+- Active (light): `background: var(--color-primary-subtle)`, `color: var(--color-primary)`, `border-radius: var(--radius-full)`
+- Active (dark): `background: var(--color-primary)`, `color: var(--color-on-primary)`, `border-radius: var(--radius-full)`
+
+### Enclosed
+- `.acko-tab-enclosed` — `border: 1px solid var(--color-border-subtle)`, no bottom border
+- Active: `--color-card-bg` background
+
+## Sizes
+- `.acko-tab-sm` — `--font-caption-size`, padding `var(--space-1) var(--space-3)`
+- `.acko-tab-md` — `--font-body-sm-size`, padding `var(--space-2) var(--space-4)`
+
+## Icon
+- `.acko-tab-icon` — `var(--scale-16) × var(--scale-16)`, shrink-0
+- Navigation variant icons: `var(--scale-24)`
+
+## Token Usage
+
+| Token | Role |
+|-------|------|
+| `--color-primary` | Active underline gradient center, active text, navigation active |
+| `--color-text-muted` | Inactive tab text |
+| `--color-text-strong` | Active pill text |
+| `--color-tab-pill-bg` | Pill container background |
+| `--color-primary-subtle` | Active pill fill (purple-100 light / purple-900 dark) |
+| `--color-card-bg` | Enclosed active bg, navigation bar bg |
+| `--color-border-subtle` | List border, enclosed tab border, navigation border-top |
+| `--shadow-sm` | Active pill shadow |
+
+## Transitions
+All variants: `color 200ms var(--ease-in-out-cubic)`, pill adds `all 200ms var(--ease-in-out-cubic)`
+
+## Props (React)
+- `variant`: `"underline" | "pill" | "enclosed" | "navigation"`
+- `indicatorPosition`: `"top" | "bottom"` (underline only)
+- `size`: `"sm" | "md"`
+- `fullWidth`: boolean
+- `items`: `TabItem[]` with optional `icon` ReactNode

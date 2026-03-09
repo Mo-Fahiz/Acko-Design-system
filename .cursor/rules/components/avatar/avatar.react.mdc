@@ -1,0 +1,35 @@
+---
+description: Avatar React implementation — props, fallback hierarchy, image loading
+globs: "**/avatar/**,**/Avatar/**"
+---
+
+# Avatar — React
+
+Package: `@acko/avatar`
+Directive: none (presentational)
+
+## Props Interface
+
+```typescript
+interface AvatarProps {
+  src?: string;
+  alt?: string;
+  initials?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'circle' | 'square';
+  className?: string;
+}
+```
+
+## Fallback Hierarchy
+
+1. `src` → renders `<img>` with `object-fit: cover`
+2. `initials` → renders text with primary-subtle background
+3. Neither → renders fallback User icon (lucide-react)
+
+## Exports
+
+```typescript
+export { Avatar } from './Avatar';
+export type { AvatarProps } from './Avatar';
+```

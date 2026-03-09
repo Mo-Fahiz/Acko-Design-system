@@ -66,10 +66,17 @@
   --color-card-outline-border: var(--color-card-outline-border);
 
   --color-btn-secondary-bg: var(--color-btn-secondary-bg);
+  --color-btn-secondary-border: var(--color-btn-secondary-border);
+  --color-btn-secondary-text: var(--color-btn-secondary-text);
+  --color-btn-inverted-bg: var(--color-btn-inverted-bg);
+  --color-btn-inverted-text: var(--color-btn-inverted-text);
   --color-btn-ghost-color: var(--color-btn-ghost-color);
   --color-btn-ghost-hover-bg: var(--color-btn-ghost-hover-bg);
-  --color-btn-outline-color: var(--color-btn-outline-color);
-  --color-btn-outline-hover-bg: var(--color-btn-outline-hover-bg);
+  --color-btn-link-color: var(--color-btn-link-color);
+  --color-btn-danger-bg: var(--color-btn-danger-bg);
+  --color-btn-danger-text: var(--color-btn-danger-text);
+  --color-btn-disabled-bg: var(--color-btn-disabled-bg);
+  --color-btn-disabled-text: var(--color-btn-disabled-text);
 
   --color-input-bg: var(--color-input-bg);
   --color-input-border: var(--color-input-border);

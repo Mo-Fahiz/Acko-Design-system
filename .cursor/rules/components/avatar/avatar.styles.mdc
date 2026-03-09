@@ -1,0 +1,35 @@
+---
+description: Avatar visual spec — CSS classes, sizes, shapes, fallback hierarchy
+globs: "**/avatar/**,**/Avatar/**"
+---
+
+# Avatar — Styles
+
+CSS file: `@acko/css/avatar.css`
+
+## CSS Classes
+
+### Base
+`.acko-avatar` — `display: inline-flex`, `align-items: center`, `justify-content: center`, `overflow: hidden`, `flex-shrink: 0`
+
+### Sizes
+
+| Class | Dimensions | Initials Font | Icon Size |
+|-------|-----------|--------------|-----------|
+| `.acko-avatar-xs` | var(--scale-24) × var(--scale-24) | var(--scale-10) | var(--font-label-md-size) |
+| `.acko-avatar-sm` | var(--scale-32) × var(--scale-32) | var(--font-label-md-size) | var(--scale-16) |
+| `.acko-avatar-md` | var(--scale-40) × var(--scale-40) | var(--font-body-sm-size) | var(--font-heading-md-size) |
+| `.acko-avatar-lg` | var(--scale-48) × var(--scale-48) | var(--font-body-md-size) | var(--scale-24) |
+| `.acko-avatar-xl` | var(--scale-64) × var(--scale-64) | var(--font-heading-md-size) | var(--scale-32) |
+
+### Shapes
+
+| Class | Border Radius |
+|-------|--------------|
+| `.acko-avatar-circle` | `--radius-full` |
+| `.acko-avatar-square` | `--radius-lg` |
+
+### Fallback
+- `.acko-avatar-img` — `<img>` with `object-fit: cover`, `transition: opacity 200ms ease`
+- `.acko-avatar-initials` — text centered, `font-weight: 500`, `background: --color-primary-subtle`, `color: --color-primary`
+- `.acko-avatar-fallback` — fallback User icon, same bg/color as initials

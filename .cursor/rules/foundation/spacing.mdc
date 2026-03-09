@@ -17,14 +17,14 @@ Semantic spacing aliases referencing the base scale. Use these in CSS via `var(-
 | `--space-4` | `--scale-16` | 16px | Standard padding, card gaps, button padding |
 | `--space-5` | `--scale-20` | 20px | Medium gaps, card padding (md) |
 | `--space-6` | `--scale-24` | 24px | Card padding (lg), section gaps |
+| `--space-7` | `--scale-28` | 28px | Component internal spacing |
 | `--space-8` | `--scale-32` | 32px | Large component gaps |
+| `--space-9` | `--scale-36` | 36px | Section padding |
 | `--space-10` | `--scale-40` | 40px | Large spacing |
 | `--space-12` | `--scale-48` | 48px | Section margins |
 | `--space-16` | `--scale-64` | 64px | Page sections |
 | `--space-20` | `--scale-80` | 80px | Hero spacing |
 | `--space-24` | `--scale-96` | 96px | Large section breaks |
-
-> **Note:** There are no `--space-7` (28px) or `--space-9` (36px) tokens. The spacing scale jumps from `--space-6` to `--space-8`.
 
 ## Component Sizing Scale
 

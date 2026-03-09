@@ -86,18 +86,23 @@ primitives → semantics → component CSS
 |-------|-------|------|
 | `--color-warning` | `orange-600` | `orange-500` |
 | `--color-warning-text` | `orange-700` | `orange-400` |
-| `--color-warning-subtle` | `orange-100` | `orange-950` |
-| `--color-warning-border` | `orange-200` | `orange-800` |
+| `--color-warning-subtle` | `orange-50` | `orange-950` |
+| `--color-warning-border` | `orange-100` | `orange-800` |
 | `--color-warning-badge-bg` | `orange-200` | `orange-900` |
 
-### Info
+### Info (uses brand purple — NOT blue)
 | Token | Light | Dark |
 |-------|-------|------|
-| `--color-info` | `blue-600` | `blue-500` |
-| `--color-info-text` | `blue-700` | `blue-400` |
-| `--color-info-subtle` | `blue-100` | `blue-950` |
-| `--color-info-border` | `blue-200` | `blue-800` |
-| `--color-info-badge-bg` | `blue-200` | `blue-900` |
+| `--color-info` | `purple-600` | `purple-500` |
+| `--color-info-text` | `purple-700` | `purple-400` |
+| `--color-info-subtle` | `purple-100` | `purple-950` |
+| `--color-info-border` | `purple-200` | `purple-800` |
+| `--color-info-badge-bg` | `purple-200` | `purple-900` |
+
+### Alert Body Text
+| Token | Light | Dark |
+|-------|-------|------|
+| `--color-alert-body` | `grey-550` | `grey-100` |
 
 ## Cards
 
@@ -161,11 +166,18 @@ primitives → semantics → component CSS
 ### Button
 | Token | Light | Dark |
 |-------|-------|------|
-| `--color-btn-secondary-bg` | `grey-150` | `grey-600` |
-| `--color-btn-ghost-color` | `purple-600` | `purple-400` |
-| `--color-btn-ghost-hover-bg` | `grey-150` | `grey-600` |
-| `--color-btn-outline-color` | `purple-600` | `purple-400` |
-| `--color-btn-outline-hover-bg` | `purple-50` | `purple-950` |
+| `--color-btn-secondary-bg` | `purple-50` | `grey-650` |
+| `--color-btn-secondary-border` | `purple-300` | `purple-600` |
+| `--color-btn-secondary-text` | `purple-700` | `grey-50` |
+| `--color-btn-inverted-bg` | `grey-100` | `grey-100` |
+| `--color-btn-inverted-text` | `purple-700` | `purple-700` |
+| `--color-btn-ghost-color` | `purple-600` | `purple-500` |
+| `--color-btn-ghost-hover-bg` | `purple-50` | `grey-600` |
+| `--color-btn-link-color` | `blue-600` | `blue-500` |
+| `--color-btn-danger-bg` | `red-100` | `red-900` |
+| `--color-btn-danger-text` | `red-500` | `red-200` |
+| `--color-btn-disabled-bg` | `grey-100` | `grey-600` |
+| `--color-btn-disabled-text` | `grey-350` | `grey-450` |
 | `--color-btn-primary-hover-bg` | — | `purple-600` |
 
 ### Input (shared by TextInput, Dropdown, Textarea, InputGroup)
@@ -174,7 +186,7 @@ primitives → semantics → component CSS
 | `--color-input-bg` | `grey-white` | `grey-700` |
 | `--color-input-border` | `var(--color-border-subtle)` | `grey-450` |
 | `--color-input-hover-border` | `grey-350` | `grey-500` |
-| `--color-input-option-hover` | `purple-50` | `grey-650` |
+| `--color-input-option-hover` | `grey-100` | `grey-650` |
 | `--color-input-option-selected-bg` | `purple-100` | `purple-900` |
 | `--color-input-option-selected-text` | `purple-700` | `purple-300` |
 
@@ -204,12 +216,14 @@ primitives → semantics → component CSS
 
 ### Badge — Solid (per-color tokens)
 
+> **Note:** Badges are FLAT — no shadows (inner or drop) per the new spec. The shadow tokens remain defined for backward compatibility but should NOT be used in new implementations.
+
 Pattern: `--color-badge-{color}-{bg|text|shadow-top|shadow-bottom}`
 
 | Color | `bg` Light | `text` Light | `shadow-top` Light | `shadow-bottom` Light |
 |-------|-----------|-------------|--------------------|-----------------------|
 | purple | `purple-200` | `purple-800` | `purple-100` | `purple-300` |
-| green | `green-200` | `green-800` | `green-100` | `green-300` |
+| green | `lime-200` | `green-800` | `lime-100` | `green-300` |
 | blue | `blue-200` | `blue-800` | `blue-100` | `blue-300` |
 | orange | `orange-200` | `orange-800` | `orange-100` | `orange-300` |
 | pink | `red-200` | `red-800` | `red-100` | `red-300` |
@@ -279,3 +293,5 @@ Pattern: `--color-counter-{color}-{bg|shadow-top|shadow-bottom}`
 | `--shadow-btn-inner` | `inset 0 1px 2px rgba(255,255,255,0.28)` | `inset 0 1px 2px rgba(255,255,255,0.15)` |
 | `--shadow-btn-hover` | `0 4px 8px rgba(0,0,0,0.08)` | `0 4px 8px rgba(0,0,0,0.3)` |
 | `--shadow-focus-ring` | `0 0 0 3px var(--color-primary-ring)` | same |
+| `--shadow-border-alt` | `var(--shadow-border)` | `var(--shadow-border)` |
+| `--shadow-btn-secondary-hover` | `inset 0 2px 4px rgba(255,255,255,0.48)` | `inset 0 2px 4px rgba(0,0,0,0.2)` |

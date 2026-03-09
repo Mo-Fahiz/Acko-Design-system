@@ -23,9 +23,10 @@ CSS file: `@acko/css/radio.css`
 
 ### Circle + Dot
 - `.acko-radio-circle` — border 2px `--color-control-border-selector`, rounded-full
-- `.acko-radio-dot` — inner dot, animated bounce on selection
+- `.acko-radio-dot` — inner dot `--color-on-primary`, animated bounce on selection
 
 ### Sizes (via `.acko-radio-{size}`)
+
 | Size | Circle | Dot | Label Font |
 |------|--------|-----|------------|
 | sm | `--scale-16` | `--scale-8` | `--font-body-sm-size` |
@@ -33,12 +34,29 @@ CSS file: `@acko/css/radio.css`
 | lg | `--scale-24` | `--scale-12` | `--font-body-lg-size` |
 
 ### Card Variant
-- `.acko-radio-card-item` — border, rounded-3xl, padding, card-bg
-- Uses `--color-radio-card-*` tokens for hover/active states
+- `.acko-radio-card-item` — `1px solid --color-card-border`, `border-radius: --radius-3xl`, padding `--space-4`, `--color-card-bg`
+
+| Card State | Border | Background |
+|------------|--------|-----------|
+| Default | `--color-card-border` | `--color-card-bg` |
+| Hover | `--color-radio-card-hover-border` | `--color-radio-card-hover-bg` |
+| Selected | `--color-radio-card-active-border` | `--color-radio-card-active-bg` |
+| Focus-within | — | `box-shadow: var(--shadow-focus-ring)` |
 
 ### States (raw CSS)
 - Selected: circle fills `--color-primary`, scale(1.08)
-- Hover: `@media (hover:hover)` — muted border, subtle bg
-- Focus: `box-shadow: --shadow-focus-ring` via `:focus-visible`
-- Disabled: subtle border, raised bg, muted text
-- Error: error border color
+- Hover unchecked: `@media (hover:hover)` — border `--color-primary-muted`, bg `--color-primary-subtle`
+- Hover checked: bg `--color-primary-hover`, border `--color-primary-hover`
+- Focus: `box-shadow: var(--shadow-focus-ring)` via `:focus-visible`
+- Disabled unchecked: border `--color-border-subtle`, bg `--color-surface-raised`
+- Disabled checked: border `--color-text-muted`, fill `--color-text-muted`
+- Error: border `--color-error`
+
+### Labels
+- `.acko-radio-label-text` — `--color-text-default`
+- `.acko-radio-description` — `--font-caption-size`, `--color-text-muted`
+- Disabled: both use `--color-text-disabled`
+
+## Dark Theme
+
+Automatic via semantic token remapping. All `--color-radio-card-*`, `--color-control-border-selector`, and feedback tokens remap to dark values in `tokens.css`.

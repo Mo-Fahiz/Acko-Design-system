@@ -290,37 +290,3 @@
   border-color: var(--color-border);
 }
 
-/* --- Elevated theme --- */
-
-[data-theme="elevated"] .acko-dropdown-trigger {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
-    var(--elevated-border-gradient) border-box;
-  box-shadow: var(--elevated-glow);
-  backdrop-filter: blur(14px);
-}
-
-[data-theme="elevated"] .acko-dropdown-trigger-open,
-[data-theme="elevated"] .acko-dropdown-trigger:focus-visible {
-  border-color: transparent;
-  box-shadow: var(--elevated-focus-ring);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  [data-theme="elevated"] .acko-dropdown-trigger:hover:not(:disabled):not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) {
-    background:
-      linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
-      var(--elevated-border-gradient) border-box;
-    box-shadow: var(--elevated-glow-hover);
-  }
-}
-
-[data-theme="elevated"] .acko-dropdown-menu {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
-    var(--elevated-border-gradient) border-box;
-  box-shadow: none;
-  backdrop-filter: blur(18px);
-}

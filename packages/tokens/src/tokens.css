@@ -248,8 +248,8 @@
   --shadow-subtle: var(--shadow-sm);
 
   /* Component shadows */
-  --shadow-btn-inner: inset 0px 1px 2px rgba(255, 255, 255, 0.28);
-  --shadow-btn-hover: 0px 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-btn-inner: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.28);
+  --shadow-btn-hover: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
   --shadow-btn-secondary-hover: inset 0px 2px 4px rgba(255, 255, 255, 0.48);
   --shadow-focus-ring: 0 0 0 3px var(--color-primary-ring);
 
@@ -333,27 +333,27 @@
 
   /* Error */
   --color-error: var(--red-600);
-  --color-error-subtle: var(--red-50);
+  --color-error-subtle: var(--red-100);
   --color-error-text: var(--red-700);
   --color-error-badge-bg: var(--red-100);
 
   /* Warning */
   --color-warning: var(--orange-600);
-  --color-warning-subtle: var(--orange-100);
+  --color-warning-subtle: var(--orange-50);
   --color-warning-text: var(--orange-700);
   --color-warning-badge-bg: var(--orange-200);
 
   /* Info */
-  --color-info: var(--blue-600);
-  --color-info-subtle: var(--blue-100);
-  --color-info-text: var(--blue-700);
-  --color-info-badge-bg: var(--blue-200);
+  --color-info: var(--purple-600);
+  --color-info-subtle: var(--purple-100);
+  --color-info-text: var(--purple-700);
+  --color-info-badge-bg: var(--purple-200);
 
   /* Alert borders */
   --color-success-border: var(--green-200);
   --color-error-border: var(--red-200);
-  --color-warning-border: var(--orange-200);
-  --color-info-border: var(--blue-200);
+  --color-warning-border: var(--orange-100);
+  --color-info-border: var(--purple-200);
 
   /* Tooltip */
   --color-tooltip-bg: var(--grey-700);
@@ -401,11 +401,18 @@
   --color-control-border-selector: var(--grey-200);
 
   /* Button */
-  --color-btn-secondary-bg: var(--grey-150);
-  --color-btn-ghost-hover-bg: var(--grey-150);
+  --color-btn-secondary-bg: var(--purple-50);
+  --color-btn-secondary-border: var(--purple-300);
+  --color-btn-secondary-text: var(--purple-700);
+  --color-btn-inverted-bg: var(--grey-100);
+  --color-btn-inverted-text: var(--purple-700);
+  --color-btn-ghost-hover-bg: var(--purple-50);
   --color-btn-ghost-color: var(--purple-600);
-  --color-btn-outline-color: var(--purple-600);
-  --color-btn-outline-hover-bg: var(--purple-50);
+  --color-btn-link-color: var(--blue-600);
+  --color-btn-danger-bg: var(--red-100);
+  --color-btn-danger-text: var(--red-500);
+  --color-btn-disabled-bg: var(--grey-150);
+  --color-btn-disabled-text: var(--grey-350);
 
   /* Radio */
   --color-radio-card-hover-border: var(--purple-200);
@@ -487,147 +494,6 @@
   --color-wizard-connector-upcoming: var(--grey-250);
 }
 
-/* ============================================================
-   SEMANTIC TOKENS — ELEVATED THEME
-   ============================================================ */
-
-[data-theme="elevated"] {
-  /* Primary */
-  --color-primary: var(--purple-600);
-  --color-primary-hover: var(--purple-700);
-  --color-primary-active: var(--purple-800);
-  --color-primary-subtle: var(--purple-100);
-  --color-primary-muted: var(--purple-400);
-  --color-primary-ring: var(--purple-200);
-  --color-on-primary: var(--grey-white);
-
-  /* Surfaces */
-  --color-surface: var(--grey-white);
-  --color-surface-raised: var(--grey-100);
-  --color-surface-raised-hover: var(--grey-200);
-  --color-surface-raised-active: var(--grey-300);
-  --color-surface-overlay: color-mix(in srgb, var(--grey-800) 8%, transparent);
-  --color-surface-ghost-hover: rgba(0, 0, 0, 0.04);
-
-  /* Text */
-  --color-text-strong: var(--grey-800);
-  --color-text-default: var(--grey-700);
-  --color-text-secondary: var(--grey-550);
-  --color-text-muted: var(--grey-450);
-  --color-text-disabled: var(--grey-300);
-
-  /* Borders */
-  --color-border: var(--grey-300);
-  --color-border-strong: var(--grey-450);
-  --color-border-subtle: var(--grey-200);
-
-  /* Disabled */
-  --color-disabled-bg: var(--grey-150);
-  --color-disabled-text: var(--grey-350);
-  --color-disabled-border: var(--grey-200);
-
-  /* Success */
-  --color-success: var(--green-600);
-  --color-success-subtle: var(--green-100);
-  --color-success-text: var(--green-700);
-  --color-success-badge-bg: var(--green-200);
-
-  /* Error */
-  --color-error: var(--red-600);
-  --color-error-subtle: var(--red-50);
-  --color-error-text: var(--red-700);
-  --color-error-badge-bg: var(--red-100);
-
-  /* Warning */
-  --color-warning: var(--orange-600);
-  --color-warning-subtle: var(--orange-100);
-  --color-warning-text: var(--orange-700);
-  --color-warning-badge-bg: var(--orange-200);
-
-  /* Info */
-  --color-info: var(--blue-600);
-  --color-info-subtle: var(--blue-100);
-  --color-info-text: var(--blue-700);
-  --color-info-badge-bg: var(--blue-200);
-
-  /* Shadows — elevated */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 18px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 10px 32px rgba(15, 23, 42, 0.12);
-  --shadow-xl: 0 18px 55px rgba(15, 23, 42, 0.14);
-  --shadow-card: var(--shadow-md);
-  --shadow-dropdown: var(--shadow-lg);
-  --shadow-modal: var(--shadow-xl);
-  --shadow-subtle: var(--shadow-sm);
-
-  /* Elevated-specific tokens */
-  --elevated-glass-bg: color-mix(in srgb, var(--grey-white) 86%, transparent);
-  --elevated-glass-bg-hover: color-mix(in srgb, var(--grey-white) 94%, transparent);
-  --elevated-glass-bg-active: color-mix(in srgb, var(--grey-white) 98%, transparent);
-
-  --elevated-glass-border: color-mix(in srgb, var(--purple-500) 22%, transparent);
-  --elevated-glass-border-strong: color-mix(in srgb, var(--purple-600) 34%, transparent);
-
-  --elevated-glow: 0 0 0 1px var(--elevated-glass-border);
-  --elevated-glow-hover: 0 0 0 1px var(--elevated-glass-border-strong), var(--shadow-lg);
-
-  --elevated-border-gradient: linear-gradient(135deg, var(--purple-600), var(--purple-400));
-
-  /* Primary CTA */
-  --elevated-primary-gradient: linear-gradient(180deg, var(--purple-400) 0%, var(--purple-500) 20%, var(--purple-600) 100%);
-  --elevated-primary-gradient-hover: linear-gradient(180deg, var(--purple-400) 0%, var(--purple-500) 10%, var(--purple-700) 100%);
-  --elevated-primary-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.14),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.04),
-    0 6px 20px 0px color-mix(in srgb, var(--purple-600) 20%, transparent),
-    0 2px 4px color-mix(in srgb, var(--purple-600) 12%, transparent);
-  --elevated-primary-shadow-hover:
-    inset 0 1px 1px rgba(255, 255, 255, 0.18),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.06),
-    0 8px 28px 0px color-mix(in srgb, var(--purple-600) 30%, transparent),
-    0 2px 6px color-mix(in srgb, var(--purple-600) 18%, transparent);
-
-  --elevated-convex-overlay: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.02) 0%,
-    rgba(255, 255, 255, 0.05) 22%,
-    transparent 32%,
-    rgba(0, 0, 0, 0.02) 100%
-  );
-
-  --elevated-primary-inner-shadows: var(--elevated-primary-shadow);
-  --elevated-primary-drop-shadow: 0 8px 28px color-mix(in srgb, var(--purple-600) 30%, transparent);
-
-  /* Danger CTA */
-  --elevated-danger-gradient: linear-gradient(180deg, var(--cerise-400) 0%, var(--cerise-500) 20%, var(--cerise-600) 100%);
-  --elevated-danger-gradient-hover: linear-gradient(180deg, var(--cerise-400) 0%, var(--cerise-500) 10%, var(--cerise-700) 100%);
-  --elevated-danger-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.14),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.04),
-    0 6px 20px 0px color-mix(in srgb, var(--cerise-600) 20%, transparent),
-    0 2px 4px color-mix(in srgb, var(--cerise-600) 12%, transparent);
-  --elevated-danger-shadow-hover:
-    inset 0 1px 1px rgba(255, 255, 255, 0.18),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.06),
-    0 8px 28px 0px color-mix(in srgb, var(--cerise-600) 30%, transparent),
-    0 2px 6px color-mix(in srgb, var(--cerise-600) 18%, transparent);
-
-  /* Success CTA */
-  --elevated-success-gradient: linear-gradient(180deg, var(--green-400) 0%, var(--green-500) 20%, var(--green-600) 100%);
-  --elevated-success-gradient-hover: linear-gradient(180deg, var(--green-400) 0%, var(--green-500) 10%, var(--green-700) 100%);
-  --elevated-success-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.14),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.04),
-    0 6px 20px 0px color-mix(in srgb, var(--green-600) 20%, transparent),
-    0 2px 4px color-mix(in srgb, var(--green-600) 12%, transparent);
-  --elevated-success-shadow-hover:
-    inset 0 1px 1px rgba(255, 255, 255, 0.18),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.06),
-    0 8px 28px 0px color-mix(in srgb, var(--green-600) 30%, transparent),
-    0 2px 6px color-mix(in srgb, var(--green-600) 18%, transparent);
-
-  --elevated-focus-ring: 0 0 0 3px var(--color-primary-ring), 0 0 0 1px var(--elevated-glass-border-strong);
-}
 
 /* ============================================================
    SEMANTIC TOKENS — DARK THEME
@@ -646,8 +512,8 @@
   --shadow-subtle: var(--shadow-sm);
 
   /* Component shadows */
-  --shadow-btn-inner: inset 0px 1px 2px rgba(255, 255, 255, 0.15);
-  --shadow-btn-hover: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-btn-inner: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.15);
+  --shadow-btn-hover: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
   --shadow-btn-secondary-hover: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
 
   /* Primary */
@@ -711,16 +577,16 @@
   --color-warning-badge-bg: var(--orange-900);
 
   /* Info */
-  --color-info: var(--blue-500);
-  --color-info-subtle: var(--blue-950);
-  --color-info-text: var(--blue-400);
-  --color-info-badge-bg: var(--blue-900);
+  --color-info: var(--purple-500);
+  --color-info-subtle: var(--purple-950);
+  --color-info-text: var(--purple-400);
+  --color-info-badge-bg: var(--purple-900);
 
   /* Alert borders */
   --color-success-border: var(--green-800);
   --color-error-border: var(--red-800);
   --color-warning-border: var(--orange-800);
-  --color-info-border: var(--blue-800);
+  --color-info-border: var(--purple-800);
 
   /* Tooltip */
   --color-tooltip-bg: var(--grey-200);
@@ -768,12 +634,19 @@
   --color-control-border-selector: var(--grey-500);
 
   /* Button */
-  --color-btn-secondary-bg: var(--grey-600);
+  --color-btn-secondary-bg: var(--grey-650);
+  --color-btn-secondary-border: var(--purple-600);
+  --color-btn-secondary-text: var(--grey-50);
+  --color-btn-inverted-bg: var(--grey-100);
+  --color-btn-inverted-text: var(--purple-700);
   --color-btn-ghost-hover-bg: var(--grey-600);
   --color-btn-primary-hover-bg: var(--purple-600);
-  --color-btn-ghost-color: var(--purple-400);
-  --color-btn-outline-color: var(--purple-400);
-  --color-btn-outline-hover-bg: var(--purple-950);
+  --color-btn-ghost-color: var(--purple-500);
+  --color-btn-link-color: var(--blue-500);
+  --color-btn-danger-bg: var(--red-900);
+  --color-btn-danger-text: var(--red-200);
+  --color-btn-disabled-bg: var(--grey-600);
+  --color-btn-disabled-text: var(--grey-450);
 
   /* Radio */
   --color-radio-card-hover-border: var(--purple-700);

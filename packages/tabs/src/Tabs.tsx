@@ -14,9 +14,10 @@ export interface TabsProps {
   items: TabItem[];
   value: string;
   onChange: (value: string) => void;
-  variant?: "underline" | "pill" | "enclosed";
+  variant?: "underline" | "pill" | "enclosed" | "navigation";
   size?: "sm" | "md";
   fullWidth?: boolean;
+  indicatorPosition?: "top" | "bottom";
   className?: string;
 }
 
@@ -29,6 +30,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       variant = "underline",
       size = "md",
       fullWidth = false,
+      indicatorPosition = "bottom",
       className,
     },
     ref
@@ -40,6 +42,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           className={clsx(
             "acko-tabs-list",
             `acko-tabs-list-${variant}`,
+            variant === "underline" && indicatorPosition === "top" && "acko-tabs-list-underline-top",
             fullWidth && "acko-tab-full-width"
           )}
         >

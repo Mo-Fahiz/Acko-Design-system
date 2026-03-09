@@ -1,0 +1,45 @@
+---
+description: Pagination visual spec — CSS classes, circle shape, purple-200 fill, smooth transitions
+globs: "**/pagination/**,**/Pagination/**"
+---
+
+# Pagination — Styles
+
+CSS file: `@acko/css/pagination.css`
+
+## CSS Classes
+
+### Base
+- `.acko-pagination` — flex, items-center, gap-1, flex-wrap
+
+### Page Button
+- `.acko-pagination-btn` — `var(--scale-40) × var(--scale-40)`, `border-radius: var(--radius-full)` (circle shape), flex center, cursor-pointer
+- Font: `--font-body-sm-size`, weight 500, family inherit
+- Background: transparent
+- Transition: `all 200ms var(--ease-in-out-cubic)` — smooth background/color changes
+
+### Nav Buttons (Prev/Next)
+- `.acko-pagination-nav` — `var(--scale-40) × var(--scale-40)`, `border-radius: var(--radius-full)`
+- Background: `--color-surface-raised`
+- Transition: `all 200ms var(--ease-in-out-cubic)`
+
+### Ellipsis
+- `.acko-pagination-ellipsis` — `var(--scale-40) × var(--scale-40)`, centered, `--color-text-muted`
+
+### Info
+- `.acko-pagination-info` — `--font-body-sm-size`, `--color-text-muted`
+
+### Page Button States
+
+| State | Background | Text | Extra |
+|-------|-----------|------|-------|
+| Default | transparent | `--color-text-default` | — |
+| Hover | `--color-primary-subtle` | `--color-text-strong` | — |
+| Current (`.acko-pagination-btn-current`) | `--color-primary-subtle` | `--color-text-default` | font-weight 600 |
+| Disabled | transparent | `--color-text-muted` | `opacity: var(--opacity-48)`, `cursor: not-allowed` |
+
+### Load More
+- `.acko-pagination-load-more` — `border-radius: var(--radius-full)`, bg `--color-primary`, text `--color-on-primary`
+
+## Display Pattern
+`< 1 2 3 4 ...16 >` — handled by `getVisiblePageRange` in React component

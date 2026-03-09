@@ -1,0 +1,42 @@
+---
+description: NavigationWizard React implementation — props, step management, accessibility
+globs: "**/navigation-wizard/**,**/NavigationWizard/**"
+---
+
+# NavigationWizard — React
+
+Package: `@acko/navigation-wizard`
+Directive: `"use client"` (interactive — clickable steps)
+
+## Props Interface
+
+```typescript
+interface WizardStep {
+  label: string;
+  description?: string;
+  status?: 'upcoming' | 'current' | 'completed' | 'error';
+}
+
+interface WizardProps {
+  steps: WizardStep[];
+  currentStep: number;
+  variant?: 'horizontal' | 'vertical' | 'compact';
+  onStepClick?: (stepIndex: number) => void;
+  className?: string;
+}
+```
+
+## Accessibility
+
+- `<nav aria-label="Progress">`
+- `<ol>` for ordered step list
+- Active step: `aria-current="step"`
+- Completed steps rendered as links if `onStepClick` is provided
+- Step changes announced via `aria-live="polite"` status region
+
+## Exports
+
+```typescript
+export { NavigationWizard } from './NavigationWizard';
+export type { WizardProps, WizardStep } from './NavigationWizard';
+```

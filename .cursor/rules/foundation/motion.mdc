@@ -25,18 +25,18 @@ These are defined as CSS custom properties in `tokens.css`:
 | Hover/color transitions | `ease` (CSS default) |
 | Seen 100+ times daily | Don't animate |
 
-## Duration (Reference Values Only)
+## Duration Tokens
 
-These durations are **reference guidelines**, NOT CSS custom properties defined in `tokens.css`. Use the raw values directly in transition/animation declarations.
+Duration tokens are CSS custom properties defined in `tokens.css`.
 
-| Name | Value | Use |
-|------|-------|-----|
-| instant | 0ms | No animation |
-| fast | 100ms | Hover, press |
-| normal | 150ms | Tooltips, dropdowns |
-| moderate | 200ms | Modals, menus |
-| slow | 300ms | Page transitions, error shake |
-| slower | 400ms | Hero animations |
+| Token | Value | Use |
+|-------|-------|-----|
+| `--duration-instant` | 0ms | No animation |
+| `--duration-fast` | 100ms | Hover, press |
+| `--duration-normal` | 150ms | Tooltips, dropdowns |
+| `--duration-moderate` | 200ms | Modals, menus |
+| `--duration-slow` | 300ms | Page transitions, error shake |
+| `--duration-slower` | 400ms | Hero animations |
 
 ## Shared Keyframes
 
@@ -78,6 +78,16 @@ Used by: TextInput (success). Duration: 300ms ease-out.
 }
 ```
 Used by: Dropdown menu. Duration: 150ms ease-out-cubic.
+
+### `@keyframes acko-tick-pop`
+```css
+@keyframes acko-tick-pop {
+  0% { opacity: 0; transform: scale(0.3); }
+  60% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+```
+Used by: Dropdown (selected item tick). Duration: 250ms ease-out.
 
 ## Performance Rules
 

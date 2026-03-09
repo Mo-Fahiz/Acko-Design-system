@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 
 export interface ButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
-  variant: "primary" | "secondary" | "outline" | "ghost" | "danger";
+  variant: "primary" | "secondary" | "inverted" | "ghost" | "link" | "danger";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   loading?: boolean;
   iconLeft?: ReactNode;

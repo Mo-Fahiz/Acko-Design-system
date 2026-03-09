@@ -69,7 +69,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 
 | Keyframe | Purpose |
 |---|---|
-| `acko-cal-enter` | Panel fade-in + translateY(-8px → 0) over 150ms |
+| `acko-cal-enter` | Panel fade-in + translateY(var(--space-2) → 0) over 150ms |
 
 ---
 

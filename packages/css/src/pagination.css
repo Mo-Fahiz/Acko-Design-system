@@ -14,14 +14,14 @@
   @apply inline-flex items-center justify-center;
   width: var(--scale-40);
   height: var(--scale-40);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   font-size: var(--font-body-sm-size);
   font-weight: 500;
   background: transparent;
   color: var(--color-text-default);
   border: none;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  transition: all 200ms var(--ease-in-out-cubic);
   font-family: inherit;
 }
 
@@ -31,8 +31,9 @@
 }
 
 .acko-pagination-btn-current {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--color-primary-subtle);
+  color: var(--color-text-default);
+  font-weight: 600;
 }
 
 .acko-pagination-btn:disabled {
@@ -45,12 +46,12 @@
   @apply inline-flex items-center justify-center;
   width: var(--scale-40);
   height: var(--scale-40);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   background: var(--color-surface-raised);
   border: none;
   cursor: pointer;
   color: var(--color-text-default);
-  transition: background 150ms ease;
+  transition: all 200ms var(--ease-in-out-cubic);
   font-family: inherit;
 }
 

@@ -15,6 +15,12 @@
 
 .acko-tabs-list-underline {
   border-bottom: 1px solid var(--color-border-subtle);
+  position: relative;
+}
+
+.acko-tabs-list-underline-top {
+  border-bottom: none;
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .acko-tab {
@@ -24,16 +30,42 @@
 
 .acko-tab-underline {
   padding: var(--space-2) var(--space-4);
-  border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   color: var(--color-text-muted);
   font-weight: 500;
-  transition: color 200ms, border-color 200ms;
+  transition: color 200ms var(--ease-in-out-cubic);
+  position: relative;
+}
+
+.acko-tab-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: transparent;
+  transition: background 250ms var(--ease-in-out-cubic);
 }
 
 .acko-tab-underline-active {
   color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
+}
+
+.acko-tab-underline-active::after {
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+}
+
+/* Top indicator variant */
+.acko-tabs-list-underline-top .acko-tab-underline {
+  margin-bottom: 0;
+  margin-top: -1px;
+}
+
+.acko-tabs-list-underline-top .acko-tab-underline::after {
+  bottom: auto;
+  top: 0;
 }
 
 /* --- Pill variant --- */
@@ -41,7 +73,8 @@
 .acko-tabs-list-pill {
   background: var(--color-tab-pill-bg);
   border-radius: var(--radius-full);
-  padding: 3px;
+  padding: var(--space-1);
+  width: fit-content;
 }
 
 .acko-tab-pill {
@@ -49,13 +82,53 @@
   padding: var(--space-1) var(--space-4);
   color: var(--color-text-muted);
   font-weight: 500;
-  transition: all 200ms;
+  transition: all 200ms var(--ease-in-out-cubic);
 }
 
 .acko-tab-pill-active {
-  background: var(--color-tab-pill-active-bg);
-  color: var(--color-text-strong);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
   box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .acko-tab-pill-active {
+  color: var(--color-on-primary);
+}
+
+/* --- Navigation variant (bottom tabs) --- */
+
+.acko-tabs-list-navigation {
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border-subtle);
+  justify-content: space-around;
+  padding: var(--space-1) 0;
+}
+
+.acko-tab-navigation {
+  @apply flex-col items-center justify-center;
+  gap: var(--scale-2);
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: var(--font-caption-size);
+  transition: color 200ms var(--ease-in-out-cubic);
+  min-width: var(--scale-64);
+}
+
+.acko-tab-navigation .acko-tab-icon {
+  width: var(--scale-24);
+  height: var(--scale-24);
+}
+
+.acko-tab-navigation-active {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+[data-theme="dark"] .acko-tab-navigation-active {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 /* --- Enclosed variant --- */
@@ -84,7 +157,6 @@
   padding: var(--space-2) var(--space-4);
 }
 
-/* Override variant padding for sizes */
 .acko-tab-underline.acko-tab-sm {
   padding: var(--space-1) var(--space-3);
 }

@@ -11,8 +11,8 @@ CSS file: `@acko/css/button.css`
 
 ALL visual styling lives in the CSS file. React components compose CSS class names only via `clsx` — no Tailwind utilities in React.
 
-- **`@apply`**: layout, alignment, spacing, sizing, typography, radius, colors, basic shadows, cursor, select, whitespace, position
-- **Raw CSS**: multi-property `transition`, `@keyframes`, `[data-theme]` overrides, `@media (hover:hover)` hover blocks, `::before`/`::after` pseudo-elements, compound `box-shadow` stacks, `backdrop-filter`
+- **`@apply`**: layout, alignment, spacing, sizing, typography, radius, cursor, select, whitespace, position
+- **Raw CSS**: multi-property `transition`, `@keyframes`, `[data-theme]` overrides, `@media (hover:hover)` hover blocks, compound `box-shadow` stacks, `filter: brightness()`
 
 ## CSS Classes
 
@@ -34,30 +34,39 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 
 | Class | Implementation |
 |-------|---------------|
-| `.acko-btn-xs` | `@apply h-8 px-4 text-xs rounded-full; line-height: 16px;` |
+| `.acko-btn-xs` | `@apply h-8 px-4 text-xs rounded-full; line-height: var(--scale-16);` |
 | `.acko-btn-sm` | `@apply h-10 px-4 text-sm rounded-full; line-height: 18px;` |
 | `.acko-btn-md` | `@apply h-12 px-4 text-base leading-6 rounded-full;` |
-| `.acko-btn-lg` | `@apply h-14 px-6 text-lg rounded-full; line-height: 28px;` |
-| `.acko-btn-xl` | `@apply h-16 px-8 text-xl rounded-full; line-height: 32px;` |
+| `.acko-btn-lg` | `@apply h-14 px-6 text-lg rounded-full; line-height: var(--scale-28);` |
+| `.acko-btn-xl` | `@apply h-16 px-8 text-xl rounded-full; line-height: var(--scale-32);` |
 
-### Variants (via `@apply` for colors + raw CSS for complex shadows)
+### Variants
 
-| Class | Background | Text | Shadow |
-|-------|-----------|------|--------|
-| `.acko-btn-primary` | `bg-primary` | `text-on-primary` | `shadow-btn-inner` |
-| `.acko-btn-secondary` | `bg-btn-secondary-bg` | `text-primary` | `shadow-btn-inner` |
-| `.acko-btn-outline` | `bg-transparent` | `text-btn-outline-color` | `inset 0 0 0 1px var(--color-btn-outline-color)` |
-| `.acko-btn-ghost` | `bg-transparent` | `text-btn-ghost-color` | none |
-| `.acko-btn-danger` | `bg-transparent` | `text-error` | `inset 0 0 0 1px var(--color-error)` |
+| Class | Background | Text | Shadow / Border |
+|-------|-----------|------|-----------------|
+| `.acko-btn-primary` | `--color-primary` | `--color-on-primary` | `--shadow-btn-inner` |
+| `.acko-btn-secondary` | `--color-btn-secondary-bg` | `--color-btn-secondary-text` | `inset 0 0 0 1px --color-btn-secondary-border` |
+| `.acko-btn-inverted` | `--color-btn-inverted-bg` | `--color-btn-inverted-text` | none |
+| `.acko-btn-ghost` | `transparent` | `--color-btn-ghost-color` | none |
+| `.acko-btn-link` | `transparent` | `--color-btn-link-color` | none, no horizontal padding |
+| `.acko-btn-danger` | `--color-btn-danger-bg` | `--color-btn-danger-text` | none |
 
-### Icon Sizing (inside CSS via `@apply`)
+### Danger Focus
+
+```css
+.acko-btn-danger:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent);
+}
+```
+
+### Icon Sizing
 
 ```css
 .acko-btn-icon { @apply inline-flex items-center justify-center shrink-0; }
 .acko-btn-xs .acko-btn-icon { @apply size-3; }
 .acko-btn-sm .acko-btn-icon { @apply size-3.5; }
 .acko-btn-md .acko-btn-icon { @apply size-4; }
-.acko-btn-lg .acko-btn-icon { @apply size-[18px]; }
+.acko-btn-lg .acko-btn-icon { width: var(--font-body-lg-size); height: var(--font-body-lg-size); }
 .acko-btn-xl .acko-btn-icon { @apply size-5; }
 ```
 
@@ -88,32 +97,39 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 ```css
 .acko-btn-disabled,
 .acko-btn:disabled {
-  @apply cursor-not-allowed opacity-100;
-  background-color: var(--color-disabled-bg) !important;
-  color: var(--color-disabled-text) !important;
+  @apply cursor-not-allowed;
+  background-color: var(--color-btn-disabled-bg) !important;
+  color: var(--color-btn-disabled-text) !important;
   box-shadow: none !important;
+  opacity: 1;
+  filter: none;
 }
 ```
+
+Link variant disabled keeps `background-color: transparent`.
 
 ### Spinner (raw CSS — animation)
 
 ```css
 .acko-btn-spinner {
-  @apply absolute size-[18px] rounded-full;
+  @apply absolute rounded-full;
+  width: var(--font-body-lg-size); height: var(--font-body-lg-size);
   border: 2px solid currentColor;
   border-right-color: transparent;
   animation: acko-spin 600ms linear infinite;
 }
 ```
 
-Spinner colors per variant via raw CSS:
+Spinner colors per variant:
+
 | Variant | Spinner `color` |
 |---------|----------------|
 | primary | `--color-on-primary` |
-| secondary | `--color-text-default` |
-| outline | `--color-text-default` |
+| secondary | `--color-btn-secondary-text` |
+| inverted | `--color-btn-inverted-text` |
 | ghost | `--color-btn-ghost-color` |
-| danger | `--color-error` |
+| link | `--color-btn-link-color` |
+| danger | `--color-btn-danger-text` |
 
 ## Hover States (raw CSS — `@media (hover: hover)`)
 
@@ -121,11 +137,12 @@ Wrapped in `@media (hover: hover) and (pointer: fine)`:
 
 | Variant | Hover treatment |
 |---------|----------------|
-| primary | dark overlay gradient + compound `box-shadow` (inner + hover) |
-| secondary | `bg-surface-raised-hover` + `shadow-btn-secondary-hover` |
-| outline | `bg-btn-outline-hover-bg` + compound inset + hover shadow |
-| ghost | `bg-btn-ghost-hover-bg` |
-| danger | `bg-error-subtle` + compound inset + error glow shadow |
+| primary | Dark overlay gradient + compound `box-shadow` (`--shadow-btn-inner` + `--shadow-btn-hover`) |
+| secondary | `filter: brightness(0.96)` + retain `box-shadow: inset 0 0 0 1px` (light) / `brightness(1.1)` (dark) |
+| inverted | `filter: brightness(0.96)` (light) / `brightness(0.9)` (dark) |
+| ghost | `--color-btn-ghost-hover-bg` |
+| link | `text-decoration: underline` (no bg change) |
+| danger | `filter: brightness(0.96)` (light) / `brightness(1.1)` (dark) |
 
 ## Active State (raw CSS)
 
@@ -134,36 +151,20 @@ Wrapped in `@media (hover: hover) and (pointer: fine)`:
 ## Focus State (raw CSS)
 
 `:focus-visible` → `outline: none; box-shadow: var(--shadow-focus-ring)`.
-Outline variant adds compound shadow: inset border + focus ring.
+Secondary variant adds compound shadow: inset border + focus ring.
 
 ## Dark Theme Overrides (raw CSS)
 
 Scoped under `[data-theme="dark"]`:
-- secondary: text changes to `text-default` (via `--color-text-default`)
-- primary hover: uses `--color-btn-primary-hover-bg`, no gradient overlay
-- secondary hover: lighter inner shadow `rgba(255,255,255,0.08)`
-- shadows switch automatically via semantic token remapping in `tokens.css`
-
-## Elevated Theme Overrides (raw CSS)
-
-Scoped under `[data-theme="elevated"]`:
-
-### Primary
-- `background: var(--elevated-primary-gradient)` + `box-shadow: var(--elevated-primary-shadow)`
-- `::before` pseudo for convex overlay
-- Hover: `translateY(-1px)` lift + intensified gradient/shadow
-
-### Secondary
-- Glass background via `backdrop-filter: blur(14px)`
-
-### Outline
-- Border gradient via `background: padding-box + border-box` technique
-
-### Ghost
-- Uses `--color-primary-active` for text
-
-### Focus
-- `--elevated-focus-ring` (includes glass border stroke)
+- All variants automatically use their dark-theme semantic token values
+- secondary: `--color-btn-secondary-bg`, `--color-btn-secondary-border` (inset), `--color-btn-secondary-text`
+- inverted: `--color-btn-inverted-bg`, `--color-btn-inverted-text`
+- ghost: `--color-btn-ghost-color`, hover `--color-btn-ghost-hover-bg`
+- link: `--color-btn-link-color`
+- danger: `--color-btn-danger-bg`, `--color-btn-danger-text`
+- primary hover: `--color-btn-primary-hover-bg`, no gradient overlay
+- disabled: `--color-btn-disabled-bg`, `--color-btn-disabled-text`
+- Shadows switch automatically via semantic token remapping in `tokens.css`
 
 ## Transitions (raw CSS)
 

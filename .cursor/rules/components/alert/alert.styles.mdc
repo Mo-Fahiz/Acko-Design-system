@@ -14,17 +14,20 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 ## CSS Classes
 
 ### Base
-`.acko-alert` — `@apply flex gap-3 relative`, padding `--space-4`, border-radius `--radius-3xl`, border 1px solid
+`.acko-alert` — `@apply flex gap-3 relative`, padding `--space-2`, border-radius `--radius-3xl`, border 1px solid
 
 ### Variants
-| Class | Background | Border |
-|-------|------------|--------|
-| `.acko-alert-info` | `--color-info-subtle` | `--color-info-border` |
-| `.acko-alert-success` | `--color-success-subtle` | `--color-success-border` |
-| `.acko-alert-warning` | `--color-warning-subtle` | `--color-warning-border` |
-| `.acko-alert-error` | `--color-error-subtle` | `--color-error-border` |
+
+| Class | Background | Border | Text |
+|-------|------------|--------|------|
+| `.acko-alert-info` | `--color-info-subtle` | `--color-info-border` | `--color-info-text` |
+| `.acko-alert-success` | `--color-success-subtle` | `--color-success-border` | `--color-success-text` |
+| `.acko-alert-warning` | `--color-warning-subtle` | `--color-warning-border` | `--color-warning-text` |
+| `.acko-alert-error` | `--color-error-subtle` | `--color-error-border` | `--color-error-text` |
 
 Icon and title use variant text color (e.g. `--color-info-text`).
+
+> **Note:** Info variant uses **purple** (brand color), not blue. The `--color-info-*` tokens map to purple primitives.
 
 ### Children
 - `.acko-alert-icon` — `--scale-20` size, color inherited from variant
@@ -32,3 +35,7 @@ Icon and title use variant text color (e.g. `--color-info-text`).
 - `.acko-alert-title` — `--font-body-sm-size`, font-weight 600
 - `.acko-alert-body` — `--font-body-sm-size`, color `--color-text-default`
 - `.acko-alert-dismiss` — absolute top/right `--space-3`, `--scale-24` size, opacity 0.7, hover opacity 1
+
+## Dark Theme
+
+Automatic via semantic token remapping. All `--color-{variant}-subtle`, `--color-{variant}-border`, `--color-{variant}-text`, and `--color-text-default` tokens remap to dark values in `tokens.css`.

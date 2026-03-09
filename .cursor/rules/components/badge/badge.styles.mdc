@@ -17,16 +17,18 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 `.acko-badge` — `inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none`
 
 ### Sizes
-| Class | Padding | Font |
-|-------|---------|------|
-| `.acko-badge-sm` | `--space-1` (4px) | `--font-label-sm-size` |
-| `.acko-badge-md` | `--scale-6` (6px) | `--font-caption-size` |
-| `.acko-badge-lg` | `--space-2` (8px) | `--font-body-sm-size` |
+| Class | Padding | Font | Width |
+|-------|---------|------|-------|
+| `.acko-badge-sm` | `var(--space-1) var(--space-2)` | `--font-label-sm-size` | `fit-content` |
+| `.acko-badge-md` | `var(--scale-6) var(--space-2)` | `--font-caption-size` (var(--font-label-md-size)) | `fit-content` |
+| `.acko-badge-lg` | `var(--space-2)` | `--font-body-sm-size` | `fit-content` |
 
 ### Solid Variant Colors
 Pattern: `.acko-badge-solid-{color}` where color = `purple | green | blue | orange | pink | gray`
 
-Uses tokens: `--color-badge-{color}-bg`, `--color-badge-{color}-text`, `--color-badge-{color}-shadow-top`
+Uses tokens: `--color-badge-{color}-bg`, `--color-badge-{color}-text`
+
+> **Flat badge system.** No shadows on badges or counter badges.
 
 ### Outline Variant Colors
 Pattern: `.acko-badge-outline-{color}`

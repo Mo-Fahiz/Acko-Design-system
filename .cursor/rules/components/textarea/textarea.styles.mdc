@@ -1,5 +1,5 @@
 ---
-description: Textarea visual spec — CSS classes, resize options, states, and token usage
+description: Textarea visual spec — CSS classes, no-resize behavior, max-height scroll, states, and token usage
 globs: "**/textarea/**,**/Textarea/**"
 ---
 
@@ -10,21 +10,39 @@ CSS file: `@acko/css/textarea.css`
 ## CSS Classes
 
 ### Structure
-- `.acko-textarea` — flex column, gap var(--space-2)
-- `.acko-textarea-label` — label-lg typography, color-text-default
+- `.acko-textarea` — flex column, gap `var(--space-2)`
+- `.acko-textarea-label` — label-lg typography, `--color-text-default`
 - `.acko-textarea-el` — the `<textarea>` element
 
-### Resize (via `.acko-textarea-resize-{vertical|horizontal|both|none}`)
-Uses native CSS `resize` property.
+### Sizing & Resize
+- Resize: `none` (hard-coded, no resize handle)
+- Min height: `var(--scale-120)` (~120px)
+- Max height: `calc(4 * var(--font-body-md-line) + 2 * var(--space-3))` — approx 4 lines
+- `overflow-y: auto` — scrolls when content exceeds max-height
+- Padding: `var(--space-3) var(--space-4)`
+- Font: `--font-body-md-size`, line-height 1.5
+- Border radius: `--radius-3xl`
 
 ### States (on `.acko-textarea-el`)
-- Focus: `border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary)`
-- Error: `border-color: var(--color-error)`
-- Success: `border-color: var(--color-success)`
-- Disabled: `background: var(--color-surface-raised); border-color: var(--color-border-subtle); cursor: not-allowed; color: var(--color-text-disabled)`
+
+| State | Border | Background | Extra |
+|-------|--------|-----------|-------|
+| Default | `--color-input-border` | `--color-surface` | — |
+| Focus (`.acko-textarea-focused`) | `--color-primary` | `--color-surface` | `box-shadow: 0 0 0 1px var(--color-primary)` |
+| Error (`.acko-textarea-error`) | `--color-error` | `--color-surface` | — |
+| Success (`.acko-textarea-success`) | `--color-success` | `--color-surface` | — |
+| Disabled (`.acko-textarea-disabled`) | `--color-border-subtle` | `--color-surface-raised` | `cursor: not-allowed`, `--color-text-disabled` |
 
 ### Footer
 - `.acko-textarea-footer` — flex justify-between
-- `.acko-textarea-helper-text` / `.acko-textarea-error-text` — caption font
-- `.acko-textarea-count` — caption font, color-text-muted
-- `.acko-textarea-required` — red asterisk
+- `.acko-textarea-helper-text` / `.acko-textarea-error-text` — `--font-caption-size`
+- `.acko-textarea-count` — `--font-caption-size`, `--color-text-muted`
+- `.acko-textarea-required` — `--color-error`
+
+### Transitions
+`border-color 200ms ease, box-shadow 200ms ease`
+
+## React Props
+- `resize` prop defaults to `"none"` (only valid value)
+- `rows` defaults to 4
+- The max-height CSS enforces scrolling regardless of `rows`

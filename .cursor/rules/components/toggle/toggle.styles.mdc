@@ -1,16 +1,48 @@
+---
+description: Toggle visual spec — CSS classes, variants, pressed/disabled states
+globs: "**/toggle*.css"
+alwaysApply: false
+---
+
 # Toggle — Visual Spec
 
 ## CSS classes
 
-- `.acko-toggle` — base, inline-flex, rounded-full, transition
-- `.acko-toggle-sm` — scale-32, font-label-md
-- `.acko-toggle-md` — scale-40, font-body-sm
-- `.acko-toggle-lg` — scale-48, font-body-md
-- `.acko-toggle-default` — toggle-bg, toggle-text
-- `.acko-toggle-default.acko-toggle-pressed` — toggle-active-bg, toggle-active-text
-- `.acko-toggle-outline` — transparent, border
-- `.acko-toggle-outline.acko-toggle-pressed` — toggle-active-bg
-- Hover: toggle-bg-hover
-- Focus: box-shadow primary-ring
-- `.acko-toggle-disabled` — opacity, cursor
-- `.acko-toggle-group` — inline-flex, gap space-1
+- `.acko-toggle` — base, inline-flex, items-center, justify-center, rounded-full, `border: 1px solid transparent`
+- `.acko-toggle-sm` — `var(--scale-32)` height, padding `0 var(--space-2)`, `--font-label-md-size`
+- `.acko-toggle-md` — `var(--scale-40)` height, padding `0 var(--space-3)`, `--font-body-sm-size`
+- `.acko-toggle-lg` — `var(--scale-48)` height, padding `0 var(--space-4)`, `--font-body-md-size`
+
+## Variants
+
+### Default (`.acko-toggle-default`)
+- Background: `--color-toggle-bg`
+- Text: `--color-toggle-text`
+- Pressed: `--color-toggle-active-bg`, `--color-toggle-active-text`, border: `--color-primary-hover`
+
+### Outline (`.acko-toggle-outline`) — Filled State
+- Background: `--color-surface-raised` (filled, not transparent)
+- Border: `1px solid var(--color-border)`
+- Text: `--color-toggle-text`
+- Pressed: `--color-toggle-active-bg`, `--color-toggle-active-text`, border: `--color-primary-hover`
+
+### Hover (both variants)
+- Non-pressed hover: `--color-toggle-bg-hover`
+
+## States
+
+| State | Background | Border | Text | Extra |
+|-------|-----------|--------|------|-------|
+| Default | `--color-toggle-bg` | transparent | `--color-toggle-text` | — |
+| Outline | `--color-surface-raised` | `--color-border` | `--color-toggle-text` | — |
+| Pressed (any) | `--color-toggle-active-bg` | `--color-primary-hover` | `--color-toggle-active-text` | — |
+| Disabled | `--color-btn-disabled-bg` | transparent | `--color-btn-disabled-text` | `cursor: not-allowed`, `opacity: 1` |
+
+### Focus
+`box-shadow: 0 0 0 3px var(--color-primary-ring)`
+
+## Transitions
+`background-color 150ms ease, color 150ms ease, border-color 150ms ease`
+
+## Toggle Group
+`.acko-toggle-group` — inline-flex, `gap: var(--space-1)`

@@ -22,7 +22,8 @@
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
-    box-shadow 150ms ease;
+    box-shadow 150ms ease,
+    transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Sizes */
@@ -45,6 +46,18 @@
   transition: opacity 180ms ease-out, transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Line-draw animation for tick SVG — draws bottom-to-top */
+.acko-checkbox-icon svg path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: -30;
+  transition: stroke-dashoffset 0ms;
+}
+
+.acko-checkbox-icon-visible svg path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 300ms ease-out 80ms;
+}
+
 .acko-checkbox-sm .acko-checkbox-icon svg { width: var(--scale-10); height: var(--scale-10); }
 .acko-checkbox-md .acko-checkbox-icon svg { width: var(--scale-12); height: var(--scale-12); }
 .acko-checkbox-lg .acko-checkbox-icon svg { width: var(--font-body-sm-size); height: var(--font-body-sm-size); }
@@ -54,11 +67,19 @@
 .acko-checkbox-checked .acko-checkbox-box {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
+  animation: acko-checkbox-bounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .acko-checkbox-indeterminate .acko-checkbox-box {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
+}
+
+@keyframes acko-checkbox-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.88); }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -91,6 +112,7 @@
 .acko-checkbox-disabled.acko-checkbox-indeterminate .acko-checkbox-box {
   background-color: var(--color-disabled-bg);
   border-color: var(--color-disabled-border);
+  animation: none;
 }
 
 .acko-checkbox-disabled.acko-checkbox-checked .acko-checkbox-icon,
@@ -101,6 +123,15 @@
 /* Error */
 .acko-checkbox-error .acko-checkbox-box {
   border-color: var(--color-error);
+  animation: acko-checkbox-shake 300ms ease-out;
+}
+
+@keyframes acko-checkbox-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
 }
 
 /* Labels */

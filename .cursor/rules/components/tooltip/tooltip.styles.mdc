@@ -1,9 +1,24 @@
+---
+description: Tooltip visual spec — CSS classes, positioning, animation
+globs: "**/tooltip/**,**/Tooltip/**"
+---
+
 # Tooltip — Visual Spec
 
 ## CSS classes
 
 - `.acko-tooltip-trigger` — inline-flex
-- `.acko-tooltip` — fixed, pointer-events-none, z-tooltip, background, color, font-caption, padding, radius-xl
-- `.acko-tooltip-arrow` — CSS triangle var(--scale-6), positioned per side
-- Enter animations per side: top/bottom/left/right with translate
-- Animation: 150ms var(--ease-out-quad)
+- `.acko-tooltip` — fixed, pointer-events-none, z-index `--z-tooltip`
+  - Background: `--color-tooltip-bg`
+  - Text: `--color-tooltip-text`
+  - Font: `--font-caption-size`
+  - Padding: `var(--space-1) var(--space-2)`
+  - Border radius: `--radius-xl`
+  - `white-space: nowrap`
+- `.acko-tooltip-arrow` — CSS triangle `var(--scale-6)`, color `--color-tooltip-bg`, positioned per side
+- Enter animations per side: top/bottom/left/right with translate (`--scale-8` offset)
+- Animation: `opacity 0→1` + `translateY/X`, `150ms var(--ease-out-quad)`
+
+## Dark Theme
+
+Automatic via semantic token remapping. `--color-tooltip-bg` and `--color-tooltip-text` swap automatically.

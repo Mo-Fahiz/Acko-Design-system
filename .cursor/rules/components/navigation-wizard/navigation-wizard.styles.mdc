@@ -1,0 +1,56 @@
+---
+description: NavigationWizard visual spec — CSS classes, step states, connectors, spacing, vertical variant
+globs: "**/navigation-wizard/**,**/NavigationWizard/**"
+---
+
+# NavigationWizard — Styles
+
+CSS file: `@acko/css/navigation-wizard.css`
+
+## CSS Classes
+
+### Base
+- `.acko-wizard` — flex, items-center, `gap: var(--space-1)`
+- `.acko-wizard-vertical` — flex-col, items-start, `gap: 0`
+- `.acko-wizard-compact` — compact layout for mobile
+
+### Step
+- `.acko-wizard-step` — flex, items-center, `gap: var(--space-2)`
+- `.acko-wizard-step-info` — flex-col, `margin-left: var(--space-2)`
+- Vertical step: `flex-row items-start`
+
+### Circle
+- `.acko-wizard-circle` — `var(--scale-32) × var(--scale-32)`, `border-radius: var(--radius-full)`, flex center, font-weight 600
+
+### Connector
+- `.acko-wizard-connector` — `width: var(--scale-40)`, height 2px, flex-shrink-0
+- Completed: `--color-success`
+- Default: `--color-border-subtle`
+- Vertical: `width: 2px`, `height: var(--scale-32)`, margin-left 15px, margin `var(--space-1)` top/bottom
+
+### Compact
+- Circle: `var(--scale-24)`, font `--font-label-sm-size`
+- Connector: `var(--scale-32)` width
+- Label: `--font-caption-size`
+
+### Step States
+
+| Status | Circle BG | Circle Text | Label Color |
+|--------|-----------|-------------|-------------|
+| Upcoming | `--color-surface-raised-hover` | `--color-text-muted` | `--color-text-muted` |
+| Current | `--color-primary` | `--color-on-primary` | `--color-text-strong` |
+| Completed | `--color-success` | `--color-on-primary` | `--color-text-strong` |
+| Error | `--color-error-text` | `--color-on-primary` | `--color-error-text` |
+
+### Current Step Ring
+`box-shadow: 0 0 0 4px var(--color-primary-ring)`
+
+### Labels
+- `.acko-wizard-label` — `--font-body-sm-size`, font-weight 500, `--color-text-muted`
+- `.acko-wizard-description` — `--font-caption-size`, `--color-text-muted`
+
+### Transitions
+All color changes: `200ms ease`
+
+## Dark Theme
+Automatic via semantic token remapping.

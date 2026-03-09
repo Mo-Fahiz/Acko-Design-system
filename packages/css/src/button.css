@@ -60,37 +60,47 @@
 /* --- Variants --- */
 
 .acko-btn-primary {
-  @apply bg-primary text-on-primary shadow-btn-inner;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-btn-inner);
 }
 
 .acko-btn-secondary {
-  @apply bg-btn-secondary-bg text-primary shadow-btn-inner;
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  box-shadow: inset 0 0 0 1px var(--color-btn-secondary-border);
 }
 
-.acko-btn-outline {
-  @apply bg-transparent text-btn-outline-color;
-  box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
-}
-
-.acko-btn-outline:focus-visible {
+.acko-btn-secondary:focus-visible {
   box-shadow:
-    inset 0 0 0 1px var(--color-btn-outline-color),
+    inset 0 0 0 1px var(--color-btn-secondary-border),
     var(--shadow-focus-ring);
 }
 
+.acko-btn-inverted {
+  background-color: var(--color-btn-inverted-bg);
+  color: var(--color-btn-inverted-text);
+}
+
 .acko-btn-ghost {
-  @apply bg-transparent text-btn-ghost-color;
+  @apply bg-transparent;
+  color: var(--color-btn-ghost-color);
+}
+
+.acko-btn-link {
+  @apply bg-transparent;
+  color: var(--color-btn-link-color);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .acko-btn-danger {
-  @apply bg-transparent text-error;
-  box-shadow: inset 0 0 0 1px var(--color-error);
+  background-color: var(--color-btn-danger-bg);
+  color: var(--color-btn-danger-text);
 }
 
 .acko-btn-danger:focus-visible {
-  box-shadow:
-    inset 0 0 0 1px var(--color-error),
-    0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 20%, transparent);
 }
 
 /* --- Hover (pointer devices only) --- */
@@ -98,32 +108,32 @@
 @media (hover: hover) and (pointer: fine) {
   .acko-btn-primary:hover:not(:disabled) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
+    background-color: var(--color-primary);
     box-shadow:
-      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.28),
-      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+      var(--shadow-btn-inner),
+      var(--shadow-btn-hover);
   }
 
   .acko-btn-secondary:hover:not(:disabled) {
-    @apply bg-surface-raised-hover;
-    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.48);
+    background-color: var(--color-btn-secondary-bg);
+    filter: brightness(0.96);
+    box-shadow: inset 0 0 0 1px var(--color-btn-secondary-border);
   }
 
-  .acko-btn-outline:hover:not(:disabled) {
-    @apply bg-btn-outline-hover-bg;
-    box-shadow:
-      inset 0 0 0 1px var(--color-btn-outline-color),
-      0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  .acko-btn-inverted:hover:not(:disabled) {
+    filter: brightness(0.96);
   }
 
   .acko-btn-ghost:hover:not(:disabled) {
-    @apply bg-btn-ghost-hover-bg;
+    background-color: var(--color-btn-ghost-hover-bg);
+  }
+
+  .acko-btn-link:hover:not(:disabled) {
+    text-decoration: underline;
   }
 
   .acko-btn-danger:hover:not(:disabled) {
-    @apply bg-error-subtle;
-    box-shadow:
-      inset 0 0 0 1px var(--color-error),
-      0px 4px 8px 0px color-mix(in srgb, var(--color-error) 8%, transparent);
+    filter: brightness(0.96);
   }
 }
 
@@ -132,10 +142,11 @@
 .acko-btn-disabled,
 .acko-btn:disabled {
   @apply cursor-not-allowed;
-  background-color: var(--color-disabled-bg) !important;
-  color: var(--color-disabled-text) !important;
+  background-color: var(--color-btn-disabled-bg) !important;
+  color: var(--color-btn-disabled-text) !important;
   box-shadow: none !important;
   opacity: 1;
+  filter: none;
 }
 
 .acko-btn-disabled:active,
@@ -143,40 +154,54 @@
   transform: none;
 }
 
+.acko-btn-link:disabled,
+.acko-btn-link.acko-btn-disabled {
+  background-color: transparent !important;
+}
+
 /* ============================================================
    Dark theme overrides
    ============================================================ */
 
 [data-theme="dark"] .acko-btn-primary {
-  @apply bg-primary text-on-primary;
-  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.15);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-btn-inner);
 }
 
 [data-theme="dark"] .acko-btn-secondary {
-  @apply bg-btn-secondary-bg text-text-default;
-  box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, 0.12);
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  box-shadow: inset 0 0 0 1px var(--color-btn-secondary-border);
 }
 
-[data-theme="dark"] .acko-btn-outline {
-  @apply bg-transparent text-btn-outline-color;
-  box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
+[data-theme="dark"] .acko-btn-inverted {
+  background-color: var(--color-btn-inverted-bg);
+  color: var(--color-btn-inverted-text);
 }
 
 [data-theme="dark"] .acko-btn-ghost {
-  @apply bg-transparent text-btn-ghost-color;
+  @apply bg-transparent;
+  color: var(--color-btn-ghost-color);
+}
+
+[data-theme="dark"] .acko-btn-link {
+  @apply bg-transparent;
+  color: var(--color-btn-link-color);
 }
 
 [data-theme="dark"] .acko-btn-danger {
-  @apply bg-transparent text-error;
-  box-shadow: inset 0 0 0 1px var(--color-error);
+  background-color: var(--color-btn-danger-bg);
+  color: var(--color-btn-danger-text);
 }
 
 [data-theme="dark"] .acko-btn:disabled {
-  background-color: var(--color-disabled-bg) !important;
-  color: var(--color-disabled-text) !important;
+  background-color: var(--color-btn-disabled-bg) !important;
+  color: var(--color-btn-disabled-text) !important;
   box-shadow: none !important;
   cursor: not-allowed;
   opacity: 1;
+  filter: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -184,127 +209,28 @@
     background-color: var(--color-btn-primary-hover-bg);
     background-image: none;
     box-shadow:
-      inset 0px 1px 2px 0px rgba(255, 255, 255, 0.18),
-      0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+      var(--shadow-btn-inner),
+      var(--shadow-btn-hover);
   }
 
   [data-theme="dark"] .acko-btn-secondary:hover:not(:disabled) {
-    @apply bg-surface-raised-hover;
-    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.08);
+    filter: brightness(1.1);
   }
 
-  [data-theme="dark"] .acko-btn-outline:hover:not(:disabled) {
-    @apply bg-btn-outline-hover-bg;
-    box-shadow: inset 0 0 0 1px var(--color-btn-outline-color);
+  [data-theme="dark"] .acko-btn-inverted:hover:not(:disabled) {
+    filter: brightness(0.9);
   }
 
   [data-theme="dark"] .acko-btn-ghost:hover:not(:disabled) {
-    @apply bg-btn-ghost-hover-bg;
+    background-color: var(--color-btn-ghost-hover-bg);
+  }
+
+  [data-theme="dark"] .acko-btn-link:hover:not(:disabled) {
+    text-decoration: underline;
   }
 
   [data-theme="dark"] .acko-btn-danger:hover:not(:disabled) {
-    @apply bg-error-subtle;
-    box-shadow: inset 0 0 0 1px var(--color-error);
-  }
-}
-
-/* ============================================================
-   Elevated theme overrides
-   ============================================================ */
-
-[data-theme="elevated"] .acko-btn-primary {
-  background: var(--elevated-primary-gradient);
-  box-shadow: var(--elevated-primary-shadow);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
-}
-
-[data-theme="elevated"] .acko-btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--elevated-convex-overlay);
-  pointer-events: none;
-}
-
-[data-theme="elevated"] .acko-btn-danger {
-  background: var(--elevated-danger-gradient);
-  color: var(--color-on-primary);
-  box-shadow: var(--elevated-danger-shadow);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
-}
-
-[data-theme="elevated"] .acko-btn-danger::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--elevated-convex-overlay);
-  pointer-events: none;
-}
-
-[data-theme="elevated"] .acko-btn-secondary {
-  background-color: var(--elevated-glass-bg);
-  box-shadow: none;
-  backdrop-filter: blur(14px);
-}
-
-[data-theme="elevated"] .acko-btn-outline {
-  border: 1px solid transparent;
-  box-shadow: none;
-  background:
-    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
-    var(--elevated-border-gradient) border-box;
-  @apply text-text-strong;
-  backdrop-filter: blur(14px);
-}
-
-[data-theme="elevated"] .acko-btn-ghost {
-  color: var(--color-primary-active);
-}
-
-[data-theme="elevated"] .acko-btn:focus-visible {
-  box-shadow: var(--elevated-focus-ring);
-}
-
-[data-theme="elevated"] .acko-btn-primary:focus-visible {
-  box-shadow: var(--elevated-primary-shadow), var(--elevated-focus-ring);
-}
-
-[data-theme="elevated"] .acko-btn-danger:focus-visible {
-  box-shadow: var(--elevated-danger-shadow), var(--elevated-focus-ring);
-}
-
-[data-theme="elevated"] .acko-btn-outline:focus-visible {
-  box-shadow: var(--elevated-focus-ring);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  [data-theme="elevated"] .acko-btn-primary:hover:not(:disabled) {
-    background: var(--elevated-primary-gradient-hover);
-    background-image: none;
-    transform: translateY(-1px);
-    box-shadow: var(--elevated-primary-shadow-hover);
-  }
-
-  [data-theme="elevated"] .acko-btn-secondary:hover:not(:disabled) {
-    background-color: var(--elevated-glass-bg-hover);
-    box-shadow: var(--elevated-glow-hover);
-    transform: translateY(-1px);
-  }
-
-  [data-theme="elevated"] .acko-btn-outline:hover:not(:disabled) {
-    background:
-      linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
-      var(--elevated-border-gradient) border-box;
-    transform: translateY(-1px);
-    box-shadow: var(--elevated-glow-hover);
-  }
-
-  [data-theme="elevated"] .acko-btn-danger:hover:not(:disabled) {
-    background: var(--elevated-danger-gradient-hover);
-    transform: translateY(-1px);
-    box-shadow: var(--elevated-danger-shadow-hover);
+    filter: brightness(1.1);
   }
 }
 
@@ -325,10 +251,11 @@
 }
 
 .acko-btn-primary .acko-btn-spinner { color: var(--color-on-primary); }
-.acko-btn-secondary .acko-btn-spinner { color: var(--color-text-default); }
-.acko-btn-outline .acko-btn-spinner { color: var(--color-text-default); }
+.acko-btn-secondary .acko-btn-spinner { color: var(--color-btn-secondary-text); }
+.acko-btn-inverted .acko-btn-spinner { color: var(--color-btn-inverted-text); }
 .acko-btn-ghost .acko-btn-spinner { color: var(--color-btn-ghost-color); }
-.acko-btn-danger .acko-btn-spinner { color: var(--color-error); }
+.acko-btn-link .acko-btn-spinner { color: var(--color-btn-link-color); }
+.acko-btn-danger .acko-btn-spinner { color: var(--color-btn-danger-text); }
 
 @keyframes acko-spin {
   to { transform: rotate(360deg); }

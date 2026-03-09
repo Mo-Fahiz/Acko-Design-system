@@ -1,0 +1,37 @@
+---
+description: Pagination React implementation — props, variants, keyboard navigation
+globs: "**/pagination/**,**/Pagination/**"
+---
+
+# Pagination — React
+
+Package: `@acko/pagination`
+Directive: `"use client"` (interactive)
+
+## Props Interface
+
+```typescript
+interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  variant?: 'numbered' | 'simple' | 'compact' | 'load-more';
+  siblingCount?: number;
+  showInfo?: boolean;
+  className?: string;
+}
+```
+
+## Accessibility
+
+- `<nav aria-label="Pagination">`
+- Current page: `aria-current="page"`
+- Disabled buttons: `aria-disabled="true"`
+- Prev/Next: `aria-label="Previous page"` / `aria-label="Next page"`
+
+## Exports
+
+```typescript
+export { Pagination } from './Pagination';
+export type { PaginationProps } from './Pagination';
+```

@@ -5,7 +5,7 @@
 
 .acko-alert {
   @apply flex gap-3 relative;
-  padding: var(--space-4);
+  padding: var(--space-2);
   border-radius: var(--radius-3xl);
   border: 1px solid;
 }

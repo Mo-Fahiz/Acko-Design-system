@@ -267,28 +267,3 @@
   border-color: var(--color-border);
 }
 
-/* --- Elevated theme --- */
-
-[data-theme="elevated"] .acko-cal-trigger {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--elevated-glass-bg), var(--elevated-glass-bg)) padding-box,
-    var(--elevated-border-gradient) border-box;
-  box-shadow: var(--elevated-glow);
-  backdrop-filter: blur(14px);
-}
-
-[data-theme="elevated"] .acko-cal-trigger-open,
-[data-theme="elevated"] .acko-cal-trigger:focus-visible {
-  border-color: transparent;
-  box-shadow: var(--elevated-focus-ring);
-}
-
-[data-theme="elevated"] .acko-cal-panel {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--elevated-glass-bg-hover), var(--elevated-glass-bg-hover)) padding-box,
-    var(--elevated-border-gradient) border-box;
-  box-shadow: none;
-  backdrop-filter: blur(18px);
-}

@@ -2,14 +2,17 @@
 
 .acko-wizard {
   @apply flex items-center;
+  gap: var(--space-1);
 }
 
 .acko-wizard-vertical {
   @apply flex-col items-start;
+  gap: 0;
 }
 
 .acko-wizard-step {
   @apply flex items-center;
+  gap: var(--space-2);
 }
 
 .acko-wizard-vertical .acko-wizard-step {
@@ -56,8 +59,9 @@
 }
 
 .acko-wizard-connector {
-  width: 60px;
+  width: var(--scale-40);
   height: 2px;
+  flex-shrink: 0;
   background-color: var(--color-border-subtle);
   transition: background-color 200ms ease;
 }
@@ -68,8 +72,10 @@
 
 .acko-wizard-vertical .acko-wizard-connector {
   width: 2px;
-  height: 32px;
+  height: var(--scale-32);
   margin-left: 15px;
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
 }
 
 .acko-wizard-label {
@@ -105,7 +111,7 @@
 }
 
 .acko-wizard-compact .acko-wizard-connector {
-  width: 40px;
+  width: var(--scale-32);
 }
 
 .acko-wizard-compact .acko-wizard-label {

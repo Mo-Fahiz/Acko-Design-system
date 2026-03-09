@@ -30,12 +30,30 @@ CSS file: `@acko/css/text-input.css`
 - `.acko-text-input-required` — red asterisk
 
 ### States (raw CSS)
-- `.acko-text-input-focused` — primary border + 1px ring
-- `.acko-text-input-filled` — slightly darker border
-- `.acko-text-input-error` — error border + shake animation
-- `.acko-text-input-success` — normal border + animated checkmark
-- `.acko-text-input-disabled` — raised bg, subtle border, not-allowed cursor
-- `.acko-text-input-readonly` — raised bg, subtle border
+
+| State | Border | Background | Label | Icon | Extra |
+|-------|--------|-----------|-------|------|-------|
+| `.acko-text-input-focused` | `--color-primary` + `0 0 0 1px var(--color-primary)` ring | `--color-surface` | `--color-primary` | `--color-primary` | Placeholder fades to `--color-text-disabled` (200ms ease) |
+| `.acko-text-input-filled` | `--color-border-strong` (when value.length > 0, not focused) | `--color-surface` | `--color-text-default` | `--color-text-muted` | — |
+| `.acko-text-input-error` | `--color-error` | `--color-surface` | `--color-error-text` | `--color-text-muted` | `animation: acko-shake 300ms ease-out` |
+| `.acko-text-input-success` | `--color-border-strong` | `--color-surface` | `--color-text-default` | `--color-success` checkmark | Replaces `iconRight`; lucide `Check` icon, `strokeWidth: 2.5`; `animation: acko-check-pop 300ms ease-out` |
+| `.acko-text-input-disabled` | `--color-disabled-border` | `--color-surface-raised` | `--color-text-muted` | `--color-text-disabled` | `cursor: not-allowed` |
+| `.acko-text-input-readonly` | `--color-border-subtle` | `--color-surface-raised` | `--color-text-default` | `--color-text-muted` | Input text: `--color-text-secondary` |
+
+### Character Count
+- Displayed when `maxLength` prop is set
+- Format: `{current}/{max}`
+- Font: `--font-caption-size`, color `--color-text-muted`, right-aligned
+
+### Transition Timing
+All border/background/shadow transitions use `200ms ease`.
+
+### Border Consistency Rule
+All non-disabled input field borders MUST use `var(--color-input-border)` consistently. Only the disabled variant gets a toned-down border (`var(--color-border-subtle)` + muted bg). This ensures visual consistency across all input components (TextInput, Textarea, InputGroup, Dropdown).
 
 ### Dark Theme Overrides
-Scoped under `[data-theme="dark"]` for wrapper bg, borders, and icon colors.
+Scoped under `[data-theme="dark"]`:
+- Default wrapper bg: `--color-surface-raised` (not `--color-surface`)
+- Disabled: bg `--color-disabled-bg`, border `--color-disabled-border`, text `--color-disabled-text`
+- Error border: `--color-error`
+- Success icon: `--color-success`

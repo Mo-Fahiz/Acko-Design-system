@@ -11,9 +11,9 @@ alwaysApply: false
 | Class | Element | Notes |
 |-------|---------|-------|
 | `.acko-input-group` | Root wrapper | `flex row`, border, rounded-full |
-| `.acko-input-group-sm` | Small size | Height: 36px |
-| `.acko-input-group-md` | Medium size | Height: 44px |
-| `.acko-input-group-lg` | Large size | Height: 52px |
+| `.acko-input-group-sm` | Small size | Height: var(--space-9) |
+| `.acko-input-group-md` | Medium size | Height: var(--scale-44) |
+| `.acko-input-group-lg` | Large size | Height: var(--scale-52) |
 | `.acko-input-group-prefix` | Left addon | `padding: 0 --space-3`, border-right separator |
 | `.acko-input-group-suffix` | Right addon | `padding: 0 --space-3`, border-left separator |
 | `.acko-input-group-input` | Inner input | `flex: 1`, transparent bg |
