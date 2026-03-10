@@ -81,7 +81,6 @@ export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
           className={clsx(
             "acko-text-input-label",
             focused && "acko-text-input-label-focused",
-            isError && "acko-text-input-label-error",
             disabled && "acko-text-input-label-disabled"
           )}
         >

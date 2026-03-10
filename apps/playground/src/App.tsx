@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { ArrowRight, Plus, Heart, Send, Search, Download, ChevronRight, Trash2, Share2, Settings } from "lucide-react";
 import { Dialog } from "@acko/dialog";
 import { ToastProvider, useToast } from "@acko/toast";
 import { Slider } from "@acko/slider";
@@ -157,30 +158,105 @@ const AlignRightIcon = () => (
    ═══════════════════════════════════════════════════════════════ */
 
 function ButtonPreview() {
+  const [loadingVariant, setLoadingVariant] = useState<string | null>(null);
+  const simulateLoading = (variant: string) => {
+    setLoadingVariant(variant);
+    setTimeout(() => setLoadingVariant(null), 2000);
+  };
+
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-3">
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="inverted">Inverted</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="danger">Danger</Button>
+    <div className="space-y-6">
+      {/* Variants */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Variants</Typography>
+        <div className="flex flex-wrap gap-3 mt-2">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="inverted">Inverted</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="danger">Danger</Button>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-3 items-end">
-        {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
-          <Button key={s} variant="primary" size={s}>
-            {s.toUpperCase()}
-          </Button>
-        ))}
+
+      {/* Sizes */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Sizes</Typography>
+        <div className="flex flex-wrap gap-3 items-end mt-2">
+          {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
+            <Button key={s} variant="primary" size={s}>
+              {s.toUpperCase()}
+            </Button>
+          ))}
+        </div>
       </div>
-      <div className="flex flex-wrap gap-3">
-        <Button variant="primary" loading>
-          Loading
-        </Button>
-        <Button variant="primary" disabled>
-          Disabled
-        </Button>
+
+      {/* With icons */}
+      <div>
+        <Typography variant="label-sm" color="secondary">With icons</Typography>
+        <div className="flex flex-wrap gap-3 mt-2">
+          <Button variant="primary" iconLeft={<ArrowRight />}>Continue</Button>
+          <Button variant="secondary" iconRight={<ChevronRight />}>Next step</Button>
+          <Button variant="primary" iconLeft={<Send />}>Send</Button>
+          <Button variant="ghost" iconLeft={<Download />}>Download</Button>
+          <Button variant="danger" iconLeft={<Trash2 />}>Delete</Button>
+          <Button variant="link" iconRight={<ArrowRight />}>Learn more</Button>
+        </div>
+      </div>
+
+      {/* Icon-only */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Icon-only</Typography>
+        <div className="flex flex-wrap gap-3 items-end mt-2">
+          <Button variant="primary" iconOnly size="xs" iconLeft={<Plus />}>+</Button>
+          <Button variant="primary" iconOnly size="sm" iconLeft={<Heart />}>Like</Button>
+          <Button variant="primary" iconOnly size="md" iconLeft={<Search />}>Search</Button>
+          <Button variant="secondary" iconOnly size="md" iconLeft={<Settings />}>Settings</Button>
+          <Button variant="ghost" iconOnly size="md" iconLeft={<Share2 />}>Share</Button>
+          <Button variant="danger" iconOnly size="md" iconLeft={<Trash2 />}>Delete</Button>
+          <Button variant="primary" iconOnly size="lg" iconLeft={<Plus />}>Add</Button>
+          <Button variant="primary" iconOnly size="xl" iconLeft={<Plus />}>Add</Button>
+        </div>
+      </div>
+
+      {/* Full width */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Full width</Typography>
+        <div className="flex flex-col gap-3 mt-2">
+          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a Quote</Button>
+          <Button variant="secondary" fullWidth>Cancel</Button>
+          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download Report</Button>
+        </div>
+      </div>
+
+      {/* Loading states */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Loading — click to test</Typography>
+        <div className="flex flex-wrap gap-3 mt-2">
+          {(["primary", "secondary", "inverted", "ghost", "danger"] as const).map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              loading={loadingVariant === v}
+              onClick={() => simulateLoading(v)}
+            >
+              {v.charAt(0).toUpperCase() + v.slice(1)}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Disabled states */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Disabled</Typography>
+        <div className="flex flex-wrap gap-3 mt-2">
+          <Button variant="primary" disabled>Primary</Button>
+          <Button variant="secondary" disabled>Secondary</Button>
+          <Button variant="ghost" disabled>Ghost</Button>
+          <Button variant="link" disabled>Link</Button>
+          <Button variant="danger" disabled>Danger</Button>
+          <Button variant="primary" disabled iconOnly iconLeft={<Plus />}>Add</Button>
+        </div>
       </div>
     </div>
   );
@@ -195,23 +271,30 @@ function ButtonUsage() {
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <Typography variant="heading-md" color="primary">
-            Delete Account
+            Confirm your policy
           </Typography>
           <Typography variant="body-sm" color="secondary">
-            This action is permanent and cannot be undone.
+            Review the details and proceed to payment.
           </Typography>
-          <div className="flex gap-3 pt-2">
-            <Button variant="secondary">
-              Cancel
+          <Button variant="primary" fullWidth iconRight={<ArrowRight />} loading={loading} onClick={handleClick}>
+            {loading ? "Processing..." : "Proceed to Pay"}
+          </Button>
+          <div className="flex gap-3">
+            <Button variant="secondary" fullWidth>
+              Edit Details
             </Button>
-            <Button
-              variant="danger"
-              loading={loading}
-              onClick={handleClick}
-            >
-              {loading ? "Deleting..." : "Delete"}
+            <Button variant="ghost" fullWidth iconLeft={<Download />}>
+              Download PDF
+            </Button>
+          </div>
+          <div className="flex justify-between items-center pt-2">
+            <Button variant="link" iconRight={<ArrowRight />}>
+              Terms & Conditions
+            </Button>
+            <Button variant="danger" size="sm" iconLeft={<Trash2 />}>
+              Cancel Policy
             </Button>
           </div>
         </div>

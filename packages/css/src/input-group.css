@@ -22,12 +22,21 @@
 /* Focus within */
 .acko-input-group:focus-within:not(.acko-input-group-disabled):not(.acko-input-group-error) {
   border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
+  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
 }
 
-/* Error */
+/* Error — gradient border */
 .acko-input-group-error {
-  border-color: var(--color-error);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
+}
+
+[data-theme="dark"] .acko-input-group-error {
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
 }
 
 /* Disabled */
@@ -35,6 +44,8 @@
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
+  background: var(--color-input-disabled-bg);
+  border-color: var(--color-input-disabled-border);
 }
 
 /* Prefix / Suffix */

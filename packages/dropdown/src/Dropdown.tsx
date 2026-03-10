@@ -304,8 +304,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           id={labelId}
           className={clsx(
             "acko-dropdown-label",
-            isOpen && "acko-dropdown-label-open",
-            isError && "acko-dropdown-label-error"
+            isOpen && "acko-dropdown-label-open"
           )}
         >
           {label}

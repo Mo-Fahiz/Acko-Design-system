@@ -39,15 +39,18 @@
   color: var(--color-text-secondary);
 }
 
-/* Focus */
+/* Focus — inner border + outer ring */
 .acko-textarea-focused {
   border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 1px var(--color-input-focus-border);
+  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
 }
 
-/* Error */
+/* Error — gradient border */
 .acko-textarea-error {
-  border-color: var(--color-error);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
 }
 
 /* Success */
@@ -57,10 +60,17 @@
 
 /* Disabled */
 .acko-textarea-disabled {
-  background: var(--color-surface-raised);
-  border-color: var(--color-border-subtle);
+  background: var(--color-input-disabled-bg);
+  border-color: var(--color-input-disabled-border);
   cursor: not-allowed;
   color: var(--color-text-disabled);
+}
+
+/* Dark theme error gradient */
+[data-theme="dark"] .acko-textarea-error {
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
 }
 
 /* --- Footer --- */

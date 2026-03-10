@@ -15,7 +15,6 @@
 }
 
 .acko-text-input-label-focused { color: var(--color-primary); }
-.acko-text-input-label-error { color: var(--color-error-text); }
 .acko-text-input-label-disabled { color: var(--color-text-secondary); }
 
 .acko-text-input-required {
@@ -110,15 +109,17 @@
 
 /* --- States --- */
 
+/* Hover */
 @media (hover: hover) and (pointer: fine) {
   .acko-text-input-wrapper:hover:not(.acko-text-input-disabled):not(.acko-text-input-error):not(.acko-text-input-success):not(.acko-text-input-readonly):not(.acko-text-input-focused) {
     border-color: var(--color-input-hover-border);
   }
 }
 
+/* Focus — inner border + outer ring */
 .acko-text-input-focused {
   border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 1px var(--color-input-focus-border);
+  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
 }
 
 .acko-text-input-focused .acko-text-input-icon-left,
@@ -126,13 +127,17 @@
   color: var(--color-primary);
 }
 
+/* Filled (info filled) */
 .acko-text-input-filled:not(.acko-text-input-error):not(.acko-text-input-success) {
   border-color: var(--color-input-filled-border);
 }
 
-/* Error */
+/* Error — gradient border with rounded corners */
 .acko-text-input-error {
-  border-color: var(--color-error);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
   animation: acko-text-input-shake 300ms ease-out;
 }
 
@@ -163,8 +168,8 @@
 
 /* Disabled */
 .acko-text-input-disabled {
-  border-color: var(--color-border-subtle);
-  background-color: var(--color-surface-raised);
+  border-color: var(--color-input-disabled-border);
+  background-color: var(--color-input-disabled-bg);
   @apply cursor-not-allowed;
 }
 .acko-text-input-disabled .acko-text-input-el { color: var(--color-text-disabled); @apply cursor-not-allowed; }
@@ -178,23 +183,15 @@
 }
 .acko-text-input-readonly .acko-text-input-el { color: var(--color-text-supporting); }
 
-/* Dark theme */
-[data-theme="dark"] .acko-text-input-wrapper {
-  background-color: var(--color-input-bg);
-  border-color: var(--color-input-border);
-}
-
+/* Dark theme error gradient */
 [data-theme="dark"] .acko-text-input-error {
-  border-color: var(--color-error-text);
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
 }
 
 [data-theme="dark"] .acko-text-input-success-icon {
   color: var(--color-success-text);
-}
-
-[data-theme="dark"] .acko-text-input-disabled {
-  background-color: var(--color-input-disabled-bg);
-  border-color: var(--color-input-disabled-border);
 }
 
 /* ============================================================
