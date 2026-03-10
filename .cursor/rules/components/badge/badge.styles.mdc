@@ -26,24 +26,29 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 ### Solid Variant Colors
 Pattern: `.acko-badge-solid-{color}` where color = `purple | green | blue | orange | pink | gray`
 
-Uses tokens: `--color-badge-{color}-bg`, `--color-badge-{color}-text`
+Uses gradient fill + border:
+- `background: linear-gradient(0deg, --color-badge-{color}-gradient-from, --color-badge-{color}-gradient-to)`
+- `border: 1px solid --color-badge-{color}-border`
+- `color: --color-badge-{color}-text`
 
-> **Flat badge system.** No shadows on badges or counter badges.
+Green badge uses lime primitives for gradient/border, green for text.
 
 ### Outline Variant Colors
 Pattern: `.acko-badge-outline-{color}`
 
-Uses token: `--color-badge-{color}-outline-color` for both text and border
+Uses token: `--color-badge-{color}-outline-color` for both text and border. Green outline uses `lime-600`.
 
 ### Dot Variant Colors
 Pattern: `.acko-badge-dot-{color}`
 
-Same bg as solid + `.acko-badge-dot` child element (`--scale-6` circle in `currentColor`)
+Same gradient + border as solid + `.acko-badge-dot` child element (`--scale-6` circle in `currentColor`)
 
 ### Children
 - `.acko-badge-dot` — `--scale-6` circle indicator
 - `.acko-badge-remove` — remove button with X icon (`--scale-12` SVG)
 
 ### Counter Badge
-- `.acko-counter-badge` — pill with min-width `--scale-20`, height `--scale-20`, padding `0 --scale-6`, font `--font-label-sm-size`, tabular-nums
-- `.acko-counter-badge-{color}` — purple, pink, blue
+- `.acko-counter-badge` — pill with min-width `--scale-20`, height `--scale-20`, padding `0 --scale-6`, font `--font-label-sm-size`, tabular-nums, text `--color-on-primary`
+- `.acko-counter-badge-{color}` — purple, pink, blue — gradient fill + border:
+  - `background: linear-gradient(0deg, --color-counter-{color}-gradient-from, --color-counter-{color}-gradient-to)`
+  - `border: 1px solid --color-counter-{color}-border`

@@ -34,15 +34,16 @@ description: Shadow tokens — primitive and semantic shadows for elevation hier
 
 > **Dark mode note:** `--shadow-btn-secondary-hover` uses `rgba(0,0,0,0.2)` in dark — matching the original `Button.module.css` `inset 0px 2px 4px 0px rgba(255,255,255,0.08)` for the dark hover was updated to use darker inset shadows that work better on dark surfaces.
 
-## Badge Inner Shadow Pattern
+## Badge Gradient Pattern
 
-All solid badges use a dual inner shadow for a convex effect:
+Solid badges use a vertical gradient fill with a solid border — no shadows:
 
 ```css
-box-shadow:
-  inset 0 -1px 2px 0 var(--color-badge-{color}-shadow-bottom),
-  inset 0 1px 1px 0 var(--color-badge-{color}-shadow-top);
+background: linear-gradient(0deg, var(--color-badge-{color}-gradient-from), var(--color-badge-{color}-gradient-to));
+border: 1px solid var(--color-badge-{color}-border);
 ```
+
+Counter badges follow the same pattern with their own token set (`--color-counter-{color}-*`).
 
 ## Rules
 

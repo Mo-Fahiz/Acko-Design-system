@@ -223,29 +223,29 @@ primitives → semantics → component CSS
 | `--color-cal-today-text` | `purple-600` | `purple-400` |
 | `--color-cal-cell-hover-bg` | `grey-100` | `grey-650` |
 
-### Badge — Solid (per-color tokens)
+### Badge — Solid (gradient fill + border)
 
-> **Note:** Badges are FLAT — no shadows (inner or drop) per the new spec. The shadow tokens remain defined for backward compatibility but should NOT be used in new implementations.
+Pattern: `--color-badge-{color}-{gradient-from|gradient-to|border|text}`
 
-Pattern: `--color-badge-{color}-{bg|text|shadow-top|shadow-bottom}`
+Background is `linear-gradient(0deg, gradient-from, gradient-to)` with a `1px solid border`.
 
-| Color | `bg` Light | `text` Light | `shadow-top` Light | `shadow-bottom` Light |
-|-------|-----------|-------------|--------------------|-----------------------|
-| purple | `purple-200` | `purple-800` | `purple-100` | `purple-300` |
-| green | `lime-200` | `green-800` | `lime-100` | `green-300` |
-| blue | `blue-200` | `blue-800` | `blue-100` | `blue-300` |
-| orange | `orange-200` | `orange-800` | `orange-100` | `orange-300` |
-| pink | `red-200` | `red-800` | `red-100` | `red-300` |
-| gray | `grey-200` | `grey-600` | `grey-100` | `grey-250` |
+| Color | `gradient-from` Light | `gradient-to` Light | `border` Light | `text` Light |
+|-------|----------------------|--------------------|--------------:|-------------|
+| purple | `purple-200` | `purple-100` | `purple-200` | `purple-800` |
+| green (lime) | `lime-200` | `lime-100` | `lime-200` | `green-800` |
+| blue | `blue-200` | `blue-100` | `blue-200` | `blue-800` |
+| orange | `orange-200` | `orange-100` | `orange-200` | `orange-800` |
+| pink | `red-200` | `red-100` | `red-200` | `red-800` |
+| gray | `grey-200` | `grey-100` | `grey-200` | `grey-600` |
 
-| Color | `bg` Dark | `text` Dark | `shadow-top` Dark | `shadow-bottom` Dark |
-|-------|----------|------------|-------------------|-----------------------|
-| purple | `purple-900` | `purple-200` | `purple-700` | `purple-950` |
-| green | `green-900` | `green-200` | `green-700` | `green-950` |
-| blue | `blue-900` | `blue-200` | `blue-700` | `blue-950` |
-| orange | `orange-900` | `orange-200` | `orange-700` | `orange-950` |
-| pink | `red-900` | `red-200` | `red-700` | `red-950` |
-| gray | `grey-600` | `grey-200` | `grey-500` | `grey-650` |
+| Color | `gradient-from` Dark | `gradient-to` Dark | `border` Dark | `text` Dark |
+|-------|---------------------|-------------------|-------------:|------------|
+| purple | `purple-900` | `purple-800` | `purple-700` | `purple-200` |
+| green (lime) | `lime-900` | `lime-800` | `lime-700` | `green-200` |
+| blue | `blue-900` | `blue-800` | `blue-700` | `blue-200` |
+| orange | `orange-900` | `orange-800` | `orange-700` | `orange-200` |
+| pink | `red-900` | `red-800` | `red-700` | `red-200` |
+| gray | `grey-650` | `grey-600` | `grey-500` | `grey-200` |
 
 ### Badge — Outline
 
@@ -254,27 +254,29 @@ Pattern: `--color-badge-{color}-outline-color`
 | Color | Light | Dark |
 |-------|-------|------|
 | purple | `purple-600` | `purple-400` |
-| green | `green-600` | `green-600` |
+| green (lime) | `lime-600` | `lime-600` |
 | blue | `blue-600` | `blue-600` |
 | orange | `orange-600` | `orange-600` |
 | pink | `red-600` | `red-600` |
 | gray | `grey-600` | `grey-500` |
 
-### Counter Badge
+### Counter Badge (gradient fill + border)
 
-Pattern: `--color-counter-{color}-{bg|shadow-top|shadow-bottom}`
+Pattern: `--color-counter-{color}-{gradient-from|gradient-to|border}`
 
-| Color | `bg` Light | `shadow-top` Light | `shadow-bottom` Light |
-|-------|-----------|--------------------|-----------------------|
-| pink | `red-500` | `red-400` | `red-700` |
-| purple | `purple-500` | `purple-400` | `purple-700` |
-| blue | `blue-500` | `blue-400` | `blue-700` |
+Background is `linear-gradient(0deg, gradient-from, gradient-to)` with a `1px solid border`. Text is always `--color-on-primary` (white).
 
-| Color | `bg` Dark | `shadow-top` Dark | `shadow-bottom` Dark |
-|-------|----------|-------------------|-----------------------|
-| pink | `red-600` | `red-400` | `red-800` |
-| purple | `purple-600` | `purple-400` | `purple-800` |
-| blue | `blue-600` | `blue-400` | `blue-800` |
+| Color | `gradient-from` Light | `gradient-to` Light | `border` Light |
+|-------|----------------------|--------------------|---------------|
+| pink | `red-500` | `red-400` | `red-500` |
+| purple | `purple-500` | `purple-400` | `purple-500` |
+| blue | `blue-500` | `blue-400` | `blue-500` |
+
+| Color | `gradient-from` Dark | `gradient-to` Dark | `border` Dark |
+|-------|---------------------|-------------------|--------------|
+| pink | `red-600` | `red-700` | `red-600` |
+| purple | `purple-600` | `purple-700` | `purple-600` |
+| blue | `blue-600` | `blue-700` | `blue-600` |
 
 ### Wizard
 

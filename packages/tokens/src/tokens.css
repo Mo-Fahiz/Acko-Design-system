@@ -436,57 +436,57 @@
   --color-cal-today-text: var(--purple-600);
   --color-cal-cell-hover-bg: var(--grey-100);
 
-  /* Badge — solid */
-  --color-badge-purple-bg: var(--purple-200);
+  /* Badge — solid (gradient from→to + border) */
+  --color-badge-purple-gradient-from: var(--purple-200);
+  --color-badge-purple-gradient-to: var(--purple-100);
+  --color-badge-purple-border: var(--purple-200);
   --color-badge-purple-text: var(--purple-800);
-  --color-badge-purple-shadow-top: var(--purple-100);
-  --color-badge-purple-shadow-bottom: var(--purple-300);
 
-  --color-badge-green-bg: var(--green-200);
+  --color-badge-green-gradient-from: var(--lime-200);
+  --color-badge-green-gradient-to: var(--lime-100);
+  --color-badge-green-border: var(--lime-200);
   --color-badge-green-text: var(--green-800);
-  --color-badge-green-shadow-top: var(--green-100);
-  --color-badge-green-shadow-bottom: var(--green-300);
 
-  --color-badge-blue-bg: var(--blue-200);
+  --color-badge-blue-gradient-from: var(--blue-200);
+  --color-badge-blue-gradient-to: var(--blue-100);
+  --color-badge-blue-border: var(--blue-200);
   --color-badge-blue-text: var(--blue-800);
-  --color-badge-blue-shadow-top: var(--blue-100);
-  --color-badge-blue-shadow-bottom: var(--blue-300);
 
-  --color-badge-orange-bg: var(--orange-200);
+  --color-badge-orange-gradient-from: var(--orange-200);
+  --color-badge-orange-gradient-to: var(--orange-100);
+  --color-badge-orange-border: var(--orange-200);
   --color-badge-orange-text: var(--orange-800);
-  --color-badge-orange-shadow-top: var(--orange-100);
-  --color-badge-orange-shadow-bottom: var(--orange-300);
 
-  --color-badge-pink-bg: var(--red-200);
+  --color-badge-pink-gradient-from: var(--red-200);
+  --color-badge-pink-gradient-to: var(--red-100);
+  --color-badge-pink-border: var(--red-200);
   --color-badge-pink-text: var(--red-800);
-  --color-badge-pink-shadow-top: var(--red-100);
-  --color-badge-pink-shadow-bottom: var(--red-300);
 
-  --color-badge-gray-bg: var(--grey-200);
+  --color-badge-gray-gradient-from: var(--grey-200);
+  --color-badge-gray-gradient-to: var(--grey-100);
+  --color-badge-gray-border: var(--grey-200);
   --color-badge-gray-text: var(--grey-600);
-  --color-badge-gray-shadow-top: var(--grey-100);
-  --color-badge-gray-shadow-bottom: var(--grey-250);
 
   /* Badge outline */
   --color-badge-purple-outline-color: var(--purple-600);
-  --color-badge-green-outline-color: var(--green-600);
+  --color-badge-green-outline-color: var(--lime-600);
   --color-badge-blue-outline-color: var(--blue-600);
   --color-badge-orange-outline-color: var(--orange-600);
   --color-badge-pink-outline-color: var(--red-600);
   --color-badge-gray-outline-color: var(--grey-600);
 
-  /* Counter badge */
-  --color-counter-pink-bg: var(--red-500);
-  --color-counter-pink-shadow-top: var(--red-400);
-  --color-counter-pink-shadow-bottom: var(--red-700);
+  /* Counter badge (gradient from→to + border) */
+  --color-counter-pink-gradient-from: var(--red-500);
+  --color-counter-pink-gradient-to: var(--red-400);
+  --color-counter-pink-border: var(--red-500);
 
-  --color-counter-purple-bg: var(--purple-500);
-  --color-counter-purple-shadow-top: var(--purple-400);
-  --color-counter-purple-shadow-bottom: var(--purple-700);
+  --color-counter-purple-gradient-from: var(--purple-500);
+  --color-counter-purple-gradient-to: var(--purple-400);
+  --color-counter-purple-border: var(--purple-500);
 
-  --color-counter-blue-bg: var(--blue-500);
-  --color-counter-blue-shadow-top: var(--blue-400);
-  --color-counter-blue-shadow-bottom: var(--blue-700);
+  --color-counter-blue-gradient-from: var(--blue-500);
+  --color-counter-blue-gradient-to: var(--blue-400);
+  --color-counter-blue-border: var(--blue-500);
 
   /* Wizard */
   --color-wizard-active-bg: var(--purple-500);
@@ -679,57 +679,57 @@
   --color-cal-today-text: var(--purple-400);
   --color-cal-cell-hover-bg: var(--grey-650);
 
-  /* Badge — solid */
-  --color-badge-purple-bg: var(--purple-900);
+  /* Badge — solid (gradient from→to + border) */
+  --color-badge-purple-gradient-from: var(--purple-900);
+  --color-badge-purple-gradient-to: var(--purple-800);
+  --color-badge-purple-border: var(--purple-700);
   --color-badge-purple-text: var(--purple-200);
-  --color-badge-purple-shadow-top: var(--purple-700);
-  --color-badge-purple-shadow-bottom: var(--purple-950);
 
-  --color-badge-green-bg: var(--green-900);
+  --color-badge-green-gradient-from: var(--lime-900);
+  --color-badge-green-gradient-to: var(--lime-800);
+  --color-badge-green-border: var(--lime-700);
   --color-badge-green-text: var(--green-200);
-  --color-badge-green-shadow-top: var(--green-700);
-  --color-badge-green-shadow-bottom: var(--green-950);
 
-  --color-badge-blue-bg: var(--blue-900);
+  --color-badge-blue-gradient-from: var(--blue-900);
+  --color-badge-blue-gradient-to: var(--blue-800);
+  --color-badge-blue-border: var(--blue-700);
   --color-badge-blue-text: var(--blue-200);
-  --color-badge-blue-shadow-top: var(--blue-700);
-  --color-badge-blue-shadow-bottom: var(--blue-950);
 
-  --color-badge-orange-bg: var(--orange-900);
+  --color-badge-orange-gradient-from: var(--orange-900);
+  --color-badge-orange-gradient-to: var(--orange-800);
+  --color-badge-orange-border: var(--orange-700);
   --color-badge-orange-text: var(--orange-200);
-  --color-badge-orange-shadow-top: var(--orange-700);
-  --color-badge-orange-shadow-bottom: var(--orange-950);
 
-  --color-badge-pink-bg: var(--red-900);
+  --color-badge-pink-gradient-from: var(--red-900);
+  --color-badge-pink-gradient-to: var(--red-800);
+  --color-badge-pink-border: var(--red-700);
   --color-badge-pink-text: var(--red-200);
-  --color-badge-pink-shadow-top: var(--red-700);
-  --color-badge-pink-shadow-bottom: var(--red-950);
 
-  --color-badge-gray-bg: var(--grey-600);
+  --color-badge-gray-gradient-from: var(--grey-650);
+  --color-badge-gray-gradient-to: var(--grey-600);
+  --color-badge-gray-border: var(--grey-500);
   --color-badge-gray-text: var(--grey-200);
-  --color-badge-gray-shadow-top: var(--grey-500);
-  --color-badge-gray-shadow-bottom: var(--grey-650);
 
   /* Badge outline */
   --color-badge-purple-outline-color: var(--purple-400);
-  --color-badge-green-outline-color: var(--green-600);
+  --color-badge-green-outline-color: var(--lime-600);
   --color-badge-blue-outline-color: var(--blue-600);
   --color-badge-orange-outline-color: var(--orange-600);
   --color-badge-pink-outline-color: var(--red-600);
   --color-badge-gray-outline-color: var(--grey-500);
 
-  /* Counter badge */
-  --color-counter-pink-bg: var(--red-600);
-  --color-counter-pink-shadow-top: var(--red-400);
-  --color-counter-pink-shadow-bottom: var(--red-800);
+  /* Counter badge (gradient from→to + border) */
+  --color-counter-pink-gradient-from: var(--red-600);
+  --color-counter-pink-gradient-to: var(--red-700);
+  --color-counter-pink-border: var(--red-600);
 
-  --color-counter-purple-bg: var(--purple-600);
-  --color-counter-purple-shadow-top: var(--purple-400);
-  --color-counter-purple-shadow-bottom: var(--purple-800);
+  --color-counter-purple-gradient-from: var(--purple-600);
+  --color-counter-purple-gradient-to: var(--purple-700);
+  --color-counter-purple-border: var(--purple-600);
 
-  --color-counter-blue-bg: var(--blue-600);
-  --color-counter-blue-shadow-top: var(--blue-400);
-  --color-counter-blue-shadow-bottom: var(--blue-800);
+  --color-counter-blue-gradient-from: var(--blue-600);
+  --color-counter-blue-gradient-to: var(--blue-700);
+  --color-counter-blue-border: var(--blue-600);
 
   /* Wizard */
   --color-wizard-active-bg: var(--purple-600);

@@ -12,27 +12,33 @@
 
 /* --- Solid variant --- */
 .acko-badge-solid-purple {
-  background-color: var(--color-badge-purple-bg);
+  background: linear-gradient(0deg, var(--color-badge-purple-gradient-from), var(--color-badge-purple-gradient-to));
+  border: 1px solid var(--color-badge-purple-border);
   color: var(--color-badge-purple-text);
 }
 .acko-badge-solid-green {
-  background-color: var(--color-badge-green-bg);
+  background: linear-gradient(0deg, var(--color-badge-green-gradient-from), var(--color-badge-green-gradient-to));
+  border: 1px solid var(--color-badge-green-border);
   color: var(--color-badge-green-text);
 }
 .acko-badge-solid-blue {
-  background-color: var(--color-badge-blue-bg);
+  background: linear-gradient(0deg, var(--color-badge-blue-gradient-from), var(--color-badge-blue-gradient-to));
+  border: 1px solid var(--color-badge-blue-border);
   color: var(--color-badge-blue-text);
 }
 .acko-badge-solid-orange {
-  background-color: var(--color-badge-orange-bg);
+  background: linear-gradient(0deg, var(--color-badge-orange-gradient-from), var(--color-badge-orange-gradient-to));
+  border: 1px solid var(--color-badge-orange-border);
   color: var(--color-badge-orange-text);
 }
 .acko-badge-solid-pink {
-  background-color: var(--color-badge-pink-bg);
+  background: linear-gradient(0deg, var(--color-badge-pink-gradient-from), var(--color-badge-pink-gradient-to));
+  border: 1px solid var(--color-badge-pink-border);
   color: var(--color-badge-pink-text);
 }
 .acko-badge-solid-gray {
-  background-color: var(--color-badge-gray-bg);
+  background: linear-gradient(0deg, var(--color-badge-gray-gradient-from), var(--color-badge-gray-gradient-to));
+  border: 1px solid var(--color-badge-gray-border);
   color: var(--color-badge-gray-text);
 }
 
@@ -44,13 +50,13 @@
 .acko-badge-outline-pink { @apply bg-transparent; color: var(--color-badge-pink-outline-color); border: 1px solid var(--color-badge-pink-outline-color); }
 .acko-badge-outline-gray { @apply bg-transparent; color: var(--color-badge-gray-outline-color); border: 1px solid var(--color-badge-gray-outline-color); }
 
-/* --- Dot variant (same bg as solid + dot indicator) --- */
-.acko-badge-dot-purple { background-color: var(--color-badge-purple-bg); color: var(--color-badge-purple-text); }
-.acko-badge-dot-green { background-color: var(--color-badge-green-bg); color: var(--color-badge-green-text); }
-.acko-badge-dot-blue { background-color: var(--color-badge-blue-bg); color: var(--color-badge-blue-text); }
-.acko-badge-dot-orange { background-color: var(--color-badge-orange-bg); color: var(--color-badge-orange-text); }
-.acko-badge-dot-pink { background-color: var(--color-badge-pink-bg); color: var(--color-badge-pink-text); }
-.acko-badge-dot-gray { background-color: var(--color-badge-gray-bg); color: var(--color-badge-gray-text); }
+/* --- Dot variant (same gradient as solid + dot indicator) --- */
+.acko-badge-dot-purple { background: linear-gradient(0deg, var(--color-badge-purple-gradient-from), var(--color-badge-purple-gradient-to)); border: 1px solid var(--color-badge-purple-border); color: var(--color-badge-purple-text); }
+.acko-badge-dot-green { background: linear-gradient(0deg, var(--color-badge-green-gradient-from), var(--color-badge-green-gradient-to)); border: 1px solid var(--color-badge-green-border); color: var(--color-badge-green-text); }
+.acko-badge-dot-blue { background: linear-gradient(0deg, var(--color-badge-blue-gradient-from), var(--color-badge-blue-gradient-to)); border: 1px solid var(--color-badge-blue-border); color: var(--color-badge-blue-text); }
+.acko-badge-dot-orange { background: linear-gradient(0deg, var(--color-badge-orange-gradient-from), var(--color-badge-orange-gradient-to)); border: 1px solid var(--color-badge-orange-border); color: var(--color-badge-orange-text); }
+.acko-badge-dot-pink { background: linear-gradient(0deg, var(--color-badge-pink-gradient-from), var(--color-badge-pink-gradient-to)); border: 1px solid var(--color-badge-pink-border); color: var(--color-badge-pink-text); }
+.acko-badge-dot-gray { background: linear-gradient(0deg, var(--color-badge-gray-gradient-from), var(--color-badge-gray-gradient-to)); border: 1px solid var(--color-badge-gray-border); color: var(--color-badge-gray-text); }
 
 .acko-badge-dot {
   @apply size-1.5 rounded-full shrink-0;
@@ -80,11 +86,14 @@
   color: var(--color-on-primary);
 }
 .acko-counter-badge-purple {
-  background-color: var(--color-counter-purple-bg);
+  background: linear-gradient(0deg, var(--color-counter-purple-gradient-from), var(--color-counter-purple-gradient-to));
+  border: 1px solid var(--color-counter-purple-border);
 }
 .acko-counter-badge-pink {
-  background-color: var(--color-counter-pink-bg);
+  background: linear-gradient(0deg, var(--color-counter-pink-gradient-from), var(--color-counter-pink-gradient-to));
+  border: 1px solid var(--color-counter-pink-border);
 }
 .acko-counter-badge-blue {
-  background-color: var(--color-counter-blue-bg);
+  background: linear-gradient(0deg, var(--color-counter-blue-gradient-from), var(--color-counter-blue-gradient-to));
+  border: 1px solid var(--color-counter-blue-border);
 }
