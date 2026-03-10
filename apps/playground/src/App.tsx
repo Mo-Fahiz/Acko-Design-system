@@ -223,6 +223,7 @@ function ButtonUsage() {
 function BadgePreview() {
   return (
     <div className="space-y-4">
+      <Typography variant="label-sm" color="secondary">Solid (gradient)</Typography>
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
@@ -232,22 +233,32 @@ function BadgePreview() {
           )
         )}
       </div>
+      <Typography variant="label-sm" color="secondary">Outline</Typography>
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
             <Badge key={c} variant="outline" color={c}>
-              outline
+              {c}
             </Badge>
           )
         )}
       </div>
+      <Typography variant="label-sm" color="secondary">Dot & Removable</Typography>
       <div className="flex flex-wrap gap-2 items-center">
-        <Badge variant="dot" color="purple">
-          Dot
-        </Badge>
+        {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
+          (c) => (
+            <Badge key={c} variant="dot" color={c}>
+              {c}
+            </Badge>
+          )
+        )}
         <Badge removable onRemove={() => {}}>
           Removable
         </Badge>
+      </div>
+      <Typography variant="label-sm" color="secondary">Counter badges</Typography>
+      <div className="flex flex-wrap gap-2 items-center">
+        <CounterBadge count={3} color="purple" />
         <CounterBadge count={42} color="pink" />
         <CounterBadge count={150} max={99} color="blue" />
       </div>
