@@ -303,24 +303,27 @@ function ButtonUsage() {
 }
 
 function BadgePreview() {
+  const solidLabels: Record<string, string> = {
+    purple: "New", green: "Active", blue: "Info", orange: "Pending", pink: "Beta", gray: "Draft",
+  };
   return (
     <div className="space-y-4">
-      <Typography variant="label-sm" color="secondary">Solid (gradient) — ALL CAPS default</Typography>
+      <Typography variant="label-sm" color="secondary">Solid — ALL CAPS (default)</Typography>
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
             <Badge key={c} color={c}>
-              {c}
+              {solidLabels[c]}
             </Badge>
           )
         )}
       </div>
-      <Typography variant="label-sm" color="secondary">Outline</Typography>
+      <Typography variant="label-sm" color="secondary">Outline — Title Case</Typography>
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
-            <Badge key={c} variant="outline" color={c}>
-              {c}
+            <Badge key={c} variant="outline" color={c} textCase="title">
+              {solidLabels[c]}
             </Badge>
           )
         )}
@@ -331,12 +334,12 @@ function BadgePreview() {
         <Badge color="blue" textCase="title">Title Case</Badge>
         <Badge color="green" textCase="sentence">Sentence case</Badge>
       </div>
-      <Typography variant="label-sm" color="secondary">Dot & Removable</Typography>
+      <Typography variant="label-sm" color="secondary">Dot & Removable — Title Case</Typography>
       <div className="flex flex-wrap gap-2 items-center">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
             <Badge key={c} variant="dot" color={c} textCase="title">
-              {c}
+              {solidLabels[c]}
             </Badge>
           )
         )}
@@ -344,7 +347,7 @@ function BadgePreview() {
           Removable
         </Badge>
       </div>
-      <Typography variant="label-sm" color="secondary">Counter badges</Typography>
+      <Typography variant="label-sm" color="secondary">Counter Badges</Typography>
       <div className="flex flex-wrap gap-2 items-center">
         <CounterBadge count={3} color="purple" />
         <CounterBadge count={42} color="pink" />
