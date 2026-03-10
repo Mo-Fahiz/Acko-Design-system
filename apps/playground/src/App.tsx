@@ -312,7 +312,7 @@ function BadgePreview() {
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
-            <Badge key={c} color={c}>
+            <Badge key={c} color={c} textCase="uppercase">
               {solidLabels[c]}
             </Badge>
           )
@@ -465,7 +465,7 @@ function CardUsage() {
           <Typography variant="heading-md" color="primary">
             Premium Plan
           </Typography>
-          <Badge color="orange" variant="solid">
+          <Badge color="orange" variant="solid" textCase="uppercase">
             Popular
           </Badge>
         </div>
@@ -523,7 +523,7 @@ function TypographyPreview() {
         <Separator />
         <div className="flex items-center gap-3">
           <Typography variant="label-lg" color="primary">Status:</Typography>
-          <Badge color="green" variant="solid">Active</Badge>
+          <Badge color="green" variant="solid" textCase="uppercase">Active</Badge>
           <Typography variant="caption" color="secondary">Updated 2 hours ago</Typography>
         </div>
       </div>
@@ -1365,7 +1365,7 @@ function TablePreview() {
             <TableCell>{r.id}</TableCell>
             <TableCell>{r.name}</TableCell>
             <TableCell>
-              <Badge color={r.status === "Active" ? "green" : r.status === "Pending" ? "orange" : "gray"} variant="solid">
+              <Badge color={r.status === "Active" ? "green" : r.status === "Pending" ? "orange" : "gray"} variant="solid" textCase="uppercase">
                 {r.status}
               </Badge>
             </TableCell>
@@ -1402,14 +1402,14 @@ function TableUsage() {
                 <TableCell>Comprehensive</TableCell>
                 <TableCell>₹4,835</TableCell>
                 <TableCell>
-                  <Badge color="green" variant="solid">Active</Badge>
+                  <Badge color="green" variant="solid" textCase="uppercase">Active</Badge>
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Third Party</TableCell>
                 <TableCell>₹2,094</TableCell>
                 <TableCell>
-                  <Badge color="orange" variant="solid">Pending</Badge>
+                  <Badge color="orange" variant="solid" textCase="uppercase">Pending</Badge>
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -2275,8 +2275,8 @@ function App() {
             </h1>
           </div>
           <span className="text-border-strong">|</span>
-          <Badge color="purple" variant="outline">
-            {COMPONENT_LIST.length} components
+          <Badge color="purple" variant="outline" textCase="uppercase">
+            {COMPONENT_LIST.length} Components
           </Badge>
         </div>
         <div className="flex items-center gap-1 p-0.5 rounded-full border border-border-subtle bg-surface">
