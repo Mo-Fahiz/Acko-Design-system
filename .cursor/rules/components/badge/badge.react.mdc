@@ -11,10 +11,13 @@ Directive: None (presentational)
 ## Props Interface
 
 ```typescript
+type BadgeTextCase = 'uppercase' | 'title' | 'sentence';
+
 interface BadgeProps {
   variant?: 'solid' | 'outline' | 'dot';
   color?: 'purple' | 'green' | 'blue' | 'orange' | 'pink' | 'gray';
   size?: 'sm' | 'md' | 'lg';
+  textCase?: BadgeTextCase;  // default: 'uppercase' — no lowercase in badges
   removable?: boolean;
   onRemove?: () => void;
   className?: string;
@@ -32,13 +35,18 @@ interface CounterBadgeProps {
 ## Component Pattern
 
 Zero Tailwind utilities. Pure `clsx` class composition:
-- `acko-badge`, `acko-badge-{size}`, `acko-badge-{variant}-{color}`
+- `acko-badge`, `acko-badge-{size}`, `acko-badge-{variant}-{color}`, text case class
+
+Text case mapping:
+- `uppercase` → `acko-badge-uppercase` (default)
+- `title` → `acko-badge-title-case`
+- `sentence` → `acko-badge-sentence-case`
 
 ## Exports
 
 ```typescript
 export { Badge } from './Badge';
-export type { BadgeProps } from './Badge';
+export type { BadgeProps, BadgeTextCase } from './Badge';
 export { CounterBadge } from './Badge';
 export type { CounterBadgeProps } from './Badge';
 ```

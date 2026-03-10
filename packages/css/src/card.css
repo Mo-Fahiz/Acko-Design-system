@@ -5,7 +5,7 @@
 
 .acko-card {
   overflow: hidden;
-  border-radius: var(--radius-3xl);
+  border-radius: 20px;
 }
 
 .acko-card-default {
@@ -20,7 +20,7 @@
 
 .acko-card-elevated {
   background-color: var(--color-card-elevated-bg);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
 }
 
 .acko-card-demoted {

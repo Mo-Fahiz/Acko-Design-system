@@ -30,3 +30,9 @@ alwaysApply: false
 - Thumb focus-visible: `box-shadow: var(--shadow-focus-ring)`
 - Thumb active: `cursor: grabbing; transform: translateX(-50%) scale(1.1)`
 - Disabled: `opacity: 0.45`, `pointer-events: none`; fill/thumb use `--color-text-disabled`
+
+## Dark Theme
+
+Under `[data-theme="dark"]`:
+- Track background: `var(--grey-600)`
+- Ticks: `var(--grey-600)`

@@ -9,9 +9,10 @@ CSS file: `@acko/css/field.css`
 
 ## CSS Classes
 
-- `.acko-field` — `@apply flex flex-col`, `gap: var(--space-2)`
-- `.acko-field-label` — `font-size: var(--font-body-sm-size); font-weight: 500; color: var(--color-text-primary)`
-- `.acko-field-label-disabled` — `color: var(--color-text-disabled)`
+- `.acko-field` — `@apply flex flex-col`, `gap: var(--space-1)` (4px)
+- `.acko-field-label` — typography: `font-label-lg` tokens; `color: var(--color-text-default)`
+- `.acko-field-label-focused` — focused state: `color: var(--color-primary)`
+- `.acko-field-label-disabled` — `color: var(--color-text-secondary)`
 - `.acko-field-required` — `color: var(--color-error); margin-left: 2px`
 - `.acko-field-helper` — `font-size: var(--font-caption-size); color: var(--color-text-secondary)`
-- `.acko-field-error` — `font-size: var(--font-caption-size); color: var(--color-error-text)`
+- `.acko-field-error` — `font-size: var(--font-caption-size); color: var(--color-error-text)` (label does NOT turn red on error)

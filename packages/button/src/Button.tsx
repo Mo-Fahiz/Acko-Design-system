@@ -55,21 +55,23 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {...rest}
       >
-        {iconLeft && (
-          <span className="acko-btn-icon" aria-hidden="true">
-            {iconLeft}
-          </span>
-        )}
-        {iconOnly ? (
-          <span className="sr-only">{children}</span>
-        ) : (
-          children
-        )}
-        {iconRight && (
-          <span className="acko-btn-icon" aria-hidden="true">
-            {iconRight}
-          </span>
-        )}
+        <span className="acko-btn-content">
+          {iconLeft && (
+            <span className="acko-btn-icon" aria-hidden="true">
+              {iconLeft}
+            </span>
+          )}
+          {iconOnly ? (
+            <span className="sr-only">{children}</span>
+          ) : (
+            <span className="acko-btn-label">{children}</span>
+          )}
+          {iconRight && (
+            <span className="acko-btn-icon" aria-hidden="true">
+              {iconRight}
+            </span>
+          )}
+        </span>
         {loading && (
           <>
             <span className="acko-btn-dots" aria-hidden="true">

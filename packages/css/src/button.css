@@ -234,11 +234,24 @@
   }
 }
 
+/* --- Content wrapper --- */
+
+.acko-btn-content {
+  @apply inline-flex items-center justify-center gap-2;
+}
+
+.acko-btn-label {
+  @apply leading-none;
+}
+
 /* --- Loading — 3 dot wave --- */
 
 .acko-btn-loading {
   @apply pointer-events-none;
-  color: transparent !important;
+}
+
+.acko-btn-loading .acko-btn-content {
+  visibility: hidden;
 }
 
 .acko-btn-dots {

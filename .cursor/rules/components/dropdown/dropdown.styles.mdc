@@ -27,7 +27,13 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 | `.acko-dropdown-chevron` | Chevron icon — `shrink-0 flex items-center ml-2` |
 | `.acko-dropdown-menu` | Dropdown menu — `absolute list-none`, shadow, rounded, animated |
 | `.acko-dropdown-option` | Single option — `flex items-center gap-2 cursor-pointer` |
+| `.acko-dropdown-search-wrapper` | Search wrapper — `padding: 0 0 --space-2 0` |
 | `.acko-dropdown-search` | Search input inside menu — `w-full rounded-full` |
+| `.acko-dropdown-group-header` | Group header — `padding: --space-2 --space-3`, `--font-caption-size`, `--color-text-secondary` |
+| `.acko-dropdown-option-icon` | Option leading icon — `shrink-0 flex items-center` |
+| `.acko-dropdown-option-check` | Selected check icon — `ml-auto shrink-0`, `--color-primary` |
+| `.acko-dropdown-chevron-open` | Rotated chevron — `transform: rotate(180deg)` |
+| `.acko-dropdown-no-results` | No results message — `text-center`, `--color-text-secondary` |
 
 ### Sizes
 
@@ -50,21 +56,22 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 
 | Class | Effect |
 |---|---|
-| `.acko-dropdown-trigger-open` | Active/open — `border-color: var(--color-input-focus-border); box-shadow: 0 0 0 1px var(--color-input-focus-border)` |
-| `.acko-dropdown-trigger-error` | Error — `border-color: var(--color-error)`, shake animation |
+| `.acko-dropdown-trigger` | Default — `background: var(--color-input-bg)`, `border-color: var(--color-input-border)` (`grey-150` light / `grey-600` dark) |
+| `.acko-dropdown-trigger:hover` | Hover — `border-color: var(--color-input-hover-border)` (`grey-200` light / `grey-550` dark) |
+| `.acko-dropdown-trigger-open` | Active/open — `border-color: var(--color-input-focus-border)`, `box-shadow: 0 0 0 2px var(--color-input-focus-ring)` |
+| `.acko-dropdown-trigger-error` | Error — gradient border `linear-gradient(0deg, red-200, grey-150)` via padding-box/border-box (dark: red-800 → grey-600), shake animation. Label does NOT turn red. |
 | `.acko-dropdown-trigger-filled` | Has value — `border-color: var(--color-input-filled-border)` |
-| `.acko-dropdown-trigger:disabled` | Disabled — `cursor-not-allowed`, `--color-text-disabled` colors |
+| `.acko-dropdown-trigger:disabled` | Disabled — `background: var(--color-input-disabled-bg)`, `border-color: var(--color-input-disabled-border)`, `cursor-not-allowed`, `--color-text-disabled` colors |
 | `.acko-dropdown-label-open` | Label when open — `color: var(--color-primary)` |
-| `.acko-dropdown-label-error` | Label on error — `color: var(--color-error-text)` |
-| `.acko-dropdown-option-focused` | Keyboard-focused — `background-color: var(--color-input-option-hover)` |
-| `.acko-dropdown-option-selected` | Selected — `--color-input-option-selected-bg` bg, `--color-input-option-selected-text` text, `font-weight: 500` |
+| `.acko-dropdown-option-focused` | Keyboard-focused — `background-color: var(--color-primary-subtle)` |
+| `.acko-dropdown-option-selected` | Selected — `--color-primary-subtle` bg, `--color-primary-hover` text, `font-weight: 500` |
 | `.acko-dropdown-option-disabled` | Disabled option — `color: var(--color-text-secondary); cursor-not-allowed` |
 
 ### Multi-select Tags
 
 | Class | Purpose |
 |---|---|
-| `.acko-dropdown-tags` | Container — `flex flex-wrap gap: --scale-4` |
+| `.acko-dropdown-tags` | Container — `flex flex-wrap`, `gap: var(--scale-4)` |
 | `.acko-dropdown-tag` | Individual tag — `inline-flex rounded-full`, `--color-primary-subtle` bg, `--color-primary-active` text |
 | `.acko-dropdown-tag-remove` | Remove button — `inline-flex bg-transparent`, hover opacity |
 
@@ -81,7 +88,7 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 
 | Keyframe | Purpose |
 |---|---|
-| `acko-dropdown-menu-enter` | Menu fade-in + translateY(var(--space-2) → 0) over 150ms |
+| `acko-dropdown-menu-enter` | Menu fade-in + translateY(-8px → 0) over 150ms |
 | `acko-dropdown-shake` | Error shake — 300ms horizontal oscillation |
 
 ---
@@ -92,25 +99,25 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 |---|---|
 | `--color-input-border` | Default trigger border (`grey-150` light / `grey-600` dark) |
 | `--color-input-bg` | Trigger and menu background (`grey-white` light / `grey-750` dark) |
-| `--color-input-hover-border` | Hover trigger border (`grey-300` light / `grey-550` dark) |
+| `--color-input-hover-border` | Hover trigger border (`grey-200` light / `grey-550` dark) |
 | `--color-input-filled-border` | Filled trigger border (`grey-200` light / `grey-550` dark) |
-| `--color-input-focus-border` | Open/focus border (`purple-400` light / `purple-900` dark) |
-| `--color-input-option-hover` | Option hover bg |
-| `--color-input-option-selected-bg` | Selected option bg |
-| `--color-input-option-selected-text` | Selected option text |
+| `--color-input-focus-border` | Open/focus border |
+| `--color-input-focus-ring` | Focus ring `box-shadow: 0 0 0 2px` (`grey-150` light / `grey-600` dark) |
+| `--color-primary-subtle` | Option hover/focused/selected bg |
+| `--color-primary-hover` | Selected option text |
 | `--color-primary-active` | Multi-select tag text |
 | `--color-primary-subtle` | Multi-select tag bg |
 | `--color-text-primary` | Value and option text |
 | `--color-text-secondary` | Placeholder, helper text, chevron, disabled option |
 | `--color-text-disabled` | Disabled trigger text |
 | `--color-error` | Required asterisk |
-| `--color-error-text` | Error label and text |
-| `--color-input-disabled-bg` | Disabled trigger bg (dark, `grey-650`) |
-| `--color-input-disabled-border` | Disabled trigger border (dark, `grey-600`) |
+| `--color-error-text` | Error text (helper text below only; label does NOT turn red) |
+| `--color-input-disabled-bg` | Disabled trigger bg (`grey-100` light / `grey-700` dark) |
+| `--color-input-disabled-border` | Disabled trigger border (`grey-150` light / `grey-600` dark) |
 | `--shadow-dropdown` | Menu shadow |
 | `--z-dropdown` | Menu z-index |
 | `--radius-full` | Trigger and tag border-radius |
-| `--radius-3xl` | Menu border-radius |
+| `20px` | Menu panel border-radius |
 | `--radius-lg` | Option border-radius |
 | `--ease-out-cubic` | Chevron rotation, menu animation |
 
@@ -120,7 +127,7 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 
 Scoped under `[data-theme="dark"]`:
 - Trigger: `--color-input-bg` (`grey-750`) bg, `--color-input-border` (`grey-600`) border
-- Error trigger: `--color-error-text` border
-- Disabled trigger: `--color-input-disabled-bg` (`grey-650`) bg, `--color-input-disabled-border` (`grey-600`) border
+- Error trigger: gradient border `linear-gradient(0deg, red-800, grey-600)`
+- Disabled trigger: `--color-input-disabled-bg` (`grey-700`) bg, `--color-input-disabled-border` (`grey-600`) border
 - Menu: `--color-surface-raised` bg, `--color-border` border
 - Search: `--color-surface` bg, `--color-border` border

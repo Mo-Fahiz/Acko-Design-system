@@ -34,11 +34,11 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 
 | Class | Implementation |
 |-------|---------------|
-| `.acko-btn-xs` | `@apply h-8 px-4 text-xs rounded-full; line-height: var(--scale-16);` |
+| `.acko-btn-xs` | `@apply h-8 px-4 text-xs rounded-full; line-height: 16px;` |
 | `.acko-btn-sm` | `@apply h-10 px-4 text-sm rounded-full; line-height: 18px;` |
 | `.acko-btn-md` | `@apply h-12 px-4 text-base leading-6 rounded-full;` |
-| `.acko-btn-lg` | `@apply h-14 px-6 text-lg rounded-full; line-height: var(--scale-28);` |
-| `.acko-btn-xl` | `@apply h-16 px-8 text-xl rounded-full; line-height: var(--scale-32);` |
+| `.acko-btn-lg` | `@apply h-14 px-6 text-lg rounded-full; line-height: 28px;` |
+| `.acko-btn-xl` | `@apply h-16 px-8 text-xl rounded-full; line-height: 32px;` |
 
 ### Variants
 
@@ -72,6 +72,8 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 
 ### Icon-Only (square button via `@apply`)
 
+Text children wrapped in `sr-only` span for accessibility.
+
 ```css
 .acko-btn-icon-only.acko-btn-xs { @apply w-8 p-0; }
 .acko-btn-icon-only.acko-btn-sm { @apply w-10 p-0; }
@@ -79,6 +81,11 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 .acko-btn-icon-only.acko-btn-lg { @apply w-14 p-0; }
 .acko-btn-icon-only.acko-btn-xl { @apply w-16 p-0; }
 ```
+
+### Content Structure
+
+- `.acko-btn-content` — wraps all visible content (icons + label)
+- `.acko-btn-label` — wraps text children
 
 ### Full Width
 
@@ -89,9 +96,14 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 ### States
 
 #### Loading
+Content wrapped in `.acko-btn-content` span; loading hides content via `visibility: hidden`. Uses 3-dot wave animation (`acko-dot-wave`).
+
 ```css
-.acko-btn-loading { @apply pointer-events-none; color: transparent !important; }
+.acko-btn-loading { @apply pointer-events-none; }
+.acko-btn-loading .acko-btn-content { visibility: hidden; }
 ```
+
+Dots: 6px circles, staggered delays (0, 0.15s, 0.3s).
 
 #### Disabled
 ```css
@@ -108,21 +120,13 @@ ALL visual styling lives in the CSS file. React components compose CSS class nam
 
 Link variant disabled keeps `background-color: transparent`.
 
-### Spinner (raw CSS — animation)
+### Loading Dots (raw CSS — `acko-dot-wave`)
 
-```css
-.acko-btn-spinner {
-  @apply absolute rounded-full;
-  width: var(--font-body-lg-size); height: var(--font-body-lg-size);
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  animation: acko-spin 600ms linear infinite;
-}
-```
+3-dot wave animation replaces spinner. Dots are 6px circles with staggered delays (0, 0.15s, 0.3s).
 
-Spinner colors per variant:
+Colors per variant:
 
-| Variant | Spinner `color` |
+| Variant | Dots `color` |
 |---------|----------------|
 | primary | `--color-on-primary` |
 | secondary | `--color-btn-secondary-text` |
@@ -179,5 +183,5 @@ transition: background-color 150ms ease,
 ## Keyframes (raw CSS)
 
 ```css
-@keyframes acko-spin { to { transform: rotate(360deg); } }
+@keyframes acko-dot-wave { /* 3-dot wave animation */ }
 ```

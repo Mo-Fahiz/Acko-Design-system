@@ -1,5 +1,5 @@
 ---
-description: NavigationWizard visual spec — CSS classes, step states, connectors, spacing, vertical variant
+description: NavigationWizard visual spec — CSS classes, step states, connectors, 3 variants
 globs: "**/navigation-wizard/**,**/NavigationWizard/**"
 ---
 
@@ -10,47 +10,72 @@ CSS file: `@acko/css/navigation-wizard.css`
 ## CSS Classes
 
 ### Base
-- `.acko-wizard` — flex, items-center, `gap: var(--space-1)`
-- `.acko-wizard-vertical` — flex-col, items-start, `gap: 0`
-- `.acko-wizard-compact` — compact layout for mobile
+- `.acko-wizard` — `display: flex; align-items: flex-start` — horizontal step row
+- `.acko-wizard-vertical` — column layout
+- `.acko-wizard-compact` — dot-based progress
 
-### Step
-- `.acko-wizard-step` — flex, items-center, `gap: var(--space-2)`
-- `.acko-wizard-step-info` — flex-col, `margin-left: var(--space-2)`
-- Vertical step: `flex-row items-start`
+### Step (horizontal)
+- `.acko-wizard-step` — `display: contents`
+- `.acko-wizard-step-body` — flex-col, center-aligned, `gap: var(--space-2)`, `flex-shrink: 0`, column layout (circle on top, label below)
+- `.acko-wizard-step-body-clickable` — `cursor: pointer`
 
 ### Circle
-- `.acko-wizard-circle` — `var(--scale-32) × var(--scale-32)`, `border-radius: var(--radius-full)`, flex center, font-weight 600
+- `.acko-wizard-circle` — `28×28px`, `border-radius: var(--radius-full)`, `font-size: 14px`, `font-weight: 600`, `font-variant-numeric: tabular-nums`
+- Button element: `cursor: pointer` when enabled, `cursor: default` when disabled
 
-### Connector
-- `.acko-wizard-connector` — `width: var(--scale-40)`, height 2px, flex-shrink-0
-- Completed: `--color-success`
-- Default: `--color-border-subtle`
-- Vertical: `width: 2px`, `height: var(--scale-32)`, margin-left 15px, margin `var(--space-1)` top/bottom
+### Circle States
 
-### Compact
-- Circle: `var(--scale-24)`, font `--font-label-sm-size`
-- Connector: `var(--scale-32)` width
-- Label: `--font-caption-size`
+| Status | Background | Color | Border | Shadow |
+|--------|-----------|-------|--------|--------|
+| `.acko-wizard-circle-upcoming` | transparent | `--color-wizard-upcoming-text` | `2px solid --color-wizard-upcoming-border` | — |
+| `.acko-wizard-circle-current` | `--color-wizard-active-bg` | `--color-wizard-active-text` | none | `inset 0 -1px 2px 0 --color-wizard-active-shadow-bottom, inset 0 1px 1px 0 --color-wizard-active-shadow-top` |
+| `.acko-wizard-circle-completed` | `--color-wizard-done-bg` | `--color-wizard-done-text` | none | — |
+| `.acko-wizard-circle-error` | `--color-error-text` | `--color-on-primary` | none | — |
 
-### Step States
+### Label Block (horizontal)
+- `.acko-wizard-label-block` — flex-col, center-aligned, `gap: 2px`
+- `.acko-wizard-label` — `font-size: 14px`, `font-weight: 500`, `text-align: center`
+- `.acko-wizard-label-upcoming` — `color: --color-wizard-upcoming-text`
+- `.acko-wizard-label-current` — `color: --color-text-default`
+- `.acko-wizard-label-completed` — `color: --color-text-default`
+- `.acko-wizard-label-error` — `color: --color-error-text`
+- `.acko-wizard-description` — `font-size: --font-caption-size`, `color: --color-text-secondary`, `max-width: 120px`
 
-| Status | Circle BG | Circle Text | Label Color |
-|--------|-----------|-------------|-------------|
-| Upcoming | `--color-surface-raised-hover` | `--color-text-secondary` | `--color-text-secondary` |
-| Current | `--color-primary` | `--color-on-primary` | `--color-text-primary` |
-| Completed | `--color-success` | `--color-on-primary` | `--color-text-primary` |
-| Error | `--color-error-text` | `--color-on-primary` | `--color-error-text` |
+### Connector (horizontal)
+- `.acko-wizard-connector` — `width: 60px`, `height: 2px`, `margin: 0 var(--space-2)`, `margin-top: 13px` (aligned to circle center)
+- `.acko-wizard-connector-default` — `--color-wizard-connector-upcoming`
+- `.acko-wizard-connector-completed` — `--color-wizard-connector-done`
 
-### Current Step Ring
-`box-shadow: 0 0 0 4px var(--color-primary-ring)`
+### Vertical Variant
+- `.acko-wizard-step-left` — flex-col, center-aligned (holds circle + vertical connector)
+- `.acko-wizard-vertical-connector` — `width: 2px`, `flex: 1`, `min-height: 24px`, `margin: var(--space-1) 0`
+- `.acko-wizard-step-content` — `padding-bottom: var(--space-4)`
+- `.acko-wizard-vertical-label` — same font as horizontal, status-based color classes
+- `.acko-wizard-vertical-description` — `--font-caption-size`, `--color-text-secondary`, `margin-top: 2px`
 
-### Labels
-- `.acko-wizard-label` — `--font-body-sm-size`, font-weight 500, `--color-text-secondary`
-- `.acko-wizard-description` — `--font-caption-size`, `--color-text-secondary`
+### Compact Variant
+- `.acko-wizard-compact-dot` — `8×8px`, `border-radius: 50%`
+- Dot status classes: `-upcoming` (connector-upcoming bg), `-current` (active bg + `0 0 0 3px --color-primary-ring`), `-completed` (done bg), `-error` (error-text bg)
+- `.acko-wizard-compact-label` — `14px`, `font-weight: 500`, `--color-text-default`
+- `.acko-wizard-compact-count` — caption size, `--color-text-secondary`, `margin-left: auto`
 
 ### Transitions
-All color changes: `200ms ease`
+All color/shadow/border changes: `200ms ease`
+
+## Semantic Tokens Used (defined in `tokens.css`)
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--color-wizard-active-bg` | `--purple-500` | `--purple-600` |
+| `--color-wizard-active-text` | `--grey-50` | `--grey-white` |
+| `--color-wizard-active-shadow-top` | `--purple-400` | `--purple-500` |
+| `--color-wizard-active-shadow-bottom` | `--purple-700` | `--purple-800` |
+| `--color-wizard-done-bg` | `--purple-200` | `--purple-700` |
+| `--color-wizard-done-text` | `--purple-600` | `--purple-300` |
+| `--color-wizard-upcoming-border` | `--grey-250` | `--grey-500` |
+| `--color-wizard-upcoming-text` | `--grey-350` | `--grey-450` |
+| `--color-wizard-connector-done` | `--purple-200` | `--purple-700` |
+| `--color-wizard-connector-upcoming` | `--grey-250` | `--grey-500` |
 
 ## Dark Theme
-Automatic via semantic token remapping.
+Automatic via semantic token remapping — no `[data-theme="dark"]` overrides needed in CSS.

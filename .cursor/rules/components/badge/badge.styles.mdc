@@ -16,12 +16,21 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 ### Base
 `.acko-badge` — `inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none`
 
+### Text Case
+No lowercase words in badges. Three case variants:
+
+| Class | CSS | Default |
+|-------|-----|---------|
+| `.acko-badge-uppercase` | `text-transform: uppercase; letter-spacing: 0.04em` | Yes (default) |
+| `.acko-badge-title-case` | `text-transform: capitalize` | — |
+| `.acko-badge-sentence-case` | `text-transform: none` | — |
+
 ### Sizes
 | Class | Padding | Font | Width |
 |-------|---------|------|-------|
-| `.acko-badge-sm` | `var(--space-1) var(--space-2)` | `--font-label-sm-size` | `fit-content` |
-| `.acko-badge-md` | `var(--scale-6) var(--space-2)` | `--font-caption-size` (var(--font-label-md-size)) | `fit-content` |
-| `.acko-badge-lg` | `var(--space-2)` | `--font-body-sm-size` | `fit-content` |
+| `.acko-badge-sm` | `4px 8px` | `--font-label-sm-size` | `fit-content` |
+| `.acko-badge-md` | `6px 8px` | `--font-caption-size` | `fit-content` |
+| `.acko-badge-lg` | `8px` | `--font-body-sm-size` | `fit-content` |
 
 ### Solid Variant Colors
 Pattern: `.acko-badge-solid-{color}` where color = `purple | green | blue | orange | pink | gray`

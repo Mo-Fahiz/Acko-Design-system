@@ -21,7 +21,6 @@ import { Alert } from "@acko/alert";
 import { Progress } from "@acko/progress";
 import { Switch } from "@acko/switch";
 import { Separator } from "@acko/separator";
-import { Label } from "@acko/label";
 import { Field } from "@acko/field";
 import { Textarea } from "@acko/textarea";
 import { InputGroup } from "@acko/input-group";
@@ -306,7 +305,7 @@ function ButtonUsage() {
 function BadgePreview() {
   return (
     <div className="space-y-4">
-      <Typography variant="label-sm" color="secondary">Solid (gradient)</Typography>
+      <Typography variant="label-sm" color="secondary">Solid (gradient) — ALL CAPS default</Typography>
       <div className="flex flex-wrap gap-2">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
@@ -326,16 +325,22 @@ function BadgePreview() {
           )
         )}
       </div>
+      <Typography variant="label-sm" color="secondary">Text case variants</Typography>
+      <div className="flex flex-wrap gap-2 items-center">
+        <Badge color="purple" textCase="uppercase">All Caps</Badge>
+        <Badge color="blue" textCase="title">Title Case</Badge>
+        <Badge color="green" textCase="sentence">Sentence case</Badge>
+      </div>
       <Typography variant="label-sm" color="secondary">Dot & Removable</Typography>
       <div className="flex flex-wrap gap-2 items-center">
         {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
           (c) => (
-            <Badge key={c} variant="dot" color={c}>
+            <Badge key={c} variant="dot" color={c} textCase="title">
               {c}
             </Badge>
           )
         )}
-        <Badge removable onRemove={() => {}}>
+        <Badge removable onRemove={() => {}} textCase="title">
           Removable
         </Badge>
       </div>
@@ -361,13 +366,13 @@ function BadgeUsage() {
             <CounterBadge count={3} color="purple" />
           </div>
           {[
-            { label: "New policy issued", color: "green" as const, time: "2m ago" },
-            { label: "Payment pending", color: "orange" as const, time: "1h ago" },
-            { label: "Claim approved", color: "blue" as const, time: "3h ago" },
+            { label: "New Policy Issued", color: "green" as const, time: "2m ago" },
+            { label: "Payment Pending", color: "orange" as const, time: "1h ago" },
+            { label: "Claim Approved", color: "blue" as const, time: "3h ago" },
           ].map((n) => (
             <div key={n.label} className="flex items-center justify-between py-1">
               <div className="flex items-center gap-2">
-                <Badge variant="dot" color={n.color}>
+                <Badge variant="dot" color={n.color} textCase="title">
                   {n.label}
                 </Badge>
               </div>
@@ -385,17 +390,17 @@ function BadgeUsage() {
 function AlertPreview() {
   return (
     <div className="space-y-3">
-      <Alert variant="info" title="Info">
-        Informational message.
+      <Alert variant="info" title="Policy updated">
+        Your health insurance policy has been renewed.
       </Alert>
-      <Alert variant="success" title="Success">
-        Operation completed.
+      <Alert variant="success" title="Payment received">
+        ₹12,499 debited from your account.
       </Alert>
-      <Alert variant="warning" title="Warning">
-        Please review before proceeding.
+      <Alert variant="warning" title="Document pending">
+        Upload your ID proof to complete verification.
       </Alert>
-      <Alert variant="error" title="Error">
-        Something went wrong.
+      <Alert variant="error" title="Claim rejected">
+        Your claim #4821 was not approved.
       </Alert>
     </div>
   );
@@ -1103,33 +1108,43 @@ function SeparatorUsage() {
 }
 
 function LabelFieldPreview() {
+  const [username, setUsername] = useState("johndoe");
+  const [password, setPassword] = useState("short");
   return (
     <div className="space-y-4">
-      <Label required>Required Label</Label>
-      <Label size="sm" disabled>
-        Disabled Label
-      </Label>
-      <Field label="Username" required helperText="Choose a unique username">
-        <input
-          type="text"
-          className="acko-text-input-el acko-text-input-el-sm w-full"
-          style={{ border: '1px solid var(--color-input-border)', borderRadius: 'var(--radius-full)', padding: 'var(--space-2) var(--space-4)', background: 'transparent' }}
-          placeholder="johndoe"
-        />
-      </Field>
-      <Field label="Password" errorText="Must be 8+ characters">
-        <input
-          type="password"
-          className="acko-text-input-el acko-text-input-el-sm w-full"
-          style={{ border: '1px solid var(--color-error)', borderRadius: 'var(--radius-full)', padding: 'var(--space-2) var(--space-4)', background: 'transparent' }}
-          placeholder="••••••••"
-        />
-      </Field>
+      <Typography variant="label-md" color="secondary">Default with helper text</Typography>
+      <TextInput
+        label="Username"
+        required
+        placeholder="johndoe"
+        value={username}
+        onChange={setUsername}
+        helperText="Choose a unique username"
+      />
+      <Typography variant="label-md" color="secondary">Error state</Typography>
+      <TextInput
+        label="Password"
+        type="password"
+        placeholder="••••••••"
+        value={password}
+        onChange={setPassword}
+        state="error"
+        errorText="Must be 8+ characters"
+      />
+      <Typography variant="label-md" color="secondary">Disabled state</Typography>
+      <TextInput
+        label="Disabled field"
+        value="Cannot edit"
+        onChange={() => {}}
+        disabled
+      />
     </div>
   );
 }
 
 function LabelFieldUsage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
@@ -1137,20 +1152,22 @@ function LabelFieldUsage() {
           <Typography variant="heading-md" color="primary">
             Registration
           </Typography>
-          <Field label="Full Name" required>
-            <input
-              className="acko-text-input-el acko-text-input-el-sm w-full"
-              style={{ border: '1px solid var(--color-input-border)', borderRadius: 'var(--radius-full)', padding: 'var(--space-2) var(--space-4)', background: 'transparent' }}
-              placeholder="John Doe"
-            />
-          </Field>
-          <Field label="Email" required helperText="We'll never share it">
-            <input
-              className="acko-text-input-el acko-text-input-el-sm w-full"
-              style={{ border: '1px solid var(--color-input-border)', borderRadius: 'var(--radius-full)', padding: 'var(--space-2) var(--space-4)', background: 'transparent' }}
-              placeholder="john@example.com"
-            />
-          </Field>
+          <TextInput
+            label="Full Name"
+            required
+            placeholder="John Doe"
+            value={name}
+            onChange={setName}
+          />
+          <TextInput
+            label="Email"
+            required
+            placeholder="john@example.com"
+            value={email}
+            onChange={setEmail}
+            helperText="We'll never share it"
+          />
+          <Button variant="primary" fullWidth>Register</Button>
         </div>
       </CardContent>
     </Card>
@@ -1495,13 +1512,16 @@ function NavigationWizardPreview() {
       {/* Horizontal */}
       <div className="pb-6 border-b border-border-subtle">
         <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Horizontal</Typography>
-        <div style={{ overflow: "auto" }}>
-          <NavigationWizard
-            steps={[{ label: "Details" }, { label: "Review" }, { label: "Payment" }, { label: "Done" }]}
-            currentStep={step}
-            onStepClick={setStep}
-          />
-        </div>
+        <NavigationWizard
+          steps={[
+            { label: "Details", description: "Your info" },
+            { label: "Review", description: "Check details" },
+            { label: "Payment", description: "Pay now" },
+            { label: "Done" },
+          ]}
+          currentStep={step}
+          onStepClick={setStep}
+        />
         <div className="flex gap-3 mt-4">
           <Button variant="secondary" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>
             Back
@@ -1513,12 +1533,27 @@ function NavigationWizardPreview() {
       </div>
 
       {/* Vertical */}
-      <div>
+      <div className="pb-6 border-b border-border-subtle">
         <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Vertical</Typography>
         <NavigationWizard
-          steps={[{ label: "Personal Info" }, { label: "Vehicle Details" }, { label: "Choose Plan" }, { label: "Payment" }]}
+          steps={[
+            { label: "Personal Info", description: "Name, email, phone" },
+            { label: "Vehicle Details", description: "Make, model, year" },
+            { label: "Choose Plan" },
+            { label: "Payment" },
+          ]}
           currentStep={2}
           variant="vertical"
+        />
+      </div>
+
+      {/* Compact */}
+      <div>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Compact</Typography>
+        <NavigationWizard
+          steps={[{ label: "Details" }, { label: "Review" }, { label: "Payment" }, { label: "Done" }]}
+          currentStep={step}
+          variant="compact"
         />
       </div>
     </div>
@@ -1992,33 +2027,29 @@ function OtpInputPreview() {
   };
 
   return (
-    <Card variant="elevated" padding="md">
-      <CardContent>
-        <div className="flex flex-col gap-6">
-          <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">Default (6 digits) — type to test</Typography>
-            <OtpInput value={otp} onChange={setOtp} length={6} />
-          </div>
-          <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">Error test — enter any 4 digits (type "1234" to clear error)</Typography>
-            <OtpInput value={errorOtp} onChange={handleErrorTest} length={4} error={showError} />
-            {showError && (
-              <Typography variant="body-sm" color="error">Invalid code — try "1234"</Typography>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">4-digit masked</Typography>
-            <OtpInput value={maskedOtp} onChange={setMaskedOtp} length={4} masked />
-          </div>
-          <div className="space-y-3">
-            <Typography variant="label-sm" color="secondary">Sizes — sm (12px radius) / md (16px radius) / lg (20px radius)</Typography>
-            <OtpInput value={smOtp} onChange={setSmOtp} length={4} size="sm" />
-            <OtpInput value={mdOtp} onChange={setMdOtp} length={4} size="md" />
-            <OtpInput value={lgOtp} onChange={setLgOtp} length={4} size="lg" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex flex-col gap-6">
+      <div className="space-y-2">
+        <Typography variant="label-sm" color="secondary">Default (6 digits) — type to test</Typography>
+        <OtpInput value={otp} onChange={setOtp} length={6} />
+      </div>
+      <div className="space-y-2">
+        <Typography variant="label-sm" color="secondary">Error test — enter any 4 digits (type "1234" to clear error)</Typography>
+        <OtpInput value={errorOtp} onChange={handleErrorTest} length={4} error={showError} />
+        {showError && (
+          <Typography variant="body-sm" color="error">Invalid code — try "1234"</Typography>
+        )}
+      </div>
+      <div className="space-y-2">
+        <Typography variant="label-sm" color="secondary">4-digit masked</Typography>
+        <OtpInput value={maskedOtp} onChange={setMaskedOtp} length={4} masked />
+      </div>
+      <div className="space-y-3">
+        <Typography variant="label-sm" color="secondary">Sizes — sm (12px radius) / md (16px radius) / lg (20px radius)</Typography>
+        <OtpInput value={smOtp} onChange={setSmOtp} length={4} size="sm" />
+        <OtpInput value={mdOtp} onChange={setMdOtp} length={4} size="md" />
+        <OtpInput value={lgOtp} onChange={setLgOtp} length={4} size="lg" />
+      </div>
+    </div>
   );
 }
 
@@ -2030,15 +2061,15 @@ function OtpInputUsage() {
         <div className="space-y-4">
           <Typography variant="heading-md" color="primary">Verify your mobile</Typography>
           <Typography variant="body-sm" color="secondary">
-            Enter the 6-digit OTP sent to +91 98765 43210
+            Enter the 4-digit OTP sent to +91 98765 43210
           </Typography>
-          <OtpInput value={otp} onChange={setOtp} length={6} aria-label="Mobile verification OTP" />
-          {otp.length === 6 && (
+          <OtpInput value={otp} onChange={setOtp} length={4} aria-label="Mobile verification OTP" />
+          {otp.length === 4 && (
             <Button variant="primary" fullWidth>
               Verify OTP
             </Button>
           )}
-          {otp.length < 6 && (
+          {otp.length < 4 && (
             <Button variant="ghost" fullWidth disabled>
               Verify OTP
             </Button>
@@ -2060,24 +2091,20 @@ function FormPreview() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   return (
-    <Card variant="elevated" padding="md">
-      <CardContent>
-        <div className="flex flex-col gap-4">
-          <Form onSubmit={() => new Promise((r) => setTimeout(() => { setSubmitted(true); r(undefined); }, 800))}>
-            <FormItem name="name">
-              <TextInput label="Full name" value={name} onChange={setName} id="demo-name" placeholder="Enter your full name" required />
-            </FormItem>
-            <FormItem name="email">
-              <TextInput label="Email address" value={email} onChange={setEmail} id="demo-email" type="email" placeholder="you@example.com" required />
-              <FormMessage>We will never share your email.</FormMessage>
-            </FormItem>
-            <Button variant="primary" type="submit">
-              {submitted ? "Submitted!" : "Submit"}
-            </Button>
-          </Form>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex flex-col gap-4">
+      <Form onSubmit={() => new Promise((r) => setTimeout(() => { setSubmitted(true); r(undefined); }, 800))}>
+        <FormItem name="name">
+          <TextInput label="Full name" value={name} onChange={setName} id="demo-name" placeholder="Enter your full name" required />
+        </FormItem>
+        <FormItem name="email">
+          <TextInput label="Email address" value={email} onChange={setEmail} id="demo-email" type="email" placeholder="you@example.com" required />
+          <FormMessage>We will never share your email.</FormMessage>
+        </FormItem>
+        <Button variant="primary" type="submit">
+          {submitted ? "Submitted!" : "Submit"}
+        </Button>
+      </Form>
+    </div>
   );
 }
 

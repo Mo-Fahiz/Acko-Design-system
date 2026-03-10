@@ -18,15 +18,16 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | Class | Purpose |
 |---|---|
 | `.acko-cal-wrapper` | Dropdown wrapper — `relative inline-block` |
-| `.acko-cal-trigger` | Trigger button — `flex items-center justify-between w-full cursor-pointer` |
-| `.acko-cal-trigger-open` | Active state — primary border + ring |
+| `.acko-cal-trigger` | Trigger button — `background: var(--color-input-bg)`, `border-color: var(--color-input-border)`, `flex items-center justify-between w-full cursor-pointer` |
+| `.acko-cal-trigger:hover` | Hover — `border-color: var(--color-input-hover-border)` |
+| `.acko-cal-trigger-open` | Active state — `border-color: var(--color-input-focus-border)`, `box-shadow: 0 0 0 2px var(--color-input-focus-ring)` |
 | `.acko-cal-trigger-placeholder` | Placeholder — `color: var(--color-text-secondary)` |
 | `.acko-cal-trigger-icon` | Calendar icon — `flex items-center`, muted color |
 
 ### Panel
 | Class | Purpose |
 |---|---|
-| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `--radius-3xl`, `--shadow-md`, `--space-4` padding |
+| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `20px` border-radius, `--shadow-md`, `--space-4` padding |
 | `.acko-cal-panel-dropdown` | Dropdown positioning — `absolute left-0`, z-index, enter animation |
 
 ### Header
@@ -79,9 +80,11 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 |---|---|
 | `--color-card-bg` | Panel background |
 | `--color-card-border` | Panel border |
-| `--color-surface` | Trigger background |
-| `--color-surface-raised` | Dark mode trigger bg |
-| `--color-border` | Trigger border, dark panel border |
+| `--color-input-bg` | Trigger background (`grey-white` light / `grey-750` dark) |
+| `--color-input-border` | Trigger border (`grey-150` light / `grey-600` dark) |
+| `--color-input-hover-border` | Trigger hover border |
+| `--color-input-focus-border` | Trigger focus border |
+| `--color-input-focus-ring` | Trigger focus ring `box-shadow: 0 0 0 2px` |
 | `--color-primary` | Open/focus border and ring |
 | `--color-primary-ring` | Focus-visible ring on nav/header |
 | `--color-text-primary` | Day text, header label, picker cell text |
@@ -96,7 +99,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | `--shadow-md` | Panel box shadow |
 | `--z-dropdown` | Dropdown panel z-index |
 | `--radius-full` | Day cells, trigger, picker cells |
-| `--radius-3xl` | Panel corner radius |
+| `20px` | Panel corner radius |
 | `--radius-lg` | Nav button, header label corners |
 | `--ease-out-cubic` | Enter animation easing |
 
@@ -104,7 +107,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 
 ## Dark Theme Overrides
 
-- Trigger: `var(--color-surface-raised)` bg, `var(--color-border)` border
+- Trigger: `var(--color-input-bg)` bg, `var(--color-input-border)` border
 - Panel: `var(--color-surface-raised)` bg, `var(--color-border)` border
 
 ## Elevated Theme Overrides

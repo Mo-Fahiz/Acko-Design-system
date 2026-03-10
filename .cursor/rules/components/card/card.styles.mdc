@@ -10,7 +10,7 @@ CSS file: `@acko/css/card.css`
 ## CSS Classes
 
 ### Base
-`.acko-card` — border-radius `--radius-3xl`, overflow hidden.
+`.acko-card` — border-radius `20px` (raw, not token), overflow hidden.
 
 ### Variants
 
@@ -18,7 +18,7 @@ CSS file: `@acko/css/card.css`
 |-------|------|--------|--------|
 | `.acko-card-default` | `--color-card-bg` | `1px solid --color-card-border` | none |
 | `.acko-card-outline` | `transparent` | `1px solid --color-card-outline-border` | none |
-| `.acko-card-elevated` | `--color-card-elevated-bg` | none | `--shadow-card` |
+| `.acko-card-elevated` | `--color-card-elevated-bg` | none | `0px 2px 16px 4px rgba(0, 0, 0, 0.04)` |
 | `.acko-card-demoted` | `--color-card-demoted-bg` | `1px solid --color-card-demoted-border` | none |
 
 Design intent: On a `--color-surface` page, default cards use `--color-card-bg` fill with a `--color-card-border` stroke — the border is *lighter* than the fill, creating a floating highlight edge.
@@ -47,6 +47,8 @@ Any rectangular child element (icon box, image, inset panel) uses `--radius-inse
 
 **Exempt**: Buttons, badges, avatars — keep their own intentional radius.
 
-## Dark Theme
+## Theme Mapping
 
-Automatic via semantic token remapping. All `--color-card-*` tokens remap to dark values. Elevated variant uses `--shadow-card` which remaps to heavier dark shadow.
+**Light:** fill grey-50 (`--color-card-bg`), border grey-white (`--color-card-border`).
+
+**Dark:** fill grey-650 (`--color-card-bg`), border grey-600 (`--color-card-border`). Automatic via semantic token remapping in `tokens.css`.

@@ -19,6 +19,13 @@
   height: var(--scale-52);
 }
 
+/* Hover */
+@media (hover: hover) and (pointer: fine) {
+  .acko-input-group:hover:not(.acko-input-group-disabled):not(.acko-input-group-error):not(:focus-within) {
+    border-color: var(--color-input-hover-border);
+  }
+}
+
 /* Focus within */
 .acko-input-group:focus-within:not(.acko-input-group-disabled):not(.acko-input-group-error) {
   border-color: var(--color-input-focus-border);

@@ -101,3 +101,12 @@
 
 .acko-slider-disabled .acko-slider-fill { background: var(--color-text-disabled); }
 .acko-slider-disabled .acko-slider-thumb { border-color: var(--color-text-disabled); cursor: not-allowed; }
+
+/* --- Dark theme --- */
+[data-theme="dark"] .acko-slider-sm .acko-slider-track,
+[data-theme="dark"] .acko-slider-md .acko-slider-track,
+[data-theme="dark"] .acko-slider-lg .acko-slider-track {
+  background: var(--grey-600);
+}
+
+[data-theme="dark"] .acko-slider-tick { background: var(--grey-600); }

@@ -25,7 +25,7 @@ CSS file: `@acko/css/progress.css`
 - Transition: `stroke-dashoffset 500ms var(--ease-out-cubic)`
 - Sizes: sm (48px), md (64px), lg (96px) with stroke widths 3/4/5
 - `.acko-progress-circular-content` — absolute inset-0 centered, accepts children (e.g., Avatar)
-- `.acko-progress-circular-label` — `--font-caption-size`, font-weight 600
+- `.acko-progress-circular-label` — `--font-caption-size`, font-weight 600, `color: var(--color-text-primary)`. Large size uses `--font-body-sm-size`
 
 ### Segmented
 - `.acko-progress-segmented` — flex row, `gap: var(--scale-2)`, full width
@@ -40,6 +40,13 @@ CSS file: `@acko/css/progress.css`
 
 ## Animated Shimmer (bar only)
 - `.acko-progress-animated .acko-progress-bar` — `acko-progress-shimmer` keyframe, 1.5s ease-in-out infinite
+
+## Dark Theme
+
+Under `[data-theme="dark"]`:
+- Bar track: `var(--grey-600)`
+- Segments: `var(--grey-600)`
+- Circular track stroke: `var(--grey-600)`
 
 ## React Props
 - `variant`: `"bar" | "circular" | "segmented"` (default: `"bar"`)

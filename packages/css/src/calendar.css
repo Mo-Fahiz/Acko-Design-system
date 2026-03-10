@@ -11,9 +11,9 @@
   min-width: 200px;
   height: var(--scale-48);
   padding: 0 var(--space-5);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-input-border);
   border-radius: var(--radius-full);
-  background-color: var(--color-surface);
+  background-color: var(--color-input-bg);
   font-family: inherit;
   font-size: var(--font-body-md-size);
   line-height: var(--font-body-md-line);
@@ -24,15 +24,21 @@
     box-shadow 200ms ease;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .acko-cal-trigger:hover:not(:disabled):not(.acko-cal-trigger-open) {
+    border-color: var(--color-input-hover-border);
+  }
+}
+
 .acko-cal-trigger:focus-visible {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
 }
 
 .acko-cal-trigger-open {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
 }
 
 .acko-cal-trigger-placeholder {
@@ -52,8 +58,8 @@
   box-sizing: border-box;
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-3xl);
-  box-shadow: var(--shadow-md);
+  border-radius: 20px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   padding: var(--space-4);
   @apply select-none;
 }
@@ -258,8 +264,8 @@
 /* --- Dark theme --- */
 
 [data-theme="dark"] .acko-cal-trigger {
-  background-color: var(--color-surface-raised);
-  border-color: var(--color-border);
+  background-color: var(--color-input-bg);
+  border-color: var(--color-input-border);
 }
 
 [data-theme="dark"] .acko-cal-panel {

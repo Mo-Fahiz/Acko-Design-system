@@ -6,21 +6,29 @@
 /* --- Base --- */
 
 .acko-label {
-  font-weight: 500;
+  font-weight: var(--font-label-lg-weight);
+  letter-spacing: var(--font-label-lg-spacing);
+  line-height: var(--font-label-lg-line);
   cursor: default;
-  color: var(--color-text-primary);
+  color: var(--color-text-default);
+  transition: color 150ms ease;
 }
 
 .acko-label-sm {
   font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
 }
 
 .acko-label-md {
-  font-size: var(--font-body-sm-size);
+  font-size: var(--font-label-lg-size);
+}
+
+.acko-label-focused {
+  color: var(--color-primary);
 }
 
 .acko-label-disabled {
-  color: var(--color-text-disabled);
+  color: var(--color-text-secondary);
 }
 
 .acko-label-required {

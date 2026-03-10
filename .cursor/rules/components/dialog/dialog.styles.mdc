@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Class structure
 - `.acko-dialog-backdrop` — fixed fullscreen overlay, `z-index: var(--z-modal)`
-- `.acko-dialog` — panel container, flex column, `border-radius: var(--radius-2xl)`
+- `.acko-dialog` — panel container, flex column, `border-radius: 20px`, `box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04)`
 - `.acko-dialog-header` — flex row, title + close button
 - `.acko-dialog-title` — `font-size: var(--font-body-lg-size)`, weight 600
 - `.acko-dialog-description` — `font-size: var(--font-body-sm-size)`, `color: var(--color-text-secondary)`
@@ -29,8 +29,8 @@ alwaysApply: false
 - `--z-modal`
 - `--color-surface-overlay`
 - `--color-surface-raised`
-- `--shadow-modal`
-- `--radius-2xl`
+- `0px 2px 16px 4px rgba(0, 0, 0, 0.04)` (panel shadow)
+- `20px` (panel border-radius)
 - `--color-text-default`, `--color-text-secondary`
 - `--color-border-subtle`
 - `--color-surface-hover`

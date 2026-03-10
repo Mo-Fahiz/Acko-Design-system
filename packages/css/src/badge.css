@@ -5,6 +5,11 @@
   font-family: inherit;
 }
 
+/* --- Text case --- */
+.acko-badge-uppercase { text-transform: uppercase; letter-spacing: 0.04em; }
+.acko-badge-title-case { text-transform: capitalize; }
+.acko-badge-sentence-case { text-transform: none; }
+
 /* --- Sizes --- */
 .acko-badge-sm { padding: 4px 8px; font-size: var(--font-label-sm-size); }
 .acko-badge-md { padding: 6px 8px; font-size: var(--font-caption-size); }

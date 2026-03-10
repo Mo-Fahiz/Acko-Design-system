@@ -8,7 +8,7 @@ alwaysApply: false
 
 > **Merged into `@acko/text-input`**
 > Import: `import { OtpInput } from '@acko/text-input'`
-> CSS: included in `@acko/css/text-input.css` — no separate import needed.
+> CSS: `@import "@acko/css/otp-input.css";` (separate file from text-input.css)
 
 ## Props
 ```tsx

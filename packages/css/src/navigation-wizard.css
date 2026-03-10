@@ -1,119 +1,212 @@
 /* NavigationWizard — @acko/css/navigation-wizard.css */
 
-.acko-wizard {
-  @apply flex items-center;
-  gap: var(--space-1);
-}
+/* ── Horizontal (default) ── */
 
-.acko-wizard-vertical {
-  @apply flex-col items-start;
-  gap: 0;
+.acko-wizard {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .acko-wizard-step {
-  @apply flex items-center;
+  display: contents;
+}
+
+.acko-wizard-step-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
-}
-
-.acko-wizard-vertical .acko-wizard-step {
-  @apply flex-row items-start;
-}
-
-.acko-wizard-circle {
-  @apply inline-flex items-center justify-center flex-shrink-0;
-  width: var(--scale-32);
-  height: var(--scale-32);
-  border-radius: var(--radius-full);
-  font-size: var(--font-body-sm-size);
-  font-weight: 600;
-  transition: all 200ms ease;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.acko-wizard-circle:disabled {
+  flex-shrink: 0;
   cursor: default;
 }
 
+.acko-wizard-step-body-clickable {
+  cursor: pointer;
+}
+
+.acko-wizard-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+button.acko-wizard-circle { cursor: pointer; }
+button.acko-wizard-circle:disabled { cursor: default; }
+
+/* Status: upcoming */
 .acko-wizard-circle-upcoming {
-  background-color: var(--color-surface-raised-hover);
-  color: var(--color-text-secondary);
+  background-color: transparent;
+  border: 2px solid var(--color-wizard-upcoming-border);
+  color: var(--color-wizard-upcoming-text);
 }
 
+/* Status: current */
 .acko-wizard-circle-current {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  box-shadow: 0 0 0 4px var(--color-primary-ring);
+  background-color: var(--color-wizard-active-bg);
+  color: var(--color-wizard-active-text);
+  box-shadow:
+    inset 0 -1px 2px 0 var(--color-wizard-active-shadow-bottom),
+    inset 0 1px 1px 0 var(--color-wizard-active-shadow-top);
 }
 
+/* Status: completed */
 .acko-wizard-circle-completed {
-  background-color: var(--color-success);
-  color: var(--color-on-primary);
+  background-color: var(--color-wizard-done-bg);
+  color: var(--color-wizard-done-text);
 }
 
+/* Status: error */
 .acko-wizard-circle-error {
   background-color: var(--color-error-text);
   color: var(--color-on-primary);
 }
 
-.acko-wizard-connector {
-  width: var(--scale-40);
-  height: 2px;
-  flex-shrink: 0;
-  background-color: var(--color-border-subtle);
-  transition: background-color 200ms ease;
-}
-
-.acko-wizard-connector-completed {
-  background-color: var(--color-success);
-}
-
-.acko-wizard-vertical .acko-wizard-connector {
-  width: 2px;
-  height: var(--scale-32);
-  margin-left: 15px;
-  margin-top: var(--space-1);
-  margin-bottom: var(--space-1);
+/* Label block (horizontal) */
+.acko-wizard-label-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 
 .acko-wizard-label {
-  font-size: var(--font-body-sm-size);
+  font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  text-align: center;
   transition: color 200ms ease;
 }
 
-.acko-wizard-label-current,
-.acko-wizard-label-completed {
-  color: var(--color-text-primary);
-}
-
-.acko-wizard-label-error {
-  color: var(--color-error-text);
-}
+.acko-wizard-label-upcoming { color: var(--color-wizard-upcoming-text); }
+.acko-wizard-label-current { color: var(--color-text-default); }
+.acko-wizard-label-completed { color: var(--color-text-default); }
+.acko-wizard-label-error { color: var(--color-error-text); }
 
 .acko-wizard-description {
   font-size: var(--font-caption-size);
   color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 120px;
 }
 
-.acko-wizard-step-info {
-  @apply flex flex-col;
-  margin-left: var(--space-2);
+/* Connector (horizontal) */
+.acko-wizard-connector {
+  width: 60px;
+  height: 2px;
+  flex-shrink: 0;
+  margin: 0 var(--space-2);
+  margin-top: 13px;
+  transition: background-color 200ms ease;
 }
 
-.acko-wizard-compact .acko-wizard-circle {
-  width: var(--scale-24);
-  height: var(--scale-24);
-  font-size: var(--font-label-sm-size);
+.acko-wizard-connector-default {
+  background-color: var(--color-wizard-connector-upcoming);
 }
 
-.acko-wizard-compact .acko-wizard-connector {
-  width: var(--scale-32);
+.acko-wizard-connector-completed {
+  background-color: var(--color-wizard-connector-done);
 }
 
-.acko-wizard-compact .acko-wizard-label {
+/* ── Vertical ── */
+
+.acko-wizard-vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.acko-wizard-vertical .acko-wizard-step {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.acko-wizard-vertical .acko-wizard-step-body {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.acko-wizard-step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.acko-wizard-vertical-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  margin: var(--space-1) 0;
+}
+
+.acko-wizard-step-content {
+  padding-bottom: var(--space-4);
+}
+
+.acko-wizard-vertical-label {
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 200ms ease;
+}
+
+.acko-wizard-vertical-label-upcoming { color: var(--color-wizard-upcoming-text); }
+.acko-wizard-vertical-label-current { color: var(--color-text-default); }
+.acko-wizard-vertical-label-completed { color: var(--color-text-default); }
+.acko-wizard-vertical-label-error { color: var(--color-error-text); }
+
+.acko-wizard-vertical-description {
   font-size: var(--font-caption-size);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* ── Compact ── */
+
+.acko-wizard-compact {
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.acko-wizard-compact .acko-wizard-step {
+  display: flex;
+}
+
+.acko-wizard-compact-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 200ms ease;
+}
+
+.acko-wizard-compact-dot-upcoming { background-color: var(--color-wizard-connector-upcoming); }
+.acko-wizard-compact-dot-current { background-color: var(--color-wizard-active-bg); box-shadow: 0 0 0 3px var(--color-primary-ring); }
+.acko-wizard-compact-dot-completed { background-color: var(--color-wizard-done-bg); }
+.acko-wizard-compact-dot-error { background-color: var(--color-error-text); }
+
+.acko-wizard-compact-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-default);
+}
+
+.acko-wizard-compact-count {
+  font-size: var(--font-caption-size);
+  color: var(--color-text-secondary);
+  margin-left: auto;
 }

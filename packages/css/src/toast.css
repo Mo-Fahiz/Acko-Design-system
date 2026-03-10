@@ -32,8 +32,8 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-3xl);
-  box-shadow: var(--shadow-lg);
+  border-radius: 20px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   border: 1px solid transparent;
   background: var(--color-surface-raised);
   animation: acko-toast-in 250ms var(--ease-out-quart) forwards;

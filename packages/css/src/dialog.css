@@ -26,8 +26,8 @@
 .acko-dialog {
   position: relative;
   background: var(--color-surface-raised);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-modal);
+  border-radius: 20px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - var(--space-8));

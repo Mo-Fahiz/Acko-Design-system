@@ -48,7 +48,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+  border-radius: 20px 0 0 20px;
   transform: translateX(100%);
 }
 
@@ -56,7 +56,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  border-radius: 0 var(--radius-2xl) var(--radius-2xl) 0;
+  border-radius: 0 20px 20px 0;
   transform: translateX(-100%);
 }
 
@@ -64,7 +64,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  border-radius: 20px 20px 0 0;
   transform: translateY(100%);
 }
 
@@ -72,7 +72,7 @@
   top: 0;
   left: 0;
   right: 0;
-  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  border-radius: 0 0 20px 20px;
   transform: translateY(-100%);
 }
 
