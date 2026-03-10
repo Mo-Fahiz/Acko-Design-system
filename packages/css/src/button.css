@@ -234,29 +234,37 @@
   }
 }
 
-/* --- Loading --- */
+/* --- Loading — 3 dot wave --- */
 
 .acko-btn-loading {
   @apply pointer-events-none;
   color: transparent !important;
 }
 
-.acko-btn-spinner {
-  @apply absolute rounded-full;
-  width: var(--font-body-lg-size);
-  height: var(--font-body-lg-size);
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  animation: acko-spin 600ms linear infinite;
+.acko-btn-dots {
+  @apply absolute inline-flex items-center justify-center;
+  gap: 4px;
 }
 
-.acko-btn-primary .acko-btn-spinner { color: var(--color-on-primary); }
-.acko-btn-secondary .acko-btn-spinner { color: var(--color-btn-secondary-text); }
-.acko-btn-inverted .acko-btn-spinner { color: var(--color-btn-inverted-text); }
-.acko-btn-ghost .acko-btn-spinner { color: var(--color-btn-ghost-color); }
-.acko-btn-link .acko-btn-spinner { color: var(--color-btn-link-color); }
-.acko-btn-danger .acko-btn-spinner { color: var(--color-btn-danger-text); }
+.acko-btn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: acko-dot-wave 1.2s ease-in-out infinite;
+}
 
-@keyframes acko-spin {
-  to { transform: rotate(360deg); }
+.acko-btn-dot:nth-child(2) { animation-delay: 0.15s; }
+.acko-btn-dot:nth-child(3) { animation-delay: 0.3s; }
+
+.acko-btn-primary .acko-btn-dots { color: var(--color-on-primary); }
+.acko-btn-secondary .acko-btn-dots { color: var(--color-btn-secondary-text); }
+.acko-btn-inverted .acko-btn-dots { color: var(--color-btn-inverted-text); }
+.acko-btn-ghost .acko-btn-dots { color: var(--color-btn-ghost-color); }
+.acko-btn-link .acko-btn-dots { color: var(--color-btn-link-color); }
+.acko-btn-danger .acko-btn-dots { color: var(--color-btn-danger-text); }
+
+@keyframes acko-dot-wave {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
 }

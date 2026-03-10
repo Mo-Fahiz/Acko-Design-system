@@ -30,7 +30,7 @@
   border: 1px solid transparent;
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
+    linear-gradient(0deg, var(--red-200), var(--grey-150)) border-box;
 }
 
 [data-theme="dark"] .acko-input-group-error {

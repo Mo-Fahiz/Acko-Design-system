@@ -46,7 +46,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
+    linear-gradient(0deg, var(--red-200), var(--grey-150)) border-box;
   color: var(--color-text-default);
   animation: acko-otp-shake 300ms ease-out;
 }
