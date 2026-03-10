@@ -5,7 +5,7 @@
 
 .acko-card {
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: var(--radius-4xl);
 }
 
 .acko-card-default {

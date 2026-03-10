@@ -10,7 +10,7 @@ CSS file: `@acko/css/card.css`
 ## CSS Classes
 
 ### Base
-`.acko-card` — border-radius `20px` (raw, not token), overflow hidden.
+`.acko-card` — border-radius `--radius-4xl` (20px), overflow hidden.
 
 ### Variants
 
