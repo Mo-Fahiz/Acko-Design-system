@@ -1,29 +1,43 @@
 ---
-description: OTP Input styles — now co-located in text-input.css
-globs: "packages/css/src/text-input.css"
+description: OTP Input styles — square cells with gradient error border and per-size radius
+globs: "packages/css/src/otp-input.css"
 alwaysApply: false
 ---
 
 # OTP Input — Styles
 
-> **Co-located in `@acko/css/text-input.css`** — no separate otp-input.css import needed.
+CSS file: `@acko/css/otp-input.css`
 
 ## Class structure
 - `.acko-otp` — flex row, `gap: var(--space-2)`
-- `.acko-otp-cell` — individual input, `text-center`, `border: 1.5px solid var(--color-input-border)`, `border-radius: var(--radius-lg)`
-- `.acko-otp-cell-filled` — `border-color: var(--color-primary)`, `background: var(--color-primary-subtle)`, `color: var(--color-primary)`
-- `.acko-otp-cell-error` — `border-color: var(--color-error-border)`
+- `.acko-otp-cell` — individual input, `text-center`, `border: 1.5px solid var(--color-input-border)`, `background: var(--color-input-bg)`, `color: var(--color-text-default)`
+- `.acko-otp-cell-filled` — `border-color: var(--color-input-focus-border)`, `background: var(--color-primary-subtle)`, `color: var(--color-primary)`
+- `.acko-otp-cell-error` — gradient border via `background` + `border-box` trick
 
-## Size classes
-| Class | Cell size | Font |
-|-------|-----------|------|
-| `.acko-otp-sm` | `var(--scale-36) × var(--scale-40)` | `var(--font-body-md-size)` |
-| `.acko-otp-md` | `var(--scale-44) × var(--scale-52)` | `var(--font-title-sm-size)` |
-| `.acko-otp-lg` | `var(--scale-52) × var(--scale-60)` | `var(--font-title-md-size)` |
+## Size classes — perfect squares with per-size radius
+
+| Class | Cell size | Font | Border Radius |
+|-------|-----------|------|---------------|
+| `.acko-otp-sm` | `40×40` (`--scale-40`) | `--font-body-md-size` | `12px` (`--radius-2xl`) |
+| `.acko-otp-md` | `48×48` (`--scale-48`) | `--font-heading-md-size` | `16px` (`--radius-3xl`) |
+| `.acko-otp-lg` | `56×56` (`--scale-56`) | `--font-heading-lg-size` | `20px` (raw) |
 
 ## States
-- Default: `border-color: var(--color-input-border)` (`grey-150` light / `grey-600` dark), `background: var(--color-surface-default)`
-- Focus: `border-color: var(--color-input-focus-border)` (`purple-400` light / `purple-900` dark), `box-shadow: var(--shadow-focus-ring)`
-- Filled: `border-color: var(--color-input-focus-border)`, purple-subtle background, primary text color
-- Error: `border-color: var(--color-error-border)`
-- Disabled: `background: var(--color-btn-disabled-bg)`, `color: var(--color-btn-disabled-text)`, `border-color: var(--color-border-subtle)`
+- **Default**: `border-color: var(--color-input-border)`, `background: var(--color-input-bg)`, `color: var(--color-text-default)`
+- **Focus**: `border-color: var(--color-input-focus-border)`, `box-shadow: var(--shadow-focus-ring)`
+- **Filled**: `border-color: var(--color-input-focus-border)`, purple-subtle background, primary text color
+- **Error**: gradient border `linear-gradient(0deg, red-100, grey-150)` using padding-box/border-box technique. The error selector targets both plain and filled cells to override the filled background. Shake animation (`acko-otp-shake 300ms ease-out`)
+- **Disabled**: `background: var(--color-btn-disabled-bg)`, `color: var(--color-btn-disabled-text)`, `border-color: var(--color-border-subtle)`
+
+## Error gradient border technique
+
+Uses double background with `padding-box` / `border-box` to achieve gradient border with rounded corners. The selector `.acko-otp-error .acko-otp-cell.acko-otp-cell-filled` ensures the error gradient overrides the filled state background:
+
+```css
+border: 1.5px solid transparent;
+background:
+  linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+  linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
+```
+
+Dark theme uses `red-800` → `grey-600` for the error gradient.

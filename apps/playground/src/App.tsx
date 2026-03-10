@@ -1888,28 +1888,50 @@ function SliderUsage() {
    ═══════════════════════════════════════════════════════════════ */
 function OtpInputPreview() {
   const [otp, setOtp] = useState("");
-  const [errorOtp, setErrorOtp] = useState("12");
+  const [errorOtp, setErrorOtp] = useState("");
+  const [showError, setShowError] = useState(false);
+  const [maskedOtp, setMaskedOtp] = useState("");
+  const [smOtp, setSmOtp] = useState("");
+  const [mdOtp, setMdOtp] = useState("");
+  const [lgOtp, setLgOtp] = useState("");
+
+  const handleErrorTest = (val: string) => {
+    setErrorOtp(val);
+    if (val.length === 4) {
+      if (val !== "1234") {
+        setShowError(true);
+      } else {
+        setShowError(false);
+      }
+    } else {
+      setShowError(false);
+    }
+  };
+
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
         <div className="flex flex-col gap-6">
           <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">Default (6 digits)</Typography>
+            <Typography variant="label-sm" color="secondary">Default (6 digits) — type to test</Typography>
             <OtpInput value={otp} onChange={setOtp} length={6} />
           </div>
           <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">Error state</Typography>
-            <OtpInput value={errorOtp} onChange={setErrorOtp} length={6} error />
+            <Typography variant="label-sm" color="secondary">Error test — enter any 4 digits (type "1234" to clear error)</Typography>
+            <OtpInput value={errorOtp} onChange={handleErrorTest} length={4} error={showError} />
+            {showError && (
+              <Typography variant="body-sm" color="error">Invalid code — try "1234"</Typography>
+            )}
           </div>
           <div className="space-y-2">
             <Typography variant="label-sm" color="secondary">4-digit masked</Typography>
-            <OtpInput value="" onChange={() => {}} length={4} masked />
+            <OtpInput value={maskedOtp} onChange={setMaskedOtp} length={4} masked />
           </div>
-          <div className="space-y-2">
-            <Typography variant="label-sm" color="secondary">Sizes</Typography>
-            <OtpInput value="" onChange={() => {}} length={4} size="sm" />
-            <OtpInput value="" onChange={() => {}} length={4} size="md" />
-            <OtpInput value="" onChange={() => {}} length={4} size="lg" />
+          <div className="space-y-3">
+            <Typography variant="label-sm" color="secondary">Sizes — sm (12px radius) / md (16px radius) / lg (20px radius)</Typography>
+            <OtpInput value={smOtp} onChange={setSmOtp} length={4} size="sm" />
+            <OtpInput value={mdOtp} onChange={setMdOtp} length={4} size="md" />
+            <OtpInput value={lgOtp} onChange={setLgOtp} length={4} size="lg" />
           </div>
         </div>
       </CardContent>

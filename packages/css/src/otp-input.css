@@ -13,19 +13,18 @@
 .acko-otp-cell {
   @apply text-center font-semibold outline-none;
   border: 1.5px solid var(--color-input-border);
-  border-radius: var(--radius-xl);
-  background: var(--color-surface-default);
+  background: var(--color-input-bg);
   color: var(--color-text-default);
   caret-color: var(--color-primary);
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
 .acko-otp-cell::selection { background: var(--color-primary-subtle); }
 
-/* Sizes */
-.acko-otp-sm .acko-otp-cell { width: var(--scale-36); height: var(--scale-40); font-size: var(--font-body-md-size); }
-.acko-otp-md .acko-otp-cell { width: var(--scale-44); height: var(--scale-52); font-size: var(--font-title-sm-size); }
-.acko-otp-lg .acko-otp-cell { width: var(--scale-52); height: var(--scale-60); font-size: var(--font-title-md-size); }
+/* Sizes — perfect squares with per-size radius */
+.acko-otp-sm .acko-otp-cell { width: var(--scale-40); height: var(--scale-40); font-size: var(--font-body-md-size); border-radius: var(--radius-2xl); }
+.acko-otp-md .acko-otp-cell { width: var(--scale-48); height: var(--scale-48); font-size: var(--font-heading-md-size); border-radius: var(--radius-3xl); }
+.acko-otp-lg .acko-otp-cell { width: var(--scale-56); height: var(--scale-56); font-size: var(--font-heading-lg-size); border-radius: 20px; }
 
 /* Focus */
 .acko-otp-cell:focus {
@@ -40,14 +39,28 @@
   color: var(--color-primary);
 }
 
-/* Error */
+/* Error — gradient border with rounded corners via padding-box/border-box */
 .acko-otp-error .acko-otp-cell,
+.acko-otp-error .acko-otp-cell.acko-otp-cell-filled,
 .acko-otp-cell-error {
-  border-color: var(--color-error-border);
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-100), var(--grey-150)) border-box;
+  color: var(--color-text-default);
+  animation: acko-otp-shake 300ms ease-out;
 }
 
 .acko-otp-error .acko-otp-cell:focus {
   box-shadow: 0 0 0 3px var(--color-error-ring, var(--color-error-subtle));
+}
+
+@keyframes acko-otp-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
 }
 
 /* Disabled */
@@ -58,8 +71,11 @@
   cursor: not-allowed;
 }
 
-/* --- Dark theme --- */
-
-[data-theme="dark"] .acko-otp-cell {
-  background: var(--color-surface-default);
+/* --- Dark theme error --- */
+[data-theme="dark"] .acko-otp-error .acko-otp-cell,
+[data-theme="dark"] .acko-otp-error .acko-otp-cell.acko-otp-cell-filled,
+[data-theme="dark"] .acko-otp-cell-error {
+  background:
+    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
+    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
 }

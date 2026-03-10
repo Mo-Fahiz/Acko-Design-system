@@ -34,6 +34,7 @@
 @import "@acko/css/slider.css";
 @import "@acko/css/drawer.css";
 @import "@acko/css/form.css";
+@import "@acko/css/otp-input.css";
 
 body {
   font-family: "Euclid Circular B", system-ui, sans-serif;
