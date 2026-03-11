@@ -137,6 +137,29 @@ primitives (raw values) → semantics (role mappings) → component CSS
 3. Theme switching is automatic via `[data-theme="dark"]` or `[data-theme="elevated"]` on `<html>`
 4. Spacing, radius, typography, and easing tokens are theme-agnostic — safe to reference directly
 5. Color and shadow tokens remap between themes — always go through semantics
+6. **Never use raw pixel values for `border-radius`** — always use a `--radius-*` token
+
+### Universal Border Radius Rule
+
+Components are assigned radius by **semantic role**, not arbitrary size:
+
+| Role | Token | Value | Used by |
+|---|---|---|---|
+| Interactive controls | `--radius-full` | pill | Buttons, chips, badges, pagination, tabs |
+| Input containers | `--radius-full` | pill | TextInput, Dropdown trigger, InputGroup |
+| Surface containers | `--radius-4xl` | 20px | Cards, dialogs, drawers, toasts, dropdown menus, calendar panels |
+| Small controls | `--radius-sm` / `--radius-md` | 4–6px | Checkboxes, tooltips |
+
+**Nested radius formula:** When a child element fills a container edge-to-edge, its radius must be `container radius − padding`. Use the `--radius-inset-*` tokens:
+
+```
+Container (--radius-4xl: 20px)
+├── pad-sm (12px)  → child uses --radius-inset-sm (8px)
+├── pad-md (16px)  → child uses --radius-inset-md (4px)
+└── pad-lg (24px)  → child uses --radius-inset-lg (0px)
+```
+
+**Pill buttons inside cards:** A pill CTA must never touch the card edge. Full-width buttons sit inside the padded content zone — the card's padding creates the visual separation. Minimum card padding when a CTA is present: `pad-md` (16px).
 
 ---
 

@@ -58,7 +58,7 @@
   box-sizing: border-box;
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  border-radius: 20px;
+  border-radius: var(--radius-4xl);
   box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   padding: var(--space-4);
   @apply select-none;

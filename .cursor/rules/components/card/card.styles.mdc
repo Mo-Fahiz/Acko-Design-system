@@ -43,9 +43,25 @@ Design intent: On a `--color-surface` page, default cards use `--color-card-bg` 
 
 ### Nested Radius Rule
 
-Any rectangular child element (icon box, image, inset panel) uses `--radius-inset-lg`, NOT the card's outer radius.
+**Formula:** `inner radius = outer radius (20px) − card padding`
 
-**Exempt**: Buttons, badges, avatars — keep their own intentional radius.
+| Card Padding | Inset Token | Computed Radius |
+|---|---|---|
+| `pad-sm` (12px) | `--radius-inset-sm` | 8px (`--radius-lg`) |
+| `pad-md` (16px) | `--radius-inset-md` | 4px (`--radius-sm`) |
+| `pad-lg` (24px) | `--radius-inset-lg` | 0px (flat) |
+
+Any rectangular child element (icon box, image, inset panel) uses the matching `--radius-inset-*` token for its card padding level.
+
+**Exempt**: Badges, avatars — keep their own intentional radius.
+
+### CTA Button Placement Rule
+
+A pill button (`--radius-full`) inside a card must **never touch the card edge**. Full-width buttons live inside the padded content zone — the card's padding provides the breathing room between the pill corner and the card corner.
+
+- Minimum card padding when a CTA is present: `pad-md` (16px)
+- `fullWidth` button = full width of the **content area**, not the card itself
+- Buttons with `pad-none` cards: **not allowed** — use `overflow: hidden` on the card and drop the button's own radius as a last resort
 
 ## Theme Mapping
 

@@ -444,47 +444,104 @@ function AlertUsage() {
 function CardPreview() {
   return (
     <div className="space-y-4">
-      {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
-        <Card key={v} variant={v} padding="sm">
-          <CardContent>
-            <Typography variant="label-md" color="primary">
-              {v} card
+      <Typography variant="label-sm" color="secondary">Variants</Typography>
+      <div className="grid grid-cols-2 gap-3">
+        {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
+          <Card key={v} variant={v} padding="sm">
+            <CardContent>
+              <Typography variant="label-sm" color="primary">{v}</Typography>
+              <Typography variant="caption" color="secondary">
+                {v === "default" ? "Standard surface" : v === "elevated" ? "Raised with shadow" : v === "outline" ? "Transparent + border" : "Recessed surface"}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <Typography variant="label-sm" color="secondary">Padding Sizes</Typography>
+      <div className="space-y-3">
+        {(["sm", "md", "lg"] as const).map((p) => (
+          <Card key={p} variant="default" padding={p}>
+            <CardContent>
+              <Typography variant="label-sm" color="primary">pad-{p}</Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <Typography variant="label-sm" color="secondary">Card with CTA</Typography>
+      <Card variant="elevated" padding="md">
+        <CardContent>
+          <div className="space-y-1">
+            <Typography variant="heading-sm" color="primary">Comprehensive Plan</Typography>
+            <Typography variant="body-sm" color="secondary">
+              Full coverage for your vehicle with cashless claims.
             </Typography>
-          </CardContent>
-        </Card>
-      ))}
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button variant="secondary" size="sm">Learn More</Button>
+          <Button variant="primary" size="sm">Buy Now</Button>
+        </CardFooter>
+      </Card>
+      <Card variant="default" padding="md">
+        <CardContent>
+          <Typography variant="body-sm" color="secondary">
+            Full-width pill button inside padded card — corners stay clean.
+          </Typography>
+        </CardContent>
+        <CardFooter>
+          <Button variant="primary" fullWidth>
+            Get Started
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
 
 function CardUsage() {
   return (
-    <Card variant="elevated" padding="md">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <Typography variant="heading-md" color="primary">
-            Premium Plan
+    <div className="space-y-4">
+      <Card variant="elevated" padding="md">
+        <CardHeader>
+          <div className="flex items-center justify-between w-full">
+            <Typography variant="heading-md" color="primary">
+              Premium Plan
+            </Typography>
+            <Badge color="orange" variant="solid" textCase="uppercase">
+              Popular
+            </Badge>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Typography variant="body-sm" color="secondary">
+            Comprehensive coverage with cashless claims at 8,400+ garages across India.
           </Typography>
-          <Badge color="orange" variant="solid" textCase="uppercase">
-            Popular
-          </Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <Typography variant="body-sm" color="secondary">
-          Get comprehensive coverage with cashless claims at 8,400+ garages.
-        </Typography>
-        <div className="pt-3">
-          <span className="text-2xl font-bold">₹4,835</span>
-          <span className="text-sm text-text-muted">/year</span>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button variant="primary" fullWidth>
-          Buy Now
-        </Button>
-      </CardFooter>
-    </Card>
+          <div className="pt-3">
+            <span className="text-2xl font-bold">₹4,835</span>
+            <span className="text-sm text-text-muted"> /year</span>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button variant="primary" fullWidth>
+            Buy Now
+          </Button>
+        </CardFooter>
+      </Card>
+      <Card variant="outline" padding="sm">
+        <CardContent>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-primary-subtle flex items-center justify-center">
+              <Typography variant="label-md" color="brand">🛡</Typography>
+            </div>
+            <div className="flex-1 min-w-0">
+              <Typography variant="label-md" color="primary">Zero Depreciation</Typography>
+              <Typography variant="caption" color="secondary">Get full claim value</Typography>
+            </div>
+            <Badge color="green" variant="dot" textCase="title">Active</Badge>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 
@@ -2093,8 +2150,10 @@ function FormPreview() {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   return (
-    <div className="flex flex-col gap-4">
+    <div className="space-y-4">
+      <Typography variant="label-sm" color="secondary">Basic Form</Typography>
       <Form onSubmit={() => new Promise((r) => setTimeout(() => { setSubmitted(true); r(undefined); }, 800))}>
         <FormItem name="name">
           <TextInput label="Full name" value={name} onChange={setName} id="demo-name" placeholder="Enter your full name" required />
@@ -2103,9 +2162,15 @@ function FormPreview() {
           <TextInput label="Email address" value={email} onChange={setEmail} id="demo-email" type="email" placeholder="you@example.com" required />
           <FormMessage>We will never share your email.</FormMessage>
         </FormItem>
-        <Button variant="primary" type="submit">
-          {submitted ? "Submitted!" : "Submit"}
-        </Button>
+        <FormItem name="phone">
+          <TextInput label="Phone number" value={phone} onChange={setPhone} id="demo-phone" placeholder="+91 98765 43210" />
+        </FormItem>
+        <div className="flex gap-3 pt-2">
+          <Button variant="secondary" type="button">Cancel</Button>
+          <Button variant="primary" type="submit">
+            {submitted ? "Submitted!" : "Submit"}
+          </Button>
+        </div>
       </Form>
     </div>
   );
@@ -2116,22 +2181,22 @@ function FormUsage() {
   const [pincode, setPincode] = useState("");
   return (
     <Card variant="elevated" padding="md">
+      <CardHeader>
+        <Typography variant="heading-md" color="primary">Get a Quote</Typography>
+      </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <Typography variant="heading-md" color="primary">Get a quote</Typography>
-          <Form onSubmit={() => Promise.resolve()}>
-            <FormItem name="vehicle">
-              <TextInput label="Vehicle number" value={vehicle} onChange={setVehicle} id="vehicle" placeholder="MH 02 AB 1234" required />
-            </FormItem>
-            <FormItem name="pincode">
-              <TextInput label="Pincode" value={pincode} onChange={setPincode} id="pincode" placeholder="400001" />
-              <FormMessage>Enter pincode for location-based pricing.</FormMessage>
-            </FormItem>
-            <Button variant="primary" type="submit" fullWidth>
-              Get my quote
-            </Button>
-          </Form>
-        </div>
+        <Form onSubmit={() => Promise.resolve()}>
+          <FormItem name="vehicle">
+            <TextInput label="Vehicle number" value={vehicle} onChange={setVehicle} id="vehicle" placeholder="MH 02 AB 1234" required />
+          </FormItem>
+          <FormItem name="pincode">
+            <TextInput label="Pincode" value={pincode} onChange={setPincode} id="pincode" placeholder="400001" />
+            <FormMessage>Enter pincode for location-based pricing.</FormMessage>
+          </FormItem>
+          <Button variant="primary" type="submit" fullWidth>
+            Get My Quote
+          </Button>
+        </Form>
       </CardContent>
     </Card>
   );
@@ -2378,7 +2443,7 @@ function App() {
               <div
                 className="overflow-hidden"
                 style={{
-                  borderRadius: "var(--radius-2xl)",
+                  borderRadius: "var(--radius-4xl)",
                   background: "var(--color-card-bg)",
                   border: "1px solid var(--color-card-border)",
                 }}
