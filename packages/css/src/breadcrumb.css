@@ -5,15 +5,18 @@
 }
 
 .acko-breadcrumb-list {
-  @apply flex items-center flex-wrap gap-1 list-none p-0 m-0;
+  @apply flex items-center flex-wrap list-none p-0 m-0;
+  gap: var(--scale-4);
 }
 
 .acko-breadcrumb-list > li {
-  @apply flex items-center gap-1;
+  @apply flex items-center;
+  gap: var(--scale-4);
 }
 
 .acko-breadcrumb-link {
-  @apply inline-flex items-center gap-1 no-underline;
+  @apply inline-flex items-center no-underline;
+  gap: var(--scale-4);
   color: var(--color-breadcrumb-link);
   font-size: var(--font-body-sm-size);
   font-weight: var(--font-body-sm-weight);
@@ -26,7 +29,8 @@
 }
 
 .acko-breadcrumb-current {
-  @apply inline-flex items-center gap-1;
+  @apply inline-flex items-center;
+  gap: var(--scale-4);
   color: var(--color-breadcrumb-current);
   font-weight: var(--font-label-lg-weight);
   font-size: var(--font-body-sm-size);
@@ -34,19 +38,20 @@
 
 .acko-breadcrumb-separator-item {
   @apply flex items-center;
-  margin: 0 var(--space-1);
+  margin: 0 var(--scale-4);
   color: var(--color-breadcrumb-separator);
 }
 
 .acko-breadcrumb-ellipsis-item {
-  @apply flex items-center gap-1;
+  @apply flex items-center;
+  gap: var(--scale-4);
 }
 
 .acko-breadcrumb-ellipsis {
   @apply border-none cursor-pointer rounded-full bg-transparent;
   color: var(--color-breadcrumb-text);
   font-size: var(--font-body-sm-size);
-  padding: var(--space-1) var(--space-2);
+  padding: var(--scale-4) var(--scale-8);
 }
 
 .acko-breadcrumb-ellipsis:hover {

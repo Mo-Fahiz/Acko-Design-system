@@ -1,7 +1,8 @@
 /* Pagination — @acko/css/pagination.css */
 
 .acko-pagination {
-  @apply flex items-center gap-1 flex-wrap;
+  @apply flex items-center flex-wrap;
+  gap: var(--scale-4);
 }
 
 .acko-pagination-info {

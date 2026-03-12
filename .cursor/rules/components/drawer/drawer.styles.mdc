@@ -1,9 +1,7 @@
 ---
 description: Drawer/Sheet component styles and tokens
-globs: "packages/css/src/drawer.css"
 alwaysApply: false
 ---
-
 # Drawer — Styles
 
 ## Class structure
@@ -40,20 +38,20 @@ Open state: `.acko-drawer-open .acko-drawer { transform: translate(0) }`
 | `acko-drawer-size-full` | 100vh |
 
 ## Content structure
-- `.acko-drawer-header` — `flex items-start`, `gap: --space-3`, `padding: --space-5`, `border-bottom: 1px solid --color-border-subtle`
-- `.acko-drawer-heading` — `flex-1 flex-col`, `gap: --space-1`
+- `.acko-drawer-header` — `flex items-start`, `gap: --scale-12`, `padding: --scale-20`, `border-bottom: 1px solid --color-border-subtle`
+- `.acko-drawer-heading` — `flex-1 flex-col`, `gap: --scale-4`
 - `.acko-drawer-title` — `body-lg` size, `font-weight: 600`, `--color-text-default`
 - `.acko-drawer-description` — `body-sm` size, `--color-text-secondary`
 - `.acko-drawer-close` — `--scale-32` button, `rounded-full`, `--color-text-secondary`, hover `--color-surface-hover` bg
-- `.acko-drawer-body` — `flex-1 overflow-y-auto`, `padding: --space-5`, `--color-text-default`
-- `.acko-drawer-footer` — `flex items-center justify-end`, `gap: --space-3`, `padding: --space-4 --space-5`, `border-top: 1px solid --color-border-subtle`
+- `.acko-drawer-body` — `flex-1 overflow-y-auto`, `padding: --scale-20`, `--color-text-default`
+- `.acko-drawer-footer` — `flex items-center justify-end`, `gap: --scale-12`, `padding: --scale-16 --scale-20`, `border-top: 1px solid --color-border-subtle`
 
 ## Tokens used
 - `--z-modal`, `--color-surface-overlay`, `--color-surface-raised`, `--shadow-modal`
 - `20px` (panel corners), `--color-border-subtle`
 - `--color-text-default`, `--color-text-secondary`, `--color-surface-hover`
 - `--shadow-focus-ring`, `--ease-out-cubic`, `--ease-out-quart`
-- `--space-*`, `--scale-32`
+- `--scale-*` (spacing and sizing)
 
 ## Animation
 Backdrop: `opacity 0 → 1`, 250ms `--ease-out-cubic`

@@ -1,7 +1,8 @@
 /* Radio — @acko/css/radio.css */
 
 .acko-radio-group {
-  @apply flex flex-col gap-2;
+  @apply flex flex-col;
+  gap: var(--scale-8);
 }
 
 .acko-radio-group-label {
@@ -13,7 +14,8 @@
 }
 
 .acko-radio-options {
-  @apply flex gap-3;
+  @apply flex;
+  gap: var(--scale-12);
 }
 
 .acko-radio-vertical { @apply flex-col; }
@@ -22,7 +24,8 @@
 /* --- Default radio item --- */
 
 .acko-radio-item {
-  @apply inline-flex items-start gap-3 cursor-pointer select-none;
+  @apply inline-flex items-start cursor-pointer select-none;
+  gap: var(--scale-12);
 }
 
 .acko-radio-item.acko-radio-item-disabled {
@@ -138,8 +141,9 @@
 /* --- Card variant --- */
 
 .acko-radio-card-item {
-  @apply flex items-start gap-3 cursor-pointer select-none;
-  padding: var(--space-4);
+  @apply flex items-start cursor-pointer select-none;
+  gap: var(--scale-12);
+  padding: var(--scale-16);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-3xl);
   background-color: var(--color-card-bg);

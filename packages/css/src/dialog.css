@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-4);
+  padding: var(--scale-16);
   animation: acko-dialog-backdrop-in 200ms var(--ease-out-cubic) forwards;
 }
 
@@ -30,14 +30,14 @@
   box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - var(--space-8));
+  max-height: calc(100vh - var(--scale-32));
   max-width: 540px;
   outline: none;
   animation: acko-dialog-in 250ms var(--ease-out-quart) forwards;
 }
 
 @keyframes acko-dialog-in {
-  from { opacity: 0; transform: scale(0.95) translateY(var(--space-2)); }
+  from { opacity: 0; transform: scale(0.95) translateY(var(--scale-8)); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
@@ -58,8 +58,8 @@
 .acko-dialog-header {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-5) var(--space-4);
+  gap: var(--scale-12);
+  padding: var(--scale-20) var(--scale-20) var(--scale-16);
 }
 
 .acko-dialog-title {
@@ -76,7 +76,7 @@
   font-size: var(--font-body-sm-size);
   line-height: var(--font-body-sm-line);
   color: var(--color-text-secondary);
-  margin: var(--space-1) 0 0;
+  margin: var(--scale-4) 0 0;
 }
 
 .acko-dialog-close {
@@ -105,7 +105,7 @@
 .acko-dialog-body {
   flex: 1;
   overflow-y: auto;
-  padding: 0 var(--space-5) var(--space-5);
+  padding: 0 var(--scale-20) var(--scale-20);
   color: var(--color-text-default);
   font-size: var(--font-body-md-size);
   line-height: var(--font-body-md-line);
@@ -117,8 +117,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  gap: var(--scale-12);
+  padding: var(--scale-16) var(--scale-20);
   border-top: 1px solid var(--color-border-subtle);
 }
 

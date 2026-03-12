@@ -27,7 +27,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 ### Panel
 | Class | Purpose |
 |---|---|
-| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `20px` border-radius, `--shadow-md`, `--space-4` padding |
+| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `20px` border-radius, `--shadow-md`, `--scale-16` padding |
 | `.acko-cal-panel-dropdown` | Dropdown positioning — `absolute left-0`, z-index, enter animation |
 
 ### Header
@@ -70,7 +70,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 
 | Keyframe | Purpose |
 |---|---|
-| `acko-cal-enter` | Panel fade-in + translateY(var(--space-2) → 0) over 150ms |
+| `acko-cal-enter` | Panel fade-in + translateY(var(--scale-8) → 0) over 150ms |
 
 ---
 

@@ -17,17 +17,17 @@ CSS file: `@acko/css/table.css`
 
 ### Header
 - `.acko-table-header` — container for header row
-- `.acko-table-head` — `padding: var(--space-3) var(--space-4)`, `background: --color-table-header-bg`, `color: --color-table-header-text`, `font-weight: --font-label-lg-weight`, `text-transform: uppercase`, `letter-spacing: 0.05em`, `--font-label-md-size`, `border-bottom: 1px solid --color-table-border`
+- `.acko-table-head` — `padding: var(--scale-12) var(--scale-16)`, `background: --color-table-header-bg`, `color: --color-table-header-text`, `font-weight: --font-label-lg-weight`, `text-transform: uppercase`, `letter-spacing: 0.05em`, `--font-label-md-size`, `border-bottom: 1px solid --color-table-border`
 
 ### Body
 - `.acko-table-body` — container for body rows
-- `.acko-table-cell` — `padding: var(--space-3) var(--space-4)`, `color: --color-text-default`, `border-bottom: 1px solid --color-table-border` (last row has no border)
+- `.acko-table-cell` — `padding: var(--scale-12) var(--scale-16)`, `color: --color-text-default`, `border-bottom: 1px solid --color-table-border` (last row has no border)
 
 ### Row
 - `.acko-table-row` — base row
 
 ### Caption
-- `.acko-table-caption` — `padding: var(--space-3)`, `--color-text-secondary`, `--font-body-sm-size`, `caption-side: bottom`
+- `.acko-table-caption` — `padding: var(--scale-12)`, `--color-text-secondary`, `--font-body-sm-size`, `caption-side: bottom`
 
 ### Variants
 - `.acko-table-striped` — even rows `background: --color-table-stripe`

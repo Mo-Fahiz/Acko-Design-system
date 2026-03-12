@@ -33,35 +33,37 @@
 }
 
 .acko-card-pad-sm {
-  padding: var(--space-3);
+  padding: var(--scale-12);
 }
 
 .acko-card-pad-md {
-  padding: var(--space-5);
+  padding: var(--scale-20);
 }
 
 .acko-card-pad-lg {
-  padding: var(--space-6);
+  padding: var(--scale-24);
 }
 
 .acko-card-header {
-  @apply flex items-center gap-3;
-  padding-bottom: var(--space-4);
+  @apply flex items-center;
+  gap: var(--scale-12);
+  padding-bottom: var(--scale-16);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .acko-card-content {
-  padding: var(--space-5) 0;
+  padding: var(--scale-20) 0;
 }
 
 .acko-card-footer {
-  @apply flex items-center justify-end gap-3;
-  padding-top: var(--space-4);
+  @apply flex items-center justify-end;
+  gap: var(--scale-12);
+  padding-top: var(--scale-16);
   border-top: 1px solid var(--color-border-subtle);
 }
 
 .acko-card-inset {
-  padding: var(--space-3);
+  padding: var(--scale-12);
   border: 1px solid var(--color-card-demoted-border);
   background-color: var(--color-card-demoted-bg);
   border-radius: var(--radius-inset-lg);

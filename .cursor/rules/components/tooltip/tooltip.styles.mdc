@@ -12,7 +12,7 @@ globs: "**/tooltip/**,**/Tooltip/**"
   - Background: `--color-tooltip-bg`
   - Text: `--color-tooltip-text`
   - Font: `--font-caption-size`
-  - Padding: `var(--space-1) var(--space-2)`
+  - Padding: `var(--scale-4) var(--scale-8)`
   - Border radius: `--radius-xl`
   - `white-space: nowrap`
 - `.acko-tooltip-arrow` — CSS triangle `var(--scale-6)`, color `--color-tooltip-bg`, positioned per side

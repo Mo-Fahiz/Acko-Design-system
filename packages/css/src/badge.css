@@ -1,7 +1,8 @@
 /* Badge — @acko/css/badge.css */
 
 .acko-badge {
-  @apply inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none;
+  @apply inline-flex items-center font-medium whitespace-nowrap rounded-full leading-none;
+  gap: var(--scale-4);
   font-family: inherit;
 }
 

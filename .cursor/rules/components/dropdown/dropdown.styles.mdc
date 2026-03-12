@@ -1,9 +1,7 @@
 ---
 description: Dropdown visual specification — CSS classes, variants, sizes, states, and tokens
-globs: "**/dropdown*"
 alwaysApply: false
 ---
-
 # Dropdown — Visual Specification
 
 ## Architecture
@@ -18,7 +16,7 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 
 | Class | Purpose |
 |---|---|
-| `.acko-dropdown` | Wrapper — `flex flex-col gap-1 relative` |
+| `.acko-dropdown` | Wrapper — `flex flex-col relative` with `gap: var(--scale-4)` |
 | `.acko-dropdown-label` | Label — typography tokens, `color: var(--color-text-default)` |
 | `.acko-dropdown-required` | Required asterisk — `color: var(--color-error)` |
 | `.acko-dropdown-trigger` | Trigger button — `flex items-center justify-between w-full rounded-full` |
@@ -26,10 +24,10 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 | `.acko-dropdown-placeholder` | Placeholder text — `color: var(--color-text-secondary)` |
 | `.acko-dropdown-chevron` | Chevron icon — `shrink-0 flex items-center ml-2` |
 | `.acko-dropdown-menu` | Dropdown menu — `absolute list-none`, shadow, rounded, animated |
-| `.acko-dropdown-option` | Single option — `flex items-center gap-2 cursor-pointer` |
-| `.acko-dropdown-search-wrapper` | Search wrapper — `padding: 0 0 --space-2 0` |
+| `.acko-dropdown-option` | Single option — `flex items-center cursor-pointer` with `gap: var(--scale-8)` |
+| `.acko-dropdown-search-wrapper` | Search wrapper — `padding: 0 0 --scale-8 0` |
 | `.acko-dropdown-search` | Search input inside menu — `w-full rounded-full` |
-| `.acko-dropdown-group-header` | Group header — `padding: --space-2 --space-3`, `--font-caption-size`, `--color-text-secondary` |
+| `.acko-dropdown-group-header` | Group header — `padding: --scale-8 --scale-12`, `--font-caption-size`, `--color-text-secondary` |
 | `.acko-dropdown-option-icon` | Option leading icon — `shrink-0 flex items-center` |
 | `.acko-dropdown-option-check` | Selected check icon — `ml-auto shrink-0`, `--color-primary` |
 | `.acko-dropdown-chevron-open` | Rotated chevron — `transform: rotate(180deg)` |

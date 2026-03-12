@@ -6,9 +6,10 @@
 /* --- Base --- */
 
 .acko-btn {
-  @apply inline-flex items-center justify-center gap-2 font-medium
+  @apply inline-flex items-center justify-center font-medium
          leading-none border-none cursor-pointer select-none
          whitespace-nowrap no-underline relative;
+  gap: var(--scale-8);
   font-family: inherit;
   transition:
     background-color 150ms ease,
@@ -39,11 +40,11 @@
 
 .acko-btn-icon { @apply inline-flex items-center justify-center shrink-0; }
 
-.acko-btn-xs .acko-btn-icon { @apply size-3; }
-.acko-btn-sm .acko-btn-icon { @apply size-3.5; }
-.acko-btn-md .acko-btn-icon { @apply size-4; }
-.acko-btn-lg .acko-btn-icon { width: var(--font-body-lg-size); height: var(--font-body-lg-size); }
-.acko-btn-xl .acko-btn-icon { @apply size-5; }
+.acko-btn-xs .acko-btn-icon { width: var(--scale-12); height: var(--scale-12); }
+.acko-btn-sm .acko-btn-icon { width: var(--scale-16); height: var(--scale-16); }
+.acko-btn-md .acko-btn-icon { width: var(--scale-16); height: var(--scale-16); }
+.acko-btn-lg .acko-btn-icon { width: var(--scale-20); height: var(--scale-20); }
+.acko-btn-xl .acko-btn-icon { width: var(--scale-24); height: var(--scale-24); }
 
 /* --- Icon-only (square) --- */
 
@@ -237,7 +238,8 @@
 /* --- Content wrapper --- */
 
 .acko-btn-content {
-  @apply inline-flex items-center justify-center gap-2;
+  @apply inline-flex items-center justify-center;
+  gap: var(--scale-8);
 }
 
 .acko-btn-label {
@@ -256,7 +258,7 @@
 
 .acko-btn-dots {
   @apply absolute inline-flex items-center justify-center;
-  gap: 4px;
+  gap: var(--scale-4);
 }
 
 .acko-btn-dot {

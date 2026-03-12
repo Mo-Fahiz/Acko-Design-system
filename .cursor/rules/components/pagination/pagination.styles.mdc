@@ -10,7 +10,7 @@ CSS file: `@acko/css/pagination.css`
 ## CSS Classes
 
 ### Base
-- `.acko-pagination` — flex, items-center, gap-1, flex-wrap
+- `.acko-pagination` — flex, items-center, `gap: var(--scale-4)`, flex-wrap
 
 ### Page Button
 - `.acko-pagination-btn` — `var(--scale-40) × var(--scale-40)`, `border-radius: var(--radius-full)` (circle shape), flex center, cursor-pointer

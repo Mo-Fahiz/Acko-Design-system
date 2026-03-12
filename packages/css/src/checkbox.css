@@ -1,7 +1,8 @@
 /* Checkbox — @acko/css/checkbox.css */
 
 .acko-checkbox {
-  @apply inline-flex items-start gap-3 cursor-pointer select-none;
+  @apply inline-flex items-start cursor-pointer select-none;
+  gap: var(--scale-12);
 }
 
 .acko-checkbox.acko-checkbox-disabled {

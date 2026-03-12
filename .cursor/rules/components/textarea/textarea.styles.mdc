@@ -10,16 +10,16 @@ CSS file: `@acko/css/textarea.css`
 ## CSS Classes
 
 ### Structure
-- `.acko-textarea` — flex column, gap `var(--space-2)`
+- `.acko-textarea` — flex column, gap `var(--scale-8)`
 - `.acko-textarea-label` — label-lg typography, `--color-text-default`
 - `.acko-textarea-el` — the `<textarea>` element
 
 ### Sizing & Resize
 - Resize: `none` (hard-coded, no resize handle)
 - Min height: `var(--scale-120)` (~120px)
-- Max height: `calc(4 * var(--font-body-md-line) + 2 * var(--space-3))` — approx 4 lines
+- Max height: `calc(4 * var(--font-body-md-line) + 2 * var(--scale-12))` — approx 4 lines
 - `overflow-y: auto` — scrolls when content exceeds max-height
-- Padding: `var(--space-3) var(--space-4)`
+- Padding: `var(--scale-12) var(--scale-16)`
 - Font: `--font-body-md-size`, line-height 1.5
 - Border radius: `--radius-3xl`
 

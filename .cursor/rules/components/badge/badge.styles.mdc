@@ -14,7 +14,7 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 ## CSS Classes
 
 ### Base
-`.acko-badge` — `inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none`
+`.acko-badge` — `inline-flex items-center font-medium whitespace-nowrap rounded-full leading-none` with `gap: var(--scale-4)`
 
 ### Text Case
 No lowercase words in badges. Three case variants:

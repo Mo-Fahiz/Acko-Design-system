@@ -24,7 +24,8 @@
 /* --- With label --- */
 
 .acko-separator-with-label {
-  @apply flex items-center gap-3;
+  @apply flex items-center;
+  gap: var(--scale-12);
 }
 
 .acko-separator-with-label.acko-separator-horizontal {
@@ -53,7 +54,7 @@
 
 .acko-separator-with-label.acko-separator-vertical .acko-separator-line {
   width: 1px;
-  min-height: var(--space-4);
+  min-height: var(--scale-16);
 }
 
 .acko-separator-label-text {

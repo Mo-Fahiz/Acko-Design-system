@@ -13,8 +13,9 @@
 }
 
 .acko-accordion-trigger {
-  @apply flex items-center justify-between w-full gap-3;
-  padding: var(--space-4) 0;
+  @apply flex items-center justify-between w-full;
+  gap: var(--scale-12);
+  padding: var(--scale-16) 0;
   font-size: var(--font-body-md-size);
   font-weight: 500;
   color: var(--color-text-primary);
@@ -50,7 +51,7 @@
 }
 
 .acko-accordion-content {
-  padding-bottom: var(--space-4);
+  padding-bottom: var(--scale-16);
   font-size: var(--font-body-sm-size);
   color: var(--color-text-default);
   line-height: 1.6;

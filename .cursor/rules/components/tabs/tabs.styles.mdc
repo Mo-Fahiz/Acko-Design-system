@@ -10,13 +10,13 @@ alwaysApply: false
 
 - `.acko-tabs` — base wrapper, `w-full`
 - `.acko-tabs-list` — flex container for tab buttons
-- `.acko-tab` — base tab button, `inline-flex items-center gap-2`, no border, bg-transparent
+- `.acko-tab` — base tab button, `inline-flex items-center`, `gap: var(--scale-8)`, no border, bg-transparent
 
 ## Variants
 
 ### Underline
 - `.acko-tabs-list-underline` — `border-bottom: 1px solid var(--color-border-subtle)`, `position: relative`
-- `.acko-tab-underline` — padding `var(--space-2) var(--space-4)`, `margin-bottom: -1px`, position relative
+- `.acko-tab-underline` — padding `var(--scale-8) var(--scale-16)`, `margin-bottom: -1px`, position relative
 - Active indicator via `::after` pseudo-element:
   - `background: linear-gradient(90deg, transparent, var(--color-primary), transparent)`
   - `height: 2px`, `border-radius: 1px`, positioned at bottom
@@ -28,8 +28,8 @@ alwaysApply: false
 - `::after` positioned at top instead of bottom
 
 ### Pill
-- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: var(--space-1)`, `width: fit-content`
-- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `var(--space-1) var(--space-4)`
+- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: var(--scale-4)`, `width: fit-content`
+- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `var(--scale-4) var(--scale-16)`
 - Active (light): `background: var(--color-primary-subtle)` (purple-100), `color: var(--color-primary)`, `--shadow-sm`
 - Active (dark): `background: var(--color-primary-subtle)` (purple-900), `color: var(--color-on-primary)` (white)
 
@@ -44,8 +44,8 @@ alwaysApply: false
 - Active: `--color-card-bg` background
 
 ## Sizes
-- `.acko-tab-sm` — `--font-caption-size`, padding `var(--space-1) var(--space-3)`
-- `.acko-tab-md` — `--font-body-sm-size`, padding `var(--space-2) var(--space-4)`
+- `.acko-tab-sm` — `--font-caption-size`, padding `var(--scale-4) var(--scale-12)`
+- `.acko-tab-md` — `--font-body-sm-size`, padding `var(--scale-8) var(--scale-16)`
 
 ## Icon
 - `.acko-tab-icon` — `var(--scale-16) × var(--scale-16)`, shrink-0

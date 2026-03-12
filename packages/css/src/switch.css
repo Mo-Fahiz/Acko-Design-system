@@ -7,7 +7,7 @@
 
 .acko-switch {
   @apply inline-flex items-center cursor-pointer;
-  gap: var(--space-3);
+  gap: var(--scale-12);
 }
 
 .acko-switch-native {

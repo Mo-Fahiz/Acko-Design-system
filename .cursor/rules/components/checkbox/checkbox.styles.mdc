@@ -10,7 +10,7 @@ CSS file: `@acko/css/checkbox.css`
 ## CSS Classes
 
 ### Base
-- `.acko-checkbox` — inline-flex, items-start, gap-3, cursor-pointer, select-none
+- `.acko-checkbox` — inline-flex, items-start, `gap: var(--scale-12)`, cursor-pointer, select-none
 - `.acko-checkbox-native` — visually hidden native input
 - `.acko-checkbox-box` — custom box with border `--color-control-border-selector`, bg `--color-card-bg`
 

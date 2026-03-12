@@ -1,7 +1,8 @@
 /* Dropdown — @acko/css/dropdown.css */
 
 .acko-dropdown {
-  @apply flex flex-col gap-1 relative;
+  @apply flex flex-col relative;
+  gap: var(--scale-4);
 }
 
 /* --- Label --- */
@@ -126,7 +127,7 @@
   z-index: var(--z-dropdown);
   max-height: 280px;
   overflow-y: auto;
-  padding: var(--space-2);
+  padding: var(--scale-8);
   animation: acko-dropdown-menu-enter 150ms var(--ease-out-cubic);
 }
 
@@ -138,15 +139,15 @@
 /* --- Search input --- */
 
 .acko-dropdown-search-wrapper {
-  padding: 0 0 var(--space-2) 0;
+  padding: 0 0 var(--scale-8) 0;
   border-bottom: 1px solid var(--color-border-subtle);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--scale-8);
 }
 
 .acko-dropdown-search {
   @apply w-full rounded-full outline-none;
   border: 1px solid var(--color-input-border);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--scale-8) var(--scale-16);
   font-family: inherit;
   font-size: var(--font-body-sm-size);
   background-color: var(--color-input-bg);
@@ -166,7 +167,7 @@
 /* --- Group header --- */
 
 .acko-dropdown-group-header {
-  padding: var(--space-2) var(--space-3);
+  padding: var(--scale-8) var(--scale-12);
   font-size: var(--font-label-sm-size);
   font-weight: var(--font-label-sm-weight);
   letter-spacing: var(--font-label-sm-spacing);
@@ -177,8 +178,9 @@
 /* --- Option --- */
 
 .acko-dropdown-option {
-  @apply flex items-center gap-2 cursor-pointer;
-  padding: var(--space-2) var(--space-3);
+  @apply flex items-center cursor-pointer;
+  gap: var(--scale-8);
+  padding: var(--scale-8) var(--scale-12);
   font-size: var(--font-body-sm-size);
   color: var(--color-text-primary);
   min-height: var(--scale-40);
@@ -261,7 +263,7 @@
 
 .acko-dropdown-no-results {
   @apply text-center;
-  padding: var(--space-4) var(--space-3);
+  padding: var(--scale-16) var(--scale-12);
   color: var(--color-text-secondary);
   font-size: var(--font-body-sm-size);
 }

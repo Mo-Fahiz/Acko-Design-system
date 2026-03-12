@@ -9,29 +9,29 @@
   z-index: var(--z-toast);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--scale-8);
   pointer-events: none;
   width: 360px;
-  max-width: calc(100vw - var(--space-8));
+  max-width: calc(100vw - var(--scale-32));
 }
 
 .acko-toast-region > * { pointer-events: auto; }
 
 /* Position variants */
-.acko-toast-region-top-right     { top: var(--space-5); right: var(--space-5); }
-.acko-toast-region-top-left      { top: var(--space-5); left: var(--space-5); }
-.acko-toast-region-top-center    { top: var(--space-5); left: 50%; transform: translateX(-50%); }
-.acko-toast-region-bottom-right  { bottom: var(--space-5); right: var(--space-5); flex-direction: column-reverse; }
-.acko-toast-region-bottom-left   { bottom: var(--space-5); left: var(--space-5); flex-direction: column-reverse; }
-.acko-toast-region-bottom-center { bottom: var(--space-5); left: 50%; transform: translateX(-50%); flex-direction: column-reverse; }
+.acko-toast-region-top-right     { top: var(--scale-20); right: var(--scale-20); }
+.acko-toast-region-top-left      { top: var(--scale-20); left: var(--scale-20); }
+.acko-toast-region-top-center    { top: var(--scale-20); left: 50%; transform: translateX(-50%); }
+.acko-toast-region-bottom-right  { bottom: var(--scale-20); right: var(--scale-20); flex-direction: column-reverse; }
+.acko-toast-region-bottom-left   { bottom: var(--scale-20); left: var(--scale-20); flex-direction: column-reverse; }
+.acko-toast-region-bottom-center { bottom: var(--scale-20); left: 50%; transform: translateX(-50%); flex-direction: column-reverse; }
 
 /* --- Toast item --- */
 
 .acko-toast {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--scale-12);
+  padding: var(--scale-12) var(--scale-16);
   border-radius: 20px;
   box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
   border: 1px solid transparent;
@@ -40,7 +40,7 @@
 }
 
 @keyframes acko-toast-in {
-  from { opacity: 0; transform: translateY(var(--space-2)); }
+  from { opacity: 0; transform: translateY(var(--scale-8)); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -54,12 +54,12 @@
 
 .acko-toast-icon {
   @apply shrink-0 inline-flex items-center justify-center;
-  margin-top: var(--space-1);
+  margin-top: var(--scale-4);
 }
 
 /* --- Content --- */
 
-.acko-toast-content { flex: 1; display: flex; flex-direction: column; gap: var(--space-1); }
+.acko-toast-content { flex: 1; display: flex; flex-direction: column; gap: var(--scale-4); }
 
 .acko-toast-title {
   font-size: var(--font-body-sm-size);

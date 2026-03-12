@@ -10,7 +10,7 @@ alwaysApply: false
 
 | Class | Element | Notes |
 |-------|---------|-------|
-| `.acko-switch` | Root label wrapper | `inline-flex items-center gap var(--space-3), cursor-pointer` |
+| `.acko-switch` | Root label wrapper | `inline-flex items-center gap var(--scale-12), cursor-pointer` |
 | `.acko-switch-track-sm` | Small track | `var(--scale-36) × var(--scale-20)` |
 | `.acko-switch-track-md` | Medium track | `var(--scale-44) × var(--scale-24)` |
 | `.acko-switch-thumb-sm` | Small thumb | `var(--scale-16) × var(--scale-16)`, left `var(--scale-2)` |

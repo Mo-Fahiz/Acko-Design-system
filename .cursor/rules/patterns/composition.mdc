@@ -16,14 +16,14 @@ Rules for how components combine into layouts. Prevents structurally wrong UI.
 ## Layout Patterns
 
 ### Form Layout
-- `--space-5` (20px) between form fields
-- `--space-8` (32px) between heading block and form, and between form and actions
+- `--scale-20` (20px) between form fields
+- `--scale-32` (32px) between heading block and form, and between form and actions
 - Primary button full-width on mobile
 - Secondary/back action below primary on mobile, not beside it
 
 ### Card Layout
-- Card padding: `--space-6` (24px) default
-- Card gap in grid: `--space-4` mobile, `--space-6` desktop
+- Card padding: `--scale-24` (24px) default
+- Card gap in grid: `--scale-16` mobile, `--scale-24` desktop
 - Footer buttons: right-aligned, primary on the right
 - Never nest a card inside another card
 
@@ -61,10 +61,10 @@ Rules for how components combine into layouts. Prevents structurally wrong UI.
 
 | Between | Spacing |
 |---------|---------|
-| Label → input | `--space-2` (8px) |
-| Input → helper/error | `--space-2` (8px) |
-| Form fields | `--space-5` (20px) |
-| Section heading → content | `--space-8` (32px) |
-| Cards in grid | `--space-4` / `--space-6` |
-| Page sections | `--space-16` (64px) |
-| Buttons in group | `--space-3` (12px) |
+| Label → input | `--scale-8` (8px) |
+| Input → helper/error | `--scale-8` (8px) |
+| Form fields | `--scale-20` (20px) |
+| Section heading → content | `--scale-32` (32px) |
+| Cards in grid | `--scale-16` / `--scale-24` |
+| Page sections | `--scale-64` (64px) |
+| Buttons in group | `--scale-12` (12px) |

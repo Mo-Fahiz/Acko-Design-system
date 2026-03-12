@@ -10,13 +10,13 @@ CSS file: `@acko/css/radio.css`
 ## CSS Classes
 
 ### Group
-- `.acko-radio-group` — flex column, gap-2
+- `.acko-radio-group` — flex column, `gap: var(--scale-8)`
 - `.acko-radio-group-label` — label-lg typography
 - `.acko-radio-options` — flex container
 - `.acko-radio-vertical` / `.acko-radio-horizontal` — orientation
 
 ### Item (default variant)
-- `.acko-radio-item` — inline-flex, items-start, gap-3, cursor-pointer
+- `.acko-radio-item` — inline-flex, items-start, `gap: var(--scale-12)`, cursor-pointer
 - `.acko-radio-item-selected` — selected state
 - `.acko-radio-item-disabled` — disabled state
 - `.acko-radio-error` — error state
@@ -34,7 +34,7 @@ CSS file: `@acko/css/radio.css`
 | lg | `--scale-24` | `--scale-12` | `--font-body-lg-size` |
 
 ### Card Variant
-- `.acko-radio-card-item` — `1px solid --color-card-border`, `border-radius: --radius-3xl`, padding `--space-4`, `--color-card-bg`
+- `.acko-radio-card-item` — `1px solid --color-card-border`, `border-radius: --radius-3xl`, padding `--scale-16`, `--color-card-bg`
 
 | Card State | Border | Background |
 |------------|--------|-----------|

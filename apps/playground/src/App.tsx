@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { ArrowRight, Plus, Heart, Send, Search, Download, ChevronRight, Trash2, Share2, Settings } from "lucide-react";
+import { ArrowRight, Plus, Heart, Send, Search, Download, Trash2, Share2, Settings } from "lucide-react";
 import { Dialog } from "@acko/dialog";
 import { ToastProvider, useToast } from "@acko/toast";
 import { Slider } from "@acko/slider";
@@ -194,8 +194,8 @@ function ButtonPreview() {
       <div>
         <Typography variant="label-sm" color="secondary">With icons</Typography>
         <div className="flex flex-wrap gap-3 mt-2">
-          <Button variant="primary" iconLeft={<ArrowRight />}>Continue</Button>
-          <Button variant="secondary" iconRight={<ChevronRight />}>Next step</Button>
+          <Button variant="primary" iconRight={<ArrowRight />}>Continue</Button>
+          <Button variant="secondary" iconRight={<ArrowRight />}>Next step</Button>
           <Button variant="primary" iconLeft={<Send />}>Send</Button>
           <Button variant="ghost" iconLeft={<Download />}>Download</Button>
           <Button variant="danger" iconLeft={<Trash2 />}>Delete</Button>
@@ -222,9 +222,9 @@ function ButtonPreview() {
       <div>
         <Typography variant="label-sm" color="secondary">Full width</Typography>
         <div className="flex flex-col gap-3 mt-2">
-          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a Quote</Button>
+          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a quote</Button>
           <Button variant="secondary" fullWidth>Cancel</Button>
-          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download Report</Button>
+          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download report</Button>
         </div>
       </div>
 
@@ -278,11 +278,11 @@ function ButtonUsage() {
             Review the details and proceed to payment.
           </Typography>
           <Button variant="primary" fullWidth iconRight={<ArrowRight />} loading={loading} onClick={handleClick}>
-            {loading ? "Processing..." : "Proceed to Pay"}
+            {loading ? "Processing..." : "Proceed to pay"}
           </Button>
           <div className="flex gap-3">
             <Button variant="secondary" fullWidth>
-              Edit Details
+              Edit details
             </Button>
             <Button variant="ghost" fullWidth iconLeft={<Download />}>
               Download PDF
@@ -290,10 +290,10 @@ function ButtonUsage() {
           </div>
           <div className="flex justify-between items-center pt-2">
             <Button variant="link" iconRight={<ArrowRight />}>
-              Terms & Conditions
+              Terms & conditions
             </Button>
             <Button variant="danger" size="sm" iconLeft={<Trash2 />}>
-              Cancel Policy
+              Cancel policy
             </Button>
           </div>
         </div>

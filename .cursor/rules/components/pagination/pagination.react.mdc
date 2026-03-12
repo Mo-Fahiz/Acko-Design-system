@@ -1,8 +1,7 @@
 ---
 description: Pagination React implementation — props, variants, keyboard navigation
-globs: "**/pagination/**,**/Pagination/**"
+alwaysApply: false
 ---
-
 # Pagination — React
 
 Package: `@acko/pagination`
@@ -21,6 +20,13 @@ interface PaginationProps {
   className?: string;
 }
 ```
+
+## Icons
+
+Pagination navigates to a new page (state change), so it uses **arrow** icons — not chevrons. See `foundation/iconography.mdc`.
+
+- Previous: `ArrowLeftIcon` (inline SVG, 20×20)
+- Next: `ArrowRightIcon` (inline SVG, 20×20)
 
 ## Accessibility
 

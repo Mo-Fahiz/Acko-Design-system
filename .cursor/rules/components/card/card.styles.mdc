@@ -28,18 +28,18 @@ Design intent: On a `--color-surface` page, default cards use `--color-card-bg` 
 | Class | Value |
 |-------|-------|
 | `.acko-card-pad-none` | 0 |
-| `.acko-card-pad-sm` | `var(--space-3)` |
-| `.acko-card-pad-md` | `var(--space-5)` |
-| `.acko-card-pad-lg` | `var(--space-6)` |
+| `.acko-card-pad-sm` | `var(--scale-12)` |
+| `.acko-card-pad-md` | `var(--scale-20)` |
+| `.acko-card-pad-lg` | `var(--scale-24)` |
 
 ### Sub-component Classes
 
 | Class | Padding | Border | Layout |
 |-------|---------|--------|--------|
-| `.acko-card-header` | `padding-bottom: --space-4` | `border-bottom: 1px solid --color-border-subtle` | `flex`, `gap: --space-3` |
-| `.acko-card-content` | `padding: --space-5 0` | none | block |
-| `.acko-card-footer` | `padding-top: --space-4` | `border-top: 1px solid --color-border-subtle` | `flex`, `justify-content: flex-end`, `gap: --space-3` |
-| `.acko-card-inset` | `padding: --space-3` | `1px solid --color-card-demoted-border` | `bg: --color-card-demoted-bg`, `border-radius: --radius-inset-lg` |
+| `.acko-card-header` | `padding-bottom: --scale-16` | `border-bottom: 1px solid --color-border-subtle` | `flex`, `gap: --scale-12` |
+| `.acko-card-content` | `padding: --scale-20 0` | none | block |
+| `.acko-card-footer` | `padding-top: --scale-16` | `border-top: 1px solid --color-border-subtle` | `flex`, `justify-content: flex-end`, `gap: --scale-12` |
+| `.acko-card-inset` | `padding: --scale-12` | `1px solid --color-card-demoted-border` | `bg: --color-card-demoted-bg`, `border-radius: --radius-inset-lg` |
 
 ### Nested Radius Rule
 

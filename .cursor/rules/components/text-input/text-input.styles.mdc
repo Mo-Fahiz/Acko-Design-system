@@ -10,7 +10,7 @@ CSS file: `@acko/css/text-input.css`
 ## CSS Classes
 
 ### Structure
-- `.acko-text-input` — flex column wrapper, gap-1
+- `.acko-text-input` — flex column wrapper, `gap: var(--scale-4)`
 - `.acko-text-input-label` — label-lg typography tokens
 - `.acko-text-input-wrapper` — flex row, border, rounded-full
 - `.acko-text-input-el` — the actual `<input>` element

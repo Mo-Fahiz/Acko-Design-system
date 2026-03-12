@@ -1,0 +1,85 @@
+---
+description: Icon usage guidelines — arrow vs chevron semantics, sizing, placement, and canonical icon set
+alwaysApply: true
+---
+# Iconography
+
+Rules for consistent, semantically correct icon usage across all components.
+
+## Icon Library
+
+Use **Lucide React** (`lucide-react`) as the canonical icon set. Do not mix icon libraries.
+
+## Arrow vs Chevron — When to Use Each
+
+### Arrow → "Go" / "Perform an action"
+
+Arrows carry **kinetic meaning** — they signal momentum, directional intent, and progression to a new state.
+
+| Context | Icon | Example |
+|---------|------|---------|
+| Primary CTA / submit | `ArrowRight` | `<Button variant="primary" iconRight={<ArrowRight />}>Continue</Button>` |
+| Back navigation (icon-only) | `ArrowLeft` | `<Button variant="ghost" iconOnly iconLeft={<ArrowLeft />}>Back</Button>` |
+| Back navigation (with label) | `ArrowLeft` | `<Button variant="ghost" iconLeft={<ArrowLeft />}>Go back</Button>` |
+| External link | `ArrowUpRight` | `<Button variant="link" iconRight={<ArrowUpRight />}>Visit site</Button>` |
+| Pagination next/prev (page change) | `ArrowRight` / `ArrowLeft` | Moving to a new page |
+| Download / send | `Download` / `Send` | Action that leaves the current context |
+
+### Chevron → "Reveal" / "Browse within context"
+
+Chevrons are **structural** — they signal "more content here" without leaving the current context.
+
+| Context | Icon | Example |
+|---------|------|---------|
+| Accordion expand/collapse | `ChevronDown` / `ChevronUp` | Toggle content visibility |
+| Dropdown menu trigger | `ChevronDown` | Open a menu or select list |
+| Side navigation expand | `ChevronRight` | Reveal nested nav items |
+| Carousel / slider | `ChevronLeft` / `ChevronRight` | Browse items within a container |
+| Stepper / breadcrumb separator | `ChevronRight` | Visual separator between steps |
+
+### Decision Rule
+
+> **Will the user leave the current context or trigger a state change?**
+> - **Yes** → Arrow
+> - **No, content reveals in place** → Chevron
+
+## Icon Sizing
+
+Icons must reference the base scale (`--scale-*`) for sizing. Do not use Tailwind utility classes or typography tokens for icon dimensions.
+
+| Component size | Icon size | Token |
+|----------------|-----------|-------|
+| `xs` | 12px | `--scale-12` |
+| `sm` | 16px | `--scale-16` |
+| `md` | 16px | `--scale-16` |
+| `lg` | 20px | `--scale-20` |
+| `xl` | 24px | `--scale-24` |
+
+### Rules
+
+- Always use `--scale-*` tokens — never hardcoded Tailwind sizing utilities or typography tokens
+- Icons inherit their size from the CSS layer (`.acko-btn-{size} .acko-btn-icon`). Do **not** set `size` props on Lucide icons inside buttons
+- Always use `currentColor` for fill so icons inherit text color from the theme
+
+## Icon Placement
+
+| Position | Meaning | Prop |
+|----------|---------|------|
+| Leading (left) | Reinforces the label — describes *what* | `iconLeft` |
+| Trailing (right) | Indicates direction — describes *where* | `iconRight` |
+
+- **CTA buttons**: arrow on the **right** (`iconRight`) — it points where you're going
+- **Back buttons**: arrow on the **left** (`iconLeft`) — it points where you came from
+- **Destructive actions**: icon on the **left** (`iconLeft`) — e.g., trash icon reinforces the label
+
+## Anti-Patterns
+
+| Don't | Do |
+|-------|-----|
+| `ChevronRight` on a primary CTA button | Use `ArrowRight` — it's an action, not a reveal |
+| `ArrowDown` for accordion toggle | Use `ChevronDown` — it's an expand, not navigation |
+| `ArrowRight` for dropdown trigger | Use `ChevronDown` — it opens a menu in place |
+| Mixed icon libraries in one project | Stick to Lucide throughout |
+| Tailwind `size-*` utilities for icon dimensions | Use `--scale-*` tokens |
+| `--font-*` tokens for icon dimensions | Use `--scale-*` tokens |
+| Icon without `aria-hidden="true"` on decorative icons | Always hide decorative icons from screen readers |

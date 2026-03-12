@@ -39,4 +39,4 @@ alwaysApply: false
 
 ## Animations
 - Backdrop: `acko-dialog-backdrop-in` — `opacity 0 → 1`, 200ms
-- Panel: `acko-dialog-in` — `opacity 0, scale 0.95, translateY(var(--space-2)) → 1, scale(1), 0`, 250ms
+- Panel: `acko-dialog-in` — `opacity 0, scale 0.95, translateY(var(--scale-8)) → 1, scale(1), 0`, 250ms
