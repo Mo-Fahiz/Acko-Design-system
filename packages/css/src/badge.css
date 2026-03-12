@@ -11,9 +11,9 @@
 .acko-badge-sentence-case { text-transform: none; }
 
 /* --- Sizes --- */
-.acko-badge-sm { padding: 4px 8px; font-size: var(--font-label-sm-size); }
-.acko-badge-md { padding: 6px 8px; font-size: var(--font-caption-size); }
-.acko-badge-lg { padding: 8px; font-size: var(--font-body-sm-size); }
+.acko-badge-sm { padding: var(--scale-4) var(--scale-8); font-size: var(--font-label-sm-size); }
+.acko-badge-md { padding: var(--scale-6) var(--scale-8); font-size: var(--font-caption-size); }
+.acko-badge-lg { padding: var(--scale-8); font-size: var(--font-body-sm-size); }
 
 /* --- Solid variant --- */
 .acko-badge-solid-purple {

@@ -4,24 +4,25 @@ description: Shadow tokens — primitive and semantic shadows for elevation hier
 
 # Shadow Tokens
 
-## Primitive Shadows
+## Tiered Shadow Scale (Primitive)
 
-| Token | Light | Dark |
-|-------|-------|------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | `0 1px 3px rgba(0,0,0,0.3)` |
-| `--shadow-md` | `0 4px 12px rgba(0,0,0,0.08)` | `0 4px 16px rgba(0,0,0,0.4)` |
-| `--shadow-lg` | `0 4px 24px rgba(0,0,0,0.12)` | `0 4px 28px rgba(0,0,0,0.5)` |
-| `--shadow-xl` | `0 8px 40px rgba(0,0,0,0.16)` | `0 8px 44px rgba(0,0,0,0.6)` |
-| `--shadow-border` | `0 0 0 1px rgba(0,0,0,0.08)` | `0 0 0 1px rgba(255,255,255,0.06)` |
+| Token | Light | Use Case |
+|-------|-------|----------|
+| `--shadow-xs` | `0 1px 2px rgba(0,0,0,0.04)` | Subtle depth |
+| `--shadow-sm` | `0 1px 4px rgba(0,0,0,0.06)` | Light elevation |
+| `--shadow-md` | `0 2px 8px rgba(0,0,0,0.06)` | Medium elevation |
+| `--shadow-lg` | `0px 2px 16px 4px rgba(0,0,0,0.04)` | Cards, dropdowns |
+| `--shadow-xl` | `0 4px 24px rgba(0,0,0,0.10)` | Modals, dialogs |
+| `--shadow-2xl` | `0 8px 32px rgba(0,0,0,0.14)` | Maximum elevation |
 
-## Semantic Shadows
+## Semantic Shadow Aliases
 
 | Token | Maps to | Use Case |
 |-------|---------|----------|
-| `--shadow-card` | `--shadow-md` | Elevated cards |
+| `--shadow-card` | `--shadow-lg` | Elevated cards |
 | `--shadow-dropdown` | `--shadow-lg` | Dropdown menus, popovers |
 | `--shadow-modal` | `--shadow-xl` | Modals, dialogs |
-| `--shadow-subtle` | `--shadow-sm` | Small element depth |
+| `--shadow-subtle` | `--shadow-xs` | Small element depth |
 
 ## Component Shadows
 
@@ -32,7 +33,7 @@ description: Shadow tokens — primitive and semantic shadows for elevation hier
 | `--shadow-btn-secondary-hover` | `inset 0 2px 4px rgba(255,255,255,0.48)` | `inset 0 2px 4px rgba(0,0,0,0.2)` | Secondary hover |
 | `--shadow-focus-ring` | `0 0 0 3px var(--color-primary-ring)` | same | All focusable elements |
 
-> **Dark mode note:** `--shadow-btn-secondary-hover` uses `rgba(0,0,0,0.2)` in dark — matching the original `Button.module.css` `inset 0px 2px 4px 0px rgba(255,255,255,0.08)` for the dark hover was updated to use darker inset shadows that work better on dark surfaces.
+> **Dark mode note:** Shadows are heavier in dark theme to remain visible on dark surfaces. `--shadow-border` also adapts: `0 0 0 1px rgba(255,255,255,0.06)` in dark.
 
 ## Badge Gradient Pattern
 

@@ -53,7 +53,7 @@
 
 .acko-separator-with-label.acko-separator-vertical .acko-separator-line {
   width: 1px;
-  min-height: var(--space-4);
+  min-height: var(--scale-16);
 }
 
 .acko-separator-label-text {

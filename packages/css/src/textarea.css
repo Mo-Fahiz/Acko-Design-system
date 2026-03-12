@@ -2,7 +2,7 @@
 
 .acko-textarea {
   @apply flex flex-col;
-  gap: var(--space-2);
+  gap: var(--scale-8);
 }
 
 /* --- Label --- */
@@ -21,10 +21,10 @@
 .acko-textarea-el {
   @apply w-full;
   min-height: var(--scale-120);
-  max-height: calc(4 * var(--font-body-md-line) + 2 * var(--space-3));
+  max-height: calc(4 * var(--font-body-md-line) + 2 * var(--scale-12));
   overflow-y: auto;
   resize: none;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--scale-12) var(--scale-16);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-3xl);
   font-family: inherit;
@@ -50,7 +50,7 @@
   border: 1px solid transparent;
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-200), var(--grey-150)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
 }
 
 /* Success */
@@ -70,7 +70,7 @@
 [data-theme="dark"] .acko-textarea-error {
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
 }
 
 /* --- Footer --- */

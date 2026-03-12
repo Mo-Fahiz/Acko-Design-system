@@ -9,7 +9,7 @@
 
 .acko-progress-label-wrapper {
   @apply flex justify-between;
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--scale-4);
 }
 
 .acko-progress-label {
@@ -113,6 +113,6 @@
 }
 
 /* --- Dark theme --- */
-[data-theme="dark"] .acko-progress-track { background-color: var(--grey-600); }
-[data-theme="dark"] .acko-progress-segment { background-color: var(--grey-600); }
-[data-theme="dark"] .acko-progress-circular-track { stroke: var(--grey-600); }
+[data-theme="dark"] .acko-progress-track { background-color: var(--color-track-inactive); }
+[data-theme="dark"] .acko-progress-segment { background-color: var(--color-track-inactive); }
+[data-theme="dark"] .acko-progress-circular-track { stroke: var(--color-track-inactive); }

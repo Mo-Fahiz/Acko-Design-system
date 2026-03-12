@@ -7,7 +7,7 @@
 
 .acko-switch {
   @apply inline-flex items-center cursor-pointer;
-  gap: var(--space-3);
+  gap: var(--scale-12);
 }
 
 .acko-switch-native {
@@ -49,7 +49,7 @@
 
 .acko-switch-thumb {
   @apply absolute rounded-full;
-  background: var(--grey-white);
+  background: var(--color-switch-thumb);
   box-shadow: var(--shadow-sm);
   transition: transform 250ms ease-out;
 }

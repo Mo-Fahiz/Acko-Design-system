@@ -11,24 +11,27 @@ description: Border radius tokens and nested radius rule
 | `--radius-lg` | 8px | Options, table cells | `rounded-lg` |
 | `--radius-xl` | 10px | Tooltip | `rounded-xl` |
 | `--radius-2xl` | 12px | — | `rounded-2xl` |
-| `--radius-3xl` | 16px | Cards, menus, alerts | `rounded-2xl` (use `rounded-[16px]`) |
+| `--radius-3xl` | 16px | — | `rounded-[16px]` |
+| `--radius-4xl` | 20px | Cards, dialogs, drawers, toasts, dropdown menus | `rounded-[20px]` |
 | `--radius-full` | 9999px | Buttons, inputs, pills | `rounded-full` |
+
+**`--radius-4xl` (20px)** is the standard for surface containers: cards, dialogs, drawers, toasts, dropdown menus, calendar panels.
 
 ## Nested Radius Rule
 
 When a rectangular element is nested inside a rounded container:
 
 ```
-R1 = R2 − D    (inner radius = outer radius − padding)
+inner radius = outer radius − padding
 ```
 
-Card outer radius is always `--radius-3xl` (16px). Because ACKO card padding (12–24px) meets or exceeds the outer radius, all inner rectangles floor to `--radius-sm` (4px).
+Card outer radius is `--radius-4xl` (20px). Use the `--radius-inset-*` tokens when a child element fills the container edge-to-edge:
 
 | Token | Value | When |
 |-------|-------|------|
-| `--radius-inset-sm` | 4px | Inner elements in `padding="sm"` cards |
-| `--radius-inset-md` | 4px | Inner elements in `padding="md"` cards |
-| `--radius-inset-lg` | 4px | Inner elements in `padding="lg"` cards |
+| `--radius-inset-sm` | 8px (`--radius-lg`) | Inner elements in `padding="sm"` (12px) cards → 20 − 12 = 8px |
+| `--radius-inset-md` | 4px (`--radius-sm`) | Inner elements in `padding="md"` (16px) cards → 20 − 16 = 4px |
+| `--radius-inset-lg` | 0px | Inner elements in `padding="lg"` (24px) cards → 20 − 24 = 0px |
 
 ### Applies to
 - Icon wrapper boxes, image thumbnails, inset panels (`<CardInset>`)

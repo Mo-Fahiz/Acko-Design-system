@@ -1,5 +1,5 @@
 ---
-description: Animation tokens — easing curves, durations, keyframes, and performance rules
+description: Animation tokens — easing curves, keyframes, and performance rules
 ---
 
 # Motion Tokens
@@ -25,18 +25,9 @@ These are defined as CSS custom properties in `tokens.css`:
 | Hover/color transitions | `ease` (CSS default) |
 | Seen 100+ times daily | Don't animate |
 
-## Duration Tokens
+## Duration
 
-Duration tokens are CSS custom properties defined in `tokens.css`.
-
-| Token | Value | Use |
-|-------|-------|-----|
-| `--duration-instant` | 0ms | No animation |
-| `--duration-fast` | 100ms | Hover, press |
-| `--duration-normal` | 150ms | Tooltips, dropdowns |
-| `--duration-moderate` | 200ms | Modals, menus |
-| `--duration-slow` | 300ms | Page transitions, error shake |
-| `--duration-slower` | 400ms | Hero animations |
+There are no `--duration-*` tokens in `tokens.css`. Use raw values (e.g. `150ms`, `200ms`, `300ms`) or define local variables in component CSS as needed.
 
 ## Shared Keyframes
 

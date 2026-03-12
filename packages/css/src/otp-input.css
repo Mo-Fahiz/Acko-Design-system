@@ -5,7 +5,7 @@
 .acko-otp {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--scale-8);
 }
 
 /* --- Cell --- */
@@ -46,7 +46,7 @@
   border: 1.5px solid transparent;
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-200), var(--grey-150)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
   color: var(--color-text-default);
   animation: acko-otp-shake 300ms ease-out;
 }
@@ -77,5 +77,5 @@
 [data-theme="dark"] .acko-otp-cell-error {
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
 }

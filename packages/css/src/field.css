@@ -7,7 +7,7 @@
 
 .acko-field {
   @apply flex flex-col;
-  gap: var(--space-1);
+  gap: var(--scale-4);
 }
 
 .acko-field-label {

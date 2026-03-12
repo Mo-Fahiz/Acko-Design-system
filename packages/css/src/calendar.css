@@ -10,7 +10,7 @@
   @apply flex items-center justify-between w-full cursor-pointer;
   min-width: 200px;
   height: var(--scale-48);
-  padding: 0 var(--space-5);
+  padding: 0 var(--scale-20);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-full);
   background-color: var(--color-input-bg);
@@ -59,8 +59,8 @@
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-4xl);
-  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.04);
-  padding: var(--space-4);
+  box-shadow: var(--shadow-lg);
+  padding: var(--scale-16);
   @apply select-none;
 }
 
@@ -81,7 +81,7 @@
 
 .acko-cal-header {
   @apply flex items-center justify-between;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--scale-12);
 }
 
 .acko-cal-header-label {
@@ -90,7 +90,7 @@
   color: var(--color-text-primary);
   @apply bg-transparent border-none cursor-pointer;
   font-family: inherit;
-  padding: var(--space-1) var(--space-2);
+  padding: var(--scale-4) var(--scale-8);
   border-radius: var(--radius-lg);
   transition: background-color 150ms ease;
 }
@@ -131,7 +131,7 @@
 .acko-cal-weekdays {
   @apply grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--scale-4);
 }
 
 .acko-cal-weekday {
@@ -224,8 +224,8 @@
 .acko-cal-picker-grid {
   @apply grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
+  gap: var(--scale-8);
+  padding: var(--scale-8) 0;
 }
 
 .acko-cal-picker-cell {

@@ -139,7 +139,7 @@
 
 .acko-radio-card-item {
   @apply flex items-start gap-3 cursor-pointer select-none;
-  padding: var(--space-4);
+  padding: var(--scale-16);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-3xl);
   background-color: var(--color-card-bg);

@@ -29,7 +29,7 @@
 }
 
 .acko-tab-underline {
-  padding: var(--space-2) var(--space-4);
+  padding: var(--scale-8) var(--scale-16);
   margin-bottom: -1px;
   color: var(--color-text-secondary);
   font-weight: 500;
@@ -73,13 +73,13 @@
 .acko-tabs-list-pill {
   background: var(--color-tab-pill-bg);
   border-radius: var(--radius-full);
-  padding: var(--space-1);
+  padding: var(--scale-4);
   width: fit-content;
 }
 
 .acko-tab-pill {
   border-radius: var(--radius-full);
-  padding: var(--space-1) var(--space-4);
+  padding: var(--scale-4) var(--scale-16);
   color: var(--color-text-secondary);
   font-weight: 500;
   transition: all 200ms var(--ease-in-out-cubic);
@@ -101,13 +101,13 @@
   background: var(--color-card-bg);
   border-top: 1px solid var(--color-border-subtle);
   justify-content: space-around;
-  padding: var(--space-1) 0;
+  padding: var(--scale-4) 0;
 }
 
 .acko-tab-navigation {
   @apply flex-col items-center justify-center;
   gap: var(--scale-2);
-  padding: var(--space-1) var(--space-3);
+  padding: var(--scale-4) var(--scale-12);
   color: var(--color-text-secondary);
   font-weight: 500;
   font-size: var(--font-caption-size);
@@ -149,28 +149,28 @@
 
 .acko-tab-sm {
   font-size: var(--font-caption-size);
-  padding: var(--space-1) var(--space-3);
+  padding: var(--scale-4) var(--scale-12);
 }
 
 .acko-tab-md {
   font-size: var(--font-body-sm-size);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--scale-8) var(--scale-16);
 }
 
 .acko-tab-underline.acko-tab-sm {
-  padding: var(--space-1) var(--space-3);
+  padding: var(--scale-4) var(--scale-12);
 }
 
 .acko-tab-underline.acko-tab-md {
-  padding: var(--space-2) var(--space-4);
+  padding: var(--scale-8) var(--scale-16);
 }
 
 .acko-tab-pill.acko-tab-sm {
-  padding: var(--space-1) var(--space-3);
+  padding: var(--scale-4) var(--scale-12);
 }
 
 .acko-tab-pill.acko-tab-md {
-  padding: var(--space-1) var(--space-4);
+  padding: var(--scale-4) var(--scale-16);
 }
 
 .acko-tab-icon {

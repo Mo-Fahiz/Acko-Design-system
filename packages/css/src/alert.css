@@ -5,7 +5,7 @@
 
 .acko-alert {
   @apply flex items-center gap-3 relative w-full;
-  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-3);
+  padding: var(--scale-12) var(--scale-12) var(--scale-12) var(--scale-12);
   border-radius: var(--radius-3xl);
   border: 1px solid;
   animation: acko-alert-slide-up 300ms var(--ease-out-cubic) both;

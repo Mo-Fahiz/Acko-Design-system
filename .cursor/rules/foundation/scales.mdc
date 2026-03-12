@@ -6,7 +6,7 @@ description: Scale, opacity, z-index, and hairline border tokens — numeric fou
 
 ## Base Scale (`--scale-*`)
 
-The base scale is a set of 45 CSS custom properties that serve as the numeric foundation for spacing, sizing, radius, and opacity tokens. All values are in `px`.
+`--scale-*` is the **only numeric primitive token** in the design system. Spacing has been merged into it — there are no separate `--space-*` tokens. Use `--scale-*` for spacing, sizing, dimensions, and all numeric measurements. All values are in `px`.
 
 ### Negative values
 
@@ -61,14 +61,11 @@ Derived from the base scale via `calc(var(--scale-N) / 100)`. Values range from 
 | `--opacity-8` | 0.08 | | `--opacity-64` | 0.64 |
 | `--opacity-10` | 0.10 | | `--opacity-72` | 0.72 |
 | `--opacity-12` | 0.12 | | `--opacity-80` | 0.80 |
-| `--opacity-15` | 0.15 | Dark theme inner shadows | | |
 | `--opacity-16` | 0.16 | | `--opacity-88` | 0.88 |
 | `--opacity-20` | 0.20 | | `--opacity-96` | 0.96 |
 | `--opacity-24` | 0.24 | | `--opacity-100` | 1.00 |
 | `--opacity-28` | 0.28 | | | |
-| `--opacity-30` | 0.30 | Light theme focus rings | | |
 | `--opacity-32` | 0.32 | | | |
-| `--opacity-35` | 0.35 | Dark theme focus rings | | |
 | `--opacity-36` | 0.36 | | | |
 | `--opacity-40` | 0.40 | | | |
 

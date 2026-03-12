@@ -256,12 +256,12 @@
 
 .acko-btn-dots {
   @apply absolute inline-flex items-center justify-center;
-  gap: 4px;
+  gap: var(--scale-4);
 }
 
 .acko-btn-dot {
-  width: 6px;
-  height: 6px;
+  width: var(--scale-6);
+  height: var(--scale-6);
   border-radius: 50%;
   background-color: currentColor;
   animation: acko-dot-wave 1.2s ease-in-out infinite;

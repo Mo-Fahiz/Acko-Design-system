@@ -5,7 +5,7 @@
 .acko-slider {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--scale-8);
   width: 100%;
   user-select: none;
 }
@@ -106,7 +106,7 @@
 [data-theme="dark"] .acko-slider-sm .acko-slider-track,
 [data-theme="dark"] .acko-slider-md .acko-slider-track,
 [data-theme="dark"] .acko-slider-lg .acko-slider-track {
-  background: var(--grey-600);
+  background: var(--color-track-inactive);
 }
 
-[data-theme="dark"] .acko-slider-tick { background: var(--grey-600); }
+[data-theme="dark"] .acko-slider-tick { background: var(--color-track-inactive); }

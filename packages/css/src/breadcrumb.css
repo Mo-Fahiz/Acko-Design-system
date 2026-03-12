@@ -34,7 +34,7 @@
 
 .acko-breadcrumb-separator-item {
   @apply flex items-center;
-  margin: 0 var(--space-1);
+  margin: 0 var(--scale-4);
   color: var(--color-breadcrumb-separator);
 }
 
@@ -46,7 +46,7 @@
   @apply border-none cursor-pointer rounded-full bg-transparent;
   color: var(--color-breadcrumb-text);
   font-size: var(--font-body-sm-size);
-  padding: var(--space-1) var(--space-2);
+  padding: var(--scale-4) var(--scale-8);
 }
 
 .acko-breadcrumb-ellipsis:hover {

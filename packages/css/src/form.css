@@ -5,7 +5,7 @@
 .acko-form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--scale-16);
 }
 
 /* --- Form item --- */
@@ -13,7 +13,7 @@
 .acko-form-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--scale-8);
 }
 
 /* --- Label --- */
@@ -27,7 +27,7 @@
 
 .acko-form-required {
   color: var(--color-error);
-  margin-left: var(--space-1);
+  margin-left: var(--scale-4);
 }
 
 /* --- Error text --- */
@@ -38,7 +38,7 @@
   color: var(--color-error-text);
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--scale-4);
   margin: 0;
 }
 

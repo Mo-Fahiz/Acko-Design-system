@@ -73,9 +73,11 @@ primitives → semantics → component CSS
 |-------|-------|------|
 | `--color-error` | `red-600` | `red-600` |
 | `--color-error-text` | `red-700` | `red-400` |
-| `--color-error-subtle` | `red-50` | `red-950` |
+| `--color-error-subtle` | `red-100` | `red-950` |
 | `--color-error-border` | `red-200` | `red-800` |
 | `--color-error-badge-bg` | `red-100` | `red-900` |
+| `--color-error-gradient-from` | `red-200` | `red-800` | Input error border gradient start |
+| `--color-error-gradient-to` | `grey-150` | `grey-600` | Input error border gradient end |
 
 ### Success
 | Token | Light | Dark |
@@ -104,16 +106,11 @@ primitives → semantics → component CSS
 | `--color-info-border` | `purple-200` | `purple-800` |
 | `--color-info-badge-bg` | `purple-200` | `purple-900` |
 
-### Alert Body Text
-| Token | Light | Dark |
-|-------|-------|------|
-| `--color-alert-body` | `grey-550` | `grey-100` |
-
 ## Cards
 
 | Token | Light | Dark |
 |-------|-------|------|
-| `--color-card-bg` | `grey-50` | `grey-700` |
+| `--color-card-bg` | `grey-50` | `grey-650` |
 | `--color-card-border` | `grey-white` | `grey-650` |
 | `--color-card-elevated-bg` | `grey-white` | `grey-650` |
 | `--color-card-demoted-bg` | `grey-150` | `grey-750` |
@@ -192,12 +189,22 @@ primitives → semantics → component CSS
 | `--color-input-border` | `grey-150` | `grey-600` | Default border |
 | `--color-input-hover-border` | `grey-300` | `grey-550` | Hover border |
 | `--color-input-filled-border` | `grey-200` | `grey-550` | Filled (has value) border |
-| `--color-input-focus-border` | `purple-400` | `purple-900` | Focus/selected border (error excluded) |
+| `--color-input-focus-border` | `grey-200` | `grey-550` | Focus/selected border (error excluded) |
 | `--color-input-disabled-bg` | — | `grey-650` | Disabled fill (dark only) |
 | `--color-input-disabled-border` | — | `grey-600` | Disabled border (dark only) |
 | `--color-input-option-hover` | `purple-50` | `grey-650` | Dropdown option hover |
 | `--color-input-option-selected-bg` | `purple-100` | `purple-900` | Selected option bg |
 | `--color-input-option-selected-text` | `purple-700` | `purple-300` | Selected option text |
+
+### Slider / Progress
+| Token | Light | Dark |
+|-------|-------|------|
+| `--color-track-inactive` | `grey-200` | `grey-600` | Unfinished track area |
+
+### Switch
+| Token | Light | Dark |
+|-------|-------|------|
+| `--color-switch-thumb` | `grey-white` | `grey-white` |
 
 ### Form Controls
 | Token | Light | Dark |
@@ -304,5 +311,4 @@ Background is `linear-gradient(0deg, gradient-from, gradient-to)` with a `1px so
 | `--shadow-btn-inner` | `inset 0 1px 2px rgba(255,255,255,0.28)` | `inset 0 1px 2px rgba(255,255,255,0.15)` |
 | `--shadow-btn-hover` | `0 4px 8px rgba(0,0,0,0.08)` | `0 4px 8px rgba(0,0,0,0.3)` |
 | `--shadow-focus-ring` | `0 0 0 3px var(--color-primary-ring)` | same |
-| `--shadow-border-alt` | `var(--shadow-border)` | `var(--shadow-border)` |
 | `--shadow-btn-secondary-hover` | `inset 0 2px 4px rgba(255,255,255,0.48)` | `inset 0 2px 4px rgba(0,0,0,0.2)` |

@@ -13,7 +13,7 @@
   background: var(--color-tooltip-bg);
   color: var(--color-tooltip-text);
   font-size: var(--font-caption-size);
-  padding: var(--space-1) var(--space-2);
+  padding: var(--scale-4) var(--scale-8);
   border-radius: var(--radius-xl);
   opacity: 0;
   transform: translateY(var(--scale-8));

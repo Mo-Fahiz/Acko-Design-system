@@ -730,7 +730,7 @@ function CheckboxPreview() {
   return (
     <div className="flex flex-col gap-5">
       <div className="pb-4 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Interactive states</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Interactive states</Typography>
         <div className="flex flex-col gap-4">
           <Checkbox label="Unchecked" checked={a} onChange={setA} />
           <Checkbox label="Checked" checked={b} onChange={setB} />
@@ -738,7 +738,7 @@ function CheckboxPreview() {
         </div>
       </div>
       <div>
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Disabled & Error</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Disabled & Error</Typography>
         <div className="flex flex-col gap-4">
           <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
           <Checkbox label="Error state" checked={false} onChange={() => {}} error />
@@ -1280,28 +1280,28 @@ function BreadcrumbPreview() {
   return (
     <div className="flex flex-col gap-6">
       <div className="pb-5 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Default</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Default</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Insurance", href: "#" }, { label: "Car Insurance" }]} />
       </div>
 
       <div className="pb-5 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>With icon</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>With icon</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#", icon: <HomeIcon /> }, { label: "Products", href: "#" }, { label: "Health Insurance" }]} />
       </div>
 
       <div className="pb-5 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Custom separator (/)</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Custom separator (/)</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Policies", href: "#" }, { label: "POL-2024-001" }]} separator="/" />
       </div>
 
       <div className="pb-5 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Collapsed (6 items → 3)</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Collapsed (6 items → 3)</Typography>
         <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Products", href: "#" }, { label: "Health", href: "#" }, { label: "Plans", href: "#" }, { label: "Premium", href: "#" }, { label: "Checkout" }]} maxItems={3} />
       </div>
 
       <div>
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-3)" }}>Contained</Typography>
-        <div style={{ background: "var(--color-surface-raised)", border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-xl)", padding: "var(--space-3) var(--space-4)", display: "inline-block" }}>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-12)" }}>Contained</Typography>
+        <div style={{ background: "var(--color-surface-raised)", border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-xl)", padding: "var(--scale-12) var(--scale-16)", display: "inline-block" }}>
           <Breadcrumb items={[{ label: "Dashboard", href: "#", icon: <HomeIcon /> }, { label: "Settings", href: "#" }, { label: "Account" }]} />
         </div>
       </div>
@@ -1571,7 +1571,7 @@ function NavigationWizardPreview() {
     <div className="flex flex-col gap-8">
       {/* Horizontal */}
       <div className="pb-6 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Horizontal</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-16)" }}>Horizontal</Typography>
         <NavigationWizard
           steps={[
             { label: "Details", description: "Your info" },
@@ -1594,7 +1594,7 @@ function NavigationWizardPreview() {
 
       {/* Vertical */}
       <div className="pb-6 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Vertical</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-16)" }}>Vertical</Typography>
         <NavigationWizard
           steps={[
             { label: "Personal Info", description: "Name, email, phone" },
@@ -1609,7 +1609,7 @@ function NavigationWizardPreview() {
 
       {/* Compact */}
       <div>
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Compact</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-16)" }}>Compact</Typography>
         <NavigationWizard
           steps={[{ label: "Details" }, { label: "Review" }, { label: "Payment" }, { label: "Done" }]}
           currentStep={step}
@@ -2011,7 +2011,7 @@ function SliderPreview() {
         <Slider value={65} onChange={() => {}} disabled />
       </div>
       <div>
-        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--space-4)" }}>Size variants</Typography>
+        <Typography variant="label-sm" color="secondary" style={{ marginBottom: "var(--scale-16)" }}>Size variants</Typography>
         <div className="flex flex-col gap-6">
           <div className="space-y-1">
             <Typography variant="caption" color="secondary">Small</Typography>

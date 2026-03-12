@@ -92,14 +92,21 @@
   --color-input-disabled-bg: var(--color-input-disabled-bg);
   --color-input-disabled-border: var(--color-input-disabled-border);
 
+  --color-error-gradient-from: var(--color-error-gradient-from);
+  --color-error-gradient-to: var(--color-error-gradient-to);
+  --color-track-inactive: var(--color-track-inactive);
+  --color-switch-thumb: var(--color-switch-thumb);
+
   --color-tooltip-bg: var(--color-tooltip-bg);
   --color-tooltip-text: var(--color-tooltip-text);
 
-  /* --- Shadows --- */
+  /* --- Shadows (tiered) --- */
+  --shadow-xs: var(--shadow-xs);
   --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
   --shadow-border: var(--shadow-border);
   --shadow-card: var(--shadow-card);
   --shadow-dropdown: var(--shadow-dropdown);
@@ -120,17 +127,4 @@
   --radius-4xl: var(--radius-4xl);
   --radius-full: var(--radius-full);
 
-  /* --- Spacing --- */
-  --spacing-1: var(--space-1);
-  --spacing-2: var(--space-2);
-  --spacing-3: var(--space-3);
-  --spacing-4: var(--space-4);
-  --spacing-5: var(--space-5);
-  --spacing-6: var(--space-6);
-  --spacing-8: var(--space-8);
-  --spacing-10: var(--space-10);
-  --spacing-12: var(--space-12);
-  --spacing-16: var(--space-16);
-  --spacing-20: var(--space-20);
-  --spacing-24: var(--space-24);
 }

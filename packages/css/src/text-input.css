@@ -137,7 +137,7 @@
   border: 1px solid transparent;
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-200), var(--grey-150)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
   animation: acko-text-input-shake 300ms ease-out;
 }
 
@@ -187,7 +187,7 @@
 [data-theme="dark"] .acko-text-input-error {
   background:
     linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--red-800), var(--grey-600)) border-box;
+    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
 }
 
 [data-theme="dark"] .acko-text-input-success-icon {
