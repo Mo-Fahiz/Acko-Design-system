@@ -12,17 +12,20 @@ alwaysApply: false
 - `.acko-dialog-header` — flex row, title + close button
 - `.acko-dialog-title` — `font-size: var(--font-body-lg-size)`, weight 600
 - `.acko-dialog-description` — `font-size: var(--font-body-sm-size)`, `color: var(--color-text-secondary)`
-- `.acko-dialog-close` — icon button, `width/height: var(--scale-32)`, pill shape
+- `.acko-dialog-close` — icon button, `width/height: 32px`, pill shape
 - `.acko-dialog-body` — scrollable content area, `overflow-y: auto`
 - `.acko-dialog-footer` — `border-top: 1px solid var(--color-border-subtle)`, actions right-aligned
 
 ## Size variants
+
+Default (no size class): `max-width: 540px`
+
 | Class | Max-width |
 |-------|-----------|
-| `.acko-dialog-sm` | `var(--scale-360)` |
-| `.acko-dialog-md` | `var(--scale-480)` |
-| `.acko-dialog-lg` | `var(--scale-600)` |
-| `.acko-dialog-xl` | `var(--scale-760)` |
+| `.acko-dialog-sm` | `360px` |
+| `.acko-dialog-md` | `480px` |
+| `.acko-dialog-lg` | `600px` |
+| `.acko-dialog-xl` | `760px` |
 | `.acko-dialog-full` | 100%, no radius |
 
 ## Tokens used
@@ -39,4 +42,4 @@ alwaysApply: false
 
 ## Animations
 - Backdrop: `acko-dialog-backdrop-in` — `opacity 0 → 1`, 200ms
-- Panel: `acko-dialog-in` — `opacity 0, scale 0.95, translateY(var(--space-2)) → 1, scale(1), 0`, 250ms
+- Panel: `acko-dialog-in` — `opacity 0, scale 0.95, translateY(8px) → 1, scale(1), 0`, 250ms

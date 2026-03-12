@@ -4,5 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? "/Acko-Design-system/" : "/",
+
   plugins: [react(), tailwindcss()],
+
+  css: {
+    transformer: "postcss", // disables LightningCSS transforms
+  },
+
+  build: {
+    cssMinify: "esbuild", // prevents logical property rewrites
+  },
 });

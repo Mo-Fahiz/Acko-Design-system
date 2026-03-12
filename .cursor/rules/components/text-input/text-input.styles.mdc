@@ -10,7 +10,7 @@ CSS file: `@acko/css/text-input.css`
 ## CSS Classes
 
 ### Structure
-- `.acko-text-input` — flex column wrapper, gap-1
+- `.acko-text-input` — flex column wrapper, `gap: 4px`
 - `.acko-text-input-label` — label-lg typography tokens
 - `.acko-text-input-wrapper` — flex row, border, rounded-full
 - `.acko-text-input-el` — the actual `<input>` element
@@ -18,9 +18,9 @@ CSS file: `@acko/css/text-input.css`
 ### Sizes (via `.acko-text-input-wrapper-{size}`)
 | Size | Height | Padding | Font | Icon size |
 |------|--------|---------|------|-----------|
-| sm | `--scale-40` (h-10) | px-4 | `--font-body-sm-size` | `--font-body-sm-size` |
-| md | `--scale-48` (h-12) | px-5 | `--font-body-md-size` | `--font-body-md-size` |
-| lg | `--scale-56` (h-14) | px-6 | `--font-body-lg-size` | `--font-body-lg-size` |
+| sm | `40px` (h-40) | px-16 | `--font-body-sm-size` | `--font-body-sm-size` |
+| md | `48px` (h-48) | px-20 | `--font-body-md-size` | `--font-body-md-size` |
+| lg | `56px` (h-56) | px-24 | `--font-body-lg-size` | `--font-body-lg-size` |
 
 ### Variants / Children
 - `.acko-text-input-icon-left` / `.acko-text-input-icon-right` — icon slots, sized to match the size variant's font token

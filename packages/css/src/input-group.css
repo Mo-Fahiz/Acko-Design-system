@@ -10,13 +10,13 @@
 
 /* Sizes */
 .acko-input-group-sm {
-  height: var(--scale-36);
+  @apply h-36;
 }
 .acko-input-group-md {
-  height: var(--scale-44);
+  @apply h-44;
 }
 .acko-input-group-lg {
-  height: var(--scale-52);
+  @apply h-52;
 }
 
 /* Hover */
@@ -57,23 +57,20 @@
 
 /* Prefix / Suffix */
 .acko-input-group-prefix {
-  @apply flex items-center shrink-0;
-  padding: 0 var(--scale-12);
+  @apply flex items-center shrink-0 px-12;
   color: var(--color-text-secondary);
   border-right: 1px solid var(--color-input-border);
 }
 
 .acko-input-group-suffix {
-  @apply flex items-center shrink-0;
-  padding: 0 var(--scale-12);
+  @apply flex items-center shrink-0 px-12;
   color: var(--color-text-secondary);
   border-left: 1px solid var(--color-input-border);
 }
 
 /* Inner (contains the input) */
 .acko-input-group-inner {
-  @apply flex-1 flex items-center min-w-0;
-  padding: 0 var(--scale-12);
+  @apply flex-1 flex items-center min-w-0 px-12;
   background: transparent;
   border: none;
   outline: none;

@@ -5,15 +5,12 @@
 }
 
 .acko-skeleton-text {
-  width: 100%;
-  height: var(--scale-16);
+  @apply w-full h-16;
   border-radius: var(--radius-sm);
 }
 
 .acko-skeleton-circular {
-  width: var(--scale-40);
-  height: var(--scale-40);
-  border-radius: 50%;
+  @apply w-40 h-40 rounded-full;
 }
 
 .acko-skeleton-rectangular {
@@ -59,6 +56,5 @@
 }
 
 .acko-skeleton-lines {
-  @apply flex flex-col;
-  gap: var(--scale-8);
+  @apply flex flex-col gap-8;
 }

@@ -7,31 +7,26 @@
 .acko-toast-region {
   position: fixed;
   z-index: var(--z-toast);
-  display: flex;
-  flex-direction: column;
-  gap: var(--scale-8);
+  @apply flex flex-col gap-8;
   pointer-events: none;
   width: 360px;
-  max-width: calc(100vw - var(--scale-32));
+  max-width: calc(100vw - 2rem);
 }
 
 .acko-toast-region > * { pointer-events: auto; }
 
 /* Position variants */
-.acko-toast-region-top-right     { top: var(--scale-20); right: var(--scale-20); }
-.acko-toast-region-top-left      { top: var(--scale-20); left: var(--scale-20); }
-.acko-toast-region-top-center    { top: var(--scale-20); left: 50%; transform: translateX(-50%); }
-.acko-toast-region-bottom-right  { bottom: var(--scale-20); right: var(--scale-20); flex-direction: column-reverse; }
-.acko-toast-region-bottom-left   { bottom: var(--scale-20); left: var(--scale-20); flex-direction: column-reverse; }
-.acko-toast-region-bottom-center { bottom: var(--scale-20); left: 50%; transform: translateX(-50%); flex-direction: column-reverse; }
+.acko-toast-region-top-right     { @apply top-20 right-20; }
+.acko-toast-region-top-left      { @apply top-20 left-20; }
+.acko-toast-region-top-center    { @apply top-20 left-1/2 -translate-x-1/2; }
+.acko-toast-region-bottom-right  { @apply bottom-20 right-20 flex-col-reverse; }
+.acko-toast-region-bottom-left   { @apply bottom-20 left-20 flex-col-reverse; }
+.acko-toast-region-bottom-center { @apply bottom-20 left-1/2 -translate-x-1/2 flex-col-reverse; }
 
 /* --- Toast item --- */
 
 .acko-toast {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--scale-12);
-  padding: var(--scale-12) var(--scale-16);
+  @apply flex items-start gap-12 py-12 px-16;
   border-radius: var(--radius-4xl);
   box-shadow: var(--shadow-lg);
   border: 1px solid transparent;
@@ -40,7 +35,7 @@
 }
 
 @keyframes acko-toast-in {
-  from { opacity: 0; transform: translateY(var(--scale-8)); }
+  from { opacity: 0; transform: translateY(0.5rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -53,13 +48,12 @@
 /* --- Icon --- */
 
 .acko-toast-icon {
-  @apply shrink-0 inline-flex items-center justify-center;
-  margin-top: var(--scale-4);
+  @apply shrink-0 inline-flex items-center justify-center mt-4;
 }
 
 /* --- Content --- */
 
-.acko-toast-content { flex: 1; display: flex; flex-direction: column; gap: var(--scale-4); }
+.acko-toast-content { @apply flex-1 flex flex-col gap-4; }
 
 .acko-toast-title {
   font-size: var(--font-body-sm-size);
@@ -85,15 +79,13 @@
   color: inherit;
   padding: 0;
   text-decoration: underline;
-  text-underline-offset: var(--scale-2);
+  text-underline-offset: 0.125rem;
 }
 
 /* --- Dismiss button --- */
 
 .acko-toast-dismiss {
-  @apply inline-flex items-center justify-center shrink-0 rounded-full;
-  width: var(--scale-24);
-  height: var(--scale-24);
+  @apply inline-flex items-center justify-center shrink-0 rounded-full w-24 h-24;
   background: transparent;
   border: none;
   color: inherit;

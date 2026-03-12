@@ -5,14 +5,11 @@
 /* --- Backdrop --- */
 
 .acko-dialog-backdrop {
+  @apply flex items-center justify-center p-16;
   position: fixed;
   inset: 0;
   z-index: var(--z-modal);
   background: var(--color-surface-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--scale-16);
   animation: acko-dialog-backdrop-in 200ms var(--ease-out-cubic) forwards;
 }
 
@@ -30,23 +27,23 @@
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - var(--scale-32));
+  max-height: calc(100vh - 2rem);
   max-width: 540px;
   outline: none;
   animation: acko-dialog-in 250ms var(--ease-out-quart) forwards;
 }
 
 @keyframes acko-dialog-in {
-  from { opacity: 0; transform: scale(0.95) translateY(var(--scale-8)); }
+  from { opacity: 0; transform: scale(0.95) translateY(0.5rem); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* --- Sizes --- */
 
-.acko-dialog-sm  { max-width: var(--scale-360); }
-.acko-dialog-md  { max-width: var(--scale-480); }
-.acko-dialog-lg  { max-width: var(--scale-600); }
-.acko-dialog-xl  { max-width: var(--scale-760); }
+.acko-dialog-sm  { @apply max-w-360; }
+.acko-dialog-md  { @apply max-w-480; }
+.acko-dialog-lg  { @apply max-w-600; }
+.acko-dialog-xl  { @apply max-w-760; }
 .acko-dialog-full {
   max-width: 100%;
   max-height: 100vh;
@@ -56,10 +53,7 @@
 /* --- Header --- */
 
 .acko-dialog-header {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--scale-12);
-  padding: var(--scale-20) var(--scale-20) var(--scale-16);
+  @apply flex items-start gap-12 pt-20 px-20 pb-16;
 }
 
 .acko-dialog-title {
@@ -76,13 +70,11 @@
   font-size: var(--font-body-sm-size);
   line-height: var(--font-body-sm-line);
   color: var(--color-text-secondary);
-  margin: var(--scale-4) 0 0;
+  @apply mt-4;
 }
 
 .acko-dialog-close {
-  @apply inline-flex items-center justify-center shrink-0 rounded-full;
-  width: var(--scale-32);
-  height: var(--scale-32);
+  @apply inline-flex items-center justify-center shrink-0 rounded-full w-32 h-32;
   background: transparent;
   border: none;
   color: var(--color-text-secondary);
@@ -103,9 +95,7 @@
 /* --- Body --- */
 
 .acko-dialog-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 var(--scale-20) var(--scale-20);
+  @apply flex-1 overflow-y-auto pb-20 px-20;
   color: var(--color-text-default);
   font-size: var(--font-body-md-size);
   line-height: var(--font-body-md-line);
@@ -114,11 +104,7 @@
 /* --- Footer --- */
 
 .acko-dialog-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--scale-12);
-  padding: var(--scale-16) var(--scale-20);
+  @apply flex items-center justify-end gap-12 py-16 px-20;
   border-top: 1px solid var(--color-border-subtle);
 }
 

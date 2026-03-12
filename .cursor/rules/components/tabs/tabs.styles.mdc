@@ -10,13 +10,13 @@ alwaysApply: false
 
 - `.acko-tabs` — base wrapper, `w-full`
 - `.acko-tabs-list` — flex container for tab buttons
-- `.acko-tab` — base tab button, `inline-flex items-center gap-2`, no border, bg-transparent
+- `.acko-tab` — base tab button, `inline-flex items-center`, `gap: 8px`, no border, bg-transparent
 
 ## Variants
 
 ### Underline
 - `.acko-tabs-list-underline` — `border-bottom: 1px solid var(--color-border-subtle)`, `position: relative`
-- `.acko-tab-underline` — padding `var(--space-2) var(--space-4)`, `margin-bottom: -1px`, position relative
+- `.acko-tab-underline` — padding `8px 16px`, `margin-bottom: -1px`, position relative
 - Active indicator via `::after` pseudo-element:
   - `background: linear-gradient(90deg, transparent, var(--color-primary), transparent)`
   - `height: 2px`, `border-radius: 1px`, positioned at bottom
@@ -28,14 +28,14 @@ alwaysApply: false
 - `::after` positioned at top instead of bottom
 
 ### Pill
-- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: var(--space-1)`, `width: fit-content`
-- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `var(--space-1) var(--space-4)`
+- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: 4px`, `width: fit-content`
+- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `4px 16px`
 - Active (light): `background: var(--color-primary-subtle)` (purple-100), `color: var(--color-primary)`, `--shadow-sm`
 - Active (dark): `background: var(--color-primary-subtle)` (purple-900), `color: var(--color-on-primary)` (white)
 
 ### Navigation (bottom tabs)
 - `.acko-tabs-list-navigation` — `background: var(--color-card-bg)`, `border-top: 1px solid var(--color-border-subtle)`, `justify-content: space-around`
-- `.acko-tab-navigation` — `flex-col`, icon `var(--scale-24)`, label `--font-caption-size`, `min-width: var(--scale-64)`
+- `.acko-tab-navigation` — `flex-col`, icon `24px`, label `--font-caption-size`, `min-width: 64px`
 - Active (light): `background: var(--color-primary-subtle)`, `color: var(--color-primary)`, `border-radius: var(--radius-full)`
 - Active (dark): `background: var(--color-primary)`, `color: var(--color-on-primary)`, `border-radius: var(--radius-full)`
 
@@ -44,12 +44,12 @@ alwaysApply: false
 - Active: `--color-card-bg` background
 
 ## Sizes
-- `.acko-tab-sm` — `--font-caption-size`, padding `var(--space-1) var(--space-3)`
-- `.acko-tab-md` — `--font-body-sm-size`, padding `var(--space-2) var(--space-4)`
+- `.acko-tab-sm` — `--font-caption-size`, padding `4px 12px`
+- `.acko-tab-md` — `--font-body-sm-size`, padding `8px 16px`
 
 ## Icon
-- `.acko-tab-icon` — `var(--scale-16) × var(--scale-16)`, shrink-0
-- Navigation variant icons: `var(--scale-24)`
+- `.acko-tab-icon` — `16px × 16px`, shrink-0
+- Navigation variant icons: `24px`
 
 ## Token Usage
 

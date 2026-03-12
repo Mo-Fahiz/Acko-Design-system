@@ -9,7 +9,7 @@ CSS file: `@acko/css/field.css`
 
 ## CSS Classes
 
-- `.acko-field` — `@apply flex flex-col`, `gap: var(--space-1)` (4px)
+- `.acko-field` — `@apply flex flex-col`, `gap: 4px` (4px)
 - `.acko-field-label` — typography: `font-label-lg` tokens; `color: var(--color-text-default)`
 - `.acko-field-label-focused` — focused state: `color: var(--color-primary)`
 - `.acko-field-label-disabled` — `color: var(--color-text-secondary)`

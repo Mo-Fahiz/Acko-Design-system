@@ -4,8 +4,7 @@
    ============================================================ */
 
 .acko-alert {
-  @apply flex items-center gap-3 relative w-full;
-  padding: var(--scale-12) var(--scale-12) var(--scale-12) var(--scale-12);
+  @apply flex items-center relative w-full gap-12 p-12;
   border-radius: var(--radius-3xl);
   border: 1px solid;
   animation: acko-alert-slide-up 300ms var(--ease-out-cubic) both;
@@ -36,9 +35,7 @@
 }
 
 .acko-alert-icon {
-  @apply shrink-0 flex items-center self-center;
-  width: var(--scale-20);
-  height: var(--scale-20);
+  @apply shrink-0 flex items-center self-center w-20 h-20;
   color: inherit;
 }
 
@@ -63,9 +60,7 @@
 }
 
 .acko-alert-dismiss {
-  @apply shrink-0 border-none bg-transparent cursor-pointer flex items-center justify-center self-center;
-  width: var(--scale-20);
-  height: var(--scale-20);
+  @apply shrink-0 border-none bg-transparent cursor-pointer flex items-center justify-center self-center w-20 h-20;
   opacity: 0.7;
   color: inherit;
 }
@@ -79,7 +74,7 @@
 @keyframes acko-alert-slide-up {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(0.5rem);
   }
   to {
     opacity: 1;

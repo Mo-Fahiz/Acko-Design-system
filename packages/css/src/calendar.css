@@ -7,10 +7,8 @@
 /* --- Trigger --- */
 
 .acko-cal-trigger {
-  @apply flex items-center justify-between w-full cursor-pointer;
+  @apply flex items-center justify-between w-full cursor-pointer h-48 px-20;
   min-width: 200px;
-  height: var(--scale-48);
-  padding: 0 var(--scale-20);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-full);
   background-color: var(--color-input-bg);
@@ -59,9 +57,8 @@
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-4xl);
-  box-shadow: var(--shadow-lg);
-  padding: var(--scale-16);
-  @apply select-none;
+  box-shadow: var(--shadow-md);
+  @apply select-none p-16;
 }
 
 .acko-cal-panel-dropdown {
@@ -73,24 +70,22 @@
 }
 
 @keyframes acko-cal-enter {
-  from { opacity: 0; transform: translateY(-8px); }
+  from { opacity: 0; transform: translateY(0.5rem); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Header --- */
 
 .acko-cal-header {
-  @apply flex items-center justify-between;
-  margin-bottom: var(--scale-12);
+  @apply flex items-center justify-between mb-12;
 }
 
 .acko-cal-header-label {
   font-size: var(--font-label-lg-size);
   font-weight: 600;
   color: var(--color-text-primary);
-  @apply bg-transparent border-none cursor-pointer;
+  @apply bg-transparent border-none cursor-pointer py-4 px-8;
   font-family: inherit;
-  padding: var(--scale-4) var(--scale-8);
   border-radius: var(--radius-lg);
   transition: background-color 150ms ease;
 }
@@ -107,9 +102,7 @@
 }
 
 .acko-cal-nav-btn {
-  @apply flex items-center justify-center border-none bg-transparent cursor-pointer;
-  width: var(--scale-36);
-  height: var(--scale-36);
+  @apply flex items-center justify-center border-none bg-transparent cursor-pointer w-36 h-36;
   border-radius: var(--radius-lg);
   color: var(--color-text-default);
   transition: background-color 150ms ease;
@@ -131,17 +124,16 @@
 .acko-cal-weekdays {
   @apply grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: var(--scale-4);
+  @apply mb-4;
 }
 
 .acko-cal-weekday {
-  @apply flex items-center justify-center uppercase;
+  @apply flex items-center justify-center uppercase h-32;
   min-width: 0;
   font-size: var(--font-label-sm-size);
   font-weight: var(--font-label-sm-weight);
   letter-spacing: var(--font-label-sm-spacing);
   color: var(--color-text-secondary);
-  height: var(--scale-32);
 }
 
 /* --- Day grid --- */
@@ -149,12 +141,11 @@
 .acko-cal-days {
   @apply grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: var(--scale-2);
+  @apply gap-2;
 }
 
 .acko-cal-day {
-  @apply flex items-center justify-center w-full border-none bg-transparent cursor-pointer;
-  height: var(--scale-40);
+  @apply flex items-center justify-center w-full border-none bg-transparent cursor-pointer h-40;
   border-radius: var(--radius-full);
   font-family: inherit;
   font-size: var(--font-body-sm-size);
@@ -224,13 +215,11 @@
 .acko-cal-picker-grid {
   @apply grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--scale-8);
-  padding: var(--scale-8) 0;
+  @apply gap-8 py-8;
 }
 
 .acko-cal-picker-cell {
-  @apply flex items-center justify-center border-none bg-transparent cursor-pointer;
-  height: var(--scale-48);
+  @apply flex items-center justify-center border-none bg-transparent cursor-pointer h-48;
   border-radius: var(--radius-full);
   font-family: inherit;
   font-size: var(--font-body-sm-size);

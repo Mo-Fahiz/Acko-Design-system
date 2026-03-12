@@ -1,7 +1,7 @@
 /* TextInput — @acko/css/text-input.css */
 
 .acko-text-input {
-  @apply flex flex-col gap-1;
+  @apply flex flex-col gap-4;
 }
 
 /* --- Label --- */
@@ -34,9 +34,9 @@
 }
 
 /* Sizes */
-.acko-text-input-wrapper-sm { @apply h-10 px-4; }
-.acko-text-input-wrapper-md { @apply h-12 px-5; }
-.acko-text-input-wrapper-lg { @apply h-14 px-6; }
+.acko-text-input-wrapper-sm { @apply h-40 px-16; }
+.acko-text-input-wrapper-md { @apply h-48 px-20; }
+.acko-text-input-wrapper-lg { @apply h-56 px-24; }
 
 /* --- Input element --- */
 .acko-text-input-el {
@@ -69,8 +69,8 @@
   font-size: var(--font-body-sm-size);
   color: var(--color-text-secondary);
 }
-.acko-text-input-prefix { @apply mr-2; }
-.acko-text-input-suffix { @apply ml-2; }
+.acko-text-input-prefix { @apply mr-8; }
+.acko-text-input-suffix { @apply ml-8; }
 
 /* --- Icons --- */
 .acko-text-input-icon-left,
@@ -79,8 +79,8 @@
   color: var(--color-text-secondary);
   transition: color 150ms ease;
 }
-.acko-text-input-icon-left { @apply mr-2; }
-.acko-text-input-icon-right { @apply ml-2; }
+.acko-text-input-icon-left { @apply mr-8; }
+.acko-text-input-icon-right { @apply ml-8; }
 
 .acko-text-input-wrapper-sm .acko-text-input-icon-left,
 .acko-text-input-wrapper-sm .acko-text-input-icon-right { width: var(--font-body-sm-size); height: var(--font-body-sm-size); }
@@ -155,7 +155,7 @@
 }
 
 .acko-text-input-success-icon {
-  @apply inline-flex items-center justify-center ml-2;
+  @apply inline-flex items-center justify-center ml-8;
   color: var(--color-success);
   animation: acko-text-input-check-pop 300ms ease-out;
 }

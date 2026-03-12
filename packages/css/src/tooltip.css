@@ -8,15 +8,14 @@
 }
 
 .acko-tooltip {
-  @apply fixed pointer-events-none whitespace-nowrap;
+  @apply fixed pointer-events-none whitespace-nowrap py-4 px-8;
   z-index: var(--z-tooltip);
   background: var(--color-tooltip-bg);
   color: var(--color-tooltip-text);
   font-size: var(--font-caption-size);
-  padding: var(--scale-4) var(--scale-8);
   border-radius: var(--radius-xl);
   opacity: 0;
-  transform: translateY(var(--scale-8));
+  transform: translateY(0.5rem);
   transition: opacity 150ms var(--ease-out-quad),
     transform 150ms var(--ease-out-quad);
 }
@@ -28,7 +27,7 @@
 
 /* Enter from different sides */
 .acko-tooltip-top {
-  transform: translateY(var(--scale-8));
+  transform: translateY(0.5rem);
 }
 
 .acko-tooltip-top.acko-tooltip-visible {
@@ -36,7 +35,7 @@
 }
 
 .acko-tooltip-bottom {
-  transform: translateY(calc(-1 * var(--scale-8)));
+  transform: translateY(calc(-1 * 0.5rem));
 }
 
 .acko-tooltip-bottom.acko-tooltip-visible {
@@ -44,7 +43,7 @@
 }
 
 .acko-tooltip-left {
-  transform: translateX(var(--scale-8));
+  transform: translateX(0.5rem);
 }
 
 .acko-tooltip-left.acko-tooltip-visible {
@@ -52,7 +51,7 @@
 }
 
 .acko-tooltip-right {
-  transform: translateX(calc(-1 * var(--scale-8)));
+  transform: translateX(calc(-1 * 0.5rem));
 }
 
 .acko-tooltip-right.acko-tooltip-visible {
@@ -64,32 +63,32 @@
   position: absolute;
   width: 0;
   height: 0;
-  border: calc(var(--scale-6) / 2) solid transparent;
+  border: 6px solid transparent;
 }
 
 .acko-tooltip-arrow-top {
-  bottom: calc(-1 * var(--scale-6));
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
   border-top-color: var(--color-tooltip-bg);
 }
 
 .acko-tooltip-arrow-bottom {
-  top: calc(-1 * var(--scale-6));
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
   border-bottom-color: var(--color-tooltip-bg);
 }
 
 .acko-tooltip-arrow-left {
-  right: calc(-1 * var(--scale-6));
+  right: -12px;
   top: 50%;
   transform: translateY(-50%);
   border-left-color: var(--color-tooltip-bg);
 }
 
 .acko-tooltip-arrow-right {
-  left: calc(-1 * var(--scale-6));
+  left: -12px;
   top: 50%;
   transform: translateY(-50%);
   border-right-color: var(--color-tooltip-bg);

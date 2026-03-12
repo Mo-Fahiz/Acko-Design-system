@@ -1,7 +1,7 @@
 /* Dropdown — @acko/css/dropdown.css */
 
 .acko-dropdown {
-  @apply flex flex-col gap-1 relative;
+  @apply flex flex-col relative gap-4;
 }
 
 /* --- Label --- */
@@ -35,9 +35,9 @@
     box-shadow 200ms ease;
 }
 
-.acko-dropdown-trigger-sm { @apply h-10 px-4; font-size: var(--font-body-sm-size); }
-.acko-dropdown-trigger-md { @apply h-12 px-5; font-size: var(--font-body-md-size); }
-.acko-dropdown-trigger-lg { @apply h-14 px-6; font-size: var(--font-body-lg-size); }
+.acko-dropdown-trigger-sm { @apply h-40 px-16; font-size: var(--font-body-sm-size); }
+.acko-dropdown-trigger-md { @apply h-48 px-20; font-size: var(--font-body-md-size); }
+.acko-dropdown-trigger-lg { @apply h-56 px-24; font-size: var(--font-body-lg-size); }
 
 .acko-dropdown-value {
   @apply flex-1 min-w-0 overflow-hidden whitespace-nowrap;
@@ -50,7 +50,7 @@
 }
 
 .acko-dropdown-chevron {
-  @apply shrink-0 flex items-center ml-2;
+  @apply shrink-0 flex items-center ml-8;
   color: var(--color-text-secondary);
   transition: transform 150ms var(--ease-out-cubic), color 150ms ease;
 }
@@ -116,7 +116,7 @@
 /* --- Menu --- */
 
 .acko-dropdown-menu {
-  @apply absolute left-0 right-0 list-none p-0 m-0;
+  @apply absolute left-0 right-0 list-none p-8 m-0;
   top: 100%;
   margin-top: 4px;
   background-color: var(--color-input-bg);
@@ -126,7 +126,6 @@
   z-index: var(--z-dropdown);
   max-height: 280px;
   overflow-y: auto;
-  padding: var(--scale-8);
   animation: acko-dropdown-menu-enter 150ms var(--ease-out-cubic);
 }
 
@@ -138,15 +137,13 @@
 /* --- Search input --- */
 
 .acko-dropdown-search-wrapper {
-  padding: 0 0 var(--scale-8) 0;
+  @apply pb-8 mb-8;
   border-bottom: 1px solid var(--color-border-subtle);
-  margin-bottom: var(--scale-8);
 }
 
 .acko-dropdown-search {
-  @apply w-full rounded-full outline-none;
+  @apply w-full rounded-full outline-none py-8 px-16;
   border: 1px solid var(--color-input-border);
-  padding: var(--scale-8) var(--scale-16);
   font-family: inherit;
   font-size: var(--font-body-sm-size);
   background-color: var(--color-input-bg);
@@ -166,7 +163,7 @@
 /* --- Group header --- */
 
 .acko-dropdown-group-header {
-  padding: var(--scale-8) var(--scale-12);
+  @apply py-8 px-12;
   font-size: var(--font-label-sm-size);
   font-weight: var(--font-label-sm-weight);
   letter-spacing: var(--font-label-sm-spacing);
@@ -177,11 +174,9 @@
 /* --- Option --- */
 
 .acko-dropdown-option {
-  @apply flex items-center gap-2 cursor-pointer;
-  padding: var(--scale-8) var(--scale-12);
+  @apply flex items-center cursor-pointer gap-8 py-8 px-12 min-h-40;
   font-size: var(--font-body-sm-size);
   color: var(--color-text-primary);
-  min-height: var(--scale-40);
   border-radius: var(--radius-lg);
   transition: background-color 100ms ease;
 }
@@ -219,22 +214,18 @@
 /* --- Multi tags --- */
 
 .acko-dropdown-tags {
-  @apply flex flex-wrap flex-1 min-w-0;
-  gap: var(--scale-4);
+  @apply flex flex-wrap flex-1 min-w-0 gap-4;
 }
 
 .acko-dropdown-tag {
-  @apply inline-flex items-center rounded-full;
-  gap: var(--scale-4);
+  @apply inline-flex items-center rounded-full gap-4 py-2 px-8 whitespace-nowrap;
   background-color: var(--color-primary-subtle);
   color: var(--color-primary-active);
   font-size: var(--font-caption-size);
   font-weight: 500;
-  padding: var(--scale-2) var(--scale-8);
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
-  @apply whitespace-nowrap;
 }
 
 .acko-dropdown-tag-remove {
@@ -260,8 +251,7 @@
 }
 
 .acko-dropdown-no-results {
-  @apply text-center;
-  padding: var(--scale-16) var(--scale-12);
+  @apply text-center py-16 px-12;
   color: var(--color-text-secondary);
   font-size: var(--font-body-sm-size);
 }

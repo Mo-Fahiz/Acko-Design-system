@@ -1,7 +1,7 @@
 /* Badge — @acko/css/badge.css */
 
 .acko-badge {
-  @apply inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none;
+  @apply inline-flex items-center font-medium whitespace-nowrap rounded-full leading-none gap-4;
   font-family: inherit;
 }
 
@@ -11,9 +11,9 @@
 .acko-badge-sentence-case { text-transform: none; }
 
 /* --- Sizes --- */
-.acko-badge-sm { padding: var(--scale-4) var(--scale-8); font-size: var(--font-label-sm-size); }
-.acko-badge-md { padding: var(--scale-6) var(--scale-8); font-size: var(--font-caption-size); }
-.acko-badge-lg { padding: var(--scale-8); font-size: var(--font-body-sm-size); }
+.acko-badge-sm { @apply py-4 px-8; font-size: var(--font-label-sm-size); }
+.acko-badge-md { @apply py-6 px-8; font-size: var(--font-caption-size); }
+.acko-badge-lg { @apply p-8; font-size: var(--font-body-sm-size); }
 
 /* --- Solid variant --- */
 .acko-badge-solid-purple {
@@ -64,29 +64,25 @@
 .acko-badge-dot-gray { background: linear-gradient(0deg, var(--color-badge-gray-gradient-from), var(--color-badge-gray-gradient-to)); border: 1px solid var(--color-badge-gray-border); color: var(--color-badge-gray-text); }
 
 .acko-badge-dot {
-  @apply size-1.5 rounded-full shrink-0;
+  @apply size-6 rounded-full shrink-0;
   background-color: currentColor;
 }
 
 /* --- Remove button --- */
 .acko-badge-remove {
-  @apply inline-flex items-center justify-center border-none bg-transparent cursor-pointer p-0 rounded-full;
+  @apply inline-flex items-center justify-center border-none bg-transparent cursor-pointer p-0 rounded-full ml-2;
   color: inherit;
-  margin-left: 2px;
   opacity: 0.6;
   transition: opacity 150ms ease;
 }
 .acko-badge-remove:hover { opacity: 1; }
-.acko-badge-remove svg { width: var(--scale-12); height: var(--scale-12); }
+.acko-badge-remove svg { @apply w-12 h-12; }
 
 /* --- Counter Badge --- */
 .acko-counter-badge {
-  @apply inline-flex items-center justify-center font-semibold rounded-full leading-none;
+  @apply inline-flex items-center justify-center font-semibold rounded-full leading-none min-w-20 h-20 py-0 px-6;
   font-family: inherit;
   font-variant-numeric: tabular-nums;
-  min-width: var(--scale-20);
-  height: var(--scale-20);
-  padding: 0 var(--scale-6);
   font-size: var(--font-label-sm-size);
   color: var(--color-on-primary);
 }

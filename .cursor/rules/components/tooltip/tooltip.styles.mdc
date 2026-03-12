@@ -12,11 +12,11 @@ globs: "**/tooltip/**,**/Tooltip/**"
   - Background: `--color-tooltip-bg`
   - Text: `--color-tooltip-text`
   - Font: `--font-caption-size`
-  - Padding: `var(--space-1) var(--space-2)`
+  - Padding: `4px 8px`
   - Border radius: `--radius-xl`
   - `white-space: nowrap`
-- `.acko-tooltip-arrow` — CSS triangle `var(--scale-6)`, color `--color-tooltip-bg`, positioned per side
-- Enter animations per side: top/bottom/left/right with translate (`--scale-8` offset)
+- `.acko-tooltip-arrow` — CSS triangle `6px`, color `--color-tooltip-bg`, positioned per side
+- Enter animations per side: top/bottom/left/right with translate (`8px` offset)
 - Animation: `opacity 0→1` + `translateY/X`, `150ms var(--ease-out-quad)`
 
 ## Dark Theme

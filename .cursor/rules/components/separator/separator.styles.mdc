@@ -12,7 +12,7 @@ CSS file: `@acko/css/separator.css`
 - `.acko-separator` — base
 - `.acko-separator-horizontal` — `@apply w-full`, `height: 1px`, `background: var(--color-control-border-selector)`
 - `.acko-separator-vertical` — `height: 100%`, `width: 1px`, `background: var(--color-control-border-selector)`
-- `.acko-separator-with-label` — `@apply flex items-center gap-3`
+- `.acko-separator-with-label` — `@apply flex items-center` with `gap: 12px`
 - `.acko-separator-line` — `@apply flex-1`, same background as base
 - `.acko-separator-label-text` — `font-size: var(--font-caption-size); color: var(--color-text-secondary); white-space: nowrap`
 

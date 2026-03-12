@@ -10,11 +10,11 @@ CSS file: `@acko/css/breadcrumb.css`
 ## CSS Classes
 
 - `.acko-breadcrumb` — nav wrapper, full width
-- `.acko-breadcrumb-list` — flex row, items-center, flex-wrap, gap-1, no list style
+- `.acko-breadcrumb-list` — flex row, items-center, flex-wrap, `gap: 4px`, no list style
 - `.acko-breadcrumb-link` — body-sm font, `--color-breadcrumb-link`, hover underline, `transition: color 150ms`
 - `.acko-breadcrumb-current` — label-lg weight, `--color-breadcrumb-current`, `aria-current="page"`
 - `.acko-breadcrumb-separator-item` — flex, margin 0 space-1, `--color-breadcrumb-separator`
-- `.acko-breadcrumb-ellipsis` — button, `padding: var(--space-1) var(--space-2)`, `border-radius: --radius-full`, hover `background: --color-surface-raised-hover`
+- `.acko-breadcrumb-ellipsis` — button, `padding: 4px 8px`, `border-radius: --radius-full`, hover `background: --color-surface-raised-hover`
 - `.acko-breadcrumb-icon` — flex icon slot inside items
 
 ## Tokens Used

@@ -8,8 +8,7 @@
 }
 
 .acko-progress-label-wrapper {
-  @apply flex justify-between;
-  margin-bottom: var(--scale-4);
+  @apply flex justify-between mb-4;
 }
 
 .acko-progress-label {
@@ -23,15 +22,15 @@
 }
 
 .acko-progress-track-sm {
-  height: var(--scale-4);
+  @apply h-4;
 }
 
 .acko-progress-track-md {
-  height: var(--scale-8);
+  @apply h-8;
 }
 
 .acko-progress-track-lg {
-  height: var(--scale-12);
+  @apply h-12;
 }
 
 .acko-progress-bar {
@@ -82,6 +81,18 @@
 .acko-progress-circular-bar-success { stroke: var(--color-success); }
 .acko-progress-circular-bar-error { stroke: var(--color-error); }
 
+.acko-progress-circular-sm { @apply w-48 h-48; }
+.acko-progress-circular-sm .acko-progress-circular-track,
+.acko-progress-circular-sm .acko-progress-circular-bar { stroke-width: 3; }
+
+.acko-progress-circular-md { @apply w-64 h-64; }
+.acko-progress-circular-md .acko-progress-circular-track,
+.acko-progress-circular-md .acko-progress-circular-bar { stroke-width: 4; }
+
+.acko-progress-circular-lg { @apply w-96 h-96; }
+.acko-progress-circular-lg .acko-progress-circular-track,
+.acko-progress-circular-lg .acko-progress-circular-bar { stroke-width: 5; }
+
 .acko-progress-circular-content {
   @apply absolute inset-0 flex items-center justify-center;
 }
@@ -99,8 +110,7 @@
 /* --- Segmented variant --- */
 
 .acko-progress-segmented {
-  @apply flex w-full;
-  gap: var(--scale-2);
+  @apply flex w-full gap-2;
 }
 
 .acko-progress-segment {

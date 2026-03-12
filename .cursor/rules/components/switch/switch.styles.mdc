@@ -10,11 +10,11 @@ alwaysApply: false
 
 | Class | Element | Notes |
 |-------|---------|-------|
-| `.acko-switch` | Root label wrapper | `inline-flex items-center gap var(--space-3), cursor-pointer` |
-| `.acko-switch-track-sm` | Small track | `var(--scale-36) × var(--scale-20)` |
-| `.acko-switch-track-md` | Medium track | `var(--scale-44) × var(--scale-24)` |
-| `.acko-switch-thumb-sm` | Small thumb | `var(--scale-16) × var(--scale-16)`, left `var(--scale-2)` |
-| `.acko-switch-thumb-md` | Medium thumb | `var(--scale-20) × var(--scale-20)`, left `var(--scale-2)` |
+| `.acko-switch` | Root label wrapper | `inline-flex items-center gap 12px, cursor-pointer` |
+| `.acko-switch-track-sm` | Small track | `36px × 20px` |
+| `.acko-switch-track-md` | Medium track | `44px × 24px` |
+| `.acko-switch-thumb-sm` | Small thumb | `16px × 16px`, left `2px` |
+| `.acko-switch-thumb-md` | Medium thumb | `20px × 20px`, left `2px` |
 | `.acko-switch-native` | Hidden checkbox input | `sr-only` |
 | `.acko-switch-track` | Track background | Rounded full, `transition: background-color 200ms var(--ease-in-out-cubic)` |
 | `.acko-switch-thumb` | Sliding circle | Absolute positioned |

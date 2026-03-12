@@ -103,14 +103,11 @@
 /* --- Header --- */
 
 .acko-drawer-header {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--scale-12);
-  padding: var(--scale-20);
+  @apply flex items-start gap-12 p-20;
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.acko-drawer-heading { flex: 1; display: flex; flex-direction: column; gap: var(--scale-4); }
+.acko-drawer-heading { @apply flex flex-1 flex-col gap-4; }
 
 .acko-drawer-title {
   font-size: var(--font-body-lg-size);
@@ -128,9 +125,7 @@
 }
 
 .acko-drawer-close {
-  @apply inline-flex items-center justify-center shrink-0 rounded-full;
-  width: var(--scale-32);
-  height: var(--scale-32);
+  @apply inline-flex items-center justify-center shrink-0 rounded-full w-32 h-32;
   background: transparent;
   border: none;
   color: var(--color-text-secondary);
@@ -151,19 +146,13 @@
 /* --- Body --- */
 
 .acko-drawer-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--scale-20);
+  @apply flex-1 overflow-y-auto p-20;
   color: var(--color-text-default);
 }
 
 /* --- Footer --- */
 
 .acko-drawer-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--scale-12);
-  padding: var(--scale-16) var(--scale-20);
+  @apply flex items-center justify-end gap-12 py-16 px-20;
   border-top: 1px solid var(--color-border-subtle);
 }

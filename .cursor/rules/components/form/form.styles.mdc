@@ -7,11 +7,11 @@ alwaysApply: false
 # Form — Styles
 
 ## Class structure
-- `.acko-form` — flex column, `gap: var(--space-4)`
-- `.acko-form-item` — flex column, `gap: var(--space-2)` — wraps label + input + message
+- `.acko-form` — flex column, `gap: 16px`
+- `.acko-form-item` — flex column, `gap: 8px` — wraps label + input + message
 - `.acko-form-item-error` — highlights child input borders via `.acko-text-input`
 - `.acko-form-label` — `font-size: var(--font-body-sm-size)`, weight 500, `color: var(--color-text-default)`
-- `.acko-form-required` — asterisk, `color: var(--color-error)`, `margin-left: var(--space-1)`
+- `.acko-form-required` — asterisk, `color: var(--color-error)`, `margin-left: 4px`
 - `.acko-form-error-text` — `font-size: var(--font-caption-size)`, `color: var(--color-error-text)`, dot prefix
 - `.acko-form-message` — `font-size: var(--font-caption-size)`, `color: var(--color-text-secondary)` — helper text
 
@@ -24,7 +24,7 @@ alwaysApply: false
 ```
 
 ## Tokens used
-- `--space-2`, `--space-4`, `--space-1`
+- `8px`, `16px`, `4px`
 - `--font-body-sm-size`, `--font-body-sm-line`, `--font-caption-size`, `--font-caption-line`
 - `--color-text-default`, `--color-text-secondary`, `--color-error`, `--color-error-text`
-- `--color-error-border`, `--color-error-subtle`, `--scale-4`
+- `--color-error-border`, `--color-error-subtle`

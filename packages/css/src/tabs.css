@@ -24,12 +24,12 @@
 }
 
 .acko-tab {
-  @apply inline-flex items-center gap-2 cursor-pointer border-none bg-transparent;
+  @apply inline-flex items-center cursor-pointer border-none bg-transparent gap-8;
   font: inherit;
 }
 
 .acko-tab-underline {
-  padding: var(--scale-8) var(--scale-16);
+  @apply py-8 px-16;
   margin-bottom: -1px;
   color: var(--color-text-secondary);
   font-weight: 500;
@@ -73,13 +73,13 @@
 .acko-tabs-list-pill {
   background: var(--color-tab-pill-bg);
   border-radius: var(--radius-full);
-  padding: var(--scale-4);
+  @apply p-4;
   width: fit-content;
 }
 
 .acko-tab-pill {
   border-radius: var(--radius-full);
-  padding: var(--scale-4) var(--scale-16);
+  @apply py-4 px-16;
   color: var(--color-text-secondary);
   font-weight: 500;
   transition: all 200ms var(--ease-in-out-cubic);
@@ -101,23 +101,19 @@
   background: var(--color-card-bg);
   border-top: 1px solid var(--color-border-subtle);
   justify-content: space-around;
-  padding: var(--scale-4) 0;
+  @apply py-4;
 }
 
 .acko-tab-navigation {
-  @apply flex-col items-center justify-center;
-  gap: var(--scale-2);
-  padding: var(--scale-4) var(--scale-12);
+  @apply flex-col items-center justify-center gap-2 py-4 px-12 min-w-64;
   color: var(--color-text-secondary);
   font-weight: 500;
   font-size: var(--font-caption-size);
   transition: color 200ms var(--ease-in-out-cubic);
-  min-width: var(--scale-64);
 }
 
 .acko-tab-navigation .acko-tab-icon {
-  width: var(--scale-24);
-  height: var(--scale-24);
+  @apply w-24 h-24;
 }
 
 .acko-tab-navigation-active {
@@ -149,34 +145,32 @@
 
 .acko-tab-sm {
   font-size: var(--font-caption-size);
-  padding: var(--scale-4) var(--scale-12);
+  @apply py-4 px-12;
 }
 
 .acko-tab-md {
   font-size: var(--font-body-sm-size);
-  padding: var(--scale-8) var(--scale-16);
+  @apply py-8 px-16;
 }
 
 .acko-tab-underline.acko-tab-sm {
-  padding: var(--scale-4) var(--scale-12);
+  @apply py-4 px-12;
 }
 
 .acko-tab-underline.acko-tab-md {
-  padding: var(--scale-8) var(--scale-16);
+  @apply py-8 px-16;
 }
 
 .acko-tab-pill.acko-tab-sm {
-  padding: var(--scale-4) var(--scale-12);
+  @apply py-4 px-12;
 }
 
 .acko-tab-pill.acko-tab-md {
-  padding: var(--scale-4) var(--scale-16);
+  @apply py-4 px-16;
 }
 
 .acko-tab-icon {
-  width: var(--scale-16);
-  height: var(--scale-16);
-  @apply shrink-0;
+  @apply shrink-0 w-16 h-16;
 }
 
 .acko-tab-full-width .acko-tab-underline,

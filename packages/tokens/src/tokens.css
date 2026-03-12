@@ -160,39 +160,20 @@
   --pink-600: #DB2777; --pink-700: #BE185D; --pink-800: #9D174D;
   --pink-900: #831843; --pink-950: #500724;
 
-  /* --- Base Scale --- */
-  --scale-n16: -16px; --scale-n12: -12px; --scale-n8: -8px;
-  --scale-n4: -4px; --scale-n2: -2px; --scale-n1: -1px;
-  --scale-0: 0px; --scale-1: 1px; --scale-2: 2px;
-  --scale-4: 4px; --scale-6: 6px; --scale-8: 8px;
-  --scale-10: 10px; --scale-12: 12px; --scale-16: 16px;
-  --scale-20: 20px; --scale-24: 24px; --scale-28: 28px;
-  --scale-32: 32px; --scale-36: 36px; --scale-40: 40px;
-  --scale-44: 44px; --scale-48: 48px; --scale-52: 52px;
-  --scale-56: 56px; --scale-60: 60px; --scale-64: 64px;
-  --scale-68: 68px; --scale-72: 72px; --scale-76: 76px;
-  --scale-80: 80px; --scale-84: 84px; --scale-88: 88px;
-  --scale-92: 92px; --scale-96: 96px; --scale-100: 100px;
-  --scale-104: 104px; --scale-108: 108px; --scale-112: 112px;
-  --scale-116: 116px; --scale-120: 120px; --scale-124: 124px;
-  --scale-128: 128px; --scale-132: 132px; --scale-136: 136px;
-  --scale-140: 140px; --scale-144: 144px; --scale-148: 148px;
-  --scale-152: 152px; --scale-156: 156px; --scale-160: 160px;
-
   /* --- Opacity Scale --- */
-  --opacity-0: calc(var(--scale-0) / 100);
-  --opacity-2: calc(var(--scale-2) / 100); --opacity-4: calc(var(--scale-4) / 100);
-  --opacity-6: calc(var(--scale-6) / 100); --opacity-8: calc(var(--scale-8) / 100);
-  --opacity-10: calc(var(--scale-10) / 100); --opacity-12: calc(var(--scale-12) / 100);
-  --opacity-16: calc(var(--scale-16) / 100); --opacity-20: calc(var(--scale-20) / 100);
-  --opacity-24: calc(var(--scale-24) / 100); --opacity-28: calc(var(--scale-28) / 100);
-  --opacity-32: calc(var(--scale-32) / 100); --opacity-36: calc(var(--scale-36) / 100);
-  --opacity-40: calc(var(--scale-40) / 100); --opacity-44: calc(var(--scale-44) / 100);
-  --opacity-48: calc(var(--scale-48) / 100); --opacity-52: calc(var(--scale-52) / 100);
-  --opacity-56: calc(var(--scale-56) / 100); --opacity-64: calc(var(--scale-64) / 100);
-  --opacity-72: calc(var(--scale-72) / 100); --opacity-80: calc(var(--scale-80) / 100);
-  --opacity-88: calc(var(--scale-88) / 100); --opacity-96: calc(var(--scale-96) / 100);
-  --opacity-100: calc(var(--scale-100) / 100);
+  --opacity-0: 0;
+  --opacity-2: 0.02; --opacity-4: 0.04;
+  --opacity-6: 0.06; --opacity-8: 0.08;
+  --opacity-10: 0.10; --opacity-12: 0.12;
+  --opacity-16: 0.16; --opacity-20: 0.20;
+  --opacity-24: 0.24; --opacity-28: 0.28;
+  --opacity-32: 0.32; --opacity-36: 0.36;
+  --opacity-40: 0.40; --opacity-44: 0.44;
+  --opacity-48: 0.48; --opacity-52: 0.52;
+  --opacity-56: 0.56; --opacity-64: 0.64;
+  --opacity-72: 0.72; --opacity-80: 0.80;
+  --opacity-88: 0.88; --opacity-96: 0.96;
+  --opacity-100: 1;
 
   /* --- Border Radius --- */
   --radius-sm: 4px;

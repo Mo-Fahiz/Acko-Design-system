@@ -10,16 +10,16 @@ CSS file: `@acko/css/checkbox.css`
 ## CSS Classes
 
 ### Base
-- `.acko-checkbox` — inline-flex, items-start, gap-3, cursor-pointer, select-none
+- `.acko-checkbox` — inline-flex, items-start, `gap: 12px`, cursor-pointer, select-none
 - `.acko-checkbox-native` — visually hidden native input
 - `.acko-checkbox-box` — custom box with border `--color-control-border-selector`, bg `--color-card-bg`
 
 ### Sizes (via `.acko-checkbox-{size}`)
 | Size | Box | Icon SVG | Label font |
 |------|-----|----------|------------|
-| sm | `--scale-16`, radius-sm | `--scale-10` | `--font-body-sm-size` |
-| md | `--scale-20`, radius-md | `--scale-12` | `--font-body-md-size` |
-| lg | `--scale-24`, radius-md | `--font-body-sm-size` | `--font-body-lg-size` |
+| sm | `16px`, radius-sm | `10px` | `--font-body-sm-size` |
+| md | `20px`, radius-md | `12px` | `--font-body-md-size` |
+| lg | `24px`, radius-md | `14px` | `--font-body-lg-size` |
 
 ### States
 

@@ -10,21 +10,21 @@ CSS file: `@acko/css/pagination.css`
 ## CSS Classes
 
 ### Base
-- `.acko-pagination` — flex, items-center, gap-1, flex-wrap
+- `.acko-pagination` — flex, items-center, `gap: 4px`, flex-wrap
 
 ### Page Button
-- `.acko-pagination-btn` — `var(--scale-40) × var(--scale-40)`, `border-radius: var(--radius-full)` (circle shape), flex center, cursor-pointer
+- `.acko-pagination-btn` — `40px × 40px`, `border-radius: var(--radius-full)` (circle shape), flex center, cursor-pointer
 - Font: `--font-body-sm-size`, weight 500, family inherit
 - Background: transparent
 - Transition: `all 200ms var(--ease-in-out-cubic)` — smooth background/color changes
 
 ### Nav Buttons (Prev/Next)
-- `.acko-pagination-nav` — `var(--scale-40) × var(--scale-40)`, `border-radius: var(--radius-full)`
+- `.acko-pagination-nav` — `40px × 40px`, `border-radius: var(--radius-full)`
 - Background: `--color-surface-raised`
 - Transition: `all 200ms var(--ease-in-out-cubic)`
 
 ### Ellipsis
-- `.acko-pagination-ellipsis` — `var(--scale-40) × var(--scale-40)`, centered, `--color-text-secondary`
+- `.acko-pagination-ellipsis` — `40px × 40px`, centered, `--color-text-secondary`
 
 ### Info
 - `.acko-pagination-info` — `--font-body-sm-size`, `--color-text-secondary`

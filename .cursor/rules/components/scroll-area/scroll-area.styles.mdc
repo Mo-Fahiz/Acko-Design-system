@@ -21,4 +21,4 @@ CSS file: `@acko/css/scroll-area.css`
 
 ### Scrollbar (design tokens)
 - Firefox: scrollbar-width: thin; scrollbar-color: var(--color-primary-muted) transparent
-- WebKit: width/height var(--scale-6), thumb var(--color-primary-muted), thumb:hover var(--color-primary), border-radius var(--radius-full)
+- WebKit: width/height 6px, thumb var(--color-primary-muted), thumb:hover var(--color-primary), border-radius var(--radius-full)

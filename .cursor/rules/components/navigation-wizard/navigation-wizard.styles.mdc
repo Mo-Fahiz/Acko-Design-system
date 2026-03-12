@@ -16,7 +16,7 @@ CSS file: `@acko/css/navigation-wizard.css`
 
 ### Step (horizontal)
 - `.acko-wizard-step` — `display: contents`
-- `.acko-wizard-step-body` — flex-col, center-aligned, `gap: var(--space-2)`, `flex-shrink: 0`, column layout (circle on top, label below)
+- `.acko-wizard-step-body` — flex-col, center-aligned, `gap: 8px`, `flex-shrink: 0`, column layout (circle on top, label below)
 - `.acko-wizard-step-body-clickable` — `cursor: pointer`
 
 ### Circle
@@ -42,14 +42,14 @@ CSS file: `@acko/css/navigation-wizard.css`
 - `.acko-wizard-description` — `font-size: --font-caption-size`, `color: --color-text-secondary`, `max-width: 120px`
 
 ### Connector (horizontal)
-- `.acko-wizard-connector` — `width: 60px`, `height: 2px`, `margin: 0 var(--space-2)`, `margin-top: 13px` (aligned to circle center)
+- `.acko-wizard-connector` — `width: 60px`, `height: 2px`, `margin: 0 8px`, `margin-top: 13px` (aligned to circle center)
 - `.acko-wizard-connector-default` — `--color-wizard-connector-upcoming`
 - `.acko-wizard-connector-completed` — `--color-wizard-connector-done`
 
 ### Vertical Variant
 - `.acko-wizard-step-left` — flex-col, center-aligned (holds circle + vertical connector)
-- `.acko-wizard-vertical-connector` — `width: 2px`, `flex: 1`, `min-height: 24px`, `margin: var(--space-1) 0`
-- `.acko-wizard-step-content` — `padding-bottom: var(--space-4)`
+- `.acko-wizard-vertical-connector` — `width: 2px`, `flex: 1`, `min-height: 24px`, `margin: 4px 0`
+- `.acko-wizard-step-content` — `padding-bottom: 16px`
 - `.acko-wizard-vertical-label` — same font as horizontal, status-based color classes
 - `.acko-wizard-vertical-description` — `--font-caption-size`, `--color-text-secondary`, `margin-top: 2px`
 

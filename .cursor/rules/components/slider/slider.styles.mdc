@@ -12,21 +12,21 @@ alwaysApply: false
 - `.acko-slider-fill` — absolute, left-anchored, `background: var(--color-primary)`, `border-radius: var(--radius-full)`
 - `.acko-slider-thumb` — absolute, `transform: translateX(-50%)`, bordered circle, `cursor: grab`
 - `.acko-slider-ticks` — tick mark row beneath track
-- `.acko-slider-tick` — `width/height: var(--scale-2)`, `background: var(--color-border-subtle)`
+- `.acko-slider-tick` — `width/height: 2px`, `background: var(--color-border-subtle)`
 - `.acko-slider-tick-filled` — `background: var(--color-primary)`
 - `.acko-slider-value` — right-aligned numeric label
 
 ## Size classes
 | Class | Track height | Thumb size |
 |-------|-------------|-----------|
-| `.acko-slider-sm` | `var(--scale-4)` | `var(--scale-16)` |
-| `.acko-slider-md` | `var(--scale-6)` | `var(--scale-20)` |
-| `.acko-slider-lg` | `var(--scale-8)` | `var(--scale-24)` |
+| `.acko-slider-sm` | `4px` | `16px` |
+| `.acko-slider-md` | `6px` | `20px` |
+| `.acko-slider-lg` | `8px` | `24px` |
 
 ## States
 - Track base: `background: var(--color-border-subtle)`
 - Fill: `background: var(--color-primary)`
-- Thumb hover: `box-shadow: var(--shadow-md), 0 0 0 var(--scale-4) var(--color-primary-ring)`
+- Thumb hover: `box-shadow: var(--shadow-md), 0 0 0 4px var(--color-primary-ring)`
 - Thumb focus-visible: `box-shadow: var(--shadow-focus-ring)`
 - Thumb active: `cursor: grabbing; transform: translateX(-50%) scale(1.1)`
 - Disabled: `opacity: 0.45`, `pointer-events: none`; fill/thumb use `--color-text-disabled`

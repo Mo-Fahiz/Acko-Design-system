@@ -3,11 +3,7 @@
    ============================================================ */
 
 .acko-slider {
-  display: flex;
-  flex-direction: column;
-  gap: var(--scale-8);
-  width: 100%;
-  user-select: none;
+  @apply flex flex-col gap-8 w-full select-none;
 }
 
 /* --- Track --- */
@@ -20,9 +16,9 @@
   touch-action: none;
 }
 
-.acko-slider-sm .acko-slider-track { height: var(--scale-4); border-radius: var(--radius-full); background: var(--color-border-subtle); }
-.acko-slider-md .acko-slider-track { height: var(--scale-6); border-radius: var(--radius-full); background: var(--color-border-subtle); }
-.acko-slider-lg .acko-slider-track { height: var(--scale-8); border-radius: var(--radius-full); background: var(--color-border-subtle); }
+.acko-slider-sm .acko-slider-track { @apply h-4 rounded-full; background: var(--color-border-subtle); }
+.acko-slider-md .acko-slider-track { @apply h-6 rounded-full; background: var(--color-border-subtle); }
+.acko-slider-lg .acko-slider-track { @apply h-8 rounded-full; background: var(--color-border-subtle); }
 
 /* --- Fill --- */
 
@@ -50,12 +46,12 @@
   outline: none;
 }
 
-.acko-slider-sm .acko-slider-thumb { width: var(--scale-16); height: var(--scale-16); }
-.acko-slider-md .acko-slider-thumb { width: var(--scale-20); height: var(--scale-20); }
-.acko-slider-lg .acko-slider-thumb { width: var(--scale-24); height: var(--scale-24); }
+.acko-slider-sm .acko-slider-thumb { @apply w-16 h-16; }
+.acko-slider-md .acko-slider-thumb { @apply w-20 h-20; }
+.acko-slider-lg .acko-slider-thumb { @apply w-24 h-24; }
 
 .acko-slider-thumb:hover {
-  box-shadow: var(--shadow-md), 0 0 0 var(--scale-4) var(--color-primary-ring);
+  box-shadow: var(--shadow-md), 0 0 0 0.25rem var(--color-primary-ring);
 }
 
 .acko-slider-thumb:focus-visible {
@@ -67,16 +63,12 @@
 /* --- Ticks --- */
 
 .acko-slider-ticks {
-  position: relative;
-  width: 100%;
-  height: var(--scale-4);
+  @apply relative w-full h-4;
 }
 
 .acko-slider-tick {
-  position: absolute;
+  @apply absolute w-2 h-2;
   transform: translateX(-50%);
-  width: var(--scale-2);
-  height: var(--scale-2);
   border-radius: var(--radius-full);
   background: var(--color-border-subtle);
 }

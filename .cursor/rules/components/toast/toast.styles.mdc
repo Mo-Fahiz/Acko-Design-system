@@ -15,17 +15,17 @@ alwaysApply: false
 - `.acko-toast-title` — `font-size: var(--font-body-sm-size)`, weight 600
 - `.acko-toast-description` — same size, opacity 0.85
 - `.acko-toast-action` — underlined text button, same color as toast
-- `.acko-toast-dismiss` — `width/height: var(--scale-24)`, opacity 0.6 → 1 on hover
+- `.acko-toast-dismiss` — `width/height: 24px`, opacity 0.6 → 1 on hover
 
 ## Position variants
 | Class | Position |
 |-------|---------|
-| `.acko-toast-region-top-right` | `top: var(--space-5); right: var(--space-5)` |
-| `.acko-toast-region-top-left` | `top: var(--space-5); left: var(--space-5)` |
-| `.acko-toast-region-top-center` | `top: var(--space-5); left: 50%; transform: translateX(-50%)` |
-| `.acko-toast-region-bottom-right` | `bottom: var(--space-5); right: var(--space-5)` |
-| `.acko-toast-region-bottom-left` | `bottom: var(--space-5); left: var(--space-5)` |
-| `.acko-toast-region-bottom-center` | `bottom: var(--space-5); left: 50%; transform: translateX(-50%)` |
+| `.acko-toast-region-top-right` | `top: 20px; right: 20px` |
+| `.acko-toast-region-top-left` | `top: 20px; left: 20px` |
+| `.acko-toast-region-top-center` | `top: 20px; left: 50%; transform: translateX(-50%)` |
+| `.acko-toast-region-bottom-right` | `bottom: 20px; right: 20px` |
+| `.acko-toast-region-bottom-left` | `bottom: 20px; left: 20px` |
+| `.acko-toast-region-bottom-center` | `bottom: 20px; left: 50%; transform: translateX(-50%)` |
 
 ## Variant colors
 | Variant | Border | Background | Text |
@@ -36,4 +36,4 @@ alwaysApply: false
 | `error` | `--color-error-border` | `--color-error-subtle` | `--color-error-text` |
 
 ## Animation
-`acko-toast-in`: `opacity 0, translateY(var(--space-2)) → opacity 1, translateY(0)`, 250ms `--ease-out-quart`
+`acko-toast-in`: `opacity 0, translateY(8px) → opacity 1, translateY(0)`, 250ms `--ease-out-quart`

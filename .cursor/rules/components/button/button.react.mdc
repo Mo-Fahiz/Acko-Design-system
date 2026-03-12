@@ -74,7 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 ```
 
-**Key difference from old pattern:** No Tailwind utility classes in `className`. Everything — layout (`inline-flex items-center justify-center`), spacing (`gap-2`), typography (`font-medium`), radius (`rounded-full`), cursor, select, position — is in the CSS file via `@apply`.
+**Key difference from old pattern:** No Tailwind utility classes in `className`. Everything — layout (`inline-flex items-center justify-center`), spacing (`gap: 8px`), typography (`font-medium`), radius (`rounded-full`), cursor, select, position — is in the CSS file via `@apply` and explicit token properties.
 
 ## Hooks
 
@@ -88,6 +88,18 @@ Stateless. `disabled` and `loading` come from props. No internal state.
 
 - `onClick` passed via `...rest` spread
 - When `loading={true}`: component sets `disabled` on the native element + CSS `pointer-events: none`
+
+## Text Formatting
+
+- Button text **must always be sentence case** (capitalize only the first letter of the first word).
+  - ✅ `Submit details`
+  - ✅ `Get started`
+  - ✅ `View all plans`
+  - ❌ `Submit Details`
+  - ❌ `GET STARTED`
+  - ❌ `View All Plans`
+- This applies to all button variants and sizes.
+- If an acronym appears in the label, it retains its casing (e.g., `Check OTP`, `View EMI options`).
 
 ## Accessibility
 

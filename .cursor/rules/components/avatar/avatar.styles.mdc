@@ -16,11 +16,11 @@ CSS file: `@acko/css/avatar.css`
 
 | Class | Dimensions | Initials Font | Icon Size |
 |-------|-----------|--------------|-----------|
-| `.acko-avatar-xs` | var(--scale-24) × var(--scale-24) | var(--scale-10) | var(--font-label-md-size) |
-| `.acko-avatar-sm` | var(--scale-32) × var(--scale-32) | var(--font-label-md-size) | var(--scale-16) |
-| `.acko-avatar-md` | var(--scale-40) × var(--scale-40) | var(--font-body-sm-size) | var(--font-heading-md-size) |
-| `.acko-avatar-lg` | var(--scale-48) × var(--scale-48) | var(--font-body-md-size) | var(--scale-24) |
-| `.acko-avatar-xl` | var(--scale-64) × var(--scale-64) | var(--font-heading-md-size) | var(--scale-32) |
+| `.acko-avatar-xs` | 24px × 24px | 10px | var(--font-label-md-size) |
+| `.acko-avatar-sm` | 32px × 32px | var(--font-label-md-size) | 16px |
+| `.acko-avatar-md` | 40px × 40px | var(--font-body-sm-size) | var(--font-heading-md-size) |
+| `.acko-avatar-lg` | 48px × 48px | var(--font-body-md-size) | 24px |
+| `.acko-avatar-xl` | 64px × 64px | var(--font-heading-md-size) | 32px |
 
 ### Shapes
 

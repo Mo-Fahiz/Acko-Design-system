@@ -1,7 +1,7 @@
 /* Radio — @acko/css/radio.css */
 
 .acko-radio-group {
-  @apply flex flex-col gap-2;
+  @apply flex flex-col gap-8;
 }
 
 .acko-radio-group-label {
@@ -13,7 +13,7 @@
 }
 
 .acko-radio-options {
-  @apply flex gap-3;
+  @apply flex gap-12;
 }
 
 .acko-radio-vertical { @apply flex-col; }
@@ -22,7 +22,7 @@
 /* --- Default radio item --- */
 
 .acko-radio-item {
-  @apply inline-flex items-start gap-3 cursor-pointer select-none;
+  @apply inline-flex items-start cursor-pointer select-none gap-12;
 }
 
 .acko-radio-item.acko-radio-item-disabled {
@@ -48,9 +48,9 @@
 }
 
 /* Circle sizes */
-.acko-radio-sm .acko-radio-circle { width: var(--scale-16); height: var(--scale-16); }
-.acko-radio-md .acko-radio-circle { width: var(--scale-20); height: var(--scale-20); }
-.acko-radio-lg .acko-radio-circle { width: var(--scale-24); height: var(--scale-24); }
+.acko-radio-sm .acko-radio-circle { @apply w-16 h-16; }
+.acko-radio-md .acko-radio-circle { @apply w-20 h-20; }
+.acko-radio-lg .acko-radio-circle { @apply w-24 h-24; }
 
 /* Dot */
 .acko-radio-dot {
@@ -59,9 +59,9 @@
   animation: acko-radio-dot-bounce 280ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.acko-radio-sm .acko-radio-dot { width: var(--scale-8); height: var(--scale-8); }
-.acko-radio-md .acko-radio-dot { width: var(--scale-10); height: var(--scale-10); }
-.acko-radio-lg .acko-radio-dot { width: var(--scale-12); height: var(--scale-12); }
+.acko-radio-sm .acko-radio-dot { @apply w-8 h-8; }
+.acko-radio-md .acko-radio-dot { @apply w-10 h-10; }
+.acko-radio-lg .acko-radio-dot { @apply w-12 h-12; }
 
 @keyframes acko-radio-dot-bounce {
   from { transform: scale(0); opacity: 0; }
@@ -112,8 +112,7 @@
 
 /* Labels */
 .acko-radio-label-content {
-  @apply flex flex-col;
-  gap: var(--scale-2);
+  @apply flex flex-col gap-2;
   padding-top: 1px;
 }
 
@@ -138,8 +137,7 @@
 /* --- Card variant --- */
 
 .acko-radio-card-item {
-  @apply flex items-start gap-3 cursor-pointer select-none;
-  padding: var(--scale-16);
+  @apply flex items-start cursor-pointer select-none gap-12 p-16;
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-3xl);
   background-color: var(--color-card-bg);

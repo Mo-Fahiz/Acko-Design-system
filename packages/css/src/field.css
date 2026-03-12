@@ -6,8 +6,7 @@
 /* --- Base --- */
 
 .acko-field {
-  @apply flex flex-col;
-  gap: var(--scale-4);
+  @apply flex flex-col gap-4;
 }
 
 .acko-field-label {

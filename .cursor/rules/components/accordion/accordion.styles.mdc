@@ -17,7 +17,7 @@ alwaysApply: false
 | `.acko-accordion-chevron` | Icon wrapper | Rotate 180deg when open |
 | `.acko-accordion-chevron-open` | Open state | `transform: rotate(180deg)` |
 | `.acko-accordion-content-wrapper` | Animated container | `overflow: hidden`, `max-height` transition |
-| `.acko-accordion-content` | Inner content | `--font-body-sm-size`, `padding-bottom: --space-4` |
+| `.acko-accordion-content` | Inner content | `--font-body-sm-size`, `padding-bottom: 16px` |
 
 ## Animation
 - Content reveal: `max-height` transition, 200ms `--ease-out-quad`
@@ -28,5 +28,5 @@ alwaysApply: false
 - Text: `--color-text-primary`, `--color-text-default`, `--color-text-secondary`, `--color-text-disabled`
 - Borders: `--color-border-subtle`
 - Hover: `--color-primary`
-- Spacing: `--space-4`
+- Spacing: `16px`
 - Font: `--font-body-md-size` (trigger), `--font-body-sm-size` (content)

@@ -21,8 +21,7 @@
 
 /* WebKit scrollbar */
 .acko-scroll-area::-webkit-scrollbar {
-  width: var(--scale-6);
-  height: var(--scale-6);
+  @apply w-6 h-6;
 }
 .acko-scroll-area::-webkit-scrollbar-track {
   background: transparent;

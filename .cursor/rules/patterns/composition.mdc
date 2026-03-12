@@ -16,14 +16,14 @@ Rules for how components combine into layouts. Prevents structurally wrong UI.
 ## Layout Patterns
 
 ### Form Layout
-- `--space-5` (20px) between form fields
-- `--space-8` (32px) between heading block and form, and between form and actions
+- `20px` between form fields
+- `32px` between heading block and form, and between form and actions
 - Primary button full-width on mobile
 - Secondary/back action below primary on mobile, not beside it
 
 ### Card Layout
-- Card padding: `--space-6` (24px) default
-- Card gap in grid: `--space-4` mobile, `--space-6` desktop
+- Card padding: `24px` default
+- Card gap in grid: `16px` mobile, `24px` desktop
 - Footer buttons: right-aligned, primary on the right
 - Never nest a card inside another card
 
@@ -61,10 +61,10 @@ Rules for how components combine into layouts. Prevents structurally wrong UI.
 
 | Between | Spacing |
 |---------|---------|
-| Label → input | `--space-2` (8px) |
-| Input → helper/error | `--space-2` (8px) |
-| Form fields | `--space-5` (20px) |
-| Section heading → content | `--space-8` (32px) |
-| Cards in grid | `--space-4` / `--space-6` |
-| Page sections | `--space-16` (64px) |
-| Buttons in group | `--space-3` (12px) |
+| Label → input | `8px` (`gap-8`) |
+| Input → helper/error | `8px` (`gap-8`) |
+| Form fields | `20px` (`gap-20`) |
+| Section heading → content | `32px` (`gap-32`) |
+| Cards in grid | `16px` / `24px` |
+| Page sections | `64px` (`gap-64`) |
+| Buttons in group | `12px` (`gap-12`) |

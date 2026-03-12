@@ -1,8 +1,7 @@
 /* Textarea — @acko/css/textarea.css */
 
 .acko-textarea {
-  @apply flex flex-col;
-  gap: var(--scale-8);
+  @apply flex flex-col gap-8;
 }
 
 /* --- Label --- */
@@ -19,12 +18,9 @@
 
 /* --- Textarea element --- */
 .acko-textarea-el {
-  @apply w-full;
-  min-height: var(--scale-120);
-  max-height: calc(4 * var(--font-body-md-line) + 2 * var(--scale-12));
-  overflow-y: auto;
+  @apply w-full min-h-120 py-12 px-16 overflow-y-auto;
+  max-height: calc(4 * var(--font-body-md-line) + 2 * 0.75rem);
   resize: none;
-  padding: var(--scale-12) var(--scale-16);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-3xl);
   font-family: inherit;

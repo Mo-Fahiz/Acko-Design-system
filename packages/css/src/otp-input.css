@@ -3,9 +3,7 @@
    ============================================================ */
 
 .acko-otp {
-  display: flex;
-  align-items: center;
-  gap: var(--scale-8);
+  @apply flex items-center gap-8;
 }
 
 /* --- Cell --- */
@@ -22,9 +20,9 @@
 .acko-otp-cell::selection { background: var(--color-primary-subtle); }
 
 /* Sizes — perfect squares with per-size radius */
-.acko-otp-sm .acko-otp-cell { width: var(--scale-40); height: var(--scale-40); font-size: var(--font-body-md-size); border-radius: var(--radius-2xl); }
-.acko-otp-md .acko-otp-cell { width: var(--scale-48); height: var(--scale-48); font-size: var(--font-heading-md-size); border-radius: var(--radius-3xl); }
-.acko-otp-lg .acko-otp-cell { width: var(--scale-56); height: var(--scale-56); font-size: var(--font-heading-lg-size); border-radius: var(--radius-4xl); }
+.acko-otp-sm .acko-otp-cell { @apply w-40 h-40; font-size: var(--font-body-md-size); border-radius: var(--radius-2xl); }
+.acko-otp-md .acko-otp-cell { @apply w-48 h-48; font-size: var(--font-heading-md-size); border-radius: var(--radius-3xl); }
+.acko-otp-lg .acko-otp-cell { @apply w-56 h-56; font-size: var(--font-heading-lg-size); border-radius: var(--radius-4xl); }
 
 /* Focus — matches TextInput: inner border + outer ring */
 .acko-otp-cell:focus {

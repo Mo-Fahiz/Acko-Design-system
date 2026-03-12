@@ -1,7 +1,7 @@
 /* Checkbox — @acko/css/checkbox.css */
 
 .acko-checkbox {
-  @apply inline-flex items-start gap-3 cursor-pointer select-none;
+  @apply inline-flex items-start cursor-pointer select-none gap-12;
 }
 
 .acko-checkbox.acko-checkbox-disabled {
@@ -27,9 +27,9 @@
 }
 
 /* Sizes */
-.acko-checkbox-sm .acko-checkbox-box { width: var(--scale-16); height: var(--scale-16); border-radius: var(--radius-sm); }
-.acko-checkbox-md .acko-checkbox-box { width: var(--scale-20); height: var(--scale-20); border-radius: var(--radius-md); }
-.acko-checkbox-lg .acko-checkbox-box { width: var(--scale-24); height: var(--scale-24); border-radius: var(--radius-md); }
+.acko-checkbox-sm .acko-checkbox-box { @apply w-16 h-16; border-radius: var(--radius-sm); }
+.acko-checkbox-md .acko-checkbox-box { @apply w-20 h-20; border-radius: var(--radius-md); }
+.acko-checkbox-lg .acko-checkbox-box { @apply w-24 h-24; border-radius: var(--radius-md); }
 
 /* Check icon */
 .acko-checkbox-icon {
@@ -58,9 +58,9 @@
   transition: stroke-dashoffset 300ms ease-out 80ms;
 }
 
-.acko-checkbox-sm .acko-checkbox-icon svg { width: var(--scale-10); height: var(--scale-10); }
-.acko-checkbox-md .acko-checkbox-icon svg { width: var(--scale-12); height: var(--scale-12); }
-.acko-checkbox-lg .acko-checkbox-icon svg { width: var(--font-body-sm-size); height: var(--font-body-sm-size); }
+.acko-checkbox-sm .acko-checkbox-icon svg { @apply w-10 h-10; }
+.acko-checkbox-md .acko-checkbox-icon svg { @apply w-12 h-12; }
+.acko-checkbox-lg .acko-checkbox-icon svg { @apply w-14 h-14; }
 
 /* --- States --- */
 
@@ -136,8 +136,7 @@
 
 /* Labels */
 .acko-checkbox-label-content {
-  @apply flex flex-col;
-  gap: var(--scale-2);
+  @apply flex flex-col gap-2;
   padding-top: 1px;
 }
 

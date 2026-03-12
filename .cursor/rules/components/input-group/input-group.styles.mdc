@@ -11,12 +11,12 @@ alwaysApply: false
 | Class | Element | Notes |
 |-------|---------|-------|
 | `.acko-input-group` | Root wrapper | `flex row`, border, rounded-full |
-| `.acko-input-group-sm` | Small size | Height: `var(--scale-36)` |
-| `.acko-input-group-md` | Medium size | Height: `var(--scale-44)` |
-| `.acko-input-group-lg` | Large size | Height: `var(--scale-52)` |
-| `.acko-input-group-prefix` | Left addon | `padding: 0 --space-3`, border-right separator |
-| `.acko-input-group-suffix` | Right addon | `padding: 0 --space-3`, border-left separator |
-| `.acko-input-group-inner` | Inner wrapper (contains input) | `flex-1 flex items-center min-w-0`, `padding: 0 --space-3`, transparent bg |
+| `.acko-input-group-sm` | Small size | Height: `36px` |
+| `.acko-input-group-md` | Medium size | Height: `44px` |
+| `.acko-input-group-lg` | Large size | Height: `52px` |
+| `.acko-input-group-prefix` | Left addon | `padding: 0 12px`, border-right separator |
+| `.acko-input-group-suffix` | Right addon | `padding: 0 12px`, border-left separator |
+| `.acko-input-group-inner` | Inner wrapper (contains input) | `flex-1 flex items-center min-w-0`, `padding: 0 12px`, transparent bg |
 | `.acko-input-group-inner-sm/md/lg` | Inner size variants | Font size per size (`body-sm/md/lg`) |
 | `.acko-input-group-error` | Error state | Gradient border `linear-gradient(0deg, red-200, grey-150)` via padding-box/border-box (dark: red-800 → grey-600) |
 | `.acko-input-group-disabled` | Disabled state | `background: var(--color-input-disabled-bg)`, `border-color: var(--color-input-disabled-border)`, `opacity: 0.5`, `cursor: not-allowed`, `pointer-events: none` |

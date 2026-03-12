@@ -14,7 +14,7 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 ## CSS Classes
 
 ### Base
-`.acko-badge` — `inline-flex items-center gap-1 font-medium whitespace-nowrap rounded-full leading-none`
+`.acko-badge` — `inline-flex items-center font-medium whitespace-nowrap rounded-full leading-none` with `gap: 4px`
 
 ### Text Case
 No lowercase words in badges. Three case variants:
@@ -50,14 +50,14 @@ Uses token: `--color-badge-{color}-outline-color` for both text and border. Gree
 ### Dot Variant Colors
 Pattern: `.acko-badge-dot-{color}`
 
-Same gradient + border as solid + `.acko-badge-dot` child element (`--scale-6` circle in `currentColor`)
+Same gradient + border as solid + `.acko-badge-dot` child element (`6px` circle in `currentColor`)
 
 ### Children
-- `.acko-badge-dot` — `--scale-6` circle indicator
-- `.acko-badge-remove` — remove button with X icon (`--scale-12` SVG)
+- `.acko-badge-dot` — `6px` circle indicator
+- `.acko-badge-remove` — remove button with X icon (`12px` SVG)
 
 ### Counter Badge
-- `.acko-counter-badge` — pill with min-width `--scale-20`, height `--scale-20`, padding `0 --scale-6`, font `--font-label-sm-size`, tabular-nums, text `--color-on-primary`
+- `.acko-counter-badge` — pill with min-width `20px`, height `20px`, padding `0 6px`, font `--font-label-sm-size`, tabular-nums, text `--color-on-primary`
 - `.acko-counter-badge-{color}` — purple, pink, blue — gradient fill + border:
   - `background: linear-gradient(0deg, --color-counter-{color}-gradient-from, --color-counter-{color}-gradient-to)`
   - `border: 1px solid --color-counter-{color}-border`

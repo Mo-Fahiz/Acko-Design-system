@@ -15,11 +15,7 @@
 }
 
 .acko-wizard-step-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--scale-8);
-  flex-shrink: 0;
+  @apply flex flex-col items-center gap-8 shrink-0;
   cursor: default;
 }
 
@@ -28,11 +24,7 @@
 }
 
 .acko-wizard-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--scale-28);
-  height: var(--scale-28);
+  @apply flex items-center justify-center w-28 h-28;
   border-radius: var(--radius-full);
   font-size: 14px;
   font-weight: 600;
@@ -81,10 +73,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 
 /* Label block (horizontal) */
 .acko-wizard-label-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--scale-2);
+  @apply flex flex-col items-center gap-2;
 }
 
 .acko-wizard-label {
@@ -103,15 +92,13 @@ button.acko-wizard-circle:disabled { cursor: default; }
   font-size: var(--font-caption-size);
   color: var(--color-text-secondary);
   text-align: center;
-  max-width: var(--scale-120);
+  @apply max-w-120;
 }
 
 /* Connector (horizontal) */
 .acko-wizard-connector {
-  width: var(--scale-60);
+  @apply w-60 shrink-0 mx-8;
   height: 2px;
-  flex-shrink: 0;
-  margin: 0 var(--scale-8);
   margin-top: 13px;
   transition: background-color 200ms ease;
 }
@@ -132,8 +119,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 }
 
 .acko-wizard-vertical .acko-wizard-step {
-  display: flex;
-  gap: var(--scale-12);
+  @apply flex gap-12;
 }
 
 .acko-wizard-vertical .acko-wizard-step-body {
@@ -148,14 +134,13 @@ button.acko-wizard-circle:disabled { cursor: default; }
 }
 
 .acko-wizard-vertical-connector {
+  @apply min-h-24 my-4;
   width: 2px;
   flex: 1;
-  min-height: var(--scale-24);
-  margin: var(--scale-4) 0;
 }
 
 .acko-wizard-step-content {
-  padding-bottom: var(--scale-16);
+  @apply pb-16;
 }
 
 .acko-wizard-vertical-label {
@@ -178,8 +163,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 /* ── Compact ── */
 
 .acko-wizard-compact {
-  align-items: center;
-  gap: var(--scale-8);
+  @apply items-center gap-8;
 }
 
 .acko-wizard-compact .acko-wizard-step {
@@ -187,8 +171,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 }
 
 .acko-wizard-compact-dot {
-  width: var(--scale-8);
-  height: var(--scale-8);
+  @apply w-8 h-8;
   border-radius: 50%;
   flex-shrink: 0;
   transition: background-color 200ms ease;

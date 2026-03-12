@@ -9,9 +9,9 @@ alwaysApply: false
 ## CSS classes
 
 - `.acko-toggle` — base, inline-flex, items-center, justify-center, rounded-full, `border: 1px solid transparent`
-- `.acko-toggle-sm` — `var(--scale-32)` height, padding `0 var(--space-2)`, `--font-label-md-size`
-- `.acko-toggle-md` — `var(--scale-40)` height, padding `0 var(--space-3)`, `--font-body-sm-size`
-- `.acko-toggle-lg` — `var(--scale-48)` height, padding `0 var(--space-4)`, `--font-body-md-size`
+- `.acko-toggle-sm` — `32px` height, padding `0 8px`, `--font-label-md-size`
+- `.acko-toggle-md` — `40px` height, padding `0 12px`, `--font-body-sm-size`
+- `.acko-toggle-lg` — `48px` height, padding `0 16px`, `--font-body-md-size`
 
 ## Variants
 
@@ -45,4 +45,4 @@ alwaysApply: false
 `background-color 150ms ease, color 150ms ease, border-color 150ms ease`
 
 ## Toggle Group
-`.acko-toggle-group` — inline-flex, `gap: var(--space-1)`
+`.acko-toggle-group` — inline-flex, `gap: 4px`

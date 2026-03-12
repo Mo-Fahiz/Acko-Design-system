@@ -6,8 +6,7 @@
 /* --- Base --- */
 
 .acko-switch {
-  @apply inline-flex items-center cursor-pointer;
-  gap: var(--scale-12);
+  @apply inline-flex items-center cursor-pointer gap-12;
 }
 
 .acko-switch-native {
@@ -31,13 +30,11 @@
 }
 
 .acko-switch-track-sm {
-  width: var(--scale-36);
-  height: var(--scale-20);
+  @apply w-36 h-20;
 }
 
 .acko-switch-track-md {
-  width: var(--scale-44);
-  height: var(--scale-24);
+  @apply w-44 h-24;
 }
 
 .acko-switch-checked .acko-switch-track {
@@ -55,15 +52,11 @@
 }
 
 .acko-switch-thumb-sm {
-  width: var(--scale-16);
-  height: var(--scale-16);
-  left: var(--scale-2);
+  @apply w-16 h-16 left-2;
 }
 
 .acko-switch-thumb-md {
-  width: var(--scale-20);
-  height: var(--scale-20);
-  left: var(--scale-2);
+  @apply w-20 h-20 left-2;
 }
 
 .acko-switch-checked .acko-switch-thumb {
@@ -71,11 +64,11 @@
 }
 
 .acko-switch-checked .acko-switch-thumb-sm {
-  transform: translateX(var(--scale-16));
+  transform: translateX(1rem);
 }
 
 .acko-switch-checked .acko-switch-thumb-md {
-  transform: translateX(var(--scale-20));
+  transform: translateX(1.25rem);
 }
 
 /* --- Focus --- */

@@ -27,7 +27,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 ### Panel
 | Class | Purpose |
 |---|---|
-| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `20px` border-radius, `--shadow-md`, `--space-4` padding |
+| `.acko-cal-panel` | Calendar container — 340px wide, card bg, `20px` border-radius, `--shadow-md`, `16px` padding |
 | `.acko-cal-panel-dropdown` | Dropdown positioning — `absolute left-0`, z-index, enter animation |
 
 ### Header
@@ -35,7 +35,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 |---|---|
 | `.acko-cal-header` | Header row — `flex items-center justify-between` |
 | `.acko-cal-header-label` | Month/Year label — clickable, drills into month → year picker |
-| `.acko-cal-nav-btn` | Prev/Next nav — `--scale-36` square, transparent bg, hover bg |
+| `.acko-cal-nav-btn` | Prev/Next nav — `36px` square, transparent bg, hover bg |
 
 ### Day Grid
 | Class | Purpose |
@@ -43,7 +43,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | `.acko-cal-weekdays` | 7-column grid for weekday headers |
 | `.acko-cal-weekday` | Single weekday header — uppercase, muted, label-sm |
 | `.acko-cal-days` | 7-column grid for day buttons (6 rows × 7 = 42 cells) |
-| `.acko-cal-day` | Day button — `--scale-40` tall, full-radius, `--font-body-sm-size`, tabular-nums |
+| `.acko-cal-day` | Day button — `40px` tall, full-radius, `--font-body-sm-size`, tabular-nums |
 
 ### Day States
 | Class | Effect |
@@ -60,7 +60,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 | Class | Purpose |
 |---|---|
 | `.acko-cal-picker-grid` | 3-column grid for month or year buttons |
-| `.acko-cal-picker-cell` | Picker button — `--scale-48` tall, pill radius, `--font-body-sm-size`, 500 weight |
+| `.acko-cal-picker-cell` | Picker button — `48px` tall, pill radius, `--font-body-sm-size`, 500 weight |
 | `.acko-cal-picker-cell-selected` | Active pick — selected bg + text, 700 weight |
 | `.acko-cal-picker-cell-current` | Current month/year — today text color, 700 weight |
 
@@ -70,7 +70,7 @@ All visual styling lives in `packages/css/src/calendar.css` using `@apply` for s
 
 | Keyframe | Purpose |
 |---|---|
-| `acko-cal-enter` | Panel fade-in + translateY(var(--space-2) → 0) over 150ms |
+| `acko-cal-enter` | Panel fade-in + translateY(8px → 0) over 150ms |
 
 ---
 

@@ -135,9 +135,9 @@ primitives (raw values) → semantics (role mappings) → component CSS
 1. Component CSS MUST only reference **semantic tokens** (`--color-primary`, `--color-border`, etc.)
 2. **Never** use primitive tokens (`--purple-600`, `--grey-200`) in component CSS
 3. Theme switching is automatic via `[data-theme="dark"]` or `[data-theme="elevated"]` on `<html>`
-4. `--scale-*` is the **only** numeric token. Use it for all spacing (padding, margin, gap) and sizing (width, height). No `--space-*` tokens exist.
+4. Spacing and sizing use **Tailwind utilities** powered by `--spacing: 0.0625rem` (1px base). The utility number equals the pixel value (`gap-12` = 12px, `h-48` = 48px). No `--scale-*` or `--space-*` tokens exist.
 5. Color and shadow tokens remap between themes — always go through semantics
-6. **Never use raw pixel values** for `border-radius`, spacing, or component dimensions — always use a `--radius-*` or `--scale-*` token
+6. **Never use raw pixel values** for `border-radius`, spacing, or component dimensions — always use a `--radius-*` token or a Tailwind spacing utility
 7. Shadow values use the tiered `--shadow-xs` through `--shadow-2xl` scale — never paste raw `box-shadow` values
 
 ### Universal Border Radius Rule
@@ -155,12 +155,12 @@ Components are assigned radius by **semantic role**, not arbitrary size:
 
 ```
 Container (--radius-4xl: 20px)
-├── pad-sm (--scale-12)  → child uses --radius-inset-sm (8px)
-├── pad-md (--scale-16)  → child uses --radius-inset-md (4px)
-└── pad-lg (--scale-24)  → child uses --radius-inset-lg (0px)
+├── pad-sm (p-12, 12px)  → child uses --radius-inset-sm (8px)
+├── pad-md (p-16, 16px)  → child uses --radius-inset-md (4px)
+└── pad-lg (p-24, 24px)  → child uses --radius-inset-lg (0px)
 ```
 
-**Pill buttons inside cards:** A pill CTA must never touch the card edge. Full-width buttons sit inside the padded content zone — the card's padding creates the visual separation. Minimum card padding when a CTA is present: `pad-md` (`--scale-16`).
+**Pill buttons inside cards:** A pill CTA must never touch the card edge. Full-width buttons sit inside the padded content zone — the card's padding creates the visual separation. Minimum card padding when a CTA is present: `pad-md` (`p-16`, 16px).
 
 ---
 
@@ -201,8 +201,8 @@ Pattern: `acko-{component}[-{variant|size|state|child|modifier}]`
 |----|----|
 | Layout: `inline-flex`, `flex`, `grid` | Multi-property `transition` |
 | Alignment: `items-center`, `justify-center` | `@keyframes` animations |
-| Spacing via `--scale-*`: `gap`, `padding`, `margin` | `[data-theme="dark"]` overrides |
-| Sizing: `h-12`, `w-full`, `min-h-*` | `[data-theme="elevated"]` overrides |
+| Spacing: `gap-12`, `p-16`, `m-8` (number = px) | `[data-theme="dark"]` overrides |
+| Sizing: `h-48`, `w-240`, `w-full`, `min-h-*` | `[data-theme="elevated"]` overrides |
 | Typography: `text-base`, `font-medium`, `leading-6` | `@media (hover:hover)` hover blocks |
 | Colors: `bg-primary`, `text-on-primary` | `::before`/`::after` pseudo-elements |
 | Shadows: `shadow-btn-inner` | Compound `box-shadow` stacks |

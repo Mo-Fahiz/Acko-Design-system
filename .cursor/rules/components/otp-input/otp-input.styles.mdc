@@ -9,7 +9,7 @@ alwaysApply: false
 CSS file: `@acko/css/otp-input.css`
 
 ## Class structure
-- `.acko-otp` — flex row, `gap: var(--space-2)`
+- `.acko-otp` — flex row, `gap: 8px`
 - `.acko-otp-cell` — individual input, `text-center font-semibold outline-none`, `border: 1.5px solid var(--color-input-border)`, `background: var(--color-input-bg)`, `color: var(--color-text-default)`, `caret-color: var(--color-primary)`, `::selection: --color-primary-subtle`
 - `.acko-otp-cell-filled` — `border-color: var(--color-input-filled-border)`, `background: var(--color-primary-subtle)`, `color: var(--color-primary)`
 - `.acko-otp-cell-error` — gradient border via `background` + `border-box` trick
@@ -19,9 +19,9 @@ CSS file: `@acko/css/otp-input.css`
 
 | Class | Cell size | Font | Border Radius |
 |-------|-----------|------|---------------|
-| `.acko-otp-sm` | `40×40` (`--scale-40`) | `--font-body-md-size` | `12px` (`--radius-2xl`) |
-| `.acko-otp-md` | `48×48` (`--scale-48`) | `--font-heading-md-size` | `16px` (`--radius-3xl`) |
-| `.acko-otp-lg` | `56×56` (`--scale-56`) | `--font-heading-lg-size` | `20px` (raw) |
+| `.acko-otp-sm` | `40×40` (`40px`) | `--font-body-md-size` | `12px` (`--radius-2xl`) |
+| `.acko-otp-md` | `48×48` (`48px`) | `--font-heading-md-size` | `16px` (`--radius-3xl`) |
+| `.acko-otp-lg` | `56×56` (`56px`) | `--font-heading-lg-size` | `20px` (raw) |
 
 ## States
 - **Default**: `border-color: var(--color-input-border)`, `background: var(--color-input-bg)`, `color: var(--color-text-default)`

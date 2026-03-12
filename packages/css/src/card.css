@@ -33,35 +33,33 @@
 }
 
 .acko-card-pad-sm {
-  padding: var(--scale-12);
+  @apply p-12;
 }
 
 .acko-card-pad-md {
-  padding: var(--scale-20);
+  @apply p-20;
 }
 
 .acko-card-pad-lg {
-  padding: var(--scale-24);
+  @apply p-24;
 }
 
 .acko-card-header {
-  @apply flex items-center gap-3;
-  padding-bottom: var(--scale-16);
+  @apply flex items-center gap-12 pb-16;
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .acko-card-content {
-  padding: var(--scale-20) 0;
+  @apply py-20;
 }
 
 .acko-card-footer {
-  @apply flex items-center justify-end gap-3;
-  padding-top: var(--scale-16);
+  @apply flex items-center justify-end gap-12 pt-16;
   border-top: 1px solid var(--color-border-subtle);
 }
 
 .acko-card-inset {
-  padding: var(--scale-12);
+  @apply p-12;
   border: 1px solid var(--color-card-demoted-border);
   background-color: var(--color-card-demoted-bg);
   border-radius: var(--radius-inset-lg);

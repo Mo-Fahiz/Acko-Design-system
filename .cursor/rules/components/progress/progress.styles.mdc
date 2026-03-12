@@ -12,7 +12,7 @@ CSS file: `@acko/css/progress.css`
 ### Bar (default)
 - `.acko-progress` — `w-full`
 - `.acko-progress-track` — `w-full rounded-full overflow-hidden`, bg `--color-border-subtle`
-- `.acko-progress-track-sm/md/lg` — heights `--scale-4`/`--scale-8`/`--scale-12`
+- `.acko-progress-track-sm/md/lg` — heights `4px`/`8px`/`12px`
 - `.acko-progress-bar` — `h-full rounded-full`, transition `width 500ms var(--ease-out-cubic)`
 - Color classes: `.acko-progress-bar-primary/success/error` → respective `--color-*` tokens
 
@@ -28,14 +28,14 @@ CSS file: `@acko/css/progress.css`
 - `.acko-progress-circular-label` — `--font-caption-size`, font-weight 600, `color: var(--color-text-primary)`. Large size uses `--font-body-sm-size`
 
 ### Segmented
-- `.acko-progress-segmented` — flex row, `gap: var(--scale-2)`, full width
+- `.acko-progress-segmented` — flex row, `gap: 2px`, full width
 - `.acko-progress-segment` — flex-1, rounded-full, bg `--color-border-subtle`
 - `.acko-progress-segment-filled` — gets the `acko-progress-bar-{color}` class for bg
 - Height inherited from track size classes
 - Transition: `background-color 300ms var(--ease-out-cubic)`
 
 ## Labels
-- `.acko-progress-label-wrapper` — flex justify-between, margin-bottom `--space-1`
+- `.acko-progress-label-wrapper` — flex justify-between, margin-bottom `4px`
 - `.acko-progress-label` — `--font-caption-size`, `--color-text-secondary`
 
 ## Animated Shimmer (bar only)

@@ -13,7 +13,7 @@ export interface PaginationProps {
   className?: string;
 }
 
-const ChevronLeftIcon = () => (
+const ArrowLeftIcon = () => (
   <svg
     width="20"
     height="20"
@@ -23,7 +23,7 @@ const ChevronLeftIcon = () => (
     aria-hidden
   >
     <path
-      d="M12.5 15L7.5 10L12.5 5"
+      d="M15 10H5M5 10L10 5M5 10L10 15"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -32,7 +32,7 @@ const ChevronLeftIcon = () => (
   </svg>
 );
 
-const ChevronRightIcon = () => (
+const ArrowRightIcon = () => (
   <svg
     width="20"
     height="20"
@@ -42,7 +42,7 @@ const ChevronRightIcon = () => (
     aria-hidden
   >
     <path
-      d="M7.5 5L12.5 10L7.5 15"
+      d="M5 10H15M15 10L10 5M15 10L10 15"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -129,7 +129,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
             disabled={!hasPrev}
             aria-label="Previous page"
           >
-            <ChevronLeftIcon />
+            <ArrowLeftIcon />
           </button>
           <span className="acko-pagination-info">
             Page {currentPage} of {totalPages}
@@ -141,7 +141,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
             disabled={!hasNext}
             aria-label="Next page"
           >
-            <ChevronRightIcon />
+            <ArrowRightIcon />
           </button>
         </div>
       );
@@ -167,7 +167,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
           disabled={!hasPrev}
           aria-label="Previous page"
         >
-          <ChevronLeftIcon />
+          <ArrowLeftIcon />
         </button>
         {visiblePages.map((page, i) =>
           page === "ellipsis" ? (
@@ -201,7 +201,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
           disabled={!hasNext}
           aria-label="Next page"
         >
-          <ChevronRightIcon />
+          <ArrowRightIcon />
         </button>
       </nav>
     );

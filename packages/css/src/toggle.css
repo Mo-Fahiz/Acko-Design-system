@@ -12,20 +12,17 @@
 }
 
 .acko-toggle-sm {
-  height: var(--scale-32);
-  padding: 0 var(--scale-8);
+  @apply h-32 py-0 px-8;
   font-size: var(--font-label-md-size);
 }
 
 .acko-toggle-md {
-  height: var(--scale-40);
-  padding: 0 var(--scale-12);
+  @apply h-40 py-0 px-12;
   font-size: var(--font-body-sm-size);
 }
 
 .acko-toggle-lg {
-  height: var(--scale-48);
-  padding: 0 var(--scale-16);
+  @apply h-48 py-0 px-16;
   font-size: var(--font-body-md-size);
 }
 
@@ -76,6 +73,5 @@
 }
 
 .acko-toggle-group {
-  @apply inline-flex;
-  gap: var(--scale-4);
+  @apply inline-flex gap-4;
 }

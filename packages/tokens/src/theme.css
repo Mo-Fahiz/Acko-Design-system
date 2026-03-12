@@ -8,6 +8,9 @@
    ============================================================ */
 
 @theme inline {
+  /* --- Spacing base (1px at 16px root — utility numbers = pixel values) --- */
+  --spacing: 0.0625rem;
+
   /* --- Colors (semantic) --- */
   --color-primary: var(--color-primary);
   --color-primary-hover: var(--color-primary-hover);
