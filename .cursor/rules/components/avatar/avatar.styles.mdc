@@ -29,7 +29,31 @@ CSS file: `@acko/css/avatar.css`
 | `.acko-avatar-circle` | `--radius-full` |
 | `.acko-avatar-square` | `--radius-lg` |
 
-### Fallback
-- `.acko-avatar-img` — `<img>` with `object-fit: cover`, `transition: opacity 200ms ease`
-- `.acko-avatar-initials` — text centered, `font-weight: 500`, `background: --color-primary-subtle`, `color: --color-primary`
-- `.acko-avatar-fallback` — fallback User icon, same bg/color as initials
+### Content Layers
+
+#### Image — `.acko-avatar-img`
+- `<img>` with `object-fit: cover`, `transition: opacity 200ms ease`
+- Fills the entire avatar container
+- Has `onError` handler in React: when an image fails to load, the component sets `imgFailed = true`, which re-renders without the image and falls through to the next level
+
+#### Initials — `.acko-avatar-initials`
+- Text centered, `font-weight: 500`
+- Background: `--color-primary-subtle`, color: `--color-primary`
+- Rendered when `src` is absent or failed **and** `initials` prop is provided
+- Font size scales per the size table above
+
+#### Fallback Icon — `.acko-avatar-fallback`
+- Generic User icon SVG, same bg/color scheme as initials
+- Rendered only when neither `src` nor `initials` are available
+- Icon dimensions scale per the size table above
+
+### Runtime Fallback Chain (CSS + React)
+
+```
+src loads OK     → .acko-avatar-img visible
+src fails/absent → imgFailed state flips
+  initials set   → .acko-avatar-initials visible
+  no initials    → .acko-avatar-fallback visible (User icon)
+```
+
+This is handled entirely in React state — no CSS-only image fallback tricks. The `<img onError>` callback drives the switch.

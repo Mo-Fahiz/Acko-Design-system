@@ -91,15 +91,7 @@ Stateless. `disabled` and `loading` come from props. No internal state.
 
 ## Text Formatting
 
-- Button text **must always be sentence case** (capitalize only the first letter of the first word).
-  - ✅ `Submit details`
-  - ✅ `Get started`
-  - ✅ `View all plans`
-  - ❌ `Submit Details`
-  - ❌ `GET STARTED`
-  - ❌ `View All Plans`
-- This applies to all button variants and sizes.
-- If an acronym appears in the label, it retains its casing (e.g., `Check OTP`, `View EMI options`).
+Sentence case for all button labels. See `foundation/typography.mdc` → **Text Casing** for the full rule, exceptions (ACKO, IDV, NCB, proper nouns, etc.), and examples.
 
 ## Accessibility
 

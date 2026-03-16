@@ -8,8 +8,7 @@
 .acko-btn {
   @apply inline-flex items-center justify-center font-medium
          leading-none border-none cursor-pointer select-none
-         whitespace-nowrap no-underline relative;
-  gap: var(--scale-8);
+         whitespace-nowrap no-underline relative gap-8;
   font-family: inherit;
   transition:
     background-color 150ms ease,
@@ -30,29 +29,29 @@
 
 /* --- Sizes --- */
 
-.acko-btn-xs { @apply h-8 px-4 text-xs rounded-full; line-height: 16px; }
-.acko-btn-sm { @apply h-10 px-4 text-sm rounded-full; line-height: 18px; }
-.acko-btn-md { @apply h-12 px-4 text-base leading-6 rounded-full; }
-.acko-btn-lg { @apply h-14 px-6 text-lg rounded-full; line-height: 28px; }
-.acko-btn-xl { @apply h-16 px-8 text-xl rounded-full; line-height: 32px; }
+.acko-btn-xs { @apply h-32 px-16 text-xs rounded-full; line-height: 1rem; }
+.acko-btn-sm { @apply h-40 px-16 text-sm rounded-full; line-height: 1.125rem; }
+.acko-btn-md { @apply h-48 px-16 text-base leading-24 rounded-full; }
+.acko-btn-lg { @apply h-56 px-24 text-lg rounded-full; line-height: 1.75rem; }
+.acko-btn-xl { @apply h-64 px-32 text-xl rounded-full; line-height: 2rem; }
 
 /* --- Icon sizing per size --- */
 
 .acko-btn-icon { @apply inline-flex items-center justify-center shrink-0; }
 
-.acko-btn-xs .acko-btn-icon { width: var(--scale-12); height: var(--scale-12); }
-.acko-btn-sm .acko-btn-icon { width: var(--scale-16); height: var(--scale-16); }
-.acko-btn-md .acko-btn-icon { width: var(--scale-16); height: var(--scale-16); }
-.acko-btn-lg .acko-btn-icon { width: var(--scale-20); height: var(--scale-20); }
-.acko-btn-xl .acko-btn-icon { width: var(--scale-24); height: var(--scale-24); }
+.acko-btn-xs .acko-btn-icon { @apply w-12 h-12; }
+.acko-btn-sm .acko-btn-icon { @apply w-16 h-16; }
+.acko-btn-md .acko-btn-icon { @apply w-16 h-16; }
+.acko-btn-lg .acko-btn-icon { @apply w-24 h-24; }
+.acko-btn-xl .acko-btn-icon { @apply w-32 h-32; }
 
 /* --- Icon-only (square) --- */
 
-.acko-btn-icon-only.acko-btn-xs { @apply w-8 p-0; }
-.acko-btn-icon-only.acko-btn-sm { @apply w-10 p-0; }
-.acko-btn-icon-only.acko-btn-md { @apply w-12 p-0; }
-.acko-btn-icon-only.acko-btn-lg { @apply w-14 p-0; }
-.acko-btn-icon-only.acko-btn-xl { @apply w-16 p-0; }
+.acko-btn-icon-only.acko-btn-xs { @apply w-32 p-0; }
+.acko-btn-icon-only.acko-btn-sm { @apply w-40 p-0; }
+.acko-btn-icon-only.acko-btn-md { @apply w-48 p-0; }
+.acko-btn-icon-only.acko-btn-lg { @apply w-56 p-0; }
+.acko-btn-icon-only.acko-btn-xl { @apply w-64 p-0; }
 
 /* --- Full width --- */
 
@@ -238,8 +237,7 @@
 /* --- Content wrapper --- */
 
 .acko-btn-content {
-  @apply inline-flex items-center justify-center;
-  gap: var(--scale-8);
+  @apply inline-flex items-center justify-center gap-8;
 }
 
 .acko-btn-label {
@@ -257,13 +255,11 @@
 }
 
 .acko-btn-dots {
-  @apply absolute inline-flex items-center justify-center;
-  gap: var(--scale-4);
+  @apply absolute inline-flex items-center justify-center gap-4;
 }
 
 .acko-btn-dot {
-  width: 6px;
-  height: 6px;
+  @apply w-6 h-6;
   border-radius: 50%;
   background-color: currentColor;
   animation: acko-dot-wave 1.2s ease-in-out infinite;
@@ -281,5 +277,5 @@
 
 @keyframes acko-dot-wave {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-  30% { transform: translateY(-6px); opacity: 1; }
+  30% { transform: translateY(-0.375rem); opacity: 1; }
 }

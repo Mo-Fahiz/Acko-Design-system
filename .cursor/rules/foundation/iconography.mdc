@@ -45,19 +45,19 @@ Chevrons are **structural** — they signal "more content here" without leaving 
 
 ## Icon Sizing
 
-Icons must reference the base scale (`--scale-*`) for sizing. Do not use Tailwind utility classes or typography tokens for icon dimensions.
+Icons are sized using Tailwind spacing utilities (1 unit = 1px). Do not use typography tokens for icon dimensions.
 
-| Component size | Icon size | Token |
-|----------------|-----------|-------|
-| `xs` | 12px | `--scale-12` |
-| `sm` | 16px | `--scale-16` |
-| `md` | 16px | `--scale-16` |
-| `lg` | 20px | `--scale-20` |
-| `xl` | 24px | `--scale-24` |
+| Component size | Icon size | Tailwind utility |
+|----------------|-----------|------------------|
+| `xs` | 12px | `size-12` |
+| `sm` | 16px | `size-16` |
+| `md` | 16px | `size-16` |
+| `lg` | 24px | `size-24` |
+| `xl` | 32px | `size-32` |
 
 ### Rules
 
-- Always use `--scale-*` tokens — never hardcoded Tailwind sizing utilities or typography tokens
+- Always use Tailwind spacing utilities — never typography tokens
 - Icons inherit their size from the CSS layer (`.acko-btn-{size} .acko-btn-icon`). Do **not** set `size` props on Lucide icons inside buttons
 - Always use `currentColor` for fill so icons inherit text color from the theme
 
@@ -80,6 +80,5 @@ Icons must reference the base scale (`--scale-*`) for sizing. Do not use Tailwin
 | `ArrowDown` for accordion toggle | Use `ChevronDown` — it's an expand, not navigation |
 | `ArrowRight` for dropdown trigger | Use `ChevronDown` — it opens a menu in place |
 | Mixed icon libraries in one project | Stick to Lucide throughout |
-| Tailwind `size-*` utilities for icon dimensions | Use `--scale-*` tokens |
-| `--font-*` tokens for icon dimensions | Use `--scale-*` tokens |
+| `--font-*` tokens for icon dimensions | Use Tailwind `size-*` utilities |
 | Icon without `aria-hidden="true"` on decorative icons | Always hide decorative icons from screen readers |

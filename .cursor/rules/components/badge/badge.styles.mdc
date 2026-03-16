@@ -1,5 +1,5 @@
 ---
-description: Badge visual spec — CSS classes, variants, colors, sizes, and token usage
+description: Badge visual spec — CSS classes, variants, colors, and token usage
 globs: "**/badge/**,**/Badge/**"
 ---
 
@@ -17,20 +17,29 @@ ALL styling in CSS via `@apply` + raw CSS. React only composes class names via `
 `.acko-badge` — `inline-flex items-center font-medium whitespace-nowrap rounded-full leading-none` with `gap: var(--scale-4)`
 
 ### Text Case
-No lowercase words in badges. Three case variants:
+
+Two variants. No title case.
 
 | Class | CSS | Default |
 |-------|-----|---------|
 | `.acko-badge-uppercase` | `text-transform: uppercase; letter-spacing: 0.04em` | Yes (default) |
-| `.acko-badge-title-case` | `text-transform: capitalize` | — |
 | `.acko-badge-sentence-case` | `text-transform: none` | — |
 
-### Sizes
-| Class | Padding | Font | Width |
-|-------|---------|------|-------|
-| `.acko-badge-sm` | `4px 8px` | `--font-label-sm-size` | `fit-content` |
-| `.acko-badge-md` | `6px 8px` | `--font-caption-size` | `fit-content` |
-| `.acko-badge-lg` | `8px` | `--font-body-sm-size` | `fit-content` |
+### Responsive Sizing
+
+No size classes. Sizing is baked into `.acko-badge` with a responsive breakpoint:
+
+```css
+/* Mobile (default) — md sizing */
+.acko-badge { padding: 6px 8px; font-size: var(--font-caption-size); }       /* 12px */
+
+/* Desktop (768px+) — lg sizing */
+@media (min-width: 768px) {
+  .acko-badge { padding: 6px 8px; font-size: var(--font-body-sm-size); }      /* 14px */
+}
+```
+
+All badges are the same size at any viewport. Size is never set per instance.
 
 ### Solid Variant Colors
 Pattern: `.acko-badge-solid-{color}` where color = `purple | green | blue | orange | pink | gray`

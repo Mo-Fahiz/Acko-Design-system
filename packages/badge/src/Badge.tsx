@@ -1,16 +1,16 @@
-import { forwardRef, type ReactNode } from "react";
+import { forwardRef, type ReactNode, type CSSProperties } from "react";
 import { clsx } from "clsx";
 
-export type BadgeTextCase = "uppercase" | "title" | "sentence";
+export type BadgeTextCase = "uppercase" | "sentence";
 
 export interface BadgeProps {
   variant?: "solid" | "outline" | "dot";
   color?: "purple" | "green" | "blue" | "orange" | "pink" | "gray";
-  size?: "sm" | "md" | "lg";
   textCase?: BadgeTextCase;
   removable?: boolean;
   onRemove?: () => void;
   className?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }
 
@@ -26,7 +26,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     {
       variant = "solid",
       color = "purple",
-      size = "md",
       textCase = "uppercase",
       removable = false,
       onRemove,
@@ -37,18 +36,15 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     ref
   ) => {
     const caseClass =
-      textCase === "title"
-        ? "acko-badge-title-case"
-        : textCase === "sentence"
-          ? "acko-badge-sentence-case"
-          : "acko-badge-uppercase";
+      textCase === "sentence"
+        ? "acko-badge-sentence-case"
+        : "acko-badge-uppercase";
 
     return (
       <span
         ref={ref}
         className={clsx(
           "acko-badge",
-          `acko-badge-${size}`,
           `acko-badge-${variant}-${color}`,
           caseClass,
           className

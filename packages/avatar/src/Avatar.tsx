@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { clsx } from "clsx";
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -43,7 +43,8 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     },
     ref
   ) => {
-    const hasImage = Boolean(src);
+    const [imgFailed, setImgFailed] = useState(false);
+    const hasImage = Boolean(src) && !imgFailed;
     const hasInitials = Boolean(initials);
 
     const content = hasImage ? (
@@ -52,6 +53,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         alt={alt ?? ""}
         className="acko-avatar-img"
         referrerPolicy="no-referrer"
+        onError={() => setImgFailed(true)}
       />
     ) : hasInitials ? (
       <span className={clsx("acko-avatar-initials", `acko-avatar-initials-${size}`)}>
