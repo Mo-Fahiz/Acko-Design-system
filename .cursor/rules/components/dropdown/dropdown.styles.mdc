@@ -43,12 +43,12 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 
 ### Variants
 
-| Variant | Behavior |
-|---|---|
-| `single` | Select one option, menu closes on select |
-| `multi` | Select multiple, shows tags with remove button |
-| `searchable` | Adds search input at top of menu |
-| `grouped` | Options grouped under headers |
+| Variant | Menu rendering | Behavior |
+|---|---|---|
+| `single` | `<li>` options with check icon | Select one, menu closes |
+| `multi` | `CheckboxRow` from `@acko/checkbox` | Select multiple, menu stays open |
+| `searchable` | `<li>` options + search input | Filter and select one |
+| `grouped` | `<li>` options under group headers | Select one from grouped list |
 
 ### States
 
@@ -65,13 +65,30 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 | `.acko-dropdown-option-selected` | Selected — `--color-primary-subtle` bg, `--color-primary-hover` text, `font-weight: 500` |
 | `.acko-dropdown-option-disabled` | Disabled option — `color: var(--color-text-secondary); cursor-not-allowed` |
 
-### Multi-select Tags
+### Multi-select Menu
 
 | Class | Purpose |
 |---|---|
-| `.acko-dropdown-tags` | Container — `flex flex-wrap`, `gap: 4px` |
-| `.acko-dropdown-tag` | Individual tag — `inline-flex rounded-full`, `--color-primary-subtle` bg, `--color-primary-active` text |
-| `.acko-dropdown-tag-remove` | Remove button — `inline-flex bg-transparent`, hover opacity |
+| `.acko-dropdown-menu-multi` | Applied alongside `.acko-dropdown-menu` for `variant="multi"` |
+| `.acko-dropdown-menu-multi .acko-cb-row` | Forces `flex-direction: row-reverse` (checkbox left), `px-12`, `border-radius: --radius-lg` to align with single-select options |
+
+Desktop overrides (`@media (hover: hover) and (pointer: fine)`):
+- `.acko-dropdown-menu-multi .acko-cb-row::after` → `display: none` (separator hidden — hover provides visual distinction)
+- `.acko-dropdown-menu-multi .acko-cb-row:hover` → `--color-primary-subtle` (matches single-select option hover)
+
+On mobile (touch devices), separators remain visible inside the dropdown menu (Drawer).
+
+The menu's base `p-8` padding is shared across single and multi variants.
+
+### Sheet Mode (Drawer)
+
+When `mobileMode="sheet"` and the viewport is mobile (≤767px), the inline menu is suppressed and a `Drawer side="bottom"` renders the menu content instead.
+
+- `variant="multi"` → `CheckboxRow` items inside the Drawer
+- `variant="single"` / other → `<li>` options inside the Drawer, closing on selection
+
+The Drawer receives `title={label}`, `size="sm"`, and `side="bottom"`.
+No additional CSS is required — the Drawer's own styles handle the bottom sheet layout.
 
 ### Helper/Error Text
 
@@ -103,8 +120,7 @@ All visual styling lives in `packages/css/src/dropdown.css` using `@apply` for s
 | `--color-input-focus-ring` | Focus ring `box-shadow: 0 0 0 2px` (`grey-150` light / `grey-600` dark) |
 | `--color-primary-subtle` | Option hover/focused/selected bg |
 | `--color-primary-hover` | Selected option text |
-| `--color-primary-active` | Multi-select tag text |
-| `--color-primary-subtle` | Multi-select tag bg |
+| `--color-primary-subtle` | Multi-select CheckboxRow hover inside menu |
 | `--color-text-primary` | Value and option text |
 | `--color-text-secondary` | Placeholder, helper text, chevron, disabled option |
 | `--color-text-disabled` | Disabled trigger text |

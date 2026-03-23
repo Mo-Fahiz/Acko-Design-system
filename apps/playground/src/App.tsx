@@ -9,7 +9,7 @@ import { Form, FormItem, FormMessage } from "@acko/form";
 import { Button } from "@acko/button";
 import { Badge, CounterBadge } from "@acko/badge";
 import { RadioGroup } from "@acko/radio";
-import { Checkbox } from "@acko/checkbox";
+import { Checkbox, CheckboxRow, CheckboxGroup } from "@acko/checkbox";
 import { TextInput } from "@acko/text-input";
 import { Breadcrumb } from "@acko/breadcrumb";
 import { Dropdown } from "@acko/dropdown";
@@ -222,9 +222,9 @@ function ButtonPreview() {
       <div>
         <Typography variant="label-sm" color="secondary">Full width</Typography>
         <div className="flex flex-col gap-12 mt-8">
-          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a Quote</Button>
+          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a quote</Button>
           <Button variant="secondary" fullWidth>Cancel</Button>
-          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download Report</Button>
+          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download report</Button>
         </div>
       </div>
 
@@ -278,11 +278,11 @@ function ButtonUsage() {
             Review the details and proceed to payment.
           </Typography>
           <Button variant="primary" fullWidth iconRight={<ArrowRight />} loading={loading} onClick={handleClick}>
-            {loading ? "Processing..." : "Proceed to Pay"}
+            {loading ? "Processing..." : "Proceed to pay"}
           </Button>
           <div className="flex gap-12">
             <Button variant="secondary" fullWidth>
-              Edit Details
+              Edit details
             </Button>
             <Button variant="ghost" fullWidth iconLeft={<Download />}>
               Download PDF
@@ -290,10 +290,10 @@ function ButtonUsage() {
           </div>
           <div className="flex justify-between items-center pt-8">
             <Button variant="link" iconRight={<ArrowRight />}>
-              Terms & Conditions
+              Terms & conditions
             </Button>
             <Button variant="danger" size="sm" iconLeft={<Trash2 />}>
-              Cancel Policy
+              Cancel policy
             </Button>
           </div>
         </div>
@@ -306,52 +306,70 @@ function BadgePreview() {
   const solidLabels: Record<string, string> = {
     purple: "New", green: "Active", blue: "Info", orange: "Pending", pink: "Beta", gray: "Draft",
   };
-  return (
+  const mobileStyle = { padding: '6px 8px', fontSize: 'var(--font-caption-size)' };
+  const desktopStyle = { padding: '6px 8px', fontSize: 'var(--font-body-sm-size)' };
+
+  const renderBadges = (style: React.CSSProperties) => (
     <div className="space-y-16">
-      <Typography variant="label-sm" color="secondary">Solid — ALL CAPS (default)</Typography>
-      <div className="flex flex-wrap gap-8">
-        {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
-          (c) => (
-            <Badge key={c} color={c} textCase="uppercase">
-              {solidLabels[c]}
-            </Badge>
-          )
-        )}
+      <div>
+        <Typography variant="label-sm" color="secondary">Solid — ALL CAPS (default)</Typography>
+        <div className="flex flex-wrap gap-8 mt-8">
+          {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map((c) => (
+            <Badge key={c} color={c} textCase="uppercase" style={style}>{solidLabels[c]}</Badge>
+          ))}
+        </div>
       </div>
-      <Typography variant="label-sm" color="secondary">Outline — Title Case</Typography>
-      <div className="flex flex-wrap gap-8">
-        {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
-          (c) => (
-            <Badge key={c} variant="outline" color={c} textCase="title">
-              {solidLabels[c]}
-            </Badge>
-          )
-        )}
+      <div>
+        <Typography variant="label-sm" color="secondary">Outline — uppercase</Typography>
+        <div className="flex flex-wrap gap-8 mt-8">
+          {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map((c) => (
+            <Badge key={c} variant="outline" color={c} textCase="uppercase" style={style}>{solidLabels[c]}</Badge>
+          ))}
+        </div>
       </div>
-      <Typography variant="label-sm" color="secondary">Text case variants</Typography>
-      <div className="flex flex-wrap gap-8 items-center">
-        <Badge color="purple" textCase="uppercase">All Caps</Badge>
-        <Badge color="blue" textCase="title">Title Case</Badge>
-        <Badge color="green" textCase="sentence">Sentence case</Badge>
+      <div>
+        <Typography variant="label-sm" color="secondary">Text case variants</Typography>
+        <div className="flex flex-wrap gap-8 items-center mt-8">
+          <Badge color="purple" textCase="uppercase" style={style}>New</Badge>
+          <Badge color="green" textCase="sentence" style={style}>Zero depreciation</Badge>
+        </div>
       </div>
-      <Typography variant="label-sm" color="secondary">Dot & Removable — Title Case</Typography>
-      <div className="flex flex-wrap gap-8 items-center">
-        {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map(
-          (c) => (
-            <Badge key={c} variant="dot" color={c} textCase="title">
-              {solidLabels[c]}
-            </Badge>
-          )
-        )}
-        <Badge removable onRemove={() => {}} textCase="title">
-          Removable
-        </Badge>
+      <div>
+        <Typography variant="label-sm" color="secondary">Dot & removable — sentence case</Typography>
+        <div className="flex flex-wrap gap-8 items-center mt-8">
+          {(["purple", "green", "blue", "orange", "pink", "gray"] as const).map((c) => (
+            <Badge key={c} variant="dot" color={c} textCase="sentence" style={style}>{solidLabels[c]}</Badge>
+          ))}
+          <Badge removable onRemove={() => {}} textCase="sentence" style={style}>Removable</Badge>
+        </div>
       </div>
-      <Typography variant="label-sm" color="secondary">Counter Badges</Typography>
-      <div className="flex flex-wrap gap-8 items-center">
-        <CounterBadge count={3} color="purple" />
-        <CounterBadge count={42} color="pink" />
-        <CounterBadge count={150} max={99} color="blue" />
+      <div>
+        <Typography variant="label-sm" color="secondary">Counter badges</Typography>
+        <div className="flex flex-wrap gap-8 items-center mt-8">
+          <CounterBadge count={3} color="purple" />
+          <CounterBadge count={42} color="pink" />
+          <CounterBadge count={150} max={99} color="blue" />
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="space-y-24">
+      <div>
+        <Typography variant="heading-md" color="primary">Mobile (&lt; 768px) — 12px</Typography>
+        <div className="mt-16">
+          {renderBadges(mobileStyle)}
+        </div>
+      </div>
+
+      <Separator />
+
+      <div>
+        <Typography variant="heading-md" color="primary">Desktop (768px+) — 14px</Typography>
+        <div className="mt-16">
+          {renderBadges(desktopStyle)}
+        </div>
       </div>
     </div>
   );
@@ -369,13 +387,13 @@ function BadgeUsage() {
             <CounterBadge count={3} color="purple" />
           </div>
           {[
-            { label: "New Policy Issued", color: "green" as const, time: "2m ago" },
-            { label: "Payment Pending", color: "orange" as const, time: "1h ago" },
-            { label: "Claim Approved", color: "blue" as const, time: "3h ago" },
+            { label: "New policy issued", color: "green" as const, time: "2m ago" },
+            { label: "Payment pending", color: "orange" as const, time: "1h ago" },
+            { label: "Claim approved", color: "blue" as const, time: "3h ago" },
           ].map((n) => (
             <div key={n.label} className="flex items-center justify-between py-4">
               <div className="flex items-center gap-8">
-                <Badge variant="dot" color={n.color} textCase="title">
+                <Badge variant="dot" color={n.color} textCase="sentence">
                   {n.label}
                 </Badge>
               </div>
@@ -416,7 +434,7 @@ function AlertUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Form Submission
+            Form submission
           </Typography>
           {visible ? (
             <Alert
@@ -432,7 +450,7 @@ function AlertUsage() {
               variant="secondary"
               onClick={() => setVisible(true)}
             >
-              Show Alert
+              Show alert
             </Button>
           )}
         </div>
@@ -457,7 +475,7 @@ function CardPreview() {
           </Card>
         ))}
       </div>
-      <Typography variant="label-sm" color="secondary">Padding Sizes</Typography>
+      <Typography variant="label-sm" color="secondary">Padding sizes</Typography>
       <div className="space-y-12">
         {(["sm", "md", "lg"] as const).map((p) => (
           <Card key={p} variant="default" padding={p}>
@@ -471,15 +489,15 @@ function CardPreview() {
       <Card variant="elevated" padding="md">
         <CardContent>
           <div className="space-y-4">
-            <Typography variant="heading-sm" color="primary">Comprehensive Plan</Typography>
+            <Typography variant="heading-sm" color="primary">Comprehensive plan</Typography>
             <Typography variant="body-sm" color="secondary">
               Full coverage for your vehicle with cashless claims.
             </Typography>
           </div>
         </CardContent>
         <CardFooter>
-          <Button variant="secondary" size="sm">Learn More</Button>
-          <Button variant="primary" size="sm">Buy Now</Button>
+          <Button variant="secondary" size="sm">Learn more</Button>
+          <Button variant="primary" size="sm">Buy now</Button>
         </CardFooter>
       </Card>
       <Card variant="default" padding="md">
@@ -490,7 +508,7 @@ function CardPreview() {
         </CardContent>
         <CardFooter>
           <Button variant="primary" fullWidth>
-            Get Started
+            Get started
           </Button>
         </CardFooter>
       </Card>
@@ -505,7 +523,7 @@ function CardUsage() {
         <CardHeader>
           <div className="flex items-center justify-between w-full">
             <Typography variant="heading-md" color="primary">
-              Premium Plan
+              Premium plan
             </Typography>
             <Badge color="orange" variant="solid" textCase="uppercase">
               Popular
@@ -523,7 +541,7 @@ function CardUsage() {
         </CardContent>
         <CardFooter>
           <Button variant="primary" fullWidth>
-            Buy Now
+            Buy now
           </Button>
         </CardFooter>
       </Card>
@@ -534,10 +552,10 @@ function CardUsage() {
               <Typography variant="label-md" color="brand">🛡</Typography>
             </div>
             <div className="flex-1 min-w-0">
-              <Typography variant="label-md" color="primary">Zero Depreciation</Typography>
+              <Typography variant="label-md" color="primary">Zero depreciation</Typography>
               <Typography variant="caption" color="secondary">Get full claim value</Typography>
             </div>
-            <Badge color="green" variant="dot" textCase="title">Active</Badge>
+            <Badge color="green" variant="dot" textCase="uppercase">Active</Badge>
           </div>
         </CardContent>
       </Card>
@@ -574,7 +592,7 @@ function TypographyPreview() {
         </div>
         <Separator />
         <div className="space-y-4">
-          <Typography variant="heading-xl" color="primary">Your Dashboard</Typography>
+          <Typography variant="heading-xl" color="primary">Your dashboard</Typography>
           <Typography variant="body-md" color="primary">Welcome back, Priya. Here's your policy overview.</Typography>
         </div>
         <Separator />
@@ -616,14 +634,14 @@ function TypographyUsage() {
           INSURANCE
         </Typography>
         <Typography variant="heading-xl" color="primary">
-          Protect What Matters
+          Protect what matters
         </Typography>
         <Typography variant="body-md" color="secondary">
           Simple, affordable insurance for everyone. No paperwork, no hassle.
         </Typography>
         <div className="pt-8">
           <Button variant="primary">
-            Get Started
+            Get started
           </Button>
         </div>
       </CardContent>
@@ -656,7 +674,7 @@ function TextInputUsage() {
           <TextInput label="Email" placeholder="you@example.com" value={email} onChange={setEmail} />
           <TextInput label="Password" type="password" placeholder="••••••••" value={pass} onChange={setPass} />
           <Button variant="primary" fullWidth>
-            Sign In
+            Sign in
           </Button>
         </div>
       </CardContent>
@@ -682,7 +700,7 @@ function TextareaUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Leave Feedback
+            Leave feedback
           </Typography>
           <Textarea label="Your feedback" placeholder="Tell us how we can improve..." value={msg} onChange={setMsg} maxLength={500} showCount helperText="We read every message" />
           <Button variant="primary">
@@ -714,9 +732,9 @@ function DropdownUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Vehicle Info
+            Vehicle info
           </Typography>
-          <Dropdown label="Car Make" placeholder="Select make" options={[{ value: "maruti", label: "Maruti Suzuki" }, { value: "hyundai", label: "Hyundai" }, { value: "tata", label: "Tata Motors" }]} value={make} onChange={(v: string | string[]) => setMake(v as string)} />
+          <Dropdown label="Car make" placeholder="Select make" options={[{ value: "maruti", label: "Maruti Suzuki" }, { value: "hyundai", label: "Hyundai" }, { value: "tata", label: "Tata Motors" }]} value={make} onChange={(v: string | string[]) => setMake(v as string)} />
           <Dropdown label="City" placeholder="Select city" variant="searchable" options={[{ value: "mum", label: "Mumbai" }, { value: "del", label: "Delhi" }, { value: "blr", label: "Bangalore" }, { value: "pun", label: "Pune" }]} value={city} onChange={(v: string | string[]) => setCity(v as string)} />
         </div>
       </CardContent>
@@ -727,21 +745,106 @@ function DropdownUsage() {
 function CheckboxPreview() {
   const [a, setA] = useState(false);
   const [b, setB] = useState(true);
+  const [rowSelected, setRowSelected] = useState<Set<string>>(new Set(["zero-dep", "roadside"]));
+  const [dropdownValue, setDropdownValue] = useState<string[]>(["zero-dep"]);
+  const [sheetValue, setSheetValue] = useState<string[]>(["zero-dep"]);
+
+  const toggleRow = (id: string) =>
+    setRowSelected((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  const addOnOptions: { value: string; label: string; description?: string }[] = [
+    { value: "zero-dep", label: "Zero depreciation", description: "Covers full repair cost without deduction" },
+    { value: "engine", label: "Engine protect", description: "Covers engine and gearbox damage" },
+    { value: "roadside", label: "Roadside assistance" },
+    { value: "key", label: "Key replacement" },
+  ];
+
   return (
-    <div className="flex flex-col gap-20">
-      <div className="pb-16 border-b border-border-subtle">
-        <Typography variant="label-sm" color="secondary" className="mb-12">Interactive states</Typography>
-        <div className="flex flex-col gap-16">
+    <div className="space-y-24">
+      {/* 1. Atom states */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Atom — interactive states</Typography>
+        <div className="flex flex-col gap-16 mt-8">
           <Checkbox label="Unchecked" checked={a} onChange={setA} />
           <Checkbox label="Checked" checked={b} onChange={setB} />
           <Checkbox label="Indeterminate" checked={false} indeterminate onChange={() => {}} />
+          <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
+          <Checkbox label="Disabled checked" checked={true} onChange={() => {}} disabled />
+          <Checkbox label="Error state" checked={false} onChange={() => {}} error />
         </div>
       </div>
+
+      <Separator />
+
+      {/* 2. Checkbox left — desktop */}
       <div>
-        <Typography variant="label-sm" color="secondary" className="mb-12">Disabled & Error</Typography>
-        <div className="flex flex-col gap-16">
-          <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
-          <Checkbox label="Error state" checked={false} onChange={() => {}} error />
+        <Typography variant="label-sm" color="secondary">Checkbox left (desktop)</Typography>
+        <div className="mt-8 preview-cb-left">
+          {addOnOptions.map((opt) => (
+            <CheckboxRow
+              key={opt.value}
+              label={opt.label}
+              description={opt.description}
+              checked={rowSelected.has(opt.value)}
+              onChange={() => toggleRow(opt.value)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* 3. Checkbox right — mobile */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Checkbox right (mobile)</Typography>
+        <div className="mt-8 preview-cb-right">
+          {addOnOptions.map((opt) => (
+            <CheckboxRow
+              key={opt.value}
+              label={opt.label}
+              description={opt.description}
+              checked={rowSelected.has(opt.value)}
+              onChange={() => toggleRow(opt.value)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* 4. Desktop — dropdown multi-select */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Desktop — dropdown multi-select</Typography>
+        <div className="mt-8" style={{ maxWidth: 360 }}>
+          <Dropdown
+            label="Select add-ons"
+            variant="multi"
+            options={addOnOptions.map((o) => ({ value: o.value, label: o.label }))}
+            value={dropdownValue}
+            onChange={(v) => setDropdownValue(v as string[])}
+          />
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* 5. Mobile — bottom sheet multi-select (forceSheet previews sheet on any viewport) */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Mobile — bottom sheet multi-select</Typography>
+        <div className="mt-8" style={{ maxWidth: 360 }}>
+          <Dropdown
+            label="Select add-ons"
+            variant="multi"
+            mobileMode="sheet"
+            forceSheet
+            options={addOnOptions.map((o) => ({ value: o.value, label: o.label }))}
+            value={sheetValue}
+            onChange={(v) => setSheetValue(v as string[])}
+          />
         </div>
       </div>
     </div>
@@ -751,15 +854,31 @@ function CheckboxPreview() {
 function CheckboxUsage() {
   const [terms, setTerms] = useState(false);
   const [marketing, setMarketing] = useState(true);
+  const [addOns, setAddOns] = useState<string[]>(["zero-dep"]);
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
-        <div className="space-y-12">
-          <Typography variant="heading-md" color="primary">
-            Preferences
-          </Typography>
-          <Checkbox label="I agree to terms and conditions" description="Required to continue" checked={terms} onChange={setTerms} />
-          <Checkbox label="Send me promotional emails" checked={marketing} onChange={setMarketing} />
+        <div className="space-y-16">
+          <div className="space-y-12">
+            <Typography variant="heading-md" color="primary">
+              Preferences
+            </Typography>
+            <Checkbox label="I agree to terms and conditions" description="Required to continue" checked={terms} onChange={setTerms} />
+            <Checkbox label="Send me promotional emails" checked={marketing} onChange={setMarketing} />
+          </div>
+          <Separator />
+          <div>
+            <CheckboxGroup
+              label="Add-ons for your policy"
+              options={[
+                { value: "zero-dep", label: "Zero depreciation", description: "No deduction on claims" },
+                { value: "engine", label: "Engine protect", description: "Covers engine damage from waterlogging" },
+                { value: "roadside", label: "Roadside assistance", description: "24/7 towing and on-road help" },
+              ]}
+              value={addOns}
+              onChange={setAddOns}
+            />
+          </div>
           <Button variant="primary" disabled={!terms}>
             Continue
           </Button>
@@ -786,9 +905,9 @@ function RadioUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Choose Plan
+            Choose plan
           </Typography>
-          <RadioGroup label="Insurance Type" options={[{ value: "tp", label: "Third Party", description: "₹2,094/yr" }, { value: "comp", label: "Comprehensive", description: "₹4,835/yr" }, { value: "od", label: "Own Damage", description: "₹3,200/yr" }]} value={plan} onChange={setPlan} variant="card" />
+          <RadioGroup label="Insurance type" options={[{ value: "tp", label: "Third party", description: "₹2,094/yr" }, { value: "comp", label: "Comprehensive", description: "₹4,835/yr" }, { value: "od", label: "Own damage", description: "₹3,200/yr" }]} value={plan} onChange={setPlan} variant="card" />
         </div>
       </CardContent>
     </Card>
@@ -869,7 +988,7 @@ function TogglePreview() {
           Outline
         </Toggle>
         <Toggle variant="outline" pressed onPressedChange={() => {}}>
-          Outline Pressed
+          Outline pressed
         </Toggle>
         <Toggle disabled>Disabled</Toggle>
       </div>
@@ -889,7 +1008,7 @@ function ToggleUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Text Alignment
+            Text alignment
           </Typography>
           <ToggleGroup type="single" value={align} onValueChange={(val: string | string[]) => setAlign(val as string)} variant="outline">
             <ToggleGroupItem value="left">
@@ -1048,7 +1167,7 @@ function TooltipUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Action Toolbar
+            Action toolbar
           </Typography>
           <div className="flex gap-8">
             <Tooltip content="Edit profile">
@@ -1115,7 +1234,7 @@ function ProgressUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Profile Completion
+            Profile completion
           </Typography>
           <div className="flex items-center gap-16">
             <Progress variant="circular" value={72} size="lg" color="primary">
@@ -1127,7 +1246,7 @@ function ProgressUsage() {
             </div>
           </div>
           <Separator />
-          <Typography variant="label-sm" color="secondary">Onboarding Progress</Typography>
+          <Typography variant="label-sm" color="secondary">Onboarding progress</Typography>
           <Progress variant="segmented" value={60} segments={5} size="md" label="Step 3 of 5" showLabel />
         </div>
       </CardContent>
@@ -1159,7 +1278,7 @@ function SeparatorUsage() {
           </Button>
           <Separator label="OR" />
           <Button variant="secondary" fullWidth>
-            Sign in with Email
+            Sign in with email
           </Button>
         </div>
       </CardContent>
@@ -1213,7 +1332,7 @@ function LabelFieldUsage() {
             Registration
           </Typography>
           <TextInput
-            label="Full Name"
+            label="Full name"
             required
             placeholder="John Doe"
             value={name}
@@ -1268,7 +1387,7 @@ function InputGroupUsage() {
             </InputGroup>
           </Field>
           <Button variant="primary">
-            Pay Now
+            Pay now
           </Button>
         </div>
       </CardContent>
@@ -1281,12 +1400,12 @@ function BreadcrumbPreview() {
     <div className="flex flex-col gap-24">
       <div className="pb-20 border-b border-border-subtle">
         <Typography variant="label-sm" color="secondary" className="mb-12">Default</Typography>
-        <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Insurance", href: "#" }, { label: "Car Insurance" }]} />
+        <Breadcrumb items={[{ label: "Home", href: "#" }, { label: "Insurance", href: "#" }, { label: "Car insurance" }]} />
       </div>
 
       <div className="pb-20 border-b border-border-subtle">
         <Typography variant="label-sm" color="secondary" className="mb-12">With icon</Typography>
-        <Breadcrumb items={[{ label: "Home", href: "#", icon: <HomeIcon /> }, { label: "Products", href: "#" }, { label: "Health Insurance" }]} />
+        <Breadcrumb items={[{ label: "Home", href: "#", icon: <HomeIcon /> }, { label: "Products", href: "#" }, { label: "Health insurance" }]} />
       </div>
 
       <div className="pb-20 border-b border-border-subtle">
@@ -1316,10 +1435,10 @@ function BreadcrumbUsage() {
         <div className="space-y-12">
           <Breadcrumb items={[{ label: "Dashboard", href: "#" }, { label: "Policies", href: "#" }, { label: "POL-2024-001" }]} />
           <Typography variant="heading-md" color="primary">
-            Policy Details
+            Policy details
           </Typography>
           <Typography variant="body-sm" color="secondary">
-            Comprehensive Car Insurance — Active
+            Comprehensive car insurance — Active
           </Typography>
         </div>
       </CardContent>
@@ -1390,11 +1509,11 @@ function CalendarUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Policy Start Date
+            Policy start date
           </Typography>
           <Calendar variant="single" display="dropdown" value={d} onChange={(v: Date | DateRange | Date[]) => setD(v as Date)} minDate={new Date()} />
           <Button variant="primary">
-            Confirm Date
+            Confirm date
           </Button>
         </div>
       </CardContent>
@@ -1440,7 +1559,7 @@ function TableUsage() {
         <div className="space-y-12">
           <div className="flex items-center justify-between">
             <Typography variant="heading-md" color="primary">
-              Recent Policies
+              Recent policies
             </Typography>
             <Button variant="secondary">
               Export
@@ -1463,7 +1582,7 @@ function TableUsage() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Third Party</TableCell>
+                <TableCell>Third party</TableCell>
                 <TableCell>₹2,094</TableCell>
                 <TableCell>
                   <Badge color="orange" variant="solid" textCase="uppercase">Pending</Badge>
@@ -1478,17 +1597,82 @@ function TableUsage() {
 }
 
 function AvatarPreview() {
+  const reliableImg = "https://i.pravatar.cc/150?img=5";
+  const brokenImg = "https://broken.invalid/photo.jpg";
+
   return (
-    <div className="space-y-16">
-      <div className="flex items-center gap-12">
-        {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
-          <Avatar key={s} initials="AF" size={s} />
-        ))}
+    <div className="space-y-24">
+      {/* --- Image avatars --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Image — all sizes</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
+            <Avatar key={s} src={reliableImg} alt="Demo user" size={s} />
+          ))}
+        </div>
       </div>
-      <div className="flex items-center gap-12">
-        <Avatar initials="AB" size="lg" shape="circle" />
-        <Avatar initials="CD" size="lg" shape="square" />
-        <Avatar size="lg" />
+
+      <Separator />
+
+      {/* --- Initials avatars --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Initials — all sizes</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
+            <Avatar key={s} initials="PS" alt="Priya Sharma" size={s} />
+          ))}
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* --- Fallback (no image, no initials) --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Fallback icon — all sizes</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
+            <Avatar key={s} size={s} />
+          ))}
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* --- Image error → initials fallback --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Image error → falls back to initials</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          <Avatar src={brokenImg} initials="RM" alt="Rahul Menon" size="md" />
+          <Avatar src={brokenImg} initials="AD" alt="Anita Desai" size="lg" />
+          <Avatar src={brokenImg} initials="VK" alt="Virat Kohli" size="xl" />
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* --- Image error → fallback icon (no initials) --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Image error → falls back to icon (no initials)</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          <Avatar src={brokenImg} size="md" />
+          <Avatar src={brokenImg} size="lg" />
+          <Avatar src={brokenImg} size="xl" />
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* --- Shapes --- */}
+      <div>
+        <Typography variant="label-sm" color="secondary">Circle (person) vs Square (entity)</Typography>
+        <div className="flex items-center gap-12 mt-8">
+          <Avatar initials="PS" alt="Priya Sharma" size="lg" shape="circle" />
+          <Avatar initials="AC" alt="ACKO" size="lg" shape="square" />
+          <Avatar src={reliableImg} alt="User photo" size="lg" shape="circle" />
+          <Avatar src={reliableImg} alt="Company logo" size="lg" shape="square" />
+          <Avatar size="lg" shape="circle" />
+          <Avatar size="lg" shape="square" />
+        </div>
       </div>
     </div>
   );
@@ -1500,10 +1684,10 @@ function AvatarUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Team Members
+            Team members
           </Typography>
           {[
-            { name: "Priya Sharma", role: "Product Lead" },
+            { name: "Priya Sharma", role: "Product lead" },
             { name: "Rahul Menon", role: "Engineer" },
             { name: "Anita Desai", role: "Designer" },
           ].map((m) => (
@@ -1545,7 +1729,7 @@ function SkeletonUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Loading State
+            Loading state
           </Typography>
           <div className="flex items-center gap-12">
             <Skeleton variant="circular" width={48} height={48} />
@@ -1597,9 +1781,9 @@ function NavigationWizardPreview() {
         <Typography variant="label-sm" color="secondary" className="mb-16">Vertical</Typography>
         <NavigationWizard
           steps={[
-            { label: "Personal Info", description: "Name, email, phone" },
-            { label: "Vehicle Details", description: "Make, model, year" },
-            { label: "Choose Plan" },
+            { label: "Personal info", description: "Name, email, phone" },
+            { label: "Vehicle details", description: "Make, model, year" },
+            { label: "Choose plan" },
             { label: "Payment" },
           ]}
           currentStep={2}
@@ -1665,7 +1849,7 @@ function PaginationUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Search Results
+            Search results
           </Typography>
           <Typography variant="body-sm" color="secondary">
             Showing 1-10 of 200 policies
@@ -1695,7 +1879,7 @@ function ScrollAreaUsage() {
       <CardContent>
         <div className="space-y-12">
           <Typography variant="heading-md" color="primary">
-            Activity Log
+            Activity log
           </Typography>
           <ScrollArea maxHeight={140} className="border border-border-subtle rounded-xl p-12">
             {[
@@ -1732,10 +1916,10 @@ function DialogPreview() {
         <div className="flex flex-col gap-16">
           <div className="flex gap-12 flex-wrap">
             <Button variant="primary" onClick={() => setOpen(true)}>
-              Open Dialog
+              Open dialog
             </Button>
             <Button variant="secondary" onClick={() => setConfirmOpen(true)}>
-              Confirm Dialog
+              Confirm dialog
             </Button>
           </div>
           <Dialog
@@ -1838,20 +2022,20 @@ function DrawerPreview() {
               variant={side === "right" ? "primary" : "secondary"}
               onClick={() => { setSide("right"); setOpen(true); }}
             >
-              Open Right
+              Open right
             </Button>
             <Button
               fullWidth
               variant={side === "left" ? "primary" : "secondary"}
               onClick={() => { setSide("left"); setOpen(true); }}
             >
-              Open Left
+              Open left
             </Button>
             <Button
               variant={side === "bottom" ? "primary" : "secondary"}
               onClick={() => { setSide("bottom"); setOpen(true); }}
             >
-              Open Bottom
+              Open bottom
             </Button>
           </div>
           <Drawer
@@ -2153,7 +2337,7 @@ function FormPreview() {
   const [phone, setPhone] = useState("");
   return (
     <div className="space-y-16">
-      <Typography variant="label-sm" color="secondary">Basic Form</Typography>
+      <Typography variant="label-sm" color="secondary">Basic form</Typography>
       <Form onSubmit={() => new Promise((r) => setTimeout(() => { setSubmitted(true); r(undefined); }, 800))}>
         <FormItem name="name">
           <TextInput label="Full name" value={name} onChange={setName} id="demo-name" placeholder="Enter your full name" required />
@@ -2182,7 +2366,7 @@ function FormUsage() {
   return (
     <Card variant="elevated" padding="md">
       <CardHeader>
-        <Typography variant="heading-md" color="primary">Get a Quote</Typography>
+        <Typography variant="heading-md" color="primary">Get a quote</Typography>
       </CardHeader>
       <CardContent>
         <Form onSubmit={() => Promise.resolve()}>
@@ -2194,7 +2378,7 @@ function FormUsage() {
             <FormMessage>Enter pincode for location-based pricing.</FormMessage>
           </FormItem>
           <Button variant="primary" type="submit" fullWidth>
-            Get My Quote
+            Get my quote
           </Button>
         </Form>
       </CardContent>
@@ -2325,7 +2509,7 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-surface text-text-default">
+    <div className="h-screen flex flex-col overflow-hidden bg-surface text-text-default">
       {/* ── Top bar ── */}
       <header className="shrink-0 flex items-center justify-between px-24 py-12 border-b border-border-subtle bg-surface-raised">
         <div className="flex items-center gap-12">
@@ -2441,7 +2625,6 @@ function App() {
               </div>
             ) : (
               <div
-                className="overflow-hidden"
                 style={{
                   borderRadius: "var(--radius-4xl)",
                   background: "var(--color-card-bg)",
@@ -2462,7 +2645,7 @@ function App() {
             <div className="flex items-center gap-8">
               <div className="w-4 h-16 rounded-full bg-primary" />
               <Typography variant="label-md" color="primary">
-                In Context
+                In context
               </Typography>
             </div>
             <Typography variant="caption" color="secondary">

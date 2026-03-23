@@ -10,6 +10,8 @@ import {
   type ReactNode,
 } from "react";
 import { clsx } from "clsx";
+import { CheckboxRow } from "@acko/checkbox";
+import { Drawer } from "@acko/drawer";
 
 export interface DropdownOption {
   value: string;
@@ -26,6 +28,9 @@ export interface DropdownProps {
   value: string | string[];
   onChange: (value: string | string[]) => void;
   variant?: "single" | "multi" | "searchable" | "grouped";
+  mobileMode?: "sheet" | "inline";
+  /** Force the bottom sheet open regardless of viewport — for preview/testing only */
+  forceSheet?: boolean;
   size?: "sm" | "md" | "lg";
   state?: "default" | "error";
   disabled?: boolean;
@@ -33,6 +38,20 @@ export interface DropdownProps {
   helperText?: string;
   errorText?: string;
   className?: string;
+}
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  return isMobile;
 }
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
@@ -44,6 +63,8 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       value,
       onChange,
       variant = "single",
+      mobileMode,
+      forceSheet = false,
       size = "md",
       state = "default",
       disabled = false,
@@ -56,6 +77,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [sheetOpen, setSheetOpen] = useState(false);
     const [focusedIndex, setFocusedIndex] = useState(-1);
     const [searchQuery, setSearchQuery] = useState("");
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -66,10 +88,14 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     const menuId = `${id}-menu`;
     const labelId = `${id}-label`;
 
+    const isMobile = useIsMobile();
     const isMulti = variant === "multi";
     const isSearchable = variant === "searchable";
     const isGrouped = variant === "grouped";
     const isError = state === "error";
+
+    const resolvedMobileMode = mobileMode ?? (isMulti ? "sheet" : "inline");
+    const useSheet = forceSheet || (isMobile && resolvedMobileMode === "sheet");
 
     const selectedValues = Array.isArray(value)
       ? value
@@ -104,16 +130,23 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 
     useEffect(() => {
       if (!isOpen) return;
-      const handler = (e: MouseEvent) => {
+      const handler = (e: MouseEvent | TouchEvent) => {
+        const target = (e as TouchEvent).touches
+          ? (e as TouchEvent).touches[0]?.target
+          : (e as MouseEvent).target;
         if (
           wrapperRef.current &&
-          !wrapperRef.current.contains(e.target as Node)
+          !wrapperRef.current.contains(target as Node)
         ) {
           close();
         }
       };
-      document.addEventListener("mousedown", handler);
-      return () => document.removeEventListener("mousedown", handler);
+      document.addEventListener("mousedown", handler as EventListener);
+      document.addEventListener("touchstart", handler as EventListener);
+      return () => {
+        document.removeEventListener("mousedown", handler as EventListener);
+        document.removeEventListener("touchstart", handler as EventListener);
+      };
     }, [isOpen, close]);
 
     useEffect(() => {
@@ -131,6 +164,16 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       } else {
         onChange(optionValue);
         close();
+        setSheetOpen(false);
+      }
+    };
+
+    const handleTriggerClick = () => {
+      if (disabled) return;
+      if (useSheet) {
+        setSheetOpen(true);
+      } else {
+        setIsOpen(!isOpen);
       }
     };
 
@@ -141,16 +184,18 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         case "Enter":
         case " ":
           e.preventDefault();
-          if (!isOpen) {
+          if (!isOpen && !useSheet) {
             setIsOpen(true);
             setFocusedIndex(0);
+          } else if (useSheet && !sheetOpen) {
+            setSheetOpen(true);
           } else if (focusedIndex >= 0 && flatOptions[focusedIndex]) {
             handleSelect(flatOptions[focusedIndex].value);
           }
           break;
         case "ArrowDown":
           e.preventDefault();
-          if (!isOpen) {
+          if (!isOpen && !useSheet) {
             setIsOpen(true);
             setFocusedIndex(0);
           } else {
@@ -174,6 +219,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         case "Escape":
           e.preventDefault();
           close();
+          setSheetOpen(false);
           break;
       }
     };
@@ -190,41 +236,22 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     const hasFilled = selectedValues.length > 0;
 
     const getDisplayValue = () => {
-      if (isMulti && selectedValues.length > 0) {
-        return (
-          <span className="acko-dropdown-tags">
-            {selectedValues.map((v) => {
-              const opt = options.find((o) => o.value === v);
-              return (
-                <span key={v} className="acko-dropdown-tag">
-                  {opt?.label || v}
-                  <button
-                    type="button"
-                    className="acko-dropdown-tag-remove"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSelect(v);
-                    }}
-                    aria-label={`Remove ${opt?.label || v}`}
-                  >
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M18 6L6 18M6 6l12 12" />
-                    </svg>
-                  </button>
-                </span>
-              );
-            })}
-          </span>
-        );
+      if (isMulti) {
+        if (selectedValues.length === 0) {
+          return (
+            <span className="acko-dropdown-value acko-dropdown-placeholder">
+              {placeholder}
+            </span>
+          );
+        }
+        const count = selectedValues.length;
+        const firstLabel = options.find((o) => o.value === selectedValues[0])?.label ?? selectedValues[0];
+        const secondLabel = options.find((o) => o.value === selectedValues[1])?.label ?? selectedValues[1];
+        let text: string;
+        if (count === 1) text = firstLabel;
+        else if (count === 2) text = `${firstLabel}, ${secondLabel}`;
+        else text = `${firstLabel}, ${secondLabel}, +${count - 2} more`;
+        return <span className="acko-dropdown-value">{text}</span>;
       }
 
       const selected = options.find((o) => o.value === value);
@@ -293,9 +320,37 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         );
       });
 
+    const renderSheetContent = () => {
+      if (isMulti) {
+        return (
+          <div className="acko-dropdown-sheet-rows">
+            {filteredOptions.map((option) => (
+              <CheckboxRow
+                key={option.value}
+                label={option.label}
+                checked={selectedValues.includes(option.value)}
+                onChange={() => handleSelect(option.value)}
+              />
+            ))}
+          </div>
+        );
+      }
+      return (
+        <ul role="listbox" className="acko-dropdown-sheet-list" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {renderOptions(filteredOptions)}
+        </ul>
+      );
+    };
+
+    const showInlineMenu = isOpen && !useSheet;
+
     return (
       <div
-        ref={ref}
+        ref={(node) => {
+          wrapperRef.current = node;
+          if (typeof ref === "function") ref(node);
+          else if (ref) ref.current = node;
+        }}
         className={clsx("acko-dropdown", className)}
         onKeyDown={handleKeyDown}
         {...rest}
@@ -319,7 +374,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           ref={triggerRef}
           type="button"
           role="combobox"
-          aria-expanded={isOpen}
+          aria-expanded={isOpen || sheetOpen}
           aria-haspopup="listbox"
           aria-controls={isOpen ? menuId : undefined}
           aria-labelledby={labelId}
@@ -331,9 +386,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             hasFilled && "acko-dropdown-trigger-filled"
           )}
           disabled={disabled}
-          onClick={() => {
-            if (!disabled) setIsOpen(!isOpen);
-          }}
+          onClick={handleTriggerClick}
         >
           {getDisplayValue()}
           <span
@@ -358,13 +411,33 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           </span>
         </button>
 
-        {isOpen && (
+        {showInlineMenu && isMulti && (
+          <div
+            id={menuId}
+            role="group"
+            aria-labelledby={labelId}
+            className="acko-dropdown-menu acko-dropdown-menu-multi"
+          >
+            {filteredOptions.map((option) => (
+              <CheckboxRow
+                key={option.value}
+                label={option.label}
+                checked={selectedValues.includes(option.value)}
+                onChange={() => handleSelect(option.value)}
+              />
+            ))}
+            {filteredOptions.length === 0 && (
+              <span className="acko-dropdown-no-results">No options found</span>
+            )}
+          </div>
+        )}
+
+        {showInlineMenu && !isMulti && (
           <ul
             ref={menuRef}
             id={menuId}
             role="listbox"
             aria-labelledby={labelId}
-            aria-multiselectable={isMulti || undefined}
             className="acko-dropdown-menu"
           >
             {isSearchable && (
@@ -403,6 +476,18 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               </li>
             )}
           </ul>
+        )}
+
+        {sheetOpen && (
+          <Drawer
+            open={sheetOpen}
+            onClose={() => setSheetOpen(false)}
+            side="bottom"
+            size="sm"
+            title={label}
+          >
+            {renderSheetContent()}
+          </Drawer>
         )}
 
         {isError && errorText && (

@@ -7,13 +7,14 @@
 
 /* --- Text case --- */
 .acko-badge-uppercase { text-transform: uppercase; letter-spacing: 0.04em; }
-.acko-badge-title-case { text-transform: capitalize; }
 .acko-badge-sentence-case { text-transform: none; }
 
-/* --- Sizes --- */
-.acko-badge-sm { @apply py-4 px-8; font-size: var(--font-label-sm-size); }
-.acko-badge-md { @apply py-6 px-8; font-size: var(--font-caption-size); }
-.acko-badge-lg { @apply p-8; font-size: var(--font-body-sm-size); }
+/* --- Responsive sizing (md mobile → lg desktop) --- */
+.acko-badge { @apply py-6 px-8; font-size: var(--font-caption-size); }
+
+@media (min-width: 768px) {
+  .acko-badge { @apply py-6 px-8; font-size: var(--font-body-sm-size); }
+}
 
 /* --- Solid variant --- */
 .acko-badge-solid-purple {

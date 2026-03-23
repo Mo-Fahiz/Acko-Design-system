@@ -1,7 +1,7 @@
 /* Checkbox — @acko/css/checkbox.css */
 
 .acko-checkbox {
-  @apply inline-flex items-start cursor-pointer select-none gap-12;
+  @apply inline-flex items-center cursor-pointer select-none gap-12;
 }
 
 .acko-checkbox.acko-checkbox-disabled {
@@ -157,3 +157,130 @@
 
 .acko-checkbox-disabled .acko-checkbox-label-text { color: var(--color-text-disabled); }
 .acko-checkbox-disabled .acko-checkbox-description { color: var(--color-text-disabled); }
+
+
+/* ============================================================
+   CheckboxRow — full-width tappable row
+   Desktop: checkbox LEFT, label RIGHT
+   Mobile:  label LEFT, checkbox RIGHT
+   ============================================================ */
+
+.acko-cb-row {
+  @apply flex items-center w-full cursor-pointer select-none gap-12 py-12 min-h-44;
+  position: relative;
+  transition: background-color 100ms ease;
+  flex-direction: row-reverse;
+}
+
+.acko-cb-row::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border-subtle);
+  pointer-events: none;
+}
+
+.acko-cb-row:last-child::after {
+  display: none;
+}
+
+/* Row content (label + description) */
+.acko-cb-row-content {
+  @apply flex flex-col flex-1 gap-2;
+}
+
+.acko-cb-row-label {
+  font-size: var(--font-body-md-size);
+  line-height: var(--font-body-md-line);
+  color: var(--color-text-default);
+}
+
+.acko-cb-row-description {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-secondary);
+}
+
+/* Row reuses the atom box — size it to md (20px) */
+.acko-cb-row .acko-checkbox-box {
+  @apply w-20 h-20;
+  border-radius: var(--radius-md);
+}
+
+.acko-cb-row .acko-checkbox-icon svg { @apply w-12 h-12; }
+
+/* --- Row states --- */
+
+.acko-cb-row-checked .acko-checkbox-box {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  animation: acko-checkbox-bounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.acko-cb-row-indeterminate .acko-checkbox-box {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Error row */
+.acko-cb-row-error .acko-checkbox-box {
+  border-color: var(--color-error);
+}
+
+/* Desktop hover (pointer device only) */
+@media (hover: hover) and (pointer: fine) {
+  .acko-cb-row:hover {
+    background-color: var(--color-surface-hover);
+  }
+}
+
+/* Focus visible on hidden input targets row */
+.acko-cb-row .acko-checkbox-native:focus-visible + .acko-checkbox-box {
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+  border-color: var(--color-primary);
+}
+
+/* --- Mobile: flip checkbox to right --- */
+@media (max-width: 767px) {
+  .acko-cb-row {
+    @apply py-16 min-h-52;
+    flex-direction: row;
+  }
+
+  .acko-cb-row .acko-checkbox-box {
+    @apply w-24 h-24;
+    border-radius: var(--radius-md);
+  }
+
+  .acko-cb-row .acko-checkbox-icon svg { @apply w-14 h-14; }
+
+  .acko-cb-row-label {
+    font-size: var(--font-body-lg-size);
+    line-height: var(--font-body-lg-line);
+  }
+
+  /* Mobile: active instead of hover */
+  .acko-cb-row:active {
+    background-color: var(--color-surface-hover);
+  }
+}
+
+
+/* ============================================================
+   CheckboxGroup — plain list, no container
+   ============================================================ */
+
+.acko-cb-list {
+  @apply flex flex-col;
+}
+
+.acko-cb-list-label {
+  font-size: var(--font-label-lg-size);
+  font-weight: var(--font-label-lg-weight);
+  line-height: var(--font-label-lg-line);
+  color: var(--color-text-default);
+  @apply mb-8;
+}

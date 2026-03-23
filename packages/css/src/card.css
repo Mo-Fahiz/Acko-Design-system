@@ -4,7 +4,6 @@
    ============================================================ */
 
 .acko-card {
-  overflow: hidden;
   border-radius: var(--radius-4xl);
 }
 

@@ -42,8 +42,8 @@
 .acko-btn-xs .acko-btn-icon { @apply w-12 h-12; }
 .acko-btn-sm .acko-btn-icon { @apply w-16 h-16; }
 .acko-btn-md .acko-btn-icon { @apply w-16 h-16; }
-.acko-btn-lg .acko-btn-icon { @apply w-20 h-20; }
-.acko-btn-xl .acko-btn-icon { @apply w-24 h-24; }
+.acko-btn-lg .acko-btn-icon { @apply w-24 h-24; }
+.acko-btn-xl .acko-btn-icon { @apply w-32 h-32; }
 
 /* --- Icon-only (square) --- */
 

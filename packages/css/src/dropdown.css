@@ -274,6 +274,42 @@
   border-color: var(--color-input-disabled-border);
 }
 
+/* Multi-select menu with CheckboxRow */
+.acko-dropdown-menu-multi .acko-cb-row {
+  flex-direction: row-reverse;
+  @apply px-12;
+  border-radius: var(--radius-lg);
+}
+
+/* Sheet (Drawer) content — always render CheckboxRow in mobile style regardless of viewport */
+.acko-dropdown-sheet-rows .acko-cb-row {
+  flex-direction: row;
+  @apply py-16 min-h-52;
+}
+
+.acko-dropdown-sheet-rows .acko-cb-row .acko-checkbox-box {
+  @apply w-24 h-24;
+  border-radius: var(--radius-md);
+}
+
+.acko-dropdown-sheet-rows .acko-cb-row .acko-checkbox-icon svg {
+  @apply w-14 h-14;
+}
+
+.acko-dropdown-sheet-rows .acko-cb-row-label {
+  font-size: var(--font-body-lg-size);
+  line-height: var(--font-body-lg-line);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .acko-dropdown-menu-multi .acko-cb-row::after {
+    display: none;
+  }
+  .acko-dropdown-menu-multi .acko-cb-row:hover {
+    background-color: var(--color-primary-subtle);
+  }
+}
+
 [data-theme="dark"] .acko-dropdown-menu {
   background-color: var(--color-surface-raised);
   border-color: var(--color-border);

@@ -1,8 +1,8 @@
 ---
 description: Typography tokens — font family, type scale, weight rules, and sizing guidelines
 globs: "**/*.css,**/*.tsx"
+alwaysApply: true
 ---
-
 # Typography Tokens
 
 ## Font Family
@@ -102,7 +102,6 @@ Buttons use their own scale — not body tokens:
 
 ## Rules
 
-- Sentence case everywhere (headings, buttons, labels, nav)
 - Minimum 14px for body text, 12px for labels, 11px absolute minimum
 - Medium (500) for emphasis in body — not Bold
 - Semibold (600) for headings, Bold (700) only for display
@@ -111,6 +110,93 @@ Buttons use their own scale — not body tokens:
 - `font-variant-numeric: tabular-nums` for dynamic numbers
 
 Typography tokens are **theme-agnostic** — they do not change between themes.
+
+## Text Casing
+
+All UI text must follow **sentence case** — capitalize only the first word and proper nouns/exceptions. This applies across the entire system: headings, buttons, labels, tabs, breadcrumbs, navigation items, links, and toast actions.
+
+> Capitalize only the first word of a text label. All other words are lowercase unless they are proper nouns or fall under the exceptions below.
+
+### Examples
+
+**Correct**
+
+- `Get a quote`
+- `View my policy`
+- `Continue to payment`
+- `Check IDV`
+- `Claim your NCB`
+- `Pay with ACKO Drive`
+- `Find clinics near Bengaluru`
+
+**Incorrect**
+
+- `Get A Quote`
+- `View My Policy`
+- `Continue To Payment`
+- `Check Idv`
+- `Claim Your NCB`
+- `find clinics near bengaluru`
+
+### Exceptions
+
+These terms always retain their defined casing regardless of position in the label.
+
+#### Brand names
+
+- `ACKO` — always all-caps
+- `ACKO [Product]` — sub-brands retain their casing (e.g., `ACKO Drive`, `ACKO Clinic`)
+
+#### Proper nouns
+
+City names, state names, country names, and person names retain their standard capitalization. Sentence case applies to common nouns and verbs — not proper nouns.
+
+- `Check plans in Hyderabad` — correct
+- `Check plans in hyderabad` — incorrect
+- `Aadhaar` — always capitalized as a proper noun (not `AADHAAR` or `aadhaar`)
+
+#### Regulatory & government bodies
+
+- `IRDAI` — Insurance Regulatory and Development Authority of India
+
+#### Insurance & financial acronyms
+
+- `IDV` — Insured Declared Value
+- `NCB` — No Claim Bonus
+- `KYC` — Know Your Customer
+- `GST` — Goods and Services Tax
+- `EMI` — Equated Monthly Instalment
+- `OTP` — One Time Password
+
+#### Identity & document acronyms
+
+- `PAN` — Permanent Account Number
+
+### All-caps emphasis
+
+Words like `FREE`, `NEW`, `SAVE` must remain lowercase in button, label, and navigation text. All-caps emphasis belongs in the `<Badge>` component (which defaults to `textCase="uppercase"`) — not in text labels.
+
+- `Get a free quote` — correct (button)
+- `Get a FREE quote` — incorrect (button)
+- `FREE` — correct (inside a `<Badge>`)
+
+### Common nouns
+
+Product and coverage terms like `premium`, `claim`, `policy`, `cover` are common nouns — always lowercase unless they start the sentence.
+
+### Where this applies
+
+| Component | Applies? |
+|-----------|----------|
+| Button labels | Yes |
+| Tab labels | Yes |
+| Breadcrumb text | Yes |
+| Navigation items | Yes |
+| Link text | Yes |
+| Toast action labels | Yes |
+| Dialog action buttons | Yes |
+| Headings | Yes |
+| Badge | No — Badge has its own `textCase` prop (`uppercase` or `sentence`, default: `uppercase`). See `badge.react.mdc` → **Text Case Selection** for the decision table. |
 
 ## Typography Color System
 

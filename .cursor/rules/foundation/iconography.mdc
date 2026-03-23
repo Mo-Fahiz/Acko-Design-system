@@ -52,8 +52,8 @@ Icons are sized using Tailwind spacing utilities (1 unit = 1px). Do not use typo
 | `xs` | 12px | `size-12` |
 | `sm` | 16px | `size-16` |
 | `md` | 16px | `size-16` |
-| `lg` | 20px | `size-20` |
-| `xl` | 24px | `size-24` |
+| `lg` | 24px | `size-24` |
+| `xl` | 32px | `size-32` |
 
 ### Rules
 

@@ -36,8 +36,23 @@
 @import "@acko/css/form.css";
 @import "@acko/css/otp-input.css";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: "Euclid Circular B", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.preview-cb-left .acko-cb-row {
+  flex-direction: row-reverse;
+}
+
+.preview-cb-right .acko-cb-row {
+  flex-direction: row;
 }
