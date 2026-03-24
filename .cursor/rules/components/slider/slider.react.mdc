@@ -17,7 +17,7 @@ interface SliderProps {
   disabled?: boolean;    // default: false
   showValue?: boolean;   // show current value label
   showTicks?: boolean;   // show tick marks
-  size?: 'sm' | 'md' | 'lg';  // default: 'md'
+  size?: 'sm' | 'md' | 'lg';  // default: 'md' — thumb 16px / 20px / 24px, track 4px / 6px / 8px
   className?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;

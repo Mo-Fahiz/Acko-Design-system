@@ -1,12 +1,14 @@
 /* ============================================================
    Slider — @acko/css/slider.css
+   Track: inactive = horizontal grey gradient; fill = brand purple gradient.
+   Thumb: purple-50 fill + vertical purple-500→700 stroke + tinted shadow.
    ============================================================ */
 
 .acko-slider {
   @apply flex flex-col gap-8 w-full select-none;
 }
 
-/* --- Track --- */
+/* --- Track (unfilled / rail) --- */
 
 .acko-slider-track {
   position: relative;
@@ -14,20 +16,29 @@
   align-items: center;
   cursor: pointer;
   touch-action: none;
+  background: linear-gradient(
+    90deg,
+    var(--color-slider-track-inactive-from),
+    var(--color-slider-track-inactive-to)
+  );
 }
 
-.acko-slider-sm .acko-slider-track { @apply h-4 rounded-full; background: var(--color-border-subtle); }
-.acko-slider-md .acko-slider-track { @apply h-6 rounded-full; background: var(--color-border-subtle); }
-.acko-slider-lg .acko-slider-track { @apply h-8 rounded-full; background: var(--color-border-subtle); }
+.acko-slider-sm .acko-slider-track { @apply h-4 rounded-full; }
+.acko-slider-md .acko-slider-track { @apply h-6 rounded-full; }
+.acko-slider-lg .acko-slider-track { @apply h-8 rounded-full; }
 
-/* --- Fill --- */
+/* --- Fill (value / active segment) --- */
 
 .acko-slider-fill {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  background: var(--color-primary);
+  background: linear-gradient(
+    90deg,
+    var(--color-slider-track-active-from),
+    var(--color-slider-track-active-to)
+  );
   border-radius: var(--radius-full);
   pointer-events: none;
 }
@@ -36,29 +47,50 @@
 
 .acko-slider-thumb {
   position: absolute;
+  z-index: 1;
   transform: translateX(-50%);
-  background: var(--color-surface-raised);
-  border: 2px solid var(--color-primary);
+  border: 1px solid transparent;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
   cursor: grab;
-  transition: box-shadow 150ms ease, transform 100ms ease;
+  transition: box-shadow 150ms var(--ease-out-cubic), transform 100ms var(--ease-out-cubic);
   outline: none;
+  /* Inner fill + vertical gradient stroke (same technique as badge gradients) */
+  background:
+    linear-gradient(var(--color-slider-thumb-bg), var(--color-slider-thumb-bg)) padding-box,
+    linear-gradient(
+      180deg,
+      var(--color-slider-thumb-stroke-from),
+      var(--color-slider-thumb-stroke-to)
+    ) border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: var(--shadow-slider-thumb);
 }
 
-.acko-slider-sm .acko-slider-thumb { @apply w-16 h-16; }
-.acko-slider-md .acko-slider-thumb { @apply w-20 h-20; }
-.acko-slider-lg .acko-slider-thumb { @apply w-24 h-24; }
+.acko-slider-sm .acko-slider-thumb {
+  width: var(--slider-thumb-size-sm);
+  height: var(--slider-thumb-size-sm);
+}
+.acko-slider-md .acko-slider-thumb {
+  width: var(--slider-thumb-size-md);
+  height: var(--slider-thumb-size-md);
+}
+.acko-slider-lg .acko-slider-thumb {
+  width: var(--slider-thumb-size-lg);
+  height: var(--slider-thumb-size-lg);
+}
 
 .acko-slider-thumb:hover {
-  box-shadow: var(--shadow-md), 0 0 0 0.25rem var(--color-primary-ring);
+  box-shadow: var(--shadow-slider-thumb), var(--shadow-md);
 }
 
 .acko-slider-thumb:focus-visible {
-  box-shadow: var(--shadow-focus-ring);
+  box-shadow: var(--shadow-slider-thumb), var(--shadow-focus-ring);
 }
 
-.acko-slider-thumb:active { cursor: grabbing; transform: translateX(-50%) scale(1.1); }
+.acko-slider-thumb:active {
+  cursor: grabbing;
+  transform: translateX(-50%) scale(1.1);
+}
 
 /* --- Ticks --- */
 
@@ -70,10 +102,12 @@
   @apply absolute w-2 h-2;
   transform: translateX(-50%);
   border-radius: var(--radius-full);
-  background: var(--color-border-subtle);
+  background: var(--color-slider-track-inactive-to);
 }
 
-.acko-slider-tick-filled { background: var(--color-primary); }
+.acko-slider-tick-filled {
+  background: var(--color-slider-track-active-to);
+}
 
 /* --- Value label --- */
 
@@ -91,14 +125,17 @@
   pointer-events: none;
 }
 
-.acko-slider-disabled .acko-slider-fill { background: var(--color-text-disabled); }
-.acko-slider-disabled .acko-slider-thumb { border-color: var(--color-text-disabled); cursor: not-allowed; }
-
-/* --- Dark theme --- */
-[data-theme="dark"] .acko-slider-sm .acko-slider-track,
-[data-theme="dark"] .acko-slider-md .acko-slider-track,
-[data-theme="dark"] .acko-slider-lg .acko-slider-track {
-  background: var(--color-track-inactive);
+.acko-slider-disabled .acko-slider-fill {
+  background: var(--color-text-disabled);
 }
 
-[data-theme="dark"] .acko-slider-tick { background: var(--color-track-inactive); }
+.acko-slider-disabled .acko-slider-thumb {
+  background: var(--color-disabled-bg);
+  border: 1px solid var(--color-disabled-border);
+  box-shadow: none;
+  background-clip: border-box;
+}
+
+.acko-slider-disabled .acko-slider-tick {
+  background: var(--color-track-inactive);
+}

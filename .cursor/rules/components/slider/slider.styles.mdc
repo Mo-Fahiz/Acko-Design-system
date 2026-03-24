@@ -8,31 +8,31 @@ alwaysApply: false
 
 ## Class structure
 - `.acko-slider` — flex column, `width: 100%`, `user-select: none`
-- `.acko-slider-track` — relative container, `cursor: pointer`, `touch-action: none`, contains fill + thumb
-- `.acko-slider-fill` — absolute, left-anchored, `background: var(--color-primary)`, `border-radius: var(--radius-full)`
-- `.acko-slider-thumb` — absolute, `transform: translateX(-50%)`, bordered circle, `cursor: grab`
+- `.acko-slider-track` — relative container, `cursor: pointer`, `touch-action: none`; **rail** = horizontal gradient `--color-slider-track-inactive-from` → `--color-slider-track-inactive-to`
+- `.acko-slider-fill` — absolute, left-anchored, **filled segment** = horizontal gradient `--color-slider-track-active-from` → `--color-slider-track-active-to`, `border-radius: var(--radius-full)`
+- `.acko-slider-thumb` — absolute, `transform: translateX(-50%)`, pill circle; fill `--color-slider-thumb-bg`; **vertical** gradient border `--color-slider-thumb-stroke-from` → `--color-slider-thumb-stroke-to` (180deg); `box-shadow: var(--shadow-slider-thumb)`; `cursor: grab`
 - `.acko-slider-ticks` — tick mark row beneath track
-- `.acko-slider-tick` — `width/height: 2px`, `background: var(--color-border-subtle)`
-- `.acko-slider-tick-filled` — `background: var(--color-primary)`
+- `.acko-slider-tick` — `width/height: 2px`; unfilled uses `--color-slider-track-inactive-to`
+- `.acko-slider-tick-filled` — `--color-slider-track-active-to`
 - `.acko-slider-value` — right-aligned numeric label
 
 ## Size classes
-| Class | Track height | Thumb size |
-|-------|-------------|-----------|
-| `.acko-slider-sm` | `4px` | `16px` |
-| `.acko-slider-md` | `6px` | `20px` |
-| `.acko-slider-lg` | `8px` | `24px` |
+| Class | Track height | Thumb (diameter) | Token |
+|-------|-------------|-------------------|--------|
+| `.acko-slider-sm` | `4px` | **16px** | `var(--slider-thumb-size-sm)` |
+| `.acko-slider-md` | `6px` | **20px** | `var(--slider-thumb-size-md)` |
+| `.acko-slider-lg` | `8px` | **24px** | `var(--slider-thumb-size-lg)` |
+
+Thumb sizes are semantic layout tokens on `:root` in `tokens.css` (also mapped in `theme.css` for Tailwind context).
+
+## Semantic tokens (see `colors-semantic.mdc` → Slider / Progress)
+All referenced only via `var(--token)` in component CSS — no primitives in `slider.css`.
 
 ## States
-- Track base: `background: var(--color-border-subtle)`
-- Fill: `background: var(--color-primary)`
-- Thumb hover: `box-shadow: var(--shadow-md), 0 0 0 4px var(--color-primary-ring)`
-- Thumb focus-visible: `box-shadow: var(--shadow-focus-ring)`
-- Thumb active: `cursor: grabbing; transform: translateX(-50%) scale(1.1)`
-- Disabled: `opacity: 0.45`, `pointer-events: none`; fill/thumb use `--color-text-disabled`
+- **Thumb hover:** `box-shadow: var(--shadow-slider-thumb), var(--shadow-md)`
+- **Thumb focus-visible:** `box-shadow: var(--shadow-slider-thumb), var(--shadow-focus-ring)`
+- **Thumb active:** `cursor: grabbing`; `transform: translateX(-50%) scale(1.1)`
+- **Disabled:** `opacity: 0.45`, `pointer-events: none`; fill flat `--color-text-disabled`; thumb flat `--color-disabled-bg` + `--color-disabled-border`; ticks use `--color-track-inactive`
 
-## Dark Theme
-
-Under `[data-theme="dark"]`:
-- Track background: `var(--grey-600)`
-- Ticks: `var(--grey-600)`
+## Theme
+Light/dark differ only via `:root` / `[data-theme="dark"]` semantic tokens in `tokens.css` — no extra `[data-theme="dark"]` overrides in `slider.css` for the track.

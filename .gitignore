@@ -3,3 +3,6 @@
 .claude/
 node_modules/
 dist/
+
+# Local pnpm store (if store-dir points into the repo — do not commit)
+.pnpm-store/

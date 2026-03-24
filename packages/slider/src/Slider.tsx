@@ -9,6 +9,11 @@ import {
 } from "react";
 import { clsx } from "clsx";
 
+/**
+ * Slider — range input with gradient track/fill and branded thumb.
+ * Consumer must import `@acko/css/slider.css` (after tokens + theme). Visuals use semantic
+ * tokens: `--color-slider-*`, `--slider-thumb-size-*`, `--shadow-slider-thumb`.
+ */
 export interface SliderProps {
   value: number;
   onChange: (value: number) => void;
@@ -18,6 +23,7 @@ export interface SliderProps {
   disabled?: boolean;
   showValue?: boolean;
   showTicks?: boolean;
+  /** Track 4px / 6px / 8px; thumb diameter 16px / 20px / 24px via `--slider-thumb-size-*` */
   size?: "sm" | "md" | "lg";
   className?: string;
   "aria-label"?: string;

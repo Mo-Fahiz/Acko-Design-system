@@ -197,9 +197,27 @@ primitives → semantics → component CSS
 | `--color-input-option-selected-text` | `purple-700` | `purple-300` | Selected option text |
 
 ### Slider / Progress
-| Token | Light | Dark |
-|-------|-------|------|
-| `--color-track-inactive` | `grey-200` | `grey-600` | Unfinished track area |
+| Token | Light | Dark | Role |
+|-------|-------|------|------|
+| `--color-track-inactive` | `grey-200` | `grey-600` | Unfinished track area (Progress; slider disabled ticks) |
+| `--color-slider-track-active-from` | `purple-300` | `purple-800` | Filled segment gradient start (horizontal) |
+| `--color-slider-track-active-to` | `purple-700` | `purple-500` | Filled segment gradient end |
+| `--color-slider-track-inactive-from` | `grey-150` | `grey-500` | Rail gradient start |
+| `--color-slider-track-inactive-to` | `grey-200` | `grey-550` | Rail gradient end |
+| `--color-slider-thumb-bg` | `purple-50` | `purple-50` | Thumb fill |
+| `--color-slider-thumb-stroke-from` | `purple-500` | `purple-500` | Thumb border gradient top |
+| `--color-slider-thumb-stroke-to` | `purple-700` | `purple-700` | Thumb border gradient bottom |
+| `--shadow-slider-thumb` | purple-tint drop shadow | stronger purple-tint | Thumb elevation |
+
+**Slider thumb layout (theme-agnostic, defined on `:root`):**
+
+| Token | Value |
+|-------|------|
+| `--slider-thumb-size-sm` | `16px` |
+| `--slider-thumb-size-md` | `20px` |
+| `--slider-thumb-size-lg` | `24px` |
+
+Referenced in `slider.css` as `width` / `height` on `.acko-slider-thumb`.
 
 ### Switch
 | Token | Light | Dark |

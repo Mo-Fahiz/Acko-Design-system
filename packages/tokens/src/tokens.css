@@ -228,6 +228,11 @@
 
   /* --- Hairline Border --- */
   --border-hairline: 1px;
+
+  /* --- Slider thumb diameter (layout; theme-agnostic) — used by packages/css/slider.css --- */
+  --slider-thumb-size-sm: 16px;
+  --slider-thumb-size-md: 20px;
+  --slider-thumb-size-lg: 24px;
 }
 
 @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -353,6 +358,16 @@
 
   /* Track / tick unfinished area */
   --color-track-inactive: var(--grey-200);
+
+  /* Slider — track/fill gradients + thumb (fill + vertical stroke) + drop shadow. Thumb diameter: --slider-thumb-size-* (:root). */
+  --color-slider-track-active-from: var(--purple-300);
+  --color-slider-track-active-to: var(--purple-700);
+  --color-slider-track-inactive-from: var(--grey-150);
+  --color-slider-track-inactive-to: var(--grey-200);
+  --color-slider-thumb-bg: var(--purple-50);
+  --color-slider-thumb-stroke-from: var(--purple-500);
+  --color-slider-thumb-stroke-to: var(--purple-700);
+  --shadow-slider-thumb: 0 2px 6px rgba(88, 47, 210, 0.2);
 
   /* Switch thumb */
   --color-switch-thumb: var(--grey-white);
@@ -608,6 +623,16 @@
 
   /* Track / tick unfinished area */
   --color-track-inactive: var(--grey-600);
+
+  /* Slider — dark theme (same thumb stroke + --slider-thumb-size-* as light) */
+  --color-slider-track-active-from: var(--purple-800);
+  --color-slider-track-active-to: var(--purple-500);
+  --color-slider-track-inactive-from: var(--grey-500);
+  --color-slider-track-inactive-to: var(--grey-550);
+  --color-slider-thumb-bg: var(--purple-50);
+  --color-slider-thumb-stroke-from: var(--purple-500);
+  --color-slider-thumb-stroke-to: var(--purple-700);
+  --shadow-slider-thumb: 0 2px 6px rgba(62, 34, 144, 0.55);
 
   /* Switch thumb */
   --color-switch-thumb: var(--grey-white);

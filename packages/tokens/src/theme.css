@@ -98,6 +98,13 @@
   --color-error-gradient-from: var(--color-error-gradient-from);
   --color-error-gradient-to: var(--color-error-gradient-to);
   --color-track-inactive: var(--color-track-inactive);
+  --color-slider-track-active-from: var(--color-slider-track-active-from);
+  --color-slider-track-active-to: var(--color-slider-track-active-to);
+  --color-slider-track-inactive-from: var(--color-slider-track-inactive-from);
+  --color-slider-track-inactive-to: var(--color-slider-track-inactive-to);
+  --color-slider-thumb-bg: var(--color-slider-thumb-bg);
+  --color-slider-thumb-stroke-from: var(--color-slider-thumb-stroke-from);
+  --color-slider-thumb-stroke-to: var(--color-slider-thumb-stroke-to);
   --color-switch-thumb: var(--color-switch-thumb);
 
   --color-tooltip-bg: var(--color-tooltip-bg);
@@ -119,6 +126,12 @@
   --shadow-btn-hover: var(--shadow-btn-hover);
   --shadow-btn-secondary-hover: var(--shadow-btn-secondary-hover);
   --shadow-focus-ring: var(--shadow-focus-ring);
+  --shadow-slider-thumb: var(--shadow-slider-thumb);
+
+  /* --- Slider layout (thumb diameter) --- */
+  --slider-thumb-size-sm: var(--slider-thumb-size-sm);
+  --slider-thumb-size-md: var(--slider-thumb-size-md);
+  --slider-thumb-size-lg: var(--slider-thumb-size-lg);
 
   /* --- Border Radius --- */
   --radius-sm: var(--radius-sm);
