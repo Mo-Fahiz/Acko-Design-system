@@ -12,6 +12,12 @@ primitives → semantics → component CSS
 --purple-600 → --color-primary → .acko-btn-primary { background-color: var(--color-primary) }
 ```
 
+## Documentation scope
+
+**Portable across platforms:** The **role** of each semantic token (what it means for UI: primary CTA, surface, error text, border, etc.) and how themes (light / dark / elevated) swap *values*. Component code must always go through **semantic names**, never raw palette keys.
+
+**Web-specific in this file:** CSS custom property syntax (`--color-*`), references to `tokens.css` / `[data-theme]`. Flutter should use the **same semantic identifiers** (e.g. `AckoColors.primary`, or a generated map from a shared token file), not hardcoded hex from this doc’s reference columns.
+
 ## Brand / Primary
 
 | Token | Role | Light | Dark |
@@ -125,11 +131,15 @@ primitives → semantics → component CSS
 | `--color-tooltip-bg` | `grey-700` | `grey-200` |
 | `--color-tooltip-text` | `grey-white` | `grey-750` |
 
-### Tabs Pill
-| Token | Light | Dark |
-|-------|-------|------|
-| `--color-tab-pill-bg` | `grey-150` | `grey-650` |
-| `--color-tab-pill-active-bg` | `grey-white` | `grey-550` |
+### Tabs — pill container + inner tab
+| Token | Light | Dark | Role |
+|-------|-------|------|------|
+| `--color-tab-pill-bg` | `grey-50` | `grey-650` | Outer pill track fill |
+| `--color-tab-pill-outer-border` | `grey-white` | `grey-600` | `1px` outer pill border |
+| `--color-tab-pill-active-bg` | `purple-100` | `purple-900` | Active inner pill fill |
+| `--color-tab-pill-active-text` | `purple-600` | `grey-white` | Active label + icon |
+| `--color-tab-text-inactive` | `grey-400` | `grey-400` | Inactive pill tab (transparent bg) |
+| `--color-tab-text-disabled` | `grey-300` | `grey-500` | Disabled pill tab label |
 
 ### Toggle
 | Token | Light | Dark |
@@ -182,7 +192,7 @@ primitives → semantics → component CSS
 | `--color-btn-disabled-text` | `grey-350` | `grey-450` |
 | `--color-btn-primary-hover-bg` | — | `purple-600` |
 
-### Input (shared by TextInput, Dropdown, Textarea, InputGroup, OtpInput)
+### Input (shared by TextInput, Dropdown, Textarea, InputGroup; **not** OTP filled/focus)
 | Token | Light | Dark | Role |
 |-------|-------|------|------|
 | `--color-input-bg` | `grey-white` | `grey-750` | Default fill |
@@ -195,6 +205,19 @@ primitives → semantics → component CSS
 | `--color-input-option-hover` | `purple-50` | `grey-650` | Dropdown option hover |
 | `--color-input-option-selected-bg` | `purple-100` | `purple-900` | Selected option bg |
 | `--color-input-option-selected-text` | `purple-700` | `purple-300` | Selected option text |
+
+### OTP Input (cell-specific — default empty cell still uses `--color-input-*`)
+| Token | Light | Dark | Role |
+|-------|-------|------|------|
+| `--color-otp-filled-bg` | `grey-white` | `grey-750` | Digit entered, not focused |
+| `--color-otp-filled-border` | `grey-100` | `grey-600` | Filled cell border |
+| `--color-otp-filled-text` | `grey-800` | `grey-100` | Digit color |
+| `--color-otp-focus-bg` | `grey-white` | `grey-700` | Focused cell fill |
+| `--color-otp-focus-border` | `grey-200` | `grey-550` | Focused cell border |
+| `--color-otp-focus-ring` | `grey-150` | `grey-600` | `2px` focus ring |
+| `--color-otp-error-fill` | `grey-white` | `grey-700` | Error cell interior |
+| `--color-otp-error-gradient-from` | `grey-150` | `grey-600` | Error border gradient start (`0deg`) |
+| `--color-otp-error-gradient-to` | `red-100` | `red-900` | Error border gradient end |
 
 ### Slider / Progress
 | Token | Light | Dark | Role |
@@ -263,14 +286,16 @@ Background is `linear-gradient(0deg, gradient-from, gradient-to)` with a `1px so
 | pink | `red-200` | `red-100` | `red-200` | `red-800` |
 | gray | `grey-200` | `grey-100` | `grey-200` | `grey-600` |
 
+Dark solid/dot badges use **reduced intensity**: gradient stops are `color-mix(in srgb, <darkest> 90%, transparent)` from the **`950` → `900`** step of each hue, with a solid **`900`** border (grey uses `grey-800` → `grey-700` mix, border `grey-600`). Pink badge hues map to **red** primitives. Outline badges unchanged.
+
 | Color | `gradient-from` Dark | `gradient-to` Dark | `border` Dark | `text` Dark |
 |-------|---------------------|-------------------|-------------:|------------|
-| purple | `purple-900` | `purple-800` | `purple-700` | `purple-200` |
-| green (lime) | `lime-900` | `lime-800` | `lime-700` | `green-200` |
-| blue | `blue-900` | `blue-800` | `blue-700` | `blue-200` |
-| orange | `orange-900` | `orange-800` | `orange-700` | `orange-200` |
-| pink | `red-900` | `red-800` | `red-700` | `red-200` |
-| gray | `grey-650` | `grey-600` | `grey-500` | `grey-200` |
+| purple | `color-mix(..., purple-950, 90%)` | `color-mix(..., purple-900, 90%)` | `purple-900` | `purple-200` |
+| green (lime) | `color-mix(..., lime-950, 90%)` | `color-mix(..., lime-900, 90%)` | `lime-900` | `green-200` |
+| blue | `color-mix(..., blue-950, 90%)` | `color-mix(..., blue-900, 90%)` | `blue-900` | `blue-200` |
+| orange | `color-mix(..., orange-950, 90%)` | `color-mix(..., orange-900, 90%)` | `orange-900` | `orange-200` |
+| pink | `color-mix(..., red-950, 90%)` | `color-mix(..., red-900, 90%)` | `red-900` | `red-200` |
+| gray | `color-mix(..., grey-800, 90%)` | `color-mix(..., grey-700, 90%)` | `grey-600` | `grey-200` |
 
 ### Badge — Outline
 
@@ -299,9 +324,9 @@ Background is `linear-gradient(0deg, gradient-from, gradient-to)` with a `1px so
 
 | Color | `gradient-from` Dark | `gradient-to` Dark | `border` Dark |
 |-------|---------------------|-------------------|--------------|
-| pink | `red-600` | `red-700` | `red-600` |
-| purple | `purple-600` | `purple-700` | `purple-600` |
-| blue | `blue-600` | `blue-700` | `blue-600` |
+| pink | `color-mix(..., red-950, 90%)` | `color-mix(..., red-900, 90%)` | `red-900` |
+| purple | `color-mix(..., purple-950, 90%)` | `color-mix(..., purple-900, 90%)` | `purple-900` |
+| blue | `color-mix(..., blue-950, 90%)` | `color-mix(..., blue-900, 90%)` | `blue-900` |
 
 ### Wizard
 

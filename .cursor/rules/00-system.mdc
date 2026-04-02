@@ -5,6 +5,8 @@ alwaysApply: true
 
 # ACKO Design System — System Rules
 
+**Human-readable architecture (multi-platform map):** see [`docs/system.md`](../../docs/system.md) in the repo root — layers, canonical sources, and how a future Flutter track plugs in without forking semantics.
+
 You are generating components for the ACKO Design System — a pnpm monorepo of standalone React component packages with a shared CSS package and a dedicated tokens package.
 
 ---
@@ -293,9 +295,11 @@ import { Button } from '@acko/button';
 
 When generating a component, read these files in order:
 
-1. This file (`00-system.mdc`) — architecture and conventions
-2. `foundation/colors-semantic.mdc` — which tokens to use for colors
-3. `components/<name>/<name>.styles.mdc` — visual spec (CSS classes, variants, sizes, states)
-4. `components/<name>/<name>.react.mdc` — implementation spec (props, behavior, a11y)
+1. [`docs/system.md`](../../docs/system.md) — optional: platform layers and where specs live
+2. This file (`00-system.mdc`) — web architecture and conventions
+3. `foundation/colors-semantic.mdc` — which tokens to use for colors
+4. `components/<name>/<name>.styles.mdc` — visual spec (CSS classes, variants, sizes, states)
+5. `components/<name>/<name>.react.mdc` — implementation spec (props, behavior, a11y)
+6. `docs/components/<name>/` — optional Markdown mirrors (`*.spec.md`, `*.web.md`, `*.flutter.md`) for human reviewers
 
-Foundation files (`spacing`, `typography`, `radii`, `shadows`, `motion`, `scales`) are reference material — consult when you need specific token values.
+Foundation files (`spacing`, `typography`, `radii`, `shadows`, `motion`, `scales`) are reference material — consult when you need specific token values. Each major foundation file includes a **Documentation scope** section: portable rules vs web-only phrasing.

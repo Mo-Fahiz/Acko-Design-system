@@ -4,6 +4,12 @@ description: Border radius tokens and nested radius rule
 
 # Border Radius Tokens
 
+## Documentation scope
+
+**Portable across platforms:** Token **names**, **pixel** radii, **role** mapping (pill for interactive, 4xl for surfaces, nested-radius math). Flutter `BorderRadius.circular(...)` should use the **same** numeric values per token.
+
+**Web-specific in this file:** Tailwind utility column (`rounded-full`, etc.).
+
 | Token | Value | Use Case | Tailwind |
 |-------|-------|----------|----------|
 | `--radius-sm` | 4px | Nested insets | `rounded` |

@@ -6,6 +6,12 @@ description: Spacing, sizing, opacity, z-index, and utility tokens — numeric f
 
 All numeric foundations for the design system: spacing, component sizing, and utility tokens. All tokens on this page are **theme-agnostic** — they do not change between themes.
 
+## Documentation scope
+
+**Portable across platforms:** Numeric intent — “8px gap”, “48px control height”, inter-component spacing table, opacity and z-index scales, hairline border behavior. These values should match in Flutter (`SizedBox`, `EdgeInsets`, theme spacing constants) even if the *syntax* differs.
+
+**Web-specific in this file:** Tailwind v4 utilities (`gap-8`, `h-48`, `@apply`, `@theme inline` `--spacing`). Flutter does not use these class names; map the **pixel column** to your spacing API.
+
 ## Spacing System
 
 Spacing is powered by Tailwind v4 utilities with a **1px base**:

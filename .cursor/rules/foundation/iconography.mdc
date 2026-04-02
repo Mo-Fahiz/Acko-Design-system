@@ -6,9 +6,17 @@ alwaysApply: true
 
 Rules for consistent, semantically correct icon usage across all components.
 
+## Documentation scope
+
+**Portable across platforms:** **Arrow vs chevron** meaning (action / navigation vs reveal-in-context), leading vs trailing placement, and sizing *in pixels* per component size.
+
+**Web-specific:** `lucide-react`, examples in JSX, `aria-hidden` on decorative icons.
+
+**Flutter-specific:** Use the **same Lucide glyph set** where possible (e.g. `lucide_icons` on pub.dev). Do not substitute different metaphors (still no chevron on primary CTA for “go”).
+
 ## Icon Library
 
-Use **Lucide React** (`lucide-react`) as the canonical icon set. Do not mix icon libraries.
+Use **Lucide** as the canonical **glyph** set. On web the package is **`lucide-react`** (`lucide-react`). Do not mix unrelated icon libraries.
 
 ## Arrow vs Chevron — When to Use Each
 

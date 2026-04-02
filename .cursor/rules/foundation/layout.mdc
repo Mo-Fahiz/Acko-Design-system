@@ -8,6 +8,12 @@ alwaysApply: true
 Structural layout primitives: width, containment, gutters, full-bleed, and desktop scaling.
 All pages and sections must adhere to this system unless explicitly overridden by a component specification.
 
+## Documentation scope
+
+**Portable across platforms:** breakpoint *cutoffs* (767 / 768 / 1024), gutter *values* (16 / 32 / 40px), max content width (1280px cap), “typography-only scaling between 1024–1280px”, full-bleed *pattern* (outer edge-to-edge + inner constrained content), and grid discipline (no fixed column px, avoid `100vw` in nested layout).
+
+**Web-specific in this file:** CSS snippets, class names (`section-container`, `full-bleed`), and Tailwind utilities (`p-16`, `p-32`, `p-40`). On Flutter, express the same numbers via padding/theme; use `LayoutBuilder` / breakpoints packages as appropriate — the *gutter and width intent* stays the same.
+
 ## Breakpoints
 
 Mobile-first only. Use `min-width` media queries exclusively. **Never** mix with `max-width`.

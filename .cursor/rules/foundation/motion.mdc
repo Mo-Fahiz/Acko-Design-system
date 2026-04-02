@@ -4,6 +4,12 @@ description: Animation tokens — easing curves, keyframes, and performance rule
 
 # Motion Tokens
 
+## Documentation scope
+
+**Portable across platforms:** Duration and easing **intent** (what each curve is for), performance rules (prefer transform/opacity), and “when to animate” guidance. Cubic-bezier values are **portable** — use the same curves in Flutter (`Cubic` / `Curves` approximations or exact values).
+
+**Web-specific in this file:** `@keyframes`, `animation` shorthand, `prefers-reduced-motion` CSS snippets. Mirror reduced-motion in Flutter with `MediaQuery.disableAnimations` / system settings where appropriate.
+
 ## Easing Curves
 
 These are defined as CSS custom properties in `tokens.css`:

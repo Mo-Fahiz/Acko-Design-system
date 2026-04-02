@@ -5,6 +5,12 @@ alwaysApply: true
 ---
 # Typography Tokens
 
+## Documentation scope
+
+**Portable across platforms:** Font family (Euclid Circular B), weights, the **type scale** (display / heading / body / label levels and their px sizes, line heights, letter spacing), sentence-case content rules, and Typography **color intent** (`primary`, `secondary`, `brand`, etc.) as *roles*.
+
+**Web-specific in this file:** CSS `var(--font-*-*)` examples, Tailwind class equivalents (`text-base`, `font-medium`). On Flutter, use `TextStyle` or themed text styles with the **same numeric scale**.
+
 ## Font Family
 
 **Euclid Circular B** — all text across the system.

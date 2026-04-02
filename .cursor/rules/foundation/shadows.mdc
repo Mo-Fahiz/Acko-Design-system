@@ -4,6 +4,12 @@ description: Shadow tokens — primitive and semantic shadows for elevation hier
 
 # Shadow Tokens
 
+## Documentation scope
+
+**Portable across platforms:** Elevation **tier names** (`xs` … `2xl`), semantic aliases (`shadow-card`, `shadow-modal`, …), and rule “use semantic shadow tokens, not ad-hoc blur stacks”. Values are defined for light theme in tables; dark/elevated remaps live in `tokens.css` — Flutter themes should **mirror** those remaps per brightness.
+
+**Web-specific in this file:** Raw `box-shadow` strings as carried in CSS variables. On Flutter, express with `BoxShadow` lists sourced from the same semantic level.
+
 ## Tiered Shadow Scale (Primitive)
 
 | Token | Light | Use Case |
