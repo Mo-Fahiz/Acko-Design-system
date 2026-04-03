@@ -4,8 +4,33 @@
 
 ---
 
+## Documentation pipeline (platform-agnostic)
+
+This repo splits documentation so **one visual truth** can power **many platforms**:
+
+| Layer | Location | Role |
+|-------|----------|------|
+| **Orchestration + foundation** | `docs/global.md` (this file) | Token architecture, primitives, semantics, type, spacing, radii, motion, shadows, layout, icons, a11y — **no framework code.** |
+| **Cursor foundation rules** | `.cursor/rules/foundation/*.mdc` | Same rules, optimized for AI; each file marks what is **portable** vs **web-bound** (Tailwind, CSS snippets). |
+| **Web system conventions** | `.cursor/rules/00-system.mdc` | Monorepo layout, React/CSS patterns, `forwardRef`, consumer imports. |
+| **Per-component base spec** | `docs/components/<name>/<name>-base.md` | Variants, sizes, states, tokens, motion, structure — **must match** playground / `App.tsx` previews. |
+| **Per-component styles (web)** | `.cursor/rules/components/<name>/<name>.styles.mdc` (Button: `button.style.mdc`) | `acko-*` classes, `packages/css` — implements the base spec. |
+| **React track** | `docs/components/<name>/react/<name>-react.md` | Props, DOM, ARIA, packages — **no visual drift** from `<name>-base.md`. |
+| **Flutter track** | `docs/components/<name>/flutter/<name>-flutter.md` | Widgets, `Semantics`, theme — **no visual drift** from `<name>-base.md`. |
+
+**Rules**
+
+1. If it changes **pixels, tokens, or meaning**, update **`global.md`** (tokens/foundation) and/or **`<name>-base.md`** first, then sync `packages/tokens`, `packages/css`, and platform code.
+2. **React / Flutter docs** only describe **implementation** (APIs, platform quirks), not new design decisions.
+3. **`*.styles.mdc`** / **`button.style.mdc`** stays aligned with **`packages/css/src/<component>.css`** — that CSS is what the playground renders.
+
+**Canonical sources today:** `packages/tokens` (web token delivery), `packages/css` (per-component styles), `packages/<component>` (React). Flutter packages may be added later; semantics must not fork.
+
+---
+
 ## Table of contents
 
+0. [Documentation pipeline (platform-agnostic)](#documentation-pipeline-platform-agnostic)
 1. [How to read this document](#1-how-to-read-this-document)
 2. [Token architecture](#2-token-architecture)
 3. [Color — Primitives](#3-color--primitives)
@@ -280,7 +305,7 @@ Every color a component uses must come from this layer. When themes switch, the 
 | `color-primary-muted` | Soft border hints | purple-400 | purple-600 |
 | `color-primary-subtle` | Tinted backgrounds | purple-100 | purple-900 |
 | `color-primary-ring` | Focus ring | purple-200 | purple-800 |
-| `color-on-primary` | Text on primary fill | #FFFFFF | grey-white |
+| `color-on-primary` | Text on primary fill | grey-white| grey-white |
 
 ### Surfaces
 
@@ -302,7 +327,7 @@ Every color a component uses must come from this layer. When themes switch, the 
 | `color-text-supporting` | Supporting text (readonly, chevrons) | grey-550 | grey-200 |
 | `color-text-secondary` | Subtext, placeholders, helpers | grey-450 | grey-350 |
 | `color-text-disabled` | Disabled text | grey-300 | grey-450 |
-| `color-text-invert` | Text on dark/filled surfaces (fixed light) | #FFFFFF | grey-white |
+| `color-text-invert` | Text on dark/filled surfaces (fixed light) | grey-white| grey-white |
 | `color-text-brand` | Brand-colored text, links, emphasis | purple-600 | purple-500 |
 | `color-text-error` | Error messages | red-700 | red-400 |
 | `color-text-success` | Success messages | green-700 | green-400 |
@@ -984,7 +1009,7 @@ A component never decides "I need purple-600." It says "I need the primary fill.
 
 ### Building a component — the checklist
 
-1. **Identify variants, sizes, and states** from the component spec (see `docs/components/<name>/<name>.spec.md`).
+1. **Identify variants, sizes, and states** from `docs/components/<name>/<name>-base.md`.
 2. **Map each visual property to a semantic or component token** from this file. If no token exists, propose one — do not invent raw values.
 3. **Pick sizes from the component height table** and **spacing from the spacing table**.
 4. **Apply the correct radius** by component role (pill for controls, 4xl for surfaces, nested rule for children).
@@ -1020,4 +1045,4 @@ A component never decides "I need purple-600." It says "I need the primary fill.
 
 ---
 
-*This document is aligned with the ACKO Design System monorepo on branch **Version-4.1**. Platform-specific implementation details live in `docs/components/<name>/<name>.web.md` and `<name>.flutter.md`. The web-oriented `.cursor/rules/` files remain the executable source for code generation.*
+*This document is aligned with the ACKO Design System monorepo. Per component: `docs/components/<name>/<name>-base.md`, `react/<name>-react.md`, `flutter/<name>-flutter.md`, and `.cursor/rules/components/<name>/<name>.styles.mdc` (Button: `button.style.mdc`) for web CSS.*

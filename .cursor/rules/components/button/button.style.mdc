@@ -1,11 +1,13 @@
 ---
-description: Button visual spec — CSS classes, variants, sizes, states, and token usage. All styling via @apply and raw CSS.
+description: Button CSS — acko-* classes, variants, sizes, states; must match packages/css/src/button.css and docs/components/button/button-base.md
 globs: "**/button/**,**/Button/**"
 ---
 
-# Button — Styles
+# Button — Style (CSS)
 
-CSS file: `@acko/css/button.css`
+**Human spec:** [`docs/components/button/button-base.md`](../../../../docs/components/button/button-base.md)
+
+CSS file: `@acko/css/button.css` — source: `packages/css/src/button.css`
 
 ## Architecture
 

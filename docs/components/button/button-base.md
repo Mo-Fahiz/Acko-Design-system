@@ -1,6 +1,8 @@
-# Button — Complete platform-agnostic specification
+# Button — Base specification (platform-agnostic)
 
-> **Purpose of this file:** An engineer on *any* platform (React, Flutter, native, or future) should be able to read this single document and build a pixel-accurate, behavior-complete ACKO Button without looking at any other file. Every dimension, color token, animation parameter, and accessibility requirement is listed explicitly.
+> **Purpose:** The **visual and behavioral contract** for Button. Every platform must match this document; React and Flutter only add **how** to implement it (no pixel or token changes).
+>
+> **Where to go next:** `react/button-react.md` (web), `flutter/button-flutter.md` (Flutter), `.cursor/rules/components/button/button.style.mdc` (CSS class matrix for this repo).
 
 ---
 
@@ -554,4 +556,4 @@ Use this to verify completeness after building the button on any platform:
 
 ---
 
-*This specification is aligned with the ACKO Design System monorepo, branch **Version-4.1**. For platform-specific implementation references, see `button.web.md` (React + CSS) and `button.flutter.md` (Flutter).*
+*Aligned with the ACKO Design System monorepo. Platform tracks: `react/button-react.md`, `flutter/button-flutter.md`.*

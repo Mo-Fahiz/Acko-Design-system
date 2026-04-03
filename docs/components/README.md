@@ -1,27 +1,22 @@
-# Component documentation layout
+# Component documentation
 
-Component guidance lives in two places, on purpose:
+Each component uses **one base spec** and **two platform tracks**. Visual truth lives in **`*-base.md`**; React and Flutter docs add **implementation only** (no pixel or token drift).
 
-| Location | Audience | Format |
-|----------|----------|--------|
-| **`.cursor/rules/components/<name>/`** | Cursor / codegen / agents | `*.styles.mdc` (web CSS), `*.react.mdc` (React) |
-| **`docs/components/<name>/`** | Humans (design, web, Flutter) | Markdown: `*.spec.md`, `*.web.md`, `*.flutter.md` |
+## Layout
 
-## File roles
+```text
+docs/components/<name>/
+  <name>-base.md          # Platform-agnostic: variants, sizes, states, tokens, structure
+  react/
+    <name>-react.md       # React: packages, DOM, props, ARIA
+  flutter/
+    <name>-flutter.md     # Flutter: widgets, Semantics, theme
 
-1. **`<name>.spec.md`** — *Platform-neutral.* What the component is for, variants, sizes, states, which **semantic tokens** apply, and accessibility **intent**. Avoid HTML/CSS/Dart except short illustrations.
-2. **`<name>.web.md`** — *React + CSS.* Packages, class names, props, ARIA, web-only behavior (hover media queries, focus-visible).
-3. **`<name>.flutter.md`** — *Flutter.* Widgets, theming, `Semantics`, touch-only vs hover, differences from web.
+.cursor/rules/components/<name>/
+  <name>.styles.mdc       # Web: acko-* classes (Button: button.style.mdc)
+  <name>.react.mdc        # Web: concise React rule (keep in sync with packages/<name>/src)
+```
 
-## Why three files?
+**Example:** `docs/components/button/button-base.md`, `react/button-react.md`, `flutter/button-flutter.md`.
 
-Web and Flutter diverge in **state expression** (pseudo-classes vs `WidgetState`), **overlays**, **focus**, and **gestures**. One merged doc either becomes vague or wrong for one platform. The spec stays **single source for intent**; web and Flutter add **implementation truth**.
-
-## Drift prevention
-
-- If you change behavior, update **spec** and the affected platform file(s).
-- `.mdc` rules should stay aligned with `docs/`; they are the machine-oriented mirror of the same contract.
-
-## Reference example
-
-See `docs/components/button/` for a full three-file example.
+Orchestration and shared tokens: **`docs/global.md`**.
