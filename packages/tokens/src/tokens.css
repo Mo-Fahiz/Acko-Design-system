@@ -328,9 +328,24 @@
   --color-tooltip-bg: var(--grey-700);
   --color-tooltip-text: var(--grey-white);
 
-  /* Tabs pill */
-  --color-tab-pill-bg: var(--grey-150);
-  --color-tab-pill-active-bg: var(--grey-white);
+  /* Tabs — pill container + inner tab */
+  --color-tab-pill-bg: var(--grey-50);
+  --color-tab-pill-outer-border: var(--grey-white);
+  --color-tab-pill-active-bg: var(--purple-100);
+  --color-tab-pill-active-text: var(--purple-600);
+  --color-tab-text-inactive: var(--grey-400);
+  --color-tab-text-disabled: var(--grey-300);
+
+  /* OTP cell (distinct from generic TextInput filled state) */
+  --color-otp-filled-bg: var(--grey-white);
+  --color-otp-filled-border: var(--grey-100);
+  --color-otp-filled-text: var(--grey-800);
+  --color-otp-focus-bg: var(--grey-white);
+  --color-otp-focus-border: var(--grey-200);
+  --color-otp-focus-ring: var(--grey-150);
+  --color-otp-error-fill: var(--grey-white);
+  --color-otp-error-gradient-from: var(--grey-150);
+  --color-otp-error-gradient-to: var(--red-100);
 
   /* Toggle */
   --color-toggle-bg: var(--grey-150);
@@ -593,9 +608,24 @@
   --color-tooltip-bg: var(--grey-200);
   --color-tooltip-text: var(--grey-750);
 
-  /* Tabs pill */
+  /* Tabs — pill container + inner tab */
   --color-tab-pill-bg: var(--grey-650);
-  --color-tab-pill-active-bg: var(--grey-550);
+  --color-tab-pill-outer-border: var(--grey-600);
+  --color-tab-pill-active-bg: var(--purple-900);
+  --color-tab-pill-active-text: var(--grey-white);
+  --color-tab-text-inactive: var(--grey-400);
+  --color-tab-text-disabled: var(--grey-500);
+
+  /* OTP cell */
+  --color-otp-filled-bg: var(--grey-750);
+  --color-otp-filled-border: var(--grey-600);
+  --color-otp-filled-text: var(--grey-100);
+  --color-otp-focus-bg: var(--grey-700);
+  --color-otp-focus-border: var(--grey-550);
+  --color-otp-focus-ring: var(--grey-600);
+  --color-otp-error-fill: var(--grey-700);
+  --color-otp-error-gradient-from: var(--grey-600);
+  --color-otp-error-gradient-to: var(--red-900);
 
   /* Toggle */
   --color-toggle-bg: var(--grey-650);
@@ -689,35 +719,35 @@
   --color-cal-today-text: var(--purple-400);
   --color-cal-cell-hover-bg: var(--grey-650);
 
-  /* Badge — solid (gradient from→to + border) */
-  --color-badge-purple-gradient-from: var(--purple-900);
-  --color-badge-purple-gradient-to: var(--purple-800);
-  --color-badge-purple-border: var(--purple-700);
+  /* Badge — solid + dot + counter (dark only: muted 90% fill, 900-tier border) */
+  --color-badge-purple-gradient-from: color-mix(in srgb, var(--purple-950) 90%, transparent);
+  --color-badge-purple-gradient-to: color-mix(in srgb, var(--purple-900) 90%, transparent);
+  --color-badge-purple-border: var(--purple-900);
   --color-badge-purple-text: var(--purple-200);
 
-  --color-badge-green-gradient-from: var(--lime-900);
-  --color-badge-green-gradient-to: var(--lime-800);
-  --color-badge-green-border: var(--lime-700);
+  --color-badge-green-gradient-from: color-mix(in srgb, var(--lime-950) 90%, transparent);
+  --color-badge-green-gradient-to: color-mix(in srgb, var(--lime-900) 90%, transparent);
+  --color-badge-green-border: var(--lime-900);
   --color-badge-green-text: var(--green-200);
 
-  --color-badge-blue-gradient-from: var(--blue-900);
-  --color-badge-blue-gradient-to: var(--blue-800);
-  --color-badge-blue-border: var(--blue-700);
+  --color-badge-blue-gradient-from: color-mix(in srgb, var(--blue-950) 90%, transparent);
+  --color-badge-blue-gradient-to: color-mix(in srgb, var(--blue-900) 90%, transparent);
+  --color-badge-blue-border: var(--blue-900);
   --color-badge-blue-text: var(--blue-200);
 
-  --color-badge-orange-gradient-from: var(--orange-900);
-  --color-badge-orange-gradient-to: var(--orange-800);
-  --color-badge-orange-border: var(--orange-700);
+  --color-badge-orange-gradient-from: color-mix(in srgb, var(--orange-950) 90%, transparent);
+  --color-badge-orange-gradient-to: color-mix(in srgb, var(--orange-900) 90%, transparent);
+  --color-badge-orange-border: var(--orange-900);
   --color-badge-orange-text: var(--orange-200);
 
-  --color-badge-pink-gradient-from: var(--red-900);
-  --color-badge-pink-gradient-to: var(--red-800);
-  --color-badge-pink-border: var(--red-700);
+  --color-badge-pink-gradient-from: color-mix(in srgb, var(--red-950) 90%, transparent);
+  --color-badge-pink-gradient-to: color-mix(in srgb, var(--red-900) 90%, transparent);
+  --color-badge-pink-border: var(--red-900);
   --color-badge-pink-text: var(--red-200);
 
-  --color-badge-gray-gradient-from: var(--grey-650);
-  --color-badge-gray-gradient-to: var(--grey-600);
-  --color-badge-gray-border: var(--grey-500);
+  --color-badge-gray-gradient-from: color-mix(in srgb, var(--grey-800) 90%, transparent);
+  --color-badge-gray-gradient-to: color-mix(in srgb, var(--grey-700) 90%, transparent);
+  --color-badge-gray-border: var(--grey-600);
   --color-badge-gray-text: var(--grey-200);
 
   /* Badge outline */
@@ -728,18 +758,18 @@
   --color-badge-pink-outline-color: var(--red-600);
   --color-badge-gray-outline-color: var(--grey-500);
 
-  /* Counter badge (gradient from→to + border) */
-  --color-counter-pink-gradient-from: var(--red-600);
-  --color-counter-pink-gradient-to: var(--red-700);
-  --color-counter-pink-border: var(--red-600);
+  /* Counter badge — dark: muted fill, 900-tier border */
+  --color-counter-pink-gradient-from: color-mix(in srgb, var(--red-950) 90%, transparent);
+  --color-counter-pink-gradient-to: color-mix(in srgb, var(--red-900) 90%, transparent);
+  --color-counter-pink-border: var(--red-900);
 
-  --color-counter-purple-gradient-from: var(--purple-600);
-  --color-counter-purple-gradient-to: var(--purple-700);
-  --color-counter-purple-border: var(--purple-600);
+  --color-counter-purple-gradient-from: color-mix(in srgb, var(--purple-950) 90%, transparent);
+  --color-counter-purple-gradient-to: color-mix(in srgb, var(--purple-900) 90%, transparent);
+  --color-counter-purple-border: var(--purple-900);
 
-  --color-counter-blue-gradient-from: var(--blue-600);
-  --color-counter-blue-gradient-to: var(--blue-700);
-  --color-counter-blue-border: var(--blue-600);
+  --color-counter-blue-gradient-from: color-mix(in srgb, var(--blue-950) 90%, transparent);
+  --color-counter-blue-gradient-to: color-mix(in srgb, var(--blue-900) 90%, transparent);
+  --color-counter-blue-border: var(--blue-900);
 
   /* Wizard */
   --color-wizard-active-bg: var(--purple-600);

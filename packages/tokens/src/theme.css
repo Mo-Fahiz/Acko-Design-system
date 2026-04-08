@@ -95,6 +95,23 @@
   --color-input-disabled-bg: var(--color-input-disabled-bg);
   --color-input-disabled-border: var(--color-input-disabled-border);
 
+  --color-tab-pill-bg: var(--color-tab-pill-bg);
+  --color-tab-pill-outer-border: var(--color-tab-pill-outer-border);
+  --color-tab-pill-active-bg: var(--color-tab-pill-active-bg);
+  --color-tab-pill-active-text: var(--color-tab-pill-active-text);
+  --color-tab-text-inactive: var(--color-tab-text-inactive);
+  --color-tab-text-disabled: var(--color-tab-text-disabled);
+
+  --color-otp-filled-bg: var(--color-otp-filled-bg);
+  --color-otp-filled-border: var(--color-otp-filled-border);
+  --color-otp-filled-text: var(--color-otp-filled-text);
+  --color-otp-focus-bg: var(--color-otp-focus-bg);
+  --color-otp-focus-border: var(--color-otp-focus-border);
+  --color-otp-focus-ring: var(--color-otp-focus-ring);
+  --color-otp-error-fill: var(--color-otp-error-fill);
+  --color-otp-error-gradient-from: var(--color-otp-error-gradient-from);
+  --color-otp-error-gradient-to: var(--color-otp-error-gradient-to);
+
   --color-error-gradient-from: var(--color-error-gradient-from);
   --color-error-gradient-to: var(--color-error-gradient-to);
   --color-track-inactive: var(--color-track-inactive);

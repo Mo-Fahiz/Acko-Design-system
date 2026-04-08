@@ -72,6 +72,7 @@
 
 .acko-tabs-list-pill {
   background: var(--color-tab-pill-bg);
+  border: 1px solid var(--color-tab-pill-outer-border);
   border-radius: var(--radius-full);
   @apply p-4;
   width: fit-content;
@@ -80,19 +81,18 @@
 .acko-tab-pill {
   border-radius: var(--radius-full);
   @apply py-4 px-16;
-  color: var(--color-text-secondary);
+  color: var(--color-tab-text-inactive);
   font-weight: 500;
   transition: all 200ms var(--ease-in-out-cubic);
+  background: transparent;
+  border: 1px solid transparent;
 }
 
 .acko-tab-pill-active {
-  background: var(--color-primary-subtle);
-  color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
-}
-
-[data-theme="dark"] .acko-tab-pill-active {
-  color: var(--color-on-primary);
+  background: var(--color-tab-pill-active-bg);
+  color: var(--color-tab-pill-active-text);
+  box-shadow: none;
+  border-color: transparent;
 }
 
 /* --- Navigation variant (bottom tabs) --- */
@@ -183,4 +183,9 @@
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.acko-tab-pill.acko-tab-disabled {
+  opacity: 1;
+  color: var(--color-tab-text-disabled);
 }

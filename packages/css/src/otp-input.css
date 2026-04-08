@@ -24,32 +24,38 @@
 .acko-otp-md .acko-otp-cell { @apply w-48 h-48; font-size: var(--font-heading-md-size); border-radius: var(--radius-3xl); }
 .acko-otp-lg .acko-otp-cell { @apply w-56 h-56; font-size: var(--font-heading-lg-size); border-radius: var(--radius-4xl); }
 
-/* Focus — matches TextInput: inner border + outer ring */
+/* Filled (active digit — not focused) */
+.acko-otp-cell-filled:not(:focus) {
+  border-color: var(--color-otp-filled-border);
+  background: var(--color-otp-filled-bg);
+  color: var(--color-otp-filled-text);
+}
+
+/* Focus — dedicated OTP tokens (overrides default + filled) */
 .acko-otp-cell:focus {
-  border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
+  border-color: var(--color-otp-focus-border);
+  background: var(--color-otp-focus-bg);
+  box-shadow: 0 0 0 2px var(--color-otp-focus-ring);
+  color: var(--color-text-default);
 }
 
-/* Filled */
-.acko-otp-cell-filled {
-  border-color: var(--color-input-filled-border);
-  background: var(--color-primary-subtle);
-  color: var(--color-primary);
-}
-
-/* Error — gradient border with rounded corners via padding-box/border-box */
+/* Error — gradient border; fill from OTP error token */
 .acko-otp-error .acko-otp-cell,
 .acko-otp-error .acko-otp-cell.acko-otp-cell-filled,
 .acko-otp-cell-error {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
+    linear-gradient(var(--color-otp-error-fill), var(--color-otp-error-fill)) padding-box,
+    linear-gradient(0deg, var(--color-otp-error-gradient-from), var(--color-otp-error-gradient-to)) border-box;
   color: var(--color-text-default);
   animation: acko-otp-shake 300ms ease-out;
 }
 
 .acko-otp-error .acko-otp-cell:focus {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--color-otp-error-fill), var(--color-otp-error-fill)) padding-box,
+    linear-gradient(0deg, var(--color-otp-error-gradient-from), var(--color-otp-error-gradient-to)) border-box;
   box-shadow: 0 0 0 3px var(--color-error-ring, var(--color-error-subtle));
 }
 
@@ -69,11 +75,3 @@
   cursor: not-allowed;
 }
 
-/* --- Dark theme error --- */
-[data-theme="dark"] .acko-otp-error .acko-otp-cell,
-[data-theme="dark"] .acko-otp-error .acko-otp-cell.acko-otp-cell-filled,
-[data-theme="dark"] .acko-otp-cell-error {
-  background:
-    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
-}

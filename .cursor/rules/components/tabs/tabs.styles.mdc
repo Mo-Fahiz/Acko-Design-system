@@ -1,5 +1,5 @@
 ---
-description: Tabs visual spec — CSS classes, variants (underline, pill, navigation), gradient indicator, token usage
+description: Tabs visual spec — CSS classes, variants (underline, pill, navigation), token usage
 globs: "**/tabs*.css,**/Tabs/**"
 alwaysApply: false
 ---
@@ -10,7 +10,7 @@ alwaysApply: false
 
 - `.acko-tabs` — base wrapper, `w-full`
 - `.acko-tabs-list` — flex container for tab buttons
-- `.acko-tab` — base tab button, `inline-flex items-center`, `gap: 8px`, no border, bg-transparent
+- `.acko-tab` — base tab button, `inline-flex items-center`, `gap-8`, no border, bg-transparent
 
 ## Variants
 
@@ -22,16 +22,21 @@ alwaysApply: false
   - `height: 2px`, `border-radius: 1px`, positioned at bottom
   - `transition: background 250ms var(--ease-in-out-cubic)`
 - Active text: `--color-primary`
+- Inactive text: `--color-text-secondary` (underline / navigation / enclosed unchanged by pill token set)
 
 ### Underline (top indicator)
 - `.acko-tabs-list-underline-top` — `border-top` instead of `border-bottom`
 - `::after` positioned at top instead of bottom
 
 ### Pill
-- `.acko-tabs-list-pill` — `background: var(--color-tab-pill-bg)`, `border-radius: var(--radius-full)`, `padding: 4px`, `width: fit-content`
-- `.acko-tab-pill` — `border-radius: var(--radius-full)`, padding `4px 16px`
-- Active (light): `background: var(--color-primary-subtle)` (purple-100), `color: var(--color-primary)`, `--shadow-sm`
-- Active (dark): `background: var(--color-primary-subtle)` (purple-900), `color: var(--color-on-primary)` (white)
+- `.acko-tabs-list-pill` — **outer track**: `background: var(--color-tab-pill-bg)`, `border: 1px solid var(--color-tab-pill-outer-border)`, `border-radius: var(--radius-full)`, `padding: 4px`, `width: fit-content`
+- `.acko-tab-pill` — inner tab: `border-radius: var(--radius-full)`, padding `4px 16px`, **inactive** text `var(--color-tab-text-inactive)`, transparent background, transparent border (spacing only)
+- **Active** inner pill: `background: var(--color-tab-pill-active-bg)`, `color: var(--color-tab-pill-active-text)`, **no** box-shadow, no visible border
+- **Disabled** (pill only): `color: var(--color-tab-text-disabled)`, `opacity: 1` (overrides generic tab disabled opacity)
+
+**Light:** outer `grey-50` + border `grey-white`; active inner `purple-100`, label/icon `purple-600`.
+
+**Dark:** outer `grey-650` + border `grey-600`; active inner `purple-900`, label/icon white.
 
 ### Navigation (bottom tabs)
 - `.acko-tabs-list-navigation` — `background: var(--color-card-bg)`, `border-top: 1px solid var(--color-border-subtle)`, `justify-content: space-around`
@@ -51,18 +56,18 @@ alwaysApply: false
 - `.acko-tab-icon` — `16px × 16px`, shrink-0
 - Navigation variant icons: `24px`
 
-## Token Usage
+## Token Usage — Pill
 
 | Token | Role |
 |-------|------|
-| `--color-primary` | Active underline gradient center, active text, navigation active |
-| `--color-text-secondary` | Inactive tab text |
-| `--color-text-primary` | Active pill text |
-| `--color-tab-pill-bg` | Pill container background |
-| `--color-primary-subtle` | Active pill fill (purple-100 light / purple-900 dark) |
-| `--color-card-bg` | Enclosed active bg, navigation bar bg |
-| `--color-border-subtle` | List border, enclosed tab border, navigation border-top |
-| `--shadow-sm` | Active pill shadow |
+| `--color-tab-pill-bg` | Outer pill fill |
+| `--color-tab-pill-outer-border` | Outer pill border |
+| `--color-tab-pill-active-bg` | Active segment fill |
+| `--color-tab-pill-active-text` | Active label + icon |
+| `--color-tab-text-inactive` | Inactive pill label |
+| `--color-tab-text-disabled` | Disabled pill label |
+
+Other variants continue to use `--color-primary`, `--color-text-secondary`, `--color-card-bg`, `--color-border-subtle`, `--color-primary-subtle`, etc.
 
 ## Transitions
 All variants: `color 200ms var(--ease-in-out-cubic)`, pill adds `all 200ms var(--ease-in-out-cubic)`

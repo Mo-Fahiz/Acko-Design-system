@@ -56,3 +56,82 @@ body {
 .preview-cb-right .acko-cb-row {
   flex-direction: row;
 }
+
+/* Button preview — layout aligned with docs/Test folder structure */
+.playground-button-demo .section h2 {
+  margin: 0 0 8px;
+  font-size: var(--font-heading-md-size);
+  line-height: var(--font-heading-md-line);
+  font-weight: var(--font-heading-md-weight);
+  letter-spacing: var(--font-heading-md-spacing);
+  color: var(--color-text-primary);
+}
+
+.playground-button-demo .section-desc {
+  margin: 0 0 16px;
+  font-size: var(--font-body-sm-size);
+  line-height: var(--font-body-sm-line);
+  color: var(--color-text-secondary);
+}
+
+.playground-button-demo .section {
+  margin-bottom: 40px;
+}
+
+.playground-button-demo .section:last-child {
+  margin-bottom: 0;
+}
+
+.playground-button-demo .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.playground-button-demo .button-row.align-end {
+  align-items: flex-end;
+}
+
+.playground-button-demo .full-width-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.playground-button-demo .matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.playground-button-demo .matrix-header,
+.playground-button-demo .matrix-row {
+  display: grid;
+  grid-template-columns: 88px repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.playground-button-demo .matrix-col-label {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.playground-button-demo .matrix-label {
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+}
+
+.playground-button-demo .matrix-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+}

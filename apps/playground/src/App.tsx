@@ -1,5 +1,18 @@
 import { useState, type ReactNode } from "react";
-import { ArrowRight, Plus, Heart, Send, Search, Download, ChevronRight, Trash2, Share2, Settings } from "lucide-react";
+import {
+  ArrowRight,
+  Plus,
+  Heart,
+  Search,
+  Download,
+  ChevronRight,
+  Trash2,
+  Share2,
+  Settings,
+} from "lucide-react";
+
+const BUTTON_VARIANTS = ["primary", "secondary", "inverted", "ghost", "link", "danger"] as const;
+const BUTTON_SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
 import { Dialog } from "@acko/dialog";
 import { ToastProvider, useToast } from "@acko/toast";
 import { Slider } from "@acko/slider";
@@ -157,106 +170,167 @@ const AlignRightIcon = () => (
    ═══════════════════════════════════════════════════════════════ */
 
 function ButtonPreview() {
-  const [loadingVariant, setLoadingVariant] = useState<string | null>(null);
-  const simulateLoading = (variant: string) => {
-    setLoadingVariant(variant);
-    setTimeout(() => setLoadingVariant(null), 2000);
+  const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>({});
+
+  const simulateLoading = (key: string) => {
+    setLoadingStates((s) => ({ ...s, [key]: true }));
+    setTimeout(() => setLoadingStates((s) => ({ ...s, [key]: false })), 2000);
   };
 
   return (
-    <div className="space-y-24">
-      {/* Variants */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Variants</Typography>
-        <div className="flex flex-wrap gap-12 mt-8">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="inverted">Inverted</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="link">Link</Button>
-          <Button variant="danger">Danger</Button>
-        </div>
-      </div>
-
-      {/* Sizes */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Sizes</Typography>
-        <div className="flex flex-wrap gap-12 items-end mt-8">
-          {(["xs", "sm", "md", "lg", "xl"] as const).map((s) => (
-            <Button key={s} variant="primary" size={s}>
-              {s.toUpperCase()}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* With icons */}
-      <div>
-        <Typography variant="label-sm" color="secondary">With icons</Typography>
-        <div className="flex flex-wrap gap-12 mt-8">
-          <Button variant="primary" iconLeft={<ArrowRight />}>Continue</Button>
-          <Button variant="secondary" iconRight={<ChevronRight />}>Next step</Button>
-          <Button variant="primary" iconLeft={<Send />}>Send</Button>
-          <Button variant="ghost" iconLeft={<Download />}>Download</Button>
-          <Button variant="danger" iconLeft={<Trash2 />}>Delete</Button>
-          <Button variant="link" iconRight={<ArrowRight />}>Learn more</Button>
-        </div>
-      </div>
-
-      {/* Icon-only */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Icon-only</Typography>
-        <div className="flex flex-wrap gap-12 items-end mt-8">
-          <Button variant="primary" iconOnly size="xs" iconLeft={<Plus />}>+</Button>
-          <Button variant="primary" iconOnly size="sm" iconLeft={<Heart />}>Like</Button>
-          <Button variant="primary" iconOnly size="md" iconLeft={<Search />}>Search</Button>
-          <Button variant="secondary" iconOnly size="md" iconLeft={<Settings />}>Settings</Button>
-          <Button variant="ghost" iconOnly size="md" iconLeft={<Share2 />}>Share</Button>
-          <Button variant="danger" iconOnly size="md" iconLeft={<Trash2 />}>Delete</Button>
-          <Button variant="primary" iconOnly size="lg" iconLeft={<Plus />}>Add</Button>
-          <Button variant="primary" iconOnly size="xl" iconLeft={<Plus />}>Add</Button>
-        </div>
-      </div>
-
-      {/* Full width */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Full width</Typography>
-        <div className="flex flex-col gap-12 mt-8">
-          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>Get a quote</Button>
-          <Button variant="secondary" fullWidth>Cancel</Button>
-          <Button variant="ghost" fullWidth iconLeft={<Download />}>Download report</Button>
-        </div>
-      </div>
-
-      {/* Loading states */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Loading — click to test</Typography>
-        <div className="flex flex-wrap gap-12 mt-8">
-          {(["primary", "secondary", "inverted", "ghost", "danger"] as const).map((v) => (
-            <Button
-              key={v}
-              variant={v}
-              loading={loadingVariant === v}
-              onClick={() => simulateLoading(v)}
-            >
+    <div className="playground-button-demo">
+      <section className="section">
+        <h2>Variants</h2>
+        <p className="section-desc">
+          Six distinct intents — each with fill, text, and border/shadow tokens.
+        </p>
+        <div className="button-row">
+          {BUTTON_VARIANTS.map((v) => (
+            <Button key={v} variant={v} size="md">
               {v.charAt(0).toUpperCase() + v.slice(1)}
             </Button>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Disabled states */}
-      <div>
-        <Typography variant="label-sm" color="secondary">Disabled</Typography>
-        <div className="flex flex-wrap gap-12 mt-8">
-          <Button variant="primary" disabled>Primary</Button>
-          <Button variant="secondary" disabled>Secondary</Button>
-          <Button variant="ghost" disabled>Ghost</Button>
-          <Button variant="link" disabled>Link</Button>
-          <Button variant="danger" disabled>Danger</Button>
-          <Button variant="primary" disabled iconOnly iconLeft={<Plus />}>Add</Button>
+      <section className="section">
+        <h2>Sizes</h2>
+        <p className="section-desc">
+          Five size tiers from xs (32px) to xl (64px). All use pill radius and 500 weight.
+        </p>
+        <div className="button-row align-end">
+          {BUTTON_SIZES.map((s) => (
+            <Button key={s} variant="primary" size={s}>
+              Size {s}
+            </Button>
+          ))}
         </div>
-      </div>
+      </section>
+
+      <section className="section">
+        <h2>Icon slots</h2>
+        <p className="section-desc">
+          Leading and trailing icons with Lucide. Icons inherit text color.
+        </p>
+        <div className="button-row">
+          <Button variant="primary" iconLeft={<Download />}>
+            Download
+          </Button>
+          <Button variant="primary" iconRight={<ArrowRight />}>
+            Continue
+          </Button>
+          <Button variant="danger" iconLeft={<Trash2 />}>
+            Delete account
+          </Button>
+          <Button variant="secondary" iconLeft={<Plus />} iconRight={<ChevronRight />}>
+            Add item
+          </Button>
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Icon only</h2>
+        <p className="section-desc">
+          Square buttons — label is visually hidden but accessible to screen readers.
+        </p>
+        <div className="button-row">
+          {BUTTON_SIZES.map((s) => (
+            <Button key={s} variant="primary" size={s} iconOnly iconLeft={<Heart />}>
+              Like
+            </Button>
+          ))}
+          <Button variant="secondary" size="md" iconOnly iconLeft={<Search />}>
+            Search
+          </Button>
+          <Button variant="ghost" size="md" iconOnly iconLeft={<Plus />}>
+            Add
+          </Button>
+          <Button variant="danger" size="md" iconOnly iconLeft={<Trash2 />}>
+            Delete
+          </Button>
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Loading state</h2>
+        <p className="section-desc">
+          Label and icons are hidden; 3-dot wave animation centered. Click to trigger.
+        </p>
+        <div className="button-row">
+          {BUTTON_VARIANTS.map((v) => {
+            const key = `loading-${v}`;
+            return (
+              <Button
+                key={v}
+                variant={v}
+                loading={!!loadingStates[key]}
+                onClick={() => simulateLoading(key)}
+              >
+                {v.charAt(0).toUpperCase() + v.slice(1)}
+              </Button>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Disabled state</h2>
+        <p className="section-desc">
+          Disabled fill/text tokens override all variants. Link stays transparent.
+        </p>
+        <div className="button-row">
+          {BUTTON_VARIANTS.map((v) => (
+            <Button key={v} variant={v} disabled>
+              {v.charAt(0).toUpperCase() + v.slice(1)}
+            </Button>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Full width</h2>
+        <p className="section-desc">
+          Stretches to 100% of parent. Ideal for mobile CTAs.
+        </p>
+        <div className="full-width-demo">
+          <Button variant="primary" fullWidth iconRight={<ArrowRight />}>
+            Get a quote
+          </Button>
+          <Button variant="secondary" fullWidth>
+            Continue to payment
+          </Button>
+          <Button variant="danger" fullWidth iconLeft={<Trash2 />}>
+            Delete account
+          </Button>
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Matrix: variant × size</h2>
+        <p className="section-desc">Full grid for visual QA.</p>
+        <div className="matrix">
+          <div className="matrix-header">
+            <div className="matrix-label" />
+            {BUTTON_SIZES.map((s) => (
+              <div key={s} className="matrix-col-label">
+                {s}
+              </div>
+            ))}
+          </div>
+          {BUTTON_VARIANTS.map((v) => (
+            <div key={v} className="matrix-row">
+              <div className="matrix-label">{v}</div>
+              {BUTTON_SIZES.map((s) => (
+                <div key={s} className="matrix-cell">
+                  <Button variant={v} size={s}>
+                    Label
+                  </Button>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
@@ -268,9 +342,9 @@ function ButtonUsage() {
     setTimeout(() => setLoading(false), 2000);
   };
   return (
-    <Card variant="elevated" padding="md">
-      <CardContent>
-        <div className="space-y-16">
+    <Card variant="elevated" padding="md" className="min-w-0 max-w-full">
+      <CardContent className="min-w-0">
+        <div className="space-y-16 min-w-0">
           <Typography variant="heading-md" color="primary">
             Confirm your policy
           </Typography>
@@ -280,7 +354,8 @@ function ButtonUsage() {
           <Button variant="primary" fullWidth iconRight={<ArrowRight />} loading={loading} onClick={handleClick}>
             {loading ? "Processing..." : "Proceed to pay"}
           </Button>
-          <div className="flex gap-12">
+          {/* Stack in narrow “In context” panel; avoids two fullWidth siblings in one row */}
+          <div className="flex min-w-0 flex-col gap-12">
             <Button variant="secondary" fullWidth>
               Edit details
             </Button>
@@ -288,11 +363,12 @@ function ButtonUsage() {
               Download PDF
             </Button>
           </div>
-          <div className="flex justify-between items-center pt-8">
-            <Button variant="link" iconRight={<ArrowRight />}>
+          {/* flex-wrap + min-w-0 so link + danger never overflow the card */}
+          <div className="flex w-full min-w-0 flex-wrap gap-x-12 gap-y-12 pt-8">
+            <Button variant="link" iconRight={<ArrowRight />} className="min-w-0 max-w-full justify-start">
               Terms & conditions
             </Button>
-            <Button variant="danger" size="sm" iconLeft={<Trash2 />}>
+            <Button variant="danger" size="sm" iconLeft={<Trash2 />} className="min-w-0 max-w-full">
               Cancel policy
             </Button>
           </div>
