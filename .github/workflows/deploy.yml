@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [Version-4.1, Version-2]
+    branches: [main, Version-4.1, Version-2]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -38,6 +42,10 @@ jobs:
         run: pnpm build
 
       - name: Build playground
+        env:
+          # Ensure Vite `base` is /Acko-Design-system/ (matches repo name path on github.io)
+          GITHUB_ACTIONS: "true"
+          CI: "true"
         run: pnpm --filter=playground build
 
       - uses: actions/configure-pages@v5
