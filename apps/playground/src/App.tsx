@@ -2675,8 +2675,8 @@ function App() {
         </aside>
 
         {/* ── Middle: Component preview ── */}
-        <main className="flex-1 overflow-y-auto bg-surface">
-          <div className="max-w-xl mx-auto px-32 py-40">
+        <main className="flex-1 min-w-0 overflow-y-auto bg-surface">
+          <div className="w-full min-w-0 max-w-none mx-auto px-24 py-40 sm:px-32 lg:px-40">
             {/* Header */}
             <div className="flex items-start justify-between mb-32">
               <div>

@@ -103,16 +103,25 @@ body {
 .playground-button-demo .matrix {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   margin-top: 8px;
+  width: 100%;
+  min-width: 0;
+  /* Narrow viewports: scroll instead of squashing cells */
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .playground-button-demo .matrix-header,
 .playground-button-demo .matrix-row {
   display: grid;
-  grid-template-columns: 88px repeat(5, minmax(0, 1fr));
-  gap: 8px;
+  /* Row label + one column per size; auto widths follow button min-content (no overlap) */
+  grid-template-columns: minmax(5.5rem, max-content) repeat(5, auto);
+  gap: 12px 24px;
   align-items: center;
+  min-width: min-content;
 }
 
 .playground-button-demo .matrix-col-label {
@@ -134,4 +143,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 48px;
+  padding-inline: 4px;
+  box-sizing: border-box;
 }
