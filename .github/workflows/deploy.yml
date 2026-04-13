@@ -1,3 +1,10 @@
+# GitHub Pages: use Actions to publish the Vite build (apps/playground/dist).
+# Do NOT use "Deploy from a branch" — the repo root has no index.html.
+#
+# After unpublishing or first setup:
+#   Settings → Pages → Build and deployment → Source: GitHub Actions
+# Then push Version-4.1 (or Actions → Deploy to GitHub Pages → Run workflow).
+#
 name: Deploy to GitHub Pages
 
 on:
