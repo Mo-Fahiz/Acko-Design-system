@@ -1,9 +1,7 @@
-# GitHub Pages: use Actions to publish the Vite build (apps/playground/dist).
+# GitHub Pages: publish the Vite build (apps/playground/dist) via GitHub Actions.
 # Do NOT use "Deploy from a branch" — the repo root has no index.html.
 #
-# After unpublishing or first setup:
-#   Settings → Pages → Build and deployment → Source: GitHub Actions
-# Then push Version-4.1 (or Actions → Deploy to GitHub Pages → Run workflow).
+# Settings → Pages → Source: GitHub Actions. Then push Version-4.1 or run workflow.
 #
 name: Deploy to GitHub Pages
 
@@ -19,18 +17,11 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -48,18 +39,30 @@ jobs:
       - name: Build all packages
         run: pnpm build
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Build playground
         env:
-          # Ensure Vite `base` is /Acko-Design-system/ (matches repo name path on github.io)
           GITHUB_ACTIONS: "true"
           CI: "true"
         run: pnpm --filter=playground build
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: apps/playground/dist
 
-      - id: deployment
-        uses: actions/deploy-pages@v4
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
