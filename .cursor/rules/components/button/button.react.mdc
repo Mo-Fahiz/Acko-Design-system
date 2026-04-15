@@ -1,10 +1,10 @@
 ---
-description: Button React — props, DOM, a11y; must match packages/button/src/Button.tsx and docs/components/button/react/button-react.md
+description: Button React — props, DOM, a11y; must match packages/button/src/Button.tsx and Flutter-React md/components/button/react/button-react.md
 alwaysApply: false
 ---
 # Button — React
 
-**Docs:** [`docs/components/button/react/button-react.md`](../../../../docs/components/button/react/button-react.md) · **Visual spec:** [`docs/components/button/button-base.md`](../../../../docs/components/button/button-base.md)
+**Docs:** [`Flutter-React md/components/button/react/button-react.md`](../../../../Flutter-React%20md/components/button/react/button-react.md) · **Visual spec:** [`Flutter-React md/components/button/button-base.md`](../../../../Flutter-React%20md/components/button/button-base.md)
 
 Package: `@acko/button` · Directive: `"use client"`
 

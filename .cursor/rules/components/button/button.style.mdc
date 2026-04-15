@@ -1,11 +1,11 @@
 ---
-description: Button CSS — acko-* classes, variants, sizes, states; must match packages/css/src/button.css and docs/components/button/button-base.md
+description: Button CSS — acko-* classes, variants, sizes, states; must match packages/css/src/button.css and Flutter-React md/components/button/button-base.md
 globs: "**/button/**,**/Button/**"
 ---
 
 # Button — Style (CSS)
 
-**Human spec:** [`docs/components/button/button-base.md`](../../../../docs/components/button/button-base.md)
+**Human spec:** [`Flutter-React md/components/button/button-base.md`](../../../../Flutter-React%20md/components/button/button-base.md)
 
 CSS file: `@acko/css/button.css` — source: `packages/css/src/button.css`
 

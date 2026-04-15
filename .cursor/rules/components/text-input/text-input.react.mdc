@@ -1,56 +1,15 @@
 ---
-description: TextInput React implementation — props, behavior, accessibility
-globs: "**/text-input/**,**/TextInput/**"
+description: TextInput React — pointer to canonical docs (props, DOM, ARIA)
+globs: "**/text-input/**,**/TextInput.tsx"
+alwaysApply: false
 ---
 
-# TextInput — React
+# TextInput — React (Cursor rule)
 
-Package: `@acko/text-input`
-Directive: `"use client"` (interactive)
+**Canonical specification:** [`Flutter-React md/components/text-input/react/text-input-react.md`](../../../../Flutter-React%20md/components/text-input/react/text-input-react.md)
 
-## Props Interface
+That file covers `@acko/text-input`, full `TextInputProps`, DOM tree, `forwardRef` on `HTMLDivElement`, class names, accessibility, and exports — aligned with `packages/text-input/src/TextInput.tsx`.
 
-```typescript
-interface TextInputProps {
-  id?: string;
-  label: string;
-  placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
-  size?: 'sm' | 'md' | 'lg';
-  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
-  state?: 'default' | 'error' | 'success';
-  helperText?: string;
-  errorText?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  required?: boolean;
-  iconLeft?: ReactNode;
-  iconRight?: ReactNode;
-  prefix?: string;
-  suffix?: string;
-  maxLength?: number;
-  autoComplete?: string;
-  className?: string;
-}
-```
+**Platform-agnostic contract:** [`Flutter-React md/components/text-input/text-input-base.md`](../../../../Flutter-React%20md/components/text-input/text-input-base.md)
 
-## Key Behaviors
-
-- Controlled component: `value` + `onChange`
-- Internal `focused` state drives CSS class + label color
-- Success state shows animated checkmark icon (inline SVG)
-- Error text is wrapped in `role="alert"`
-
-## Accessibility
-
-- `aria-required`, `aria-invalid`, `aria-describedby`
-- Label linked via `htmlFor` / `id`
-- Error text with `role="alert"` for screen reader announcement
-
-## Exports
-
-```typescript
-export { TextInput } from './TextInput';
-export type { TextInputProps } from './TextInput';
-```
+**CSS / `acko-*` classes:** [`text-input.styles.mdc`](./text-input.styles.mdc) ↔ `packages/css/src/text-input.css`.
