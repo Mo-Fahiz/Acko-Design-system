@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acko Design System</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.5;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 40rem;
+        padding: 2rem;
+      }
+      code {
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Acko Design System</h1>
+    <p>
+      The interactive <strong>playground</strong> is built and published by
+      <strong>GitHub Actions</strong> (it is not the same as the files on the default branch
+      root). Your published site must include a built <code>index.html</code> at the site
+      entry — the workflow publishes <code>apps/playground/dist</code> for that.
+    </p>
+    <p>
+      <strong>If this page is all you see at your GitHub Pages URL:</strong> In the repo, go
+      to <strong>Settings → Pages</strong>, and under <strong>Build and deployment</strong> choose
+      <strong>GitHub Actions</strong> (not &quot;Deploy from a branch&quot; with only the raw
+      repo). The workflow
+      <code>.github/workflows/deploy.yml</code> must run successfully; then use the
+      <strong>Visit site</strong> / environment URL from the workflow run.
+    </p>
+    <p>
+      Project site URL format:
+      <code>https://&lt;owner&gt;.github.io/&lt;repository&gt;/</code> — the
+      <code>repository</code> name must match the Vite
+      <code>base</code> in <code>apps/playground/vite.config.ts</code> (currently
+      <code>/Acko-Design-system/</code>).
+    </p>
+  </body>
+</html>

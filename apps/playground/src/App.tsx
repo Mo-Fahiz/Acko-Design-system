@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import {
   ArrowRight,
   Plus,
@@ -9,6 +9,18 @@ import {
   Trash2,
   Share2,
   Settings,
+  Shield,
+  Car,
+  Sparkles,
+  ImageIcon,
+  Bookmark,
+  MessageCircle,
+  Play,
+  MapPin,
+  Clock,
+  Star,
+  MoreHorizontal,
+  Mail,
 } from "lucide-react";
 
 const BUTTON_VARIANTS = ["primary", "secondary", "inverted", "ghost", "link", "danger"] as const;
@@ -28,7 +40,7 @@ import { Breadcrumb } from "@acko/breadcrumb";
 import { Dropdown } from "@acko/dropdown";
 import { Calendar } from "@acko/calendar";
 import type { DateRange } from "@acko/calendar";
-import { Card, CardHeader, CardContent, CardFooter } from "@acko/card";
+import { Card, CardHeader, CardContent, CardFooter, CardInset } from "@acko/card";
 import { Typography } from "@acko/typography";
 import { Alert } from "@acko/alert";
 import { Progress } from "@acko/progress";
@@ -535,59 +547,632 @@ function AlertUsage() {
   );
 }
 
-function CardPreview() {
+/** Hero image strip (top of card) — matches card top radius */
+const CARD_IMAGE_TOP =
+  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=960&q=80&auto=format&fit=crop";
+/** Wide cover for overlay / full-bleed demos */
+const CARD_IMAGE_COVER =
+  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=960&q=80&auto=format&fit=crop";
+/** Illustration-style photo (square crop) */
+const CARD_IMAGE_ILLUSTRATION =
+  "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&q=80&auto=format&fit=crop";
+/** Avatars for social / facepile demos */
+const CARD_AVATAR_A = "https://i.pravatar.cc/150?img=12";
+const CARD_AVATAR_B = "https://i.pravatar.cc/150?img=33";
+const CARD_AVATAR_C = "https://i.pravatar.cc/150?img=47";
+
+function CardChecklistExample() {
+  const [a, setA] = useState(false);
+  const [b, setB] = useState(true);
+  const [c, setC] = useState(false);
+
   return (
-    <div className="space-y-16">
-      <Typography variant="label-sm" color="secondary">Variants</Typography>
-      <div className="grid grid-cols-2 gap-12">
-        {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
-          <Card key={v} variant={v} padding="sm">
-            <CardContent>
-              <Typography variant="label-sm" color="primary">{v}</Typography>
-              <Typography variant="caption" color="secondary">
-                {v === "default" ? "Standard surface" : v === "elevated" ? "Raised with shadow" : v === "outline" ? "Transparent + border" : "Recessed surface"}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <Typography variant="label-sm" color="secondary">Padding sizes</Typography>
-      <div className="space-y-12">
-        {(["sm", "md", "lg"] as const).map((p) => (
-          <Card key={p} variant="default" padding={p}>
-            <CardContent>
-              <Typography variant="label-sm" color="primary">pad-{p}</Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <Typography variant="label-sm" color="secondary">Card with CTA</Typography>
-      <Card variant="elevated" padding="md">
-        <CardContent>
-          <div className="space-y-4">
-            <Typography variant="heading-sm" color="primary">Comprehensive plan</Typography>
-            <Typography variant="body-sm" color="secondary">
-              Full coverage for your vehicle with cashless claims.
+    <Card variant="elevated" padding="md">
+      <CardHeader>
+        <div className="w-full">
+          <Typography variant="heading-sm" color="primary">Before you claim</Typography>
+          <Typography variant="caption" color="secondary" className="mt-8">
+            Tick what applies — we will guide the rest.
+          </Typography>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-8">
+        <CheckboxRow label="Policy number handy" checked={a} onChange={setA} />
+        <CheckboxRow label="Photos of damage uploaded" checked={b} onChange={setB} />
+        <CheckboxRow label="FIR copy (if required)" checked={c} onChange={setC} />
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary" fullWidth iconRight={<ArrowRight className="size-16" aria-hidden />}>
+          Continue
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+function CardSearchFieldExample() {
+  const [query, setQuery] = useState("");
+
+  return (
+    <Card variant="outline" padding="md">
+      <CardContent className="space-y-12">
+        <Typography variant="label-md" color="primary">Find a garage</Typography>
+        <TextInput
+          label="City or PIN"
+          type="search"
+          placeholder="Search"
+          value={query}
+          onChange={setQuery}
+          iconLeft={<Search className="size-20" aria-hidden />}
+        />
+      </CardContent>
+    </Card>
+  );
+}
+
+function CardEmailSignupExample() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <Card variant="elevated" padding="md">
+      <CardContent className="space-y-16">
+        <div className="flex items-start gap-12">
+          <Mail className="mt-2 size-24 shrink-0 text-text-brand" aria-hidden />
+          <div className="min-w-0">
+            <Typography variant="heading-sm" color="primary">Stay in the loop</Typography>
+            <Typography variant="caption" color="secondary" className="mt-8">
+              Renewal reminders and tips — unsubscribe anytime.
             </Typography>
           </div>
-        </CardContent>
-        <CardFooter>
-          <Button variant="secondary" size="sm">Learn more</Button>
-          <Button variant="primary" size="sm">Buy now</Button>
-        </CardFooter>
-      </Card>
-      <Card variant="default" padding="md">
-        <CardContent>
-          <Typography variant="body-sm" color="secondary">
-            Full-width pill button inside padded card — corners stay clean.
-          </Typography>
-        </CardContent>
-        <CardFooter>
-          <Button variant="primary" fullWidth>
-            Get started
+        </div>
+        <TextInput
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+          value={email}
+          onChange={setEmail}
+          autoComplete="email"
+        />
+        <Button variant="primary" fullWidth>
+          Subscribe
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function CardPreview() {
+  const jumpTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <div className="space-y-24">
+      <div className="rounded-2xl border border-border-subtle p-20" style={{ background: "var(--color-card-demoted-bg)" }}>
+        <Typography variant="heading-sm" color="primary">Card gallery</Typography>
+        <Typography variant="body-sm" color="secondary" className="mt-8">
+          Scroll this centre column for all examples, or jump to a group. The right column shows a separate &quot;In context&quot; usage sample.
+        </Typography>
+        <div className="mt-16 flex flex-wrap gap-8">
+          <Button type="button" variant="secondary" size="sm" onClick={() => jumpTo("card-preview-foundations")}>
+            Foundations
           </Button>
-        </CardFooter>
-      </Card>
+          <Button type="button" variant="secondary" size="sm" onClick={() => jumpTo("card-preview-media")}>
+            Media & regions
+          </Button>
+          <Button type="button" variant="secondary" size="sm" onClick={() => jumpTo("card-preview-reference")}>
+            Reference layouts
+          </Button>
+        </div>
+      </div>
+
+      <section id="card-preview-foundations" className="scroll-mt-24 space-y-24">
+        <div className="space-y-8">
+          <Typography variant="heading-sm" color="primary">Foundations</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Variants, padding tiers, and responsive padding (pad-none + breakpoints).
+          </Typography>
+        </div>
+      {/* Variants */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Variants</Typography>
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
+          {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
+            <Card key={v} variant={v} padding="sm">
+              <CardContent>
+                <Typography variant="label-sm" color="primary">{v}</Typography>
+                <Typography variant="caption" color="secondary">
+                  {v === "default" ? "Standard surface" : v === "elevated" ? "Raised with shadow" : v === "outline" ? "Transparent + border" : "Recessed surface"}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Padding tiers */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Padding sizes (sm / md / lg)</Typography>
+        <div className="space-y-12">
+          {(["sm", "md", "lg"] as const).map((p) => (
+            <Card key={p} variant="default" padding={p}>
+              <CardContent>
+                <Typography variant="label-sm" color="primary">pad-{p}</Typography>
+                <Typography variant="caption" color="secondary">Token padding on the card shell</Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Responsive padding — pad-none + consumer breakpoints */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Responsive padding (pad-none + Tailwind breakpoints)</Typography>
+        <Typography variant="caption" color="secondary">
+          Outer shell uses padding none; inner content uses p-12 → md:p-20 → lg:p-24 (playground pattern).
+        </Typography>
+        <Card variant="elevated" padding="none" className="overflow-hidden">
+          <div className="p-12 md:p-20 lg:p-24">
+            <Typography variant="heading-sm" color="primary">Tighter on mobile, roomier on desktop</Typography>
+            <Typography variant="body-sm" color="secondary" className="mt-8">
+              Use this when product needs different gutters per breakpoint while keeping the shell variant.
+            </Typography>
+          </div>
+        </Card>
+      </section>
+
+      </section>
+
+      <section id="card-preview-media" className="scroll-mt-24 space-y-24">
+        <div className="space-y-8">
+          <Typography variant="heading-sm" color="primary">Media & regions</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Imagery, headers, CardInset, and footer actions.
+          </Typography>
+        </div>
+
+      {/* Image strip — top hero, content below */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Image — top strip (object-cover, flush top)</Typography>
+        <Card variant="elevated" padding="none" className="overflow-hidden">
+          <div
+            className="h-48 w-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${CARD_IMAGE_TOP})` }}
+            role="img"
+            aria-label="City street"
+          />
+          <CardContent>
+            <Typography variant="heading-sm" color="primary">Drive with confidence</Typography>
+            <Typography variant="body-sm" color="secondary" className="mt-8">
+              Cashless repairs at 8,400+ garages. Add-ons available at checkout.
+            </Typography>
+          </CardContent>
+          <CardFooter>
+            <Button variant="secondary" size="sm">View garages</Button>
+            <Button variant="primary" size="sm">Add to cart</Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      {/* Full-bleed image + gradient overlay + static text */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Image — full-bleed background + gradient overlay</Typography>
+        <Card variant="default" padding="none" className="relative min-h-[220px] overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${CARD_IMAGE_COVER})` }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" aria-hidden />
+          <div className="relative flex min-h-[220px] flex-col justify-end p-24">
+            <Typography variant="heading-md" color="static">Comprehensive car insurance</Typography>
+            <Typography variant="body-sm" color="static" className="mt-8 opacity-90">
+              Starting at ₹4,835/year · Zero paperwork
+            </Typography>
+            <div className="mt-16">
+              <Button variant="primary" size="sm">Get a quote</Button>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* Icon header + body */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Header with icon — leading metaphor</Typography>
+        <Card variant="default" padding="md">
+          <CardHeader>
+            <div className="flex w-full items-center gap-12">
+              <span className="text-text-brand flex size-40 shrink-0 items-center justify-center rounded-full bg-primary-subtle" aria-hidden>
+                <Shield className="size-20" strokeWidth={2} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <Typography variant="heading-sm" color="primary">Damage protection</Typography>
+                <Typography variant="caption" color="secondary">Covers accidental damage to your vehicle</Typography>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Typography variant="body-sm" color="secondary">
+              Includes own-damage cover for theft, fire, and natural calamities. Deductible applies per claim.
+            </Typography>
+          </CardContent>
+          <CardFooter>
+            <Button variant="ghost" size="sm" iconLeft={<Share2 className="size-16" aria-hidden />}>
+              Share
+            </Button>
+            <Button variant="primary" size="sm">Add cover</Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      {/* Row with small illustration + Lucide */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Illustration — filled image + icon row</Typography>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <Card variant="outline" padding="md">
+            <CardContent>
+              <div className="flex gap-16">
+                <div className="size-80 shrink-0 overflow-hidden rounded-2xl">
+                  <img
+                    src={CARD_IMAGE_ILLUSTRATION}
+                    alt=""
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-8">
+                    <Car className="size-20 shrink-0 text-text-brand" aria-hidden />
+                    <Typography variant="label-md" color="primary">Garage visit</Typography>
+                  </div>
+                  <Typography variant="caption" color="secondary" className="mt-8">
+                    Book a cashless repair at your nearest partner garage.
+                  </Typography>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card variant="demoted" padding="md">
+            <CardContent>
+              <div className="flex flex-col items-center gap-12 text-center">
+                <div className="flex size-64 items-center justify-center rounded-full bg-primary-subtle text-text-brand">
+                  <Sparkles className="size-32" strokeWidth={1.5} aria-hidden />
+                </div>
+                <Typography variant="label-md" color="primary">New · AI-powered claims</Typography>
+                <Typography variant="caption" color="secondary">
+                  Upload photos; we estimate repairs in minutes.
+                </Typography>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* CardInset — nested illustration panel */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">CardInset — nested illustration panel</Typography>
+        <Card variant="elevated" padding="md">
+          <CardContent>
+            <Typography variant="label-md" color="primary">Policy snapshot</Typography>
+            <CardInset className="mt-16">
+              <div className="flex items-center gap-12">
+                <ImageIcon className="size-24 shrink-0 text-text-secondary" aria-hidden />
+                <div className="min-w-0">
+                  <Typography variant="label-sm" color="primary">ID proof uploaded</Typography>
+                  <Typography variant="caption" color="secondary">Aadhaar · Verified</Typography>
+                </div>
+              </div>
+            </CardInset>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* CTAs */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Footer — dual actions</Typography>
+        <Card variant="elevated" padding="md">
+          <CardContent>
+            <div className="space-y-4">
+              <Typography variant="heading-sm" color="primary">Comprehensive plan</Typography>
+              <Typography variant="body-sm" color="secondary">
+                Full coverage for your vehicle with cashless claims.
+              </Typography>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button variant="secondary" size="sm">Learn more</Button>
+            <Button variant="primary" size="sm">Buy now</Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Footer — full-width CTA</Typography>
+        <Card variant="default" padding="md">
+          <CardContent>
+            <Typography variant="body-sm" color="secondary">
+              Full-width pill button inside padded card — corners stay clean.
+            </Typography>
+          </CardContent>
+          <CardFooter>
+            <Button variant="primary" fullWidth>
+              Get started
+            </Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      </section>
+
+      <section id="card-preview-reference" className="scroll-mt-24 space-y-24">
+        <div className="space-y-8">
+          <Typography variant="heading-sm" color="primary">Reference layouts</Typography>
+          <Typography variant="body-sm" color="secondary">
+            Organism-style patterns (CardsLayout_preview): schedule rows, social feed, profile, checklist, media overlay, brand surface, facepile, search, rating, email capture.
+          </Typography>
+        </div>
+
+      {/* Event / schedule — date rail + Apply */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — event row (date rail + Apply)</Typography>
+        <Card variant="elevated" padding="md">
+          <CardContent>
+            <div className="flex flex-col gap-16 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex items-start gap-16">
+                <div className="flex size-64 shrink-0 flex-col items-center justify-center rounded-2xl bg-primary-subtle">
+                  <Typography variant="overline" color="secondary">Tue</Typography>
+                  <Typography variant="heading-md" color="primary">15</Typography>
+                  <Typography variant="caption" color="secondary">Apr</Typography>
+                </div>
+                <div className="min-w-0">
+                  <Typography variant="label-md" color="primary">Design review • Mumbai</Typography>
+                  <div className="mt-8 flex flex-wrap items-center gap-8 text-text-secondary">
+                    <Clock className="size-16 shrink-0" aria-hidden />
+                    <Typography variant="caption" color="secondary">3:00 PM</Typography>
+                    <span className="text-text-muted" aria-hidden>·</span>
+                    <MapPin className="size-16 shrink-0" aria-hidden />
+                    <Typography variant="caption" color="secondary">Worli</Typography>
+                  </div>
+                </div>
+              </div>
+              <Button variant="secondary" size="sm" className="shrink-0 sm:self-center">
+                Apply
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Social — avatar header, media, actions */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — social feed (header + media + actions)</Typography>
+        <Card variant="elevated" padding="none" className="overflow-hidden">
+          <CardHeader className="px-20 pt-20">
+            <div className="flex w-full items-center gap-12">
+              <Avatar src={CARD_AVATAR_A} alt="Sarah Chen" size="md" shape="circle" />
+              <div className="min-w-0 flex-1">
+                <Typography variant="label-md" color="primary">Sarah Chen</Typography>
+                <Typography variant="caption" color="secondary">Posted 2h ago · Travel</Typography>
+              </div>
+              <Button variant="ghost" size="sm" iconOnly aria-label="More options">
+                <MoreHorizontal className="size-20" aria-hidden />
+              </Button>
+            </div>
+          </CardHeader>
+          <div
+            className="aspect-[16/10] w-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${CARD_IMAGE_TOP})` }}
+            role="img"
+            aria-label="Coastal road"
+          />
+          <CardContent className="px-20">
+            <Typography variant="heading-sm" color="primary">Weekend drive along the coast</Typography>
+            <Typography variant="body-sm" color="secondary" className="mt-8">
+              Cashless repairs at partner garages on the way back — add roadside cover before you go.
+            </Typography>
+          </CardContent>
+          <CardFooter className="justify-start flex-wrap gap-8 px-20 pb-20">
+            <Button variant="ghost" size="sm" iconLeft={<Heart className="size-16" aria-hidden />}>
+              128
+            </Button>
+            <Button variant="ghost" size="sm" iconLeft={<MessageCircle className="size-16" aria-hidden />}>
+              24
+            </Button>
+            <Button variant="ghost" size="sm" iconLeft={<Bookmark className="size-16" aria-hidden />}>
+              Save
+            </Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      {/* Profile compact — centered */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — profile compact (centered)</Typography>
+        <div className="mx-auto max-w-sm">
+          <Card variant="elevated" padding="lg">
+            <CardContent className="text-center">
+              <div className="flex justify-center">
+                <Avatar src={CARD_AVATAR_B} alt="Alex Rivera" size="xl" shape="circle" />
+              </div>
+              <Typography variant="heading-sm" color="primary" className="mt-16">
+                Alex Rivera
+              </Typography>
+              <Typography variant="caption" color="secondary">Product designer · ACKO</Typography>
+              <Button variant="primary" fullWidth className="mt-16">
+                Follow
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Checklist + Continue */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — checklist + primary CTA</Typography>
+        <CardChecklistExample />
+      </section>
+
+      {/* Media — play overlay (decorative) */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Image — media overlay + play control</Typography>
+        <Card variant="default" padding="none" className="relative min-h-[200px] overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${CARD_IMAGE_COVER})` }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-black/35" aria-hidden />
+          <div className="relative flex min-h-[200px] flex-col items-center justify-center gap-8 p-24">
+            <button
+              type="button"
+              className="flex size-56 items-center justify-center rounded-full bg-black/50 text-on-primary backdrop-blur-sm transition hover:bg-black/60"
+              aria-label="Play video"
+            >
+              <Play className="size-28 translate-x-2 fill-current" aria-hidden />
+            </button>
+            <Typography variant="label-md" color="static">How claims work in 60 seconds</Typography>
+          </div>
+        </Card>
+      </section>
+
+      {/* Large image + footer link strip */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Image — dominant media + footer link</Typography>
+        <Card variant="elevated" padding="none" className="overflow-hidden">
+          <div
+            className="h-56 w-full bg-cover bg-center sm:h-64"
+            style={{ backgroundImage: `url(${CARD_IMAGE_ILLUSTRATION})` }}
+            role="img"
+            aria-label="Vehicle"
+          />
+          <CardFooter className="flex-col items-stretch gap-8 sm:flex-row sm:items-center sm:justify-between">
+            <Typography variant="body-sm" color="secondary">
+              See how IDV and add-ons affect your premium.
+            </Typography>
+            <Button variant="link" size="sm" iconRight={<ChevronRight className="size-16" aria-hidden />}>
+              Learn more
+            </Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      {/* Nav row — title + chevron */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — navigable row (title + chevron)</Typography>
+        <Card variant="outline" padding="md">
+          <CardContent>
+            <button
+              type="button"
+              className="flex w-full items-center justify-between gap-12 text-left"
+            >
+              <Typography variant="label-md" color="primary">Account & security</Typography>
+              <ChevronRight className="size-20 shrink-0 text-text-secondary" aria-hidden />
+            </button>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Horizontal thumb + copy */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — horizontal thumbnail + body</Typography>
+        <Card variant="default" padding="none" className="overflow-hidden">
+          <div className="flex flex-col sm:flex-row">
+            <div className="h-40 shrink-0 bg-cover bg-center sm:h-auto sm:w-160 sm:min-h-[120px]" style={{ backgroundImage: `url(${CARD_IMAGE_TOP})` }} role="img" aria-label="Street" />
+            <CardContent className="flex min-w-0 flex-1 flex-col justify-center">
+              <Typography variant="label-md" color="primary">Garage network</Typography>
+              <Typography variant="caption" color="secondary" className="mt-8">
+                8,400+ cashless partners across India. Find one near you.
+              </Typography>
+              <div className="mt-12">
+                <Button variant="ghost" size="sm" iconRight={<ArrowRight className="size-16" aria-hidden />}>
+                  Choose garage
+                </Button>
+              </div>
+            </CardContent>
+          </div>
+        </Card>
+      </section>
+
+      {/* Themed primary surface */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Surface — brand-filled (primary)</Typography>
+        <Card variant="elevated" padding="md" className="border-0 bg-primary text-[var(--color-on-primary)] shadow-lg">
+          <CardContent>
+            <Typography variant="heading-sm" color="invert">
+              NCB protector
+            </Typography>
+            <Typography variant="body-sm" color="invert" className="mt-8 opacity-90">
+              Keep your bonus even after a claim — add this cover at checkout.
+            </Typography>
+          </CardContent>
+          <CardFooter className="justify-start">
+            <Button variant="inverted" size="sm">
+              View add-on
+            </Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      {/* Facepile + members */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — facepile + members + CTA</Typography>
+        <Card variant="demoted" padding="md">
+          <CardContent>
+            <div className="flex flex-col gap-16 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-12">
+                <div className="flex pl-8">
+                  <Avatar src={CARD_AVATAR_A} alt="Member 1" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--color-card-demoted-bg)] first:ml-0" />
+                  <Avatar src={CARD_AVATAR_B} alt="Member 2" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--color-card-demoted-bg)]" />
+                  <Avatar src={CARD_AVATAR_C} alt="Member 3" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--color-card-demoted-bg)]" />
+                </div>
+                <Typography variant="caption" color="secondary">
+                  <span className="text-text-primary font-medium">12 members</span> in this group policy
+                </Typography>
+              </div>
+              <Button variant="secondary" size="sm" className="shrink-0">
+                Invite
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Search in card */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — search field in card</Typography>
+        <CardSearchFieldExample />
+      </section>
+
+      {/* Rating + badge */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — rating + meta row</Typography>
+        <Card variant="elevated" padding="md">
+          <CardContent>
+            <div className="flex flex-wrap items-center justify-between gap-12">
+              <div className="flex items-center gap-4" aria-label="Rating 4.5 out of 5">
+                {[1, 2, 3, 4].map((i) => (
+                  <Star key={i} className="size-20 fill-current text-text-brand" aria-hidden />
+                ))}
+                <Star className="size-20" strokeWidth={1.5} aria-hidden />
+              </div>
+              <Badge color="green" variant="dot" textCase="uppercase">Verified</Badge>
+            </div>
+            <Typography variant="heading-sm" color="primary" className="mt-16">
+              ACKO Garage — Koramangala
+            </Typography>
+            <Typography variant="body-sm" color="secondary" className="mt-8">
+              Average repair turnaround 2 days · Cashless for comprehensive policies.
+            </Typography>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Email capture */}
+      <section className="space-y-12">
+        <Typography variant="label-sm" color="secondary">Layout — email capture (lead)</Typography>
+        <CardEmailSignupExample />
+      </section>
+
+      </section>
     </div>
   );
 }
@@ -2546,10 +3131,30 @@ const CATEGORIES: { label: string; tag: string; items: ComponentName[] }[] = [
 /* ═══════════════════════════════════════════════════════════════
    App — 3-column layout
    ═══════════════════════════════════════════════════════════════ */
+function readComponentFromUrl(): ComponentName {
+  if (typeof window === "undefined") return "Button";
+  const c = new URLSearchParams(window.location.search).get("c");
+  if (c && (COMPONENT_LIST as readonly string[]).includes(c)) {
+    return c as ComponentName;
+  }
+  return "Button";
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>("light");
-  const [selected, setSelected] = useState<ComponentName>("Button");
+  const [selected, setSelected] = useState<ComponentName>(readComponentFromUrl);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (selected === "Button") {
+      url.searchParams.delete("c");
+    } else {
+      url.searchParams.set("c", selected);
+    }
+    const searchStr = url.searchParams.toString();
+    window.history.replaceState(null, "", `${url.pathname}${searchStr ? `?${searchStr}` : ""}${url.hash}`);
+  }, [selected]);
 
   const cycleTheme = (next: Theme) => {
     setTheme(next);
@@ -2559,8 +3164,6 @@ function App() {
   const entry = COMPONENT_REGISTRY[selected];
   const Preview = entry.preview;
   const Usage = entry.usage;
-
-  const isCardComponent = selected === "Card";
 
   const lc = search.toLowerCase();
   const isSearching = lc.length > 0;
@@ -2649,6 +3252,7 @@ function App() {
                 {cat.items.map((name) => (
                   <button
                     key={name}
+                    type="button"
                     onClick={() => setSelected(name)}
                     className={`w-full text-left px-12 py-6 rounded-lg text-xs font-medium transition-all mb-2 flex items-center justify-between group ${
                       selected === name
@@ -2689,29 +3293,26 @@ function App() {
                   </span>
                 </div>
                 <Typography variant="body-sm" color="secondary">
-                  Variants, sizes, and states
+                  {selected === "Card"
+                    ? "Gallery: foundations, media patterns, reference layouts — scroll the centre column. Add ?c=Card to the URL to open this page directly."
+                    : "Variants, sizes, and states"}
                 </Typography>
               </div>
             </div>
 
-            {/* Preview area */}
-            {isCardComponent ? (
-              <div className="space-y-12">
+            {/* Preview area — must sit on a surface *lighter* than main (bg-surface) or the frame disappears */}
+            <div
+              style={{
+                borderRadius: "var(--radius-4xl)",
+                background: "var(--color-card-bg)",
+                border: "1px solid var(--color-card-border)",
+                boxShadow: "var(--shadow-lg)",
+              }}
+            >
+              <div className="p-24 min-w-0">
                 <Preview />
               </div>
-            ) : (
-              <div
-                style={{
-                  borderRadius: "var(--radius-4xl)",
-                  background: "var(--color-card-bg)",
-                  border: "1px solid var(--color-card-border)",
-                }}
-              >
-                <div className="p-24">
-                  <Preview />
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </main>
 

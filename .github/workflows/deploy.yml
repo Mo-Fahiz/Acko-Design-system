@@ -1,13 +1,15 @@
 # GitHub Pages: publish the Vite build (apps/playground/dist) via GitHub Actions.
-# Do NOT use "Deploy from a branch" — the repo root has no index.html.
+# Optional static index.html at repo root and in docs/ helps branch-based Pages avoid a bare
+# 404, but the interactive playground is this workflow's artifact. Prefer:
+# Settings → Pages → Source: GitHub Actions.
 #
-# Settings → Pages → Source: GitHub Actions. Then push Version-4.1 or run workflow.
+# Then push main / Version-4.1 / Version-4.2 or run workflow manually.
 #
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, Version-4.1, Version-2]
+    branches: [main, Version-4.1, Version-4.2, Version-2]
   workflow_dispatch:
 
 permissions:
