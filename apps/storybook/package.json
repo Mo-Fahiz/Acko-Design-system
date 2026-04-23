@@ -1,11 +1,37 @@
 {
-  "name": "playground",
-  "private": false,
-  "type": "module",
+  "name": "bit-storybook",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite --host",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-onboarding": "^8.6.12",
+    "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-webpack5": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@tailwindcss/postcss": "^4.0.0",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
+    "prop-types": "^15.8.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "storybook": "^8.6.12",
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.7.0"
   },
   "dependencies": {
     "@acko/accordion": "workspace:*",
@@ -45,16 +71,6 @@
     "@acko/tooltip": "workspace:*",
     "@acko/typography": "workspace:*",
     "lucide-react": "^0.577.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "tailwindcss": "^4.0.0",
-    "typescript": "~5.7.0",
-    "vite": "^6.1.0"
+    "react-router-dom": "^7.5.0"
   }
 }
