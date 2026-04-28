@@ -5,7 +5,7 @@ alwaysApply: true
 
 # ACKO Design System — System Rules
 
-**Human-readable architecture + doc pipeline:** see [`Flutter-React md/global.md`](../../Flutter-React%20md/global.md) — foundation encyclopedia **and** how `*-base.md`, `react/`, `flutter/`, and `*.style.mdc` connect across platforms.
+**Human-readable architecture + doc pipeline:** see [`Flutter-React md/global.md`](../../Flutter-React%20md/global.md) — foundation encyclopedia **and** how `*-base.md`, `react/`, `flutter/`, and `*.style.md` connect across platforms.
 
 You are generating components for the ACKO Design System — a pnpm monorepo of standalone React component packages with a shared CSS package and a dedicated tokens package.
 
@@ -296,11 +296,11 @@ import { Button } from '@acko/button';
 When generating a component, read these files in order:
 
 1. [`Flutter-React md/global.md`](../../Flutter-React%20md/global.md) — tokens, foundation, **documentation pipeline**
-2. This file (`00-system.mdc`) — web monorepo architecture and conventions
-3. `foundation/colors-semantic.mdc` — which tokens to use for colors
+2. This file (`00-system.md`) — web monorepo architecture and conventions
+3. `foundation/colors-semantic.md` — which tokens to use for colors
 4. `Flutter-React md/components/<name>/<name>-base.md` — platform-agnostic visual + behavior contract
-5. `components/<name>/<name>.styles.mdc` — CSS classes (`acko-*`), `@apply`, raw CSS (Button uses `button.style.mdc`; same role)
-6. `components/<name>/<name>.react.mdc` — React props, DOM, a11y
+5. `components/<name>/<name>.styles.md` — CSS classes (`acko-*`), `@apply`, raw CSS (Button uses `button.style.md`; same role)
+6. `components/<name>/<name>.react.md` — React props, DOM, a11y
 7. `Flutter-React md/components/<name>/react/<name>-react.md` and `Flutter-React md/components/<name>/flutter/<name>-flutter.md` — human-readable platform tracks
 
 Foundation files (`typography`, `radii`, `shadows`, `motion`, `scales`, `layout`, …) are reference material. Each includes a **Documentation scope** section: portable rules vs web-only phrasing.

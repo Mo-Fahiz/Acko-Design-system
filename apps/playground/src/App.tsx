@@ -21,6 +21,11 @@ import {
   Star,
   MoreHorizontal,
   Mail,
+  Sun,
+  Moon,
+  Smartphone,
+  Tablet,
+  Monitor,
 } from "lucide-react";
 
 const BUTTON_VARIANTS = ["primary", "secondary", "inverted", "ghost", "link", "danger"] as const;
@@ -68,6 +73,19 @@ import { NavigationWizard } from "@acko/navigation-wizard";
 import { Pagination } from "@acko/pagination";
 
 type Theme = "light" | "dark";
+type Breakpoint = "mobile" | "tablet" | "desktop";
+
+const BREAKPOINT_WIDTHS: Record<Breakpoint, string> = {
+  mobile: "max-w-[375px]",
+  tablet: "max-w-[768px]",
+  desktop: "max-w-none",
+};
+
+const BREAKPOINT_META: { key: Breakpoint; icon: typeof Smartphone; label: string }[] = [
+  { key: "mobile", icon: Smartphone, label: "Mobile" },
+  { key: "tablet", icon: Tablet, label: "Tablet" },
+  { key: "desktop", icon: Monitor, label: "Desktop" },
+];
 
 const COMPONENT_LIST = [
   "Button",
@@ -3130,7 +3148,7 @@ const CATEGORIES: { label: string; tag: string; items: ComponentName[] }[] = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════
-   App — 3-column layout
+   App — 2-column layout (nav + main with usage below preview)
    ═══════════════════════════════════════════════════════════════ */
 function readComponentFromUrl(): ComponentName {
   if (typeof window === "undefined") return "Button";
@@ -3145,6 +3163,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>("light");
   const [selected, setSelected] = useState<ComponentName>(readComponentFromUrl);
   const [search, setSearch] = useState("");
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -3208,24 +3227,17 @@ function App() {
             {COMPONENT_LIST.length} Components
           </Badge>
         </div>
-        <div className="flex items-center gap-4 p-2 rounded-full border border-border-subtle bg-surface">
-          {(["light", "dark"] as Theme[]).map((t) => (
-            <button
-              key={t}
-              onClick={() => cycleTheme(t)}
-              className={`px-16 py-6 rounded-full text-xs font-medium transition-all ${
-                theme === t
-                  ? "bg-primary text-on-primary shadow-sm"
-                  : "bg-transparent text-text-muted hover:text-text-default"
-              }`}
-            >
-              {t === "light" ? "☀️ Light" : "🌙 Dark"}
-            </button>
-          ))}
-        </div>
+        <button
+          type="button"
+          onClick={() => cycleTheme(theme === "light" ? "dark" : "light")}
+          className="flex items-center justify-center w-36 h-36 rounded-full border border-border-subtle bg-surface text-text-muted hover:text-text-default hover:bg-surface-raised transition-all"
+          aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+        >
+          {theme === "light" ? <Sun className="size-18" /> : <Moon className="size-18" />}
+        </button>
       </header>
 
-      {/* ── 3-column body ── */}
+      {/* ── 2-column body ── */}
       <div className="flex-1 flex min-h-0">
 
         {/* ── Left: Component list ── */}
@@ -3273,17 +3285,17 @@ function App() {
             ))}
             {filteredCategories.length === 0 && (
               <p className="text-xs text-text-disabled text-center py-32">
-                No results for "{search}"
+                No results for &quot;{search}&quot;
               </p>
             )}
           </nav>
         </aside>
 
-        {/* ── Middle: Component preview ── */}
+        {/* ── Main: Preview + usage (stacked) ── */}
         <main className="flex-1 min-w-0 overflow-y-auto bg-surface">
           <div className="w-full min-w-0 max-w-none mx-auto px-24 py-40 sm:px-32 lg:px-40">
             {/* Header */}
-            <div className="flex items-start justify-between mb-32">
+            <div className="flex items-start justify-between mb-24">
               <div>
                 <div className="flex items-center gap-8 mb-4">
                   <Typography variant="heading-xl" color="primary">
@@ -3295,45 +3307,57 @@ function App() {
                 </div>
                 <Typography variant="body-sm" color="secondary">
                   {selected === "Card"
-                    ? "Gallery: foundations, media patterns, reference layouts — scroll the centre column. Add ?c=Card to the URL to open this page directly."
+                    ? "Gallery: foundations, media patterns, reference layouts. Add ?c=Card to the URL to open this page directly."
                     : "Variants, sizes, and states"}
                 </Typography>
               </div>
             </div>
 
-            {/* Preview area — must sit on a surface *lighter* than main (bg-surface) or the frame disappears */}
-            <div
-              style={{
-                borderRadius: "var(--radius-4xl)",
-                background: "var(--color-card-bg)",
-                border: "1px solid var(--color-card-border)",
-                boxShadow: "var(--shadow-lg)",
-              }}
-            >
+            {/* Breakpoint tabs */}
+            <div className="flex items-center gap-2 mb-24 p-2 rounded-xl border border-border-subtle bg-surface-raised w-fit">
+              {BREAKPOINT_META.map(({ key, icon: Icon, label }) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setBreakpoint(key)}
+                  className={`flex items-center gap-6 px-12 py-6 rounded-lg text-xs font-medium transition-all ${
+                    breakpoint === key
+                      ? "bg-primary text-on-primary shadow-sm"
+                      : "bg-transparent text-text-muted hover:text-text-default"
+                  }`}
+                  aria-label={`Preview at ${label} breakpoint`}
+                  aria-pressed={breakpoint === key}
+                >
+                  <Icon className="size-14" />
+                  <span>{label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Preview area with breakpoint constraint */}
+            <div className={`${BREAKPOINT_WIDTHS[breakpoint]} mx-auto min-w-0 transition-all duration-300`}>
               <div className="p-24 min-w-0">
                 <Preview />
               </div>
             </div>
+
+            {/* ── Usage section (below preview) ── */}
+            <div className="mt-40 border-t border-border-subtle pt-32">
+              <div className="flex items-center gap-8 mb-8">
+                <div className="w-4 h-16 rounded-full bg-primary" />
+                <Typography variant="label-md" color="primary">
+                  Real-world usage
+                </Typography>
+              </div>
+              <Typography variant="caption" color="secondary" className="mb-20">
+                Example of this component in a realistic context
+              </Typography>
+              <div className="rounded-2xl border border-border-subtle bg-surface-raised p-24">
+                <Usage />
+              </div>
+            </div>
           </div>
         </main>
-
-        {/* ── Right: Component in use ── */}
-        <aside className="w-[340px] shrink-0 border-l border-border-subtle overflow-y-auto bg-surface-raised">
-          <div className="px-20 pt-24 pb-12 border-b border-border-subtle">
-            <div className="flex items-center gap-8">
-              <div className="w-4 h-16 rounded-full bg-primary" />
-              <Typography variant="label-md" color="primary">
-                In context
-              </Typography>
-            </div>
-            <Typography variant="caption" color="secondary">
-              Real-world usage example
-            </Typography>
-          </div>
-          <div className="p-20">
-            <Usage />
-          </div>
-        </aside>
 
       </div>
     </div>

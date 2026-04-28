@@ -11,11 +11,11 @@ This repo splits documentation so **one visual truth** can power **many platform
 | Layer | Location | Role |
 |-------|----------|------|
 | **Orchestration + foundation** | `Flutter-React md/global.md` (this file) | Token architecture, primitives, semantics, type, spacing, radii, motion, shadows, layout, icons, a11y — **no framework code.** |
-| **Cursor foundation rules** | `.cursor/rules/foundation/*.mdc` | Same rules, optimized for AI; each file marks what is **portable** vs **web-bound** (Tailwind, CSS snippets). |
-| **Web system conventions** | `.cursor/rules/00-system.mdc` | Monorepo layout, React/CSS patterns, `forwardRef`, consumer imports. |
+| **Cursor foundation rules** | `.cursor/rules/foundation/*.md` | Same rules, optimized for AI; each file marks what is **portable** vs **web-bound** (Tailwind, CSS snippets). |
+| **Web system conventions** | `.cursor/rules/00-system.md` | Monorepo layout, React/CSS patterns, `forwardRef`, consumer imports. |
 | **Per-component base spec** | `Flutter-React md/components/<name>/<name>-base.md` | Variants, sizes, states, tokens, motion, structure — **must match** playground / `App.tsx` previews. |
 | **Base spec template** | `Flutter-React md/components/_template/component-base.template.md` | Optional starter outline for new components (includes **Playground parity** checklist). |
-| **Per-component styles (web)** | `.cursor/rules/components/<name>/<name>.styles.mdc` (Button: `button.style.mdc`) | `acko-*` classes, `packages/css` — implements the base spec. |
+| **Per-component styles (web)** | `.cursor/rules/components/<name>/<name>.styles.md` (Button: `button.style.md`) | `acko-*` classes, `packages/css` — implements the base spec. |
 | **React track** | `Flutter-React md/components/<name>/react/<name>-react.md` | Props, DOM, ARIA, packages — **no visual drift** from `<name>-base.md`. |
 | **Flutter track** | `Flutter-React md/components/<name>/flutter/<name>-flutter.md` | Widgets, `Semantics`, theme — **no visual drift** from `<name>-base.md`. |
 
@@ -25,7 +25,7 @@ This repo splits documentation so **one visual truth** can power **many platform
 
 1. If it changes **pixels, tokens, or meaning**, update **`global.md`** (tokens/foundation) and/or **`<name>-base.md`** first, then sync `packages/tokens`, `packages/css`, and platform code.
 2. **React / Flutter docs** only describe **implementation** (APIs, platform quirks), not new design decisions.
-3. **`*.styles.mdc`** / **`button.style.mdc`** stays aligned with **`packages/css/src/<component>.css`** — that CSS is what the playground renders.
+3. **`*.styles.md`** / **`button.style.md`** stays aligned with **`packages/css/src/<component>.css`** — that CSS is what the playground renders.
 
 **Canonical sources today:** `packages/tokens` (web token delivery), `packages/css` (per-component styles), `packages/<component>` (React). Flutter packages may be added later; semantics must not fork.
 
@@ -1081,4 +1081,4 @@ A component never decides "I need purple-600." It says "I need the primary fill.
 
 ---
 
-*This document is aligned with the ACKO Design System monorepo. Per component: `Flutter-React md/components/<name>/<name>-base.md`, `react/<name>-react.md`, `flutter/<name>-flutter.md`, and `.cursor/rules/components/<name>/<name>.styles.mdc` (Button: `button.style.mdc`) for web CSS.*
+*This document is aligned with the ACKO Design System monorepo. Per component: `Flutter-React md/components/<name>/<name>-base.md`, `react/<name>-react.md`, `flutter/<name>-flutter.md`, and `.cursor/rules/components/<name>/<name>.styles.md` (Button: `button.style.md`) for web CSS.*

@@ -110,5 +110,5 @@ Minimum tap height for the field row should meet platform guidelines (~48dp); `s
 
 - [`../text-input-base.md`](../text-input-base.md) — full contract.
 - [`../react/text-input-react.md`](../react/text-input-react.md) — reference behavior (web).
-- `.cursor/rules/components/text-input/text-input.styles.mdc` — CSS class ↔ visual detail.
+- `.cursor/rules/components/text-input/text-input.styles.md` — CSS class ↔ visual detail.
 - [`../../global.md`](../../global.md) — tokens and foundations.

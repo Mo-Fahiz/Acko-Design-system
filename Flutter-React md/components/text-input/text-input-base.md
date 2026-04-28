@@ -2,7 +2,7 @@
 
 > **Purpose:** The **visual and behavioral contract** for TextInput. Every platform must match this document; React and Flutter only add **how** to implement it (no pixel or token drift).
 >
-> **Where to go next:** [`react/text-input-react.md`](./react/text-input-react.md) (web), [`flutter/text-input-flutter.md`](./flutter/text-input-flutter.md) (Flutter), [`.cursor/rules/components/text-input/text-input.styles.mdc`](../../../.cursor/rules/components/text-input/text-input.styles.mdc) (CSS class matrix). Web implementation: `packages/css/src/text-input.css`, `packages/text-input/src/TextInput.tsx`.
+> **Where to go next:** [`react/text-input-react.md`](./react/text-input-react.md) (web), [`flutter/text-input-flutter.md`](./flutter/text-input-flutter.md) (Flutter), [`.cursor/rules/components/text-input/text-input.styles.md`](../../../.cursor/rules/components/text-input/text-input.styles.md) (CSS class matrix). Web implementation: `packages/css/src/text-input.css`, `packages/text-input/src/TextInput.tsx`.
 
 ---
 

@@ -12,4 +12,4 @@ That file covers `@acko/text-input`, full `TextInputProps`, DOM tree, `forwardRe
 
 **Platform-agnostic contract:** [`Flutter-React md/components/text-input/text-input-base.md`](../../../../Flutter-React%20md/components/text-input/text-input-base.md)
 
-**CSS / `acko-*` classes:** [`text-input.styles.mdc`](./text-input.styles.mdc) ↔ `packages/css/src/text-input.css`.
+**CSS / `acko-*` classes:** [`text-input.styles.md`](./text-input.styles.md) ↔ `packages/css/src/text-input.css`.

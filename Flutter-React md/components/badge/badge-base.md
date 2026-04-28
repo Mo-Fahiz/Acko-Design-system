@@ -2,7 +2,7 @@
 
 > **Purpose:** Visual and behavioral contract for **Badge** and **CounterBadge**. React and Flutter implement without pixel drift.
 >
-> **Where to go next:** [`react/badge-react.md`](./react/badge-react.md), [`flutter/badge-flutter.md`](./flutter/badge-flutter.md), [`.cursor/rules/components/badge/badge.styles.mdc`](../../../.cursor/rules/components/badge/badge.styles.mdc). CSS: `packages/css/src/badge.css`.
+> **Where to go next:** [`react/badge-react.md`](./react/badge-react.md), [`flutter/badge-flutter.md`](./flutter/badge-flutter.md), [`.cursor/rules/components/badge/badge.styles.md`](../../../.cursor/rules/components/badge/badge.styles.md). CSS: `packages/css/src/badge.css`.
 
 ---
 

@@ -23,7 +23,7 @@ interface PaginationProps {
 
 ## Icons
 
-Pagination navigates to a new page (state change), so it uses **arrow** icons — not chevrons. See `foundation/iconography.mdc`.
+Pagination navigates to a new page (state change), so it uses **arrow** icons — not chevrons. See `foundation/iconography.md`.
 
 - Previous: `ArrowLeftIcon` (inline SVG, 20×20)
 - Next: `ArrowRightIcon` (inline SVG, 20×20)

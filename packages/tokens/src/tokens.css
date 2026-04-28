@@ -193,7 +193,7 @@
      Wide   (769px+):    outer 32px, gutter 16px, nested 16px.
      The wide values are applied via @media below. Variant fills/borders
      (default/elevated/outline/demoted) do NOT change these values. */
-  --radius-card-outer: var(--radius-5xl);   /* 24px narrow */
+  --radius-card-outer: var(--radius-6xl);   /* 32px narrow (matches wide) */
   --radius-card-nested: var(--radius-2xl);  /* 12px narrow */
   --card-content-gutter: 12px;              /* narrow inner margin */
 

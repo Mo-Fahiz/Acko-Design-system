@@ -16,8 +16,8 @@ Flutter-React md/components/_template/
   component-base.template.md   # Authoring template for new <name>-base.md files
 
 .cursor/rules/components/<name>/
-  <name>.styles.mdc       # Web: acko-* classes (Button: button.style.mdc)
-  <name>.react.mdc        # Web: concise React rule (keep in sync with packages/<name>/src)
+  <name>.styles.md       # Web: acko-* classes (Button: button.style.md)
+  <name>.react.md        # Web: concise React rule (keep in sync with packages/<name>/src)
 ```
 
 ## Index (playground registry)

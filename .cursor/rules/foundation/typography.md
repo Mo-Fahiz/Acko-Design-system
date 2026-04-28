@@ -292,7 +292,7 @@ Product and coverage terms like `premium`, `claim`, `policy`, `cover` are common
 | Toast action labels | Yes |
 | Dialog action buttons | Yes |
 | Headings | Yes |
-| Badge | No — Badge has its own `textCase` prop (`uppercase` or `sentence`, default: `uppercase`). See `badge.react.mdc` → **Text Case Selection** for the decision table. |
+| Badge | No — Badge has its own `textCase` prop (`uppercase` or `sentence`, default: `uppercase`). See `badge.react.md` → **Text Case Selection** for the decision table. |
 
 ## Typography Color System
 

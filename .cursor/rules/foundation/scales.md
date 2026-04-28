@@ -145,7 +145,7 @@ Direct decimal values from 0 to 1. The token number represents the percentage (e
 
 ## Responsive Breakpoints
 
-See `foundation/layout.mdc` for the canonical breakpoint definitions, section containers, gutters, and full-bleed rules.
+See `foundation/layout.md` for the canonical breakpoint definitions, section containers, gutters, and full-bleed rules.
 
 | Name | Range | Media Query |
 |------|-------|-------------|

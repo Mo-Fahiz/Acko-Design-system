@@ -2,7 +2,7 @@
 
 > **Purpose:** The **visual and behavioral contract** for Button. Every platform must match this document; React and Flutter only add **how** to implement it (no pixel or token changes).
 >
-> **Where to go next:** `react/button-react.md` (web), `flutter/button-flutter.md` (Flutter), `.cursor/rules/components/button/button.style.mdc` (CSS class matrix for this repo).
+> **Where to go next:** `react/button-react.md` (web), `flutter/button-flutter.md` (Flutter), `.cursor/rules/components/button/button.style.md` (CSS class matrix for this repo).
 
 ---
 

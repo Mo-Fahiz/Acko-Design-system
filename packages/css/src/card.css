@@ -5,7 +5,7 @@
    Geometry is responsive and global:
      - Outer radius and content gutter come from --radius-card-outer
        and --card-content-gutter (defined in @acko/tokens/tokens.css).
-     - Narrow (320–768px): outer 24px, gutter 12px, nested 12px.
+     - Narrow (320–768px): outer 32px, gutter 12px, nested 12px.
      - Wide   (769px+):    outer 32px, gutter 16px, nested 16px.
    Variants only change fill / border / shadow.
    ============================================================ */
@@ -65,7 +65,7 @@
 }
 
 .acko-card-content {
-  @apply py-20;
+  @apply py-0;
 }
 
 .acko-card-footer {

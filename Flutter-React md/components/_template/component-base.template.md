@@ -2,7 +2,7 @@
 
 > **Purpose:** The **visual and behavioral contract** for {ComponentName}. Every platform must match this document; React and Flutter only add **how** to implement it (no pixel or token drift).
 >
-> **Where to go next:** `react/{name}-react.md` (web), `flutter/{name}-flutter.md` (Flutter), `.cursor/rules/components/{name}/{name}.styles.mdc` (CSS class matrix, if applicable).
+> **Where to go next:** `react/{name}-react.md` (web), `flutter/{name}-flutter.md` (Flutter), `.cursor/rules/components/{name}/{name}.styles.md` (CSS class matrix, if applicable).
 
 Copy this file to `Flutter-React md/components/{name}/{name}-base.md` and replace `{ComponentName}` / `{name}`. Remove sections that do not apply. Do **not** introduce framework-specific APIs here.
 
@@ -96,4 +96,4 @@ This section ties the written spec to **what ships** in the playground; update i
 
 ---
 
-*After authoring: add `react/{name}-react.md` and `flutter/{name}-flutter.md`, and keep `.styles.mdc` aligned with `packages/css/src/{component}.css`.*
+*After authoring: add `react/{name}-react.md` and `flutter/{name}-flutter.md`, and keep `.styles.md` aligned with `packages/css/src/{component}.css`.*

@@ -4,7 +4,7 @@ description: Primitive color palette — raw hex values. Never use these directl
 
 # Color Primitives
 
-Raw palette values. These are **Layer 1** of the token architecture. Components NEVER reference these directly — they go through semantic tokens in `colors-semantic.mdc`.
+Raw palette values. These are **Layer 1** of the token architecture. Components NEVER reference these directly — they go through semantic tokens in `colors-semantic.md`.
 
 Only consult this file when:
 - Adding a new semantic token and need to pick a primitive

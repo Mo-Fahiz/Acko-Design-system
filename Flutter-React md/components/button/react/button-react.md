@@ -26,7 +26,7 @@ import { Button } from "@acko/button";
 ## CSS surface (summary)
 
 - All visual styling lives in **`@acko/css/button.css`**. React uses **no** Tailwind utility classes on the element — only `acko-*` classes via `clsx`.
-- Full class matrix, hover (`@media (hover: hover) and (pointer: fine)`), focus-visible, dark theme, dot-wave keyframes: **`.cursor/rules/components/button/button.style.mdc`** (must match `packages/css/src/button.css` / playground).
+- Full class matrix, hover (`@media (hover: hover) and (pointer: fine)`), focus-visible, dark theme, dot-wave keyframes: **`.cursor/rules/components/button/button.style.md`** (must match `packages/css/src/button.css` / playground).
 
 Root modifiers: `acko-btn`, `acko-btn-{variant}`, `acko-btn-{size}`, optional `acko-btn-icon-only`, `acko-btn-loading`, `acko-btn-disabled`, `acko-btn-full-width`.
 
@@ -103,5 +103,5 @@ Focus ring: CSS `:focus-visible` → `shadow-focus-ring` (see base spec for dang
 ## References
 
 - [`../button-base.md`](../button-base.md) — full visual specification.
-- `.cursor/rules/components/button/button.react.mdc` — Cursor rule mirror (keep in sync with `packages/button/src/Button.tsx`).
-- `.cursor/rules/components/button/button.style.mdc` — CSS class + token reference.
+- `.cursor/rules/components/button/button.react.md` — Cursor rule mirror (keep in sync with `packages/button/src/Button.tsx`).
+- `.cursor/rules/components/button/button.style.md` — CSS class + token reference.

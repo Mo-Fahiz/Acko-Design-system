@@ -25,7 +25,7 @@ alwaysApply: false
 
 Thumb sizes are semantic layout tokens on `:root` in `tokens.css` (also mapped in `theme.css` for Tailwind context).
 
-## Semantic tokens (see `colors-semantic.mdc` → Slider / Progress)
+## Semantic tokens (see `colors-semantic.md` → Slider / Progress)
 All referenced only via `var(--token)` in component CSS — no primitives in `slider.css`.
 
 ## States

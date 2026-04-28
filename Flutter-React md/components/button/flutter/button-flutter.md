@@ -52,4 +52,4 @@ Minimum **~44 logical px** height on mobile. Treat `xs` (32px) as **desktop-dens
 
 - [`../button-base.md`](../button-base.md) — full specification.
 - [`react/button-react.md`](../react/button-react.md) — reference implementation behavior (web).
-- `.cursor/rules/components/button/button.style.mdc` — CSS reference for pixel parity.
+- `.cursor/rules/components/button/button.style.md` — CSS reference for pixel parity.

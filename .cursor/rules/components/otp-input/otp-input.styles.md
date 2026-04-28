@@ -24,7 +24,7 @@ CSS file: `@acko/css/otp-input.css`
 | `.acko-otp-md` | `48×48` | `--font-heading-md-size` | `--radius-3xl` (16px) |
 | `.acko-otp-lg` | `56×56` | `--font-heading-lg-size` | `--radius-4xl` (20px) |
 
-## Semantic tokens (see `colors-semantic.mdc` → OTP Input)
+## Semantic tokens (see `colors-semantic.md` → OTP Input)
 
 | State | Behavior |
 |-------|----------|

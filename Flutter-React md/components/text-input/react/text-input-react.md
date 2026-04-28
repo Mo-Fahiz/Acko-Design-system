@@ -1,6 +1,6 @@
 # TextInput — React
 
-> **Scope:** Web implementation only. **Do not change** visuals, sizes, states, or motion vs [`../text-input-base.md`](../text-input-base.md). **Playground mapping:** see [`../text-input-base.md`](../text-input-base.md) §10 (Playground parity). Full **CSS class matrix:** `.cursor/rules/components/text-input/text-input.styles.mdc` (must match `packages/css/src/text-input.css`).
+> **Scope:** Web implementation only. **Do not change** visuals, sizes, states, or motion vs [`../text-input-base.md`](../text-input-base.md). **Playground mapping:** see [`../text-input-base.md`](../text-input-base.md) §10 (Playground parity). Full **CSS class matrix:** `.cursor/rules/components/text-input/text-input.styles.md` (must match `packages/css/src/text-input.css`).
 
 ---
 
@@ -129,4 +129,4 @@ export type { TextInputProps } from "./TextInput";
 
 - [`../text-input-base.md`](../text-input-base.md) — platform contract.
 - `packages/text-input/src/TextInput.tsx` — source of truth for behavior.
-- `.cursor/rules/components/text-input/text-input.styles.mdc` — CSS classes.
+- `.cursor/rules/components/text-input/text-input.styles.md` — CSS classes.
