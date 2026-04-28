@@ -675,14 +675,17 @@ function CardPreview() {
         </div>
       {/* Variants */}
       <section className="space-y-12">
-        <Typography variant="label-sm" color="secondary">Variants</Typography>
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
-          {(["default", "elevated", "outline", "demoted"] as const).map((v) => (
+        <Typography variant="label-sm" color="secondary">Variants — surface hierarchy</Typography>
+        <Typography variant="caption" color="secondary">
+          page.base (grey-100) → default (grey-50) → secondary (grey-100) → elevated (grey-50 + shadow) → demoted (grey-150) · outline is transparent + border.
+        </Typography>
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          {(["default", "secondary", "elevated", "outline", "demoted"] as const).map((v) => (
             <Card key={v} variant={v} padding="sm">
               <CardContent>
                 <Typography variant="label-sm" color="primary">{v}</Typography>
                 <Typography variant="caption" color="secondary">
-                  {v === "default" ? "Standard surface" : v === "elevated" ? "Raised with shadow" : v === "outline" ? "Transparent + border" : "Recessed surface"}
+                  {v === "default" ? "grey-50 fill · grey-white border" : v === "secondary" ? "grey-100 fill · grey-150 border" : v === "elevated" ? "grey-50 fill · shadow-lg" : v === "outline" ? "transparent · grey-200 border" : "grey-150 fill · grey-200 border"}
                 </Typography>
               </CardContent>
             </Card>
@@ -903,16 +906,14 @@ function CardPreview() {
 
       </section>
 
-      <section id="card-preview-reference" className="scroll-mt-24 space-y-24">
-        <div className="space-y-8">
-          <Typography variant="heading-sm" color="primary">Reference layouts</Typography>
-          <Typography variant="body-sm" color="secondary">
-            Organism-style patterns (CardsLayout_preview): schedule rows, social feed, profile, checklist, media overlay, brand surface, facepile, search, rating, email capture.
-          </Typography>
-        </div>
+      <section id="card-preview-reference" className="scroll-mt-24">
+        <Typography variant="heading-sm" color="primary">Reference layouts</Typography>
+        <Typography variant="body-sm" color="secondary" className="mt-8">
+          Organism-style patterns (CardsLayout_preview): schedule rows, social feed, profile, checklist, media overlay, brand surface, facepile, search, rating, email capture.
+        </Typography>
 
       {/* Event / schedule — date rail + Apply */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — event row (date rail + Apply)</Typography>
         <Card variant="elevated" padding="md">
           <CardContent>
@@ -943,7 +944,7 @@ function CardPreview() {
       </section>
 
       {/* Social — avatar header, media, actions */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — social feed (header + media + actions)</Typography>
         <Card variant="elevated" padding="none" className="overflow-hidden">
           <CardHeader className="px-20 pt-20">
@@ -985,7 +986,7 @@ function CardPreview() {
       </section>
 
       {/* Profile compact — centered */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — profile compact (centered)</Typography>
         <div className="mx-auto max-w-sm">
           <Card variant="elevated" padding="lg">
@@ -1006,13 +1007,13 @@ function CardPreview() {
       </section>
 
       {/* Checklist + Continue */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — checklist + primary CTA</Typography>
         <CardChecklistExample />
       </section>
 
       {/* Media — play overlay (decorative) */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Image — media overlay + play control</Typography>
         <Card variant="default" padding="none" className="relative min-h-[200px] overflow-hidden">
           <div
@@ -1035,7 +1036,7 @@ function CardPreview() {
       </section>
 
       {/* Large image + footer link strip */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Image — dominant media + footer link</Typography>
         <Card variant="elevated" padding="none" className="overflow-hidden">
           <div
@@ -1056,7 +1057,7 @@ function CardPreview() {
       </section>
 
       {/* Nav row — title + chevron */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — navigable row (title + chevron)</Typography>
         <Card variant="outline" padding="md">
           <CardContent>
@@ -1072,7 +1073,7 @@ function CardPreview() {
       </section>
 
       {/* Horizontal thumb + copy */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — horizontal thumbnail + body</Typography>
         <Card variant="default" padding="none" className="overflow-hidden">
           <div className="flex flex-col sm:flex-row">
@@ -1093,7 +1094,7 @@ function CardPreview() {
       </section>
 
       {/* Themed primary surface */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Surface — brand-filled (primary)</Typography>
         <Card variant="elevated" padding="md" className="border-0 bg-primary text-[var(--color-on-primary)] shadow-lg">
           <CardContent>
@@ -1113,7 +1114,7 @@ function CardPreview() {
       </section>
 
       {/* Facepile + members */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — facepile + members + CTA</Typography>
         <Card variant="demoted" padding="md">
           <CardContent>
@@ -1137,13 +1138,13 @@ function CardPreview() {
       </section>
 
       {/* Search in card */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — search field in card</Typography>
         <CardSearchFieldExample />
       </section>
 
       {/* Rating + badge */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — rating + meta row</Typography>
         <Card variant="elevated" padding="md">
           <CardContent>
@@ -1167,7 +1168,7 @@ function CardPreview() {
       </section>
 
       {/* Email capture */}
-      <section className="space-y-12">
+      <section className="mt-24 space-y-12">
         <Typography variant="label-sm" color="secondary">Layout — email capture (lead)</Typography>
         <CardEmailSignupExample />
       </section>

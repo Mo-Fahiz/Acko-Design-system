@@ -4,6 +4,8 @@
 # Settings → Pages → Source: GitHub Actions.
 #
 # Then push main / Version-4.1 / Version-4.2 or run workflow manually.
+# If https://<user>.github.io/<repo>/ returns 404, enable Pages (GitHub Actions) in
+# Settings and confirm a green workflow run. See docs/GITHUB_PAGES_SETUP.md
 #
 name: Deploy to GitHub Pages
 
@@ -46,8 +48,7 @@ jobs:
 
       - name: Build playground
         env:
-          GITHUB_ACTIONS: "true"
-          CI: "true"
+          VITE_BASE_PATH: "/Acko-Design-system/"
         run: pnpm --filter=playground build
 
       - name: Upload artifact

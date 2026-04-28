@@ -6,7 +6,7 @@
 
 ## 1. What it is
 
-A **Card** provides elevation, outline, or flat surfaces with configurable **padding** and optional **header**, **content**, and **footer** regions for actions (e.g. buttons).
+A **Card** provides a **default**, **elevated**, **outline**, or **demoted** surface with optional **header**, **content**, **footer**, and **inset** regions. Geometry (outer radius, inner margin, nested radius) is **global and responsive** — see §3 below — so all four variants look geometrically identical and only differ in fill / border / shadow.
 
 ---
 
@@ -14,13 +14,36 @@ A **Card** provides elevation, outline, or flat surfaces with configurable **pad
 
 | Concept | Description |
 |---------|-------------|
-| `variant` | `default`, `elevated`, `outline`, `demoted` |
-| `padding` | `none`, `sm`, `md`, `lg` — inner padding scale (`none` + consumer breakpoints is a valid playground pattern) |
+| `variant` | `default`, `secondary`, `elevated`, `outline`, `demoted` (geometry constant across all five) |
+| `padding` | `none`, `sm`, `md`, `lg` — `md` matches the breakpoint gutter (`--card-content-gutter`); `sm` and `lg` are explicit overrides |
 | Subcomponents | `CardHeader`, `CardContent`, `CardFooter`, `CardInset` — layout regions |
 
 ---
 
-## 3. Playground parity
+## 3. Responsive geometry (global)
+
+Card outer radius, content gutter (inner margin), and nested card radius switch together at the device breakpoint. Defined in `packages/tokens/src/tokens.css` and consumed by `packages/css/src/card.css`.
+
+| Viewport | Range | Outer radius | Inner margin | Nested card radius | CTA |
+|----------|-------|--------------|--------------|--------------------|-----|
+| Narrow | 320–768px (mobile + tablet) | **24px** | 12px | **12px** | Pill (`--radius-full`) |
+| Wide | 769px+ (desktop) | **32px** | 16px | **16px** | Pill (`--radius-full`) |
+
+Source tokens:
+
+- `--radius-card-outer` — outer surface radius (24 narrow / 32 wide).
+- `--radius-card-nested` — `CardInset` and any card-in-card (12 / 16).
+- `--card-content-gutter` — default inner margin (12 / 16).
+
+**Rules**
+
+- The five variants (`default`, `secondary`, `elevated`, `outline`, `demoted`) **never** change geometry — only fill / border / shadow.
+- A nested card or `CardInset` uses `--radius-card-nested` directly; do **not** apply the legacy `outer − padding` formula to cards.
+- A pill CTA inside a card must not touch the card edge; the gutter provides the breathing room. Minimum card padding when a CTA is present: `pad-md`.
+
+---
+
+## 4. Playground parity
 
 Source: `CardPreview` / `CardUsage` in `apps/playground/src/App.tsx`.
 
@@ -58,8 +81,11 @@ Source: `CardPreview` / `CardUsage` in `apps/playground/src/App.tsx`.
 
 ---
 
-## 4. Implementation checklist
+## 5. Implementation checklist
 
-- [ ] Four variants; four padding steps including `none`.
+- [ ] Five variants (`default`, `secondary`, `elevated`, `outline`, `demoted`); geometry constant across them.
+- [ ] Outer radius via `--radius-card-outer` (24 / 32 by breakpoint); never hard-code 20px.
+- [ ] Nested cards / `CardInset` use `--radius-card-nested` (12 / 16); legacy 20px formula does not apply.
+- [ ] `pad-md` is the canonical default and matches `--card-content-gutter` (12 / 16).
 - [ ] Footer aligns actions; full-width button respects nested radius rules in `global.md`.
 - [ ] Decorative images: `alt=""` or `aria-hidden` on pure decoration; meaningful `alt` when content-bearing.

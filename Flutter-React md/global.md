@@ -314,10 +314,10 @@ Every color a component uses must come from this layer. When themes switch, the 
 
 | Token | Role | Light | Dark |
 |-------|------|-------|------|
-| `color-surface` | Page background | grey-100 | grey-750 |
-| `color-surface-raised` | Elevated surfaces (cards, inputs) | grey-100 | grey-700 |
-| `color-surface-raised-hover` | Hovered raised surface | grey-200 | grey-650 |
-| `color-surface-raised-active` | Pressed raised surface | grey-300 | grey-600 |
+| `color-surface` | Page background | grey-100 | grey-700 |
+| `color-surface-raised` | Elevated surfaces (cards, inputs) | grey-100 | grey-650 |
+| `color-surface-raised-hover` | Hovered raised surface | grey-200 | grey-600 |
+| `color-surface-raised-active` | Pressed raised surface | grey-300 | grey-550 |
 | `color-surface-overlay` | Backdrop behind modals/drawers | rgba(10,10,10,0.5) | rgba(0,0,0,0.7) |
 | `color-surface-ghost-hover` | Ghost interaction background | rgba(0,0,0,0.04) | rgba(255,255,255,0.05) |
 
@@ -394,13 +394,23 @@ Every color a component uses must come from this layer. When themes switch, the 
 
 ### Cards
 
+Surface hierarchy (five levels, back → front):
+
+| Level | Token | Light | Dark | Intent |
+|-------|-------|-------|------|--------|
+| page.base | `color-surface` | grey-100 | grey-700 | Primary page background |
+| surface.default | `color-card-bg` | grey-50 | grey-650 | Default card/container surface |
+| surface.secondary | `color-card-secondary-bg` | grey-100 | grey-700 | Secondary layered surface |
+| surface.elevated | `color-card-elevated-bg` | grey-50 | grey-600 | Elevated cards (modals, highlights) |
+| surface.demoted | `color-card-demoted-bg` | grey-150 | grey-750 | Low emphasis / background containers |
+
+Border tokens:
+
 | Token | Light | Dark |
 |-------|-------|------|
-| `color-card-bg` | grey-50 | grey-650 |
-| `color-card-border` | grey-white | grey-650 |
-| `color-card-elevated-bg` | grey-white | grey-650 |
-| `color-card-demoted-bg` | grey-150 | grey-750 |
-| `color-card-demoted-border` | grey-200 | grey-600 |
+| `color-card-border` | grey-white | grey-600 |
+| `color-card-secondary-border` | grey-150 | grey-600 |
+| `color-card-demoted-border` | grey-200 | grey-650 |
 | `color-card-outline-border` | grey-200 | grey-600 |
 
 ### Component-specific tokens
@@ -744,9 +754,11 @@ A responsive border width: **1px** on standard displays, **0.5px** on high-DPI (
 | `radius-md` | 6px | Checkboxes (md/lg) |
 | `radius-lg` | 8px | Options, table cells |
 | `radius-xl` | 10px | Tooltip |
-| `radius-2xl` | 12px | — |
-| `radius-3xl` | 16px | — |
-| `radius-4xl` | 20px | Cards, dialogs, drawers, toasts, dropdown menus, calendar panels |
+| `radius-2xl` | 12px | Nested card (narrow) |
+| `radius-3xl` | 16px | Nested card (wide) |
+| `radius-4xl` | 20px | Dialogs, drawers, toasts, dropdown menus, calendar panels |
+| `radius-5xl` | 24px | Card outer (narrow) |
+| `radius-6xl` | 32px | Card outer (wide) |
 | `radius-full` | 9999px | Buttons, inputs, pills (effectively a capsule) |
 
 ### Role assignment
@@ -755,12 +767,31 @@ A responsive border width: **1px** on standard displays, **0.5px** on high-DPI (
 |----------------|--------------|
 | Interactive controls (buttons, chips, badges, pagination, tabs) | `radius-full` (pill) |
 | Input containers (text input, dropdown trigger, input group) | `radius-full` (pill) |
-| Surface containers (cards, dialogs, drawers, toasts, dropdown menus, calendars) | `radius-4xl` (20px) |
+| Card surface (responsive) | `radius-card-outer` → `radius-5xl` narrow / `radius-6xl` wide |
+| Nested card / inset (responsive) | `radius-card-nested` → `radius-2xl` narrow / `radius-3xl` wide |
+| Other surface containers (dialogs, drawers, toasts, dropdown menus, calendars) | `radius-4xl` (20px) |
 | Small controls (checkboxes, tooltips) | `radius-sm` / `radius-md` (4–6px) |
 
-### Nested radius rule
+### Card geometry (global, responsive)
 
-When a child element fills a container edge-to-edge, its radius must be `container radius − padding`:
+Card surfaces use **dedicated responsive tokens** so radius, content gutter, and nested radius all switch together at the device breakpoint. **All five card variants** (`default`, `secondary`, `elevated`, `outline`, `demoted`) share the same geometry — only fill / border / shadow change between them.
+
+| Viewport | Range | Outer radius | Content gutter (inner margin) | Nested card radius | CTA |
+|----------|-------|--------------|-------------------------------|--------------------|-----|
+| Narrow | 320–768px (mobile + tablet) | **24px** | 12px | **12px** | Pill (`radius-full`) |
+| Wide | 769px+ (desktop) | **32px** | 16px | **16px** | Pill (`radius-full`) |
+
+Implementation tokens:
+
+- `--radius-card-outer` — outer surface radius (24 / 32).
+- `--radius-card-nested` — nested card or `CardInset` radius (12 / 16).
+- `--card-content-gutter` — default inner margin (12 / 16). The `pad-md` class equals this gutter; `pad-sm` and `pad-lg` are deliberate overrides.
+
+The narrow values are the `:root` defaults; the wide values are applied via `@media (min-width: 769px)` in `packages/tokens/src/tokens.css`. Components must not redeclare the breakpoint themselves.
+
+### Nested radius rule (legacy non-card)
+
+For non-card surfaces still based on `radius-4xl` (20px), a child filling the container edge-to-edge follows `container radius − padding`:
 
 ```
 Container (radius-4xl = 20px)
@@ -769,9 +800,11 @@ Container (radius-4xl = 20px)
 └── padding 24px → child uses radius-inset-lg (0px)
 ```
 
+For **cards**, do not use this formula — use `radius-card-nested` (12 / 16) directly. It is breakpoint-aware and matches the canonical nested values above.
+
 **Exempt from nesting:** Buttons, badges, avatars — they keep their own pill/circular shape regardless of parent.
 
-**Pill buttons inside cards:** A pill CTA must never touch the card edge. The card's content padding creates the visual separation. Minimum card padding when a CTA is present: 16px.
+**Pill buttons inside cards:** A pill CTA must never touch the card edge. The card's content gutter (12 / 16) creates the visual separation. Minimum card padding when a CTA is present: `pad-md` (= the breakpoint gutter).
 
 Radius tokens are **theme-agnostic**.
 

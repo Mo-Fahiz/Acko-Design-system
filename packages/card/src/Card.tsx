@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { clsx } from "clsx";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "outline" | "elevated" | "demoted";
+  variant?: "default" | "secondary" | "elevated" | "outline" | "demoted";
   padding?: "none" | "sm" | "md" | "lg";
   children: React.ReactNode;
   className?: string;

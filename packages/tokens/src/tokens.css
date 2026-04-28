@@ -184,9 +184,21 @@
   --radius-3xl: 16px;
   --radius-4xl: 20px;
   --radius-5xl: 24px;
+  --radius-6xl: 32px;
   --radius-full: 9999px;
 
-  /* Nested radius — inner = outer (--radius-4xl: 20px) minus padding */
+  /* --- Card geometry (responsive) ---
+     Card surface radius and content gutter follow the device breakpoint.
+     Narrow (320–768px): outer 24px, gutter 12px, nested 12px.
+     Wide   (769px+):    outer 32px, gutter 16px, nested 16px.
+     The wide values are applied via @media below. Variant fills/borders
+     (default/elevated/outline/demoted) do NOT change these values. */
+  --radius-card-outer: var(--radius-5xl);   /* 24px narrow */
+  --radius-card-nested: var(--radius-2xl);  /* 12px narrow */
+  --card-content-gutter: 12px;              /* narrow inner margin */
+
+  /* Nested radius — inner = outer (--radius-4xl: 20px) minus padding.
+     Retained for legacy non-card insets that still derive from 20px. */
   --radius-inset-sm: var(--radius-lg);   /* pad-sm (12px) → 20 - 12 = 8px */
   --radius-inset-md: var(--radius-sm);   /* pad-md (16px) → 20 - 16 = 4px */
   --radius-inset-lg: 0px;                /* pad-lg (24px) → 20 - 24 = 0px */
@@ -241,6 +253,18 @@
   }
 }
 
+/* --- Card geometry: wide (desktop) breakpoint ---
+   Promotes outer radius to 32px, nested radius to 16px, and content
+   gutter to 16px above 768px. Mobile + tablet (320–768px) keep the
+   narrow defaults declared in :root. */
+@media (min-width: 769px) {
+  :root {
+    --radius-card-outer: var(--radius-6xl);   /* 32px wide */
+    --radius-card-nested: var(--radius-3xl);  /* 16px wide */
+    --card-content-gutter: 16px;
+  }
+}
+
 /* ============================================================
    SEMANTIC TOKENS — ACKO Light Theme
    ============================================================ */
@@ -264,10 +288,17 @@
   --color-surface-overlay: rgba(10, 10, 10, 0.5);
   --color-surface-ghost-hover: rgba(0, 0, 0, 0.04);
 
-  /* Cards */
+  /* Cards — surface hierarchy (light):
+     page.base        → grey-100  (--color-surface)
+     surface.default  → grey-50   fill, grey-white border
+     surface.secondary→ grey-100  fill, grey-150 border
+     surface.elevated → grey-50   fill + shadow (no border)
+     surface.demoted  → grey-150  fill, grey-200 border */
   --color-card-bg: var(--grey-50);
   --color-card-border: var(--grey-white);
-  --color-card-elevated-bg: var(--grey-white);
+  --color-card-secondary-bg: var(--grey-100);
+  --color-card-secondary-border: var(--grey-150);
+  --color-card-elevated-bg: var(--grey-50);
   --color-card-demoted-bg: var(--grey-150);
   --color-card-demoted-border: var(--grey-200);
   --color-card-outline-border: var(--grey-200);
@@ -537,19 +568,26 @@
   --color-on-primary: var(--grey-white);
 
   /* Surfaces */
-  --color-surface: var(--grey-750);
-  --color-surface-raised: var(--grey-700);
-  --color-surface-raised-hover: var(--grey-650);
-  --color-surface-raised-active: var(--grey-600);
+  --color-surface: var(--grey-700);
+  --color-surface-raised: var(--grey-650);
+  --color-surface-raised-hover: var(--grey-600);
+  --color-surface-raised-active: var(--grey-550);
   --color-surface-overlay: rgba(0, 0, 0, 0.7);
   --color-surface-ghost-hover: rgba(255, 255, 255, 0.05);
 
-  /* Cards */
+  /* Cards — surface hierarchy (dark):
+     page.base        → grey-700  (--color-surface)
+     surface.default  → grey-650  fill
+     surface.secondary→ grey-700  fill
+     surface.elevated → grey-600  fill + shadow
+     surface.demoted  → grey-750  fill */
   --color-card-bg: var(--grey-650);
   --color-card-border: var(--grey-600);
-  --color-card-elevated-bg: var(--grey-650);
+  --color-card-secondary-bg: var(--grey-700);
+  --color-card-secondary-border: var(--grey-600);
+  --color-card-elevated-bg: var(--grey-600);
   --color-card-demoted-bg: var(--grey-750);
-  --color-card-demoted-border: var(--grey-600);
+  --color-card-demoted-border: var(--grey-650);
   --color-card-outline-border: var(--grey-600);
 
   /* Text */

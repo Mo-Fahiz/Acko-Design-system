@@ -114,13 +114,23 @@ primitives → semantics → component CSS
 
 ## Cards
 
+Surface hierarchy (five levels, back → front):
+
+| Level | Token name | Light | Dark | Intent |
+|-------|------------|-------|------|--------|
+| page.base | `--color-surface` | `grey-100` | `grey-700` | Primary page background |
+| surface.default | `--color-card-bg` | `grey-50` | `grey-650` | Default card/container surface |
+| surface.secondary | `--color-card-secondary-bg` | `grey-100` | `grey-700` | Secondary layered surface |
+| surface.elevated | `--color-card-elevated-bg` | `grey-50` | `grey-600` | Elevated cards (modals, highlights) |
+| surface.demoted | `--color-card-demoted-bg` | `grey-150` | `grey-750` | Low emphasis / background containers |
+
+Border tokens:
+
 | Token | Light | Dark |
 |-------|-------|------|
-| `--color-card-bg` | `grey-50` | `grey-650` |
-| `--color-card-border` | `grey-white` | `grey-650` |
-| `--color-card-elevated-bg` | `grey-white` | `grey-650` |
-| `--color-card-demoted-bg` | `grey-150` | `grey-750` |
-| `--color-card-demoted-border` | `grey-200` | `grey-600` |
+| `--color-card-border` | `grey-white` | `grey-600` |
+| `--color-card-secondary-border` | `grey-150` | `grey-600` |
+| `--color-card-demoted-border` | `grey-200` | `grey-650` |
 | `--color-card-outline-border` | `grey-200` | `grey-600` |
 
 ## Component-Specific Tokens

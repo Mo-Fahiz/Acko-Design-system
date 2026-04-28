@@ -12,7 +12,7 @@ Directive: none (pure presentational — no interactivity, works in RSC)
 
 ```typescript
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'outline' | 'elevated' | 'demoted'; // default: 'default'
+  variant?: 'default' | 'secondary' | 'elevated' | 'outline' | 'demoted'; // default: 'default'
   padding?: 'none' | 'sm' | 'md' | 'lg';                    // default: 'lg'
   children: React.ReactNode;
   className?: string;
