@@ -666,10 +666,18 @@ function CardPreview() {
 
   return (
     <div className="space-y-24">
-      <div className="rounded-2xl border border-border-subtle p-20" style={{ background: "var(--color-card-demoted-bg)" }}>
+      <div
+        className="p-20"
+        style={{
+          borderRadius: "var(--radius-4xl)",
+          background: "var(--color-card-bg)",
+          border: "1px solid var(--color-card-border)",
+          boxShadow: "var(--shadow-lg)",
+        }}
+      >
         <Typography variant="heading-sm" color="primary">Card gallery</Typography>
         <Typography variant="body-sm" color="secondary" className="mt-8">
-          Scroll this centre column for all examples, or jump to a group. The right column shows a separate &quot;In context&quot; usage sample.
+          Scroll this column for all examples, or jump to a group. Real-world usage appears below the gallery after the breakpoint preview.
         </Typography>
         <div className="mt-16 flex flex-wrap gap-8">
           <Button type="button" variant="secondary" size="sm" onClick={() => jumpTo("card-preview-foundations")}>
@@ -3294,23 +3302,23 @@ function App() {
         {/* ── Main: Preview + usage (stacked) ── */}
         <main className="flex-1 min-w-0 overflow-y-auto bg-surface">
           <div className="w-full min-w-0 max-w-none mx-auto px-24 py-40 sm:px-32 lg:px-40">
-            {/* Header */}
+            {/* Title row — first in column (below padding) */}
+            <div className="flex items-center gap-8 mb-4">
+              <Typography variant="heading-xl" color="primary">
+                {selected}
+              </Typography>
+              <span className={`text-[10px] font-semibold px-8 py-2 rounded-full ${TAG_COLORS[COMPONENT_META[selected]?.tag ?? "atom"]}`}>
+                {COMPONENT_META[selected]?.tag ?? "atom"}
+              </span>
+            </div>
+
+            {/* Subtitle */}
             <div className="flex items-start justify-between mb-24">
-              <div>
-                <div className="flex items-center gap-8 mb-4">
-                  <Typography variant="heading-xl" color="primary">
-                    {selected}
-                  </Typography>
-                  <span className={`text-[10px] font-semibold px-8 py-2 rounded-full ${TAG_COLORS[COMPONENT_META[selected]?.tag ?? "atom"]}`}>
-                    {COMPONENT_META[selected]?.tag ?? "atom"}
-                  </span>
-                </div>
-                <Typography variant="body-sm" color="secondary">
-                  {selected === "Card"
-                    ? "Gallery: foundations, media patterns, reference layouts. Add ?c=Card to the URL to open this page directly."
-                    : "Variants, sizes, and states"}
-                </Typography>
-              </div>
+              <Typography variant="body-sm" color="secondary">
+                {selected === "Card"
+                  ? "Gallery: foundations, media patterns, reference layouts. Add ?c=Card to the URL to open this page directly."
+                  : "Variants, sizes, and states"}
+              </Typography>
             </div>
 
             {/* Breakpoint tabs */}
