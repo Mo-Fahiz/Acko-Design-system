@@ -60,18 +60,18 @@ body {
 /* Button preview — layout aligned with docs/Test folder structure */
 .playground-button-demo .section h2 {
   margin: 0 0 8px;
-  font-size: var(--font-heading-md-size);
-  line-height: var(--font-heading-md-line);
-  font-weight: var(--font-heading-md-weight);
-  letter-spacing: var(--font-heading-md-spacing);
-  color: var(--color-text-primary);
+  font-size: var(--fontHeadingMdSize);
+  line-height: var(--fontHeadingMdLine);
+  font-weight: var(--fontHeadingMdWeight);
+  letter-spacing: var(--fontHeadingMdSpacing);
+  color: var(--colorTextPrimary);
 }
 
 .playground-button-demo .section-desc {
   margin: 0 0 16px;
-  font-size: var(--font-body-sm-size);
-  line-height: var(--font-body-sm-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontBodySmSize);
+  line-height: var(--fontBodySmLine);
+  color: var(--colorTextSecondary);
 }
 
 .playground-button-demo .section {
@@ -125,16 +125,16 @@ body {
 }
 
 .playground-button-demo .matrix-col-label {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  color: var(--colorTextSecondary);
   text-align: center;
 }
 
 .playground-button-demo .matrix-label {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  color: var(--colorTextSecondary);
   text-transform: capitalize;
 }
 

@@ -7,7 +7,7 @@
 .acko-drawer-root {
   position: fixed;
   inset: 0;
-  z-index: var(--z-modal);
+  z-index: var(--zModal);
   pointer-events: none;
   visibility: hidden;
 }
@@ -22,9 +22,9 @@
 .acko-drawer-backdrop {
   position: absolute;
   inset: 0;
-  background: var(--color-surface-overlay);
+  background: var(--colorSurfaceOverlay);
   opacity: 0;
-  transition: opacity 250ms var(--ease-out-cubic);
+  transition: opacity 250ms var(--easeOutCubic);
 }
 
 .acko-drawer-open .acko-drawer-backdrop { opacity: 1; }
@@ -33,13 +33,13 @@
 
 .acko-drawer {
   position: absolute;
-  background: var(--color-surface-raised);
-  box-shadow: var(--shadow-modal);
+  background: var(--colorSurfaceRaised);
+  box-shadow: var(--shadowModal);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   outline: none;
-  transition: transform 300ms var(--ease-out-quart);
+  transition: transform 300ms var(--easeOutQuart);
 }
 
 /* --- Side variants --- */
@@ -48,7 +48,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  border-radius: var(--radius-4xl) 0 0 var(--radius-4xl);
+  border-radius: var(--radius4xl) 0 0 var(--radius4xl);
   transform: translateX(100%);
 }
 
@@ -56,7 +56,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  border-radius: 0 var(--radius-4xl) var(--radius-4xl) 0;
+  border-radius: 0 var(--radius4xl) var(--radius4xl) 0;
   transform: translateX(-100%);
 }
 
@@ -64,7 +64,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: var(--radius-4xl) var(--radius-4xl) 0 0;
+  border-radius: var(--radius4xl) var(--radius4xl) 0 0;
   transform: translateY(100%);
 }
 
@@ -72,7 +72,7 @@
   top: 0;
   left: 0;
   right: 0;
-  border-radius: 0 0 var(--radius-4xl) var(--radius-4xl);
+  border-radius: 0 0 var(--radius4xl) var(--radius4xl);
   transform: translateY(-100%);
 }
 
@@ -104,23 +104,23 @@
 
 .acko-drawer-header {
   @apply flex items-start gap-12 p-20;
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--colorBorderSubtle);
 }
 
 .acko-drawer-heading { @apply flex flex-1 flex-col gap-4; }
 
 .acko-drawer-title {
-  font-size: var(--font-body-lg-size);
+  font-size: var(--fontBodyLgSize);
   font-weight: 600;
-  line-height: var(--font-body-lg-line);
-  color: var(--color-text-default);
+  line-height: var(--fontBodyLgLine);
+  color: var(--colorTextDefault);
   margin: 0;
 }
 
 .acko-drawer-description {
-  font-size: var(--font-body-sm-size);
-  line-height: var(--font-body-sm-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontBodySmSize);
+  line-height: var(--fontBodySmLine);
+  color: var(--colorTextSecondary);
   margin: 0;
 }
 
@@ -128,31 +128,31 @@
   @apply inline-flex items-center justify-center shrink-0 rounded-full w-32 h-32;
   background: transparent;
   border: none;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
   cursor: pointer;
   transition: background 150ms ease, color 150ms ease;
 }
 
 .acko-drawer-close:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-default);
+  background: var(--colorSurfaceHover);
+  color: var(--colorTextDefault);
 }
 
 .acko-drawer-close:focus-visible {
   outline: none;
-  box-shadow: var(--shadow-focus-ring);
+  box-shadow: var(--shadowFocusRing);
 }
 
 /* --- Body --- */
 
 .acko-drawer-body {
   @apply flex-1 overflow-y-auto p-20;
-  color: var(--color-text-default);
+  color: var(--colorTextDefault);
 }
 
 /* --- Footer --- */
 
 .acko-drawer-footer {
   @apply flex items-center justify-end gap-12 py-16 px-20;
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--colorBorderSubtle);
 }

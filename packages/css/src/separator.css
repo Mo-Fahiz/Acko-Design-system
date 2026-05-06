@@ -3,48 +3,36 @@
    Import: @import "@acko/css/separator.css"
    ============================================================ */
 
-/* --- Base --- */
-
 .acko-separator {
-  flex-shrink: 0;
+  @apply shrink-0;
 }
 
 .acko-separator-horizontal {
-  @apply w-full;
-  height: 1px;
-  background: var(--color-control-border-selector);
+  @apply w-full h-px bg-divider;
 }
 
 .acko-separator-vertical {
-  height: 100%;
-  width: 1px;
-  background: var(--color-control-border-selector);
+  @apply h-full w-px bg-divider;
 }
-
-/* --- With label --- */
 
 .acko-separator-with-label {
   @apply flex items-center gap-12;
 }
 
 .acko-separator-with-label.acko-separator-horizontal {
-  height: auto;
-  background: transparent;
+  @apply h-auto bg-transparent;
 }
 
 .acko-separator-line {
-  @apply flex-1;
-  background: var(--color-control-border-selector);
+  @apply flex-1 bg-divider;
 }
 
 .acko-separator-horizontal .acko-separator-line {
-  height: 1px;
-  min-width: 0;
+  @apply h-px min-w-0;
 }
 
 .acko-separator-vertical .acko-separator-line {
-  width: 1px;
-  min-height: 0;
+  @apply w-px min-h-0;
 }
 
 .acko-separator-with-label.acko-separator-vertical {
@@ -52,12 +40,9 @@
 }
 
 .acko-separator-with-label.acko-separator-vertical .acko-separator-line {
-  width: 1px;
-  @apply min-h-16;
+  @apply w-px min-h-16;
 }
 
 .acko-separator-label-text {
-  font-size: var(--font-caption-size);
-  color: var(--color-text-secondary);
-  white-space: nowrap;
+  @apply text-xs text-text-secondary whitespace-nowrap;
 }

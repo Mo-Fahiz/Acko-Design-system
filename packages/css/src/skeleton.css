@@ -1,12 +1,11 @@
 /* Skeleton — @acko/css/skeleton.css */
 
 .acko-skeleton {
-  background-color: var(--color-disabled-bg);
+  @apply bg-disabled-bg;
 }
 
 .acko-skeleton-text {
-  @apply w-full h-16;
-  border-radius: var(--radius-sm);
+  @apply w-full h-16 rounded-sm;
 }
 
 .acko-skeleton-circular {
@@ -14,11 +13,11 @@
 }
 
 .acko-skeleton-rectangular {
-  border-radius: 0;
+  @apply rounded-none;
 }
 
 .acko-skeleton-rounded {
-  border-radius: var(--radius-3xl);
+  @apply rounded-3xl;
 }
 
 .acko-skeleton-pulse {
@@ -38,9 +37,9 @@
 .acko-skeleton-wave {
   background: linear-gradient(
     90deg,
-    var(--color-disabled-bg) 25%,
-    var(--color-surface) 50%,
-    var(--color-disabled-bg) 75%
+    var(--colorDisabledBg) 25%,
+    var(--colorSurface) 50%,
+    var(--colorDisabledBg) 75%
   );
   background-size: 200% 100%;
   animation: acko-skeleton-wave 1.5s linear infinite;

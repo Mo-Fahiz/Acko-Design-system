@@ -2,101 +2,97 @@
    Toast — @acko/css/toast.css
    ============================================================ */
 
-/* --- Region (portal container) --- */
-
 .acko-toast-region {
-  position: fixed;
-  z-index: var(--z-toast);
-  @apply flex flex-col gap-8;
-  pointer-events: none;
+  @apply fixed flex flex-col gap-8 pointer-events-none;
+  z-index: var(--zToast);
   width: 360px;
   max-width: calc(100vw - 2rem);
 }
 
-.acko-toast-region > * { pointer-events: auto; }
+.acko-toast-region > * {
+  pointer-events: auto;
+}
 
-/* Position variants */
-.acko-toast-region-top-right     { @apply top-20 right-20; }
-.acko-toast-region-top-left      { @apply top-20 left-20; }
-.acko-toast-region-top-center    { @apply top-20 left-1/2 -translate-x-1/2; }
-.acko-toast-region-bottom-right  { @apply bottom-20 right-20 flex-col-reverse; }
-.acko-toast-region-bottom-left   { @apply bottom-20 left-20 flex-col-reverse; }
-.acko-toast-region-bottom-center { @apply bottom-20 left-1/2 -translate-x-1/2 flex-col-reverse; }
+.acko-toast-region-top-right {
+  @apply top-20 right-20;
+}
 
-/* --- Toast item --- */
+.acko-toast-region-top-left {
+  @apply top-20 left-20;
+}
+
+.acko-toast-region-top-center {
+  @apply top-20 left-1/2 -translate-x-1/2;
+}
+
+.acko-toast-region-bottom-right {
+  @apply bottom-20 right-20 flex-col-reverse;
+}
+
+.acko-toast-region-bottom-left {
+  @apply bottom-20 left-20 flex-col-reverse;
+}
+
+.acko-toast-region-bottom-center {
+  @apply bottom-20 left-1/2 -translate-x-1/2 flex-col-reverse;
+}
 
 .acko-toast {
-  @apply flex items-start gap-12 py-12 px-16;
-  border-radius: var(--radius-4xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid transparent;
-  background: var(--color-surface-raised);
-  animation: acko-toast-in 250ms var(--ease-out-quart) forwards;
+  @apply flex items-start gap-12 py-12 px-16 rounded-4xl shadow-lg border border-transparent bg-surface-raised;
+  animation: acko-toast-in 250ms var(--easeOutQuart) forwards;
 }
 
 @keyframes acko-toast-in {
-  from { opacity: 0; transform: translateY(0.5rem); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Variant backgrounds */
-.acko-toast-info    { border-color: var(--color-info-border); background: var(--color-info-subtle); color: var(--color-info-text); }
-.acko-toast-success { border-color: var(--color-success-border); background: var(--color-success-subtle); color: var(--color-success-text); }
-.acko-toast-warning { border-color: var(--color-warning-border); background: var(--color-warning-subtle); color: var(--color-warning-text); }
-.acko-toast-error   { border-color: var(--color-error-border); background: var(--color-error-subtle); color: var(--color-error-text); }
+.acko-toast-info {
+  @apply border-info-border bg-info-subtle text-info-text;
+}
 
-/* --- Icon --- */
+.acko-toast-success {
+  @apply border-success-border bg-success-subtle text-success-text;
+}
+
+.acko-toast-warning {
+  @apply border-warning-border bg-warning-subtle text-warning-text;
+}
+
+.acko-toast-error {
+  @apply border-error-border bg-error-subtle text-error-text;
+}
 
 .acko-toast-icon {
   @apply shrink-0 inline-flex items-center justify-center mt-4;
 }
 
-/* --- Content --- */
-
-.acko-toast-content { @apply flex-1 flex flex-col gap-4; }
+.acko-toast-content {
+  @apply flex-1 flex flex-col gap-4;
+}
 
 .acko-toast-title {
-  font-size: var(--font-body-sm-size);
-  font-weight: 600;
-  line-height: var(--font-body-sm-line);
+  @apply text-sm font-semibold leading-snug;
 }
 
 .acko-toast-description {
-  font-size: var(--font-body-sm-size);
-  line-height: var(--font-body-sm-line);
-  opacity: 0.85;
+  @apply text-sm leading-snug opacity-[0.85];
 }
-
-/* --- Action button --- */
 
 .acko-toast-action {
-  @apply inline-flex items-center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: var(--font-body-sm-size);
-  font-weight: 600;
-  color: inherit;
-  padding: 0;
-  text-decoration: underline;
-  text-underline-offset: 0.125rem;
+  @apply inline-flex items-center bg-transparent border-none cursor-pointer text-sm font-semibold text-inherit p-0 underline underline-offset-2;
 }
-
-/* --- Dismiss button --- */
 
 .acko-toast-dismiss {
-  @apply inline-flex items-center justify-center shrink-0 rounded-full w-24 h-24;
-  background: transparent;
-  border: none;
-  color: inherit;
-  opacity: 0.6;
-  cursor: pointer;
-  transition: opacity 150ms ease;
+  @apply inline-flex items-center justify-center shrink-0 rounded-full w-24 h-24 bg-transparent border-none text-inherit opacity-60 hover:opacity-100 cursor-pointer transition-opacity duration-150 ease-in-out;
 }
 
-.acko-toast-dismiss:hover { opacity: 1; }
-
 .acko-toast-dismiss:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus-ring);
+  @apply outline-none shadow-focus-ring;
 }

@@ -12,13 +12,11 @@
 }
 
 .acko-progress-label {
-  font-size: var(--font-caption-size);
-  color: var(--color-text-secondary);
+  @apply text-xs text-text-secondary;
 }
 
 .acko-progress-track {
-  @apply w-full rounded-full overflow-hidden;
-  background-color: var(--color-border-subtle);
+  @apply w-full rounded-full overflow-hidden bg-border-subtle;
 }
 
 .acko-progress-track-sm {
@@ -35,19 +33,19 @@
 
 .acko-progress-bar {
   @apply h-full rounded-full;
-  transition: width 500ms var(--ease-out-cubic);
+  transition: width 500ms var(--easeOutCubic);
 }
 
 .acko-progress-bar-primary {
-  background-color: var(--color-primary);
+  @apply bg-primary;
 }
 
 .acko-progress-bar-success {
-  background-color: var(--color-success);
+  @apply bg-success;
 }
 
 .acko-progress-bar-error {
-  background-color: var(--color-error);
+  @apply bg-error;
 }
 
 .acko-progress-animated .acko-progress-bar {
@@ -66,45 +64,66 @@
 }
 
 .acko-progress-circular-svg {
-  display: block;
+  @apply block;
 }
 
 .acko-progress-circular-track {
-  stroke: var(--color-border-subtle);
+  stroke: var(--colorBorderSubtle);
 }
 
 .acko-progress-circular-bar {
-  transition: stroke-dashoffset 500ms var(--ease-out-cubic);
+  transition: stroke-dashoffset 500ms var(--easeOutCubic);
 }
 
-.acko-progress-circular-bar-primary { stroke: var(--color-primary); }
-.acko-progress-circular-bar-success { stroke: var(--color-success); }
-.acko-progress-circular-bar-error { stroke: var(--color-error); }
+.acko-progress-circular-bar-primary {
+  stroke: var(--colorPrimary);
+}
 
-.acko-progress-circular-sm { @apply w-48 h-48; }
+.acko-progress-circular-bar-success {
+  stroke: var(--colorSuccess);
+}
+
+.acko-progress-circular-bar-error {
+  stroke: var(--colorError);
+}
+
+.acko-progress-circular-sm {
+  @apply w-48 h-48;
+}
+
 .acko-progress-circular-sm .acko-progress-circular-track,
-.acko-progress-circular-sm .acko-progress-circular-bar { stroke-width: 3; }
+.acko-progress-circular-sm .acko-progress-circular-bar {
+  stroke-width: 3;
+}
 
-.acko-progress-circular-md { @apply w-64 h-64; }
+.acko-progress-circular-md {
+  @apply w-64 h-64;
+}
+
 .acko-progress-circular-md .acko-progress-circular-track,
-.acko-progress-circular-md .acko-progress-circular-bar { stroke-width: 4; }
+.acko-progress-circular-md .acko-progress-circular-bar {
+  stroke-width: 4;
+}
 
-.acko-progress-circular-lg { @apply w-96 h-96; }
+.acko-progress-circular-lg {
+  @apply w-96 h-96;
+}
+
 .acko-progress-circular-lg .acko-progress-circular-track,
-.acko-progress-circular-lg .acko-progress-circular-bar { stroke-width: 5; }
+.acko-progress-circular-lg .acko-progress-circular-bar {
+  stroke-width: 5;
+}
 
 .acko-progress-circular-content {
   @apply absolute inset-0 flex items-center justify-center;
 }
 
 .acko-progress-circular-label {
-  font-size: var(--font-caption-size);
-  font-weight: 600;
-  color: var(--color-text-primary);
+  @apply text-xs font-semibold text-text-primary;
 }
 
 .acko-progress-circular-lg .acko-progress-circular-label {
-  font-size: var(--font-body-sm-size);
+  @apply text-sm;
 }
 
 /* --- Segmented variant --- */
@@ -114,15 +133,21 @@
 }
 
 .acko-progress-segment {
-  @apply flex-1 rounded-full;
-  background-color: var(--color-border-subtle);
+  @apply flex-1 rounded-full bg-border-subtle;
 }
 
 .acko-progress-segment-filled {
-  transition: background-color 300ms var(--ease-out-cubic);
+  transition: background-color 300ms var(--easeOutCubic);
 }
 
-/* --- Dark theme --- */
-[data-theme="dark"] .acko-progress-track { background-color: var(--color-track-inactive); }
-[data-theme="dark"] .acko-progress-segment { background-color: var(--color-track-inactive); }
-[data-theme="dark"] .acko-progress-circular-track { stroke: var(--color-track-inactive); }
+[data-theme="dark"] .acko-progress-track {
+  background-color: var(--colorTrackInactive);
+}
+
+[data-theme="dark"] .acko-progress-segment {
+  background-color: var(--colorTrackInactive);
+}
+
+[data-theme="dark"] .acko-progress-circular-track {
+  stroke: var(--colorTrackInactive);
+}

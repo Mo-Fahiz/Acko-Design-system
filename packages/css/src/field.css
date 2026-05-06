@@ -3,42 +3,32 @@
    Import: @import "@acko/css/field.css"
    ============================================================ */
 
-/* --- Base --- */
-
 .acko-field {
   @apply flex flex-col gap-4;
 }
 
 .acko-field-label {
-  font-size: var(--font-label-lg-size);
-  font-weight: var(--font-label-lg-weight);
-  letter-spacing: var(--font-label-lg-spacing);
-  line-height: var(--font-label-lg-line);
-  color: var(--color-text-default);
-  transition: color 150ms ease;
+  @apply text-[length:var(--fontLabelLgSize)] font-medium text-text-default transition-colors duration-150 ease-in-out;
+  letter-spacing: var(--fontLabelLgSpacing);
+  line-height: var(--fontLabelLgLine);
 }
 
 .acko-field-label-focused {
-  color: var(--color-primary);
+  @apply text-primary;
 }
 
 .acko-field-label-disabled {
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
 }
 
 .acko-field-required {
-  color: var(--color-error);
-  margin-left: 2px;
+  @apply text-error ml-[2px];
 }
 
 .acko-field-helper {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  @apply text-xs leading-snug text-text-secondary;
 }
 
 .acko-field-error {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-error-text);
+  @apply text-xs leading-snug text-error-text;
 }

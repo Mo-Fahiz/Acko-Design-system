@@ -14,13 +14,13 @@
 /* --- Underline variant --- */
 
 .acko-tabs-list-underline {
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--colorBorderSubtle);
   position: relative;
 }
 
 .acko-tabs-list-underline-top {
   border-bottom: none;
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--colorBorderSubtle);
 }
 
 .acko-tab {
@@ -31,9 +31,9 @@
 .acko-tab-underline {
   @apply py-8 px-16;
   margin-bottom: -1px;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
   font-weight: 500;
-  transition: color 200ms var(--ease-in-out-cubic);
+  transition: color 200ms var(--easeInOutCubic);
   position: relative;
 }
 
@@ -46,15 +46,15 @@
   height: 2px;
   border-radius: 1px;
   background: transparent;
-  transition: background 250ms var(--ease-in-out-cubic);
+  transition: background 250ms var(--easeInOutCubic);
 }
 
 .acko-tab-underline-active {
-  color: var(--color-primary);
+  color: var(--colorPrimary);
 }
 
 .acko-tab-underline-active::after {
-  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  background: linear-gradient(90deg, transparent, var(--colorPrimary), transparent);
 }
 
 /* Top indicator variant */
@@ -71,26 +71,26 @@
 /* --- Pill variant --- */
 
 .acko-tabs-list-pill {
-  background: var(--color-tab-pill-bg);
-  border: 1px solid var(--color-tab-pill-outer-border);
-  border-radius: var(--radius-full);
+  background: var(--colorTabPillBg);
+  border: 1px solid var(--colorTabPillOuterBorder);
+  border-radius: var(--radiusFull);
   @apply p-4;
   width: fit-content;
 }
 
 .acko-tab-pill {
-  border-radius: var(--radius-full);
+  border-radius: var(--radiusFull);
   @apply py-4 px-16;
-  color: var(--color-tab-text-inactive);
+  color: var(--colorTabTextInactive);
   font-weight: 500;
-  transition: all 200ms var(--ease-in-out-cubic);
+  transition: all 200ms var(--easeInOutCubic);
   background: transparent;
   border: 1px solid transparent;
 }
 
 .acko-tab-pill-active {
-  background: var(--color-tab-pill-active-bg);
-  color: var(--color-tab-pill-active-text);
+  background: var(--colorTabPillActiveBg);
+  color: var(--colorTabPillActiveText);
   box-shadow: none;
   border-color: transparent;
 }
@@ -98,18 +98,18 @@
 /* --- Navigation variant (bottom tabs) --- */
 
 .acko-tabs-list-navigation {
-  background: var(--color-card-bg);
-  border-top: 1px solid var(--color-border-subtle);
+  background: var(--colorCardBg);
+  border-top: 1px solid var(--colorBorderSubtle);
   justify-content: space-around;
   @apply py-4;
 }
 
 .acko-tab-navigation {
   @apply flex-col items-center justify-center gap-2 py-4 px-12 min-w-64;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
   font-weight: 500;
-  font-size: var(--font-caption-size);
-  transition: color 200ms var(--ease-in-out-cubic);
+  font-size: var(--fontCaptionSize);
+  transition: color 200ms var(--easeInOutCubic);
 }
 
 .acko-tab-navigation .acko-tab-icon {
@@ -117,39 +117,39 @@
 }
 
 .acko-tab-navigation-active {
-  background: var(--color-primary-subtle);
-  color: var(--color-primary);
-  border-radius: var(--radius-full);
+  background: var(--colorPrimarySubtle);
+  color: var(--colorPrimary);
+  border-radius: var(--radiusFull);
 }
 
 [data-theme="dark"] .acko-tab-navigation-active {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--colorPrimary);
+  color: var(--colorOnPrimary);
 }
 
 /* --- Enclosed variant --- */
 
 .acko-tab-enclosed {
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--colorBorderSubtle);
   border-bottom: none;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-radius: var(--radiusLg) var(--radiusLg) 0 0;
 }
 
 .acko-tab-enclosed-active {
-  background: var(--color-card-bg);
-  border-bottom: 1px solid var(--color-card-bg);
-  color: var(--color-text-primary);
+  background: var(--colorCardBg);
+  border-bottom: 1px solid var(--colorCardBg);
+  color: var(--colorTextPrimary);
 }
 
 /* --- Sizes --- */
 
 .acko-tab-sm {
-  font-size: var(--font-caption-size);
+  font-size: var(--fontCaptionSize);
   @apply py-4 px-12;
 }
 
 .acko-tab-md {
-  font-size: var(--font-body-sm-size);
+  font-size: var(--fontBodySmSize);
   @apply py-8 px-16;
 }
 
@@ -187,5 +187,5 @@
 
 .acko-tab-pill.acko-tab-disabled {
   opacity: 1;
-  color: var(--color-tab-text-disabled);
+  color: var(--colorTabTextDisabled);
 }

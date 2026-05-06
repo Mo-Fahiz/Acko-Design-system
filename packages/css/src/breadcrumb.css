@@ -13,28 +13,19 @@
 }
 
 .acko-breadcrumb-link {
-  @apply inline-flex items-center no-underline gap-4;
-  color: var(--color-breadcrumb-link);
-  font-size: var(--font-body-sm-size);
-  font-weight: var(--font-body-sm-weight);
-  transition: color 150ms;
+  @apply inline-flex items-center no-underline gap-4 text-sm font-normal transition-colors duration-150 text-[var(--colorBreadcrumbLink)];
 }
 
 .acko-breadcrumb-link:hover {
-  color: var(--color-breadcrumb-link-hover);
-  text-decoration: underline;
+  @apply text-[var(--colorBreadcrumbLinkHover)] underline;
 }
 
 .acko-breadcrumb-current {
-  @apply inline-flex items-center gap-4;
-  color: var(--color-breadcrumb-current);
-  font-weight: var(--font-label-lg-weight);
-  font-size: var(--font-body-sm-size);
+  @apply inline-flex items-center gap-4 text-sm font-medium text-[var(--colorBreadcrumbCurrent)];
 }
 
 .acko-breadcrumb-separator-item {
-  @apply flex items-center my-0 mx-4;
-  color: var(--color-breadcrumb-separator);
+  @apply flex items-center my-0 mx-4 text-[var(--colorBreadcrumbSeparator)];
 }
 
 .acko-breadcrumb-ellipsis-item {
@@ -42,13 +33,11 @@
 }
 
 .acko-breadcrumb-ellipsis {
-  @apply border-none cursor-pointer rounded-full bg-transparent py-4 px-8;
-  color: var(--color-breadcrumb-text);
-  font-size: var(--font-body-sm-size);
+  @apply border-none cursor-pointer rounded-full bg-transparent py-4 px-8 text-sm text-[var(--colorBreadcrumbText)];
 }
 
 .acko-breadcrumb-ellipsis:hover {
-  background: var(--color-surface-raised-hover);
+  @apply bg-[var(--colorSurfaceRaisedHover)];
 }
 
 .acko-breadcrumb-icon {
@@ -56,5 +45,5 @@
 }
 
 .acko-breadcrumb-separator {
-  color: var(--color-breadcrumb-separator);
+  @apply text-[var(--colorBreadcrumbSeparator)];
 }

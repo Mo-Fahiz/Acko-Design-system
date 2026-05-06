@@ -18,30 +18,30 @@ Activated via `[data-theme="dark"]` on `<html>`.
 
 | Semantic Token | Primitive | Notes |
 |---------------|-----------|-------|
-| `--color-primary` | `purple-500` | Lighter for contrast |
-| `--color-primary-hover` | `purple-400` | Hover goes lighter (not darker) |
-| `--color-on-primary` | `grey-white` | Text on primary bg |
-| `--color-surface` | `grey-750` | Deepest background |
-| `--color-surface-raised` | `grey-700` | Cards, inputs |
-| `--color-text-primary` | `grey-50` | Headings |
-| `--color-text-default` | `grey-100` | Body text |
-| `--color-text-secondary` | `grey-350` | Helpers, placeholders |
-| `--color-border` | `grey-600` | Default borders |
-| `--color-card-bg` | `grey-700` | Card fill |
-| `--color-error` | `red-600` | Error borders |
-| `--color-error-text` | `red-400` | Error messages (lighter) |
-| `--color-success` | `green-500` | Success indicators (lighter) |
+| `--colorPrimary` | `purple500` | Lighter for contrast |
+| `--colorPrimaryHover` | `purple400` | Hover goes lighter (not darker) |
+| `--colorOnPrimary` | `greyWhite` | Text on primary bg |
+| `--colorSurface` | `grey750` | Deepest background |
+| `--colorSurfaceRaised` | `grey700` | Cards, inputs |
+| `--colorTextPrimary` | `grey50` | Headings |
+| `--colorTextDefault` | `grey100` | Body text |
+| `--colorTextSecondary` | `grey350` | Helpers, placeholders |
+| `--colorBorder` | `grey600` | Default borders |
+| `--colorCardBg` | `grey700` | Card fill |
+| `--colorError` | `red600` | Error borders |
+| `--colorErrorText` | `red400` | Error messages (lighter) |
+| `--colorSuccess` | `green500` | Success indicators (lighter) |
 
 ## Visual Adjustments vs Light
 
 | Property | Light | Dark |
 |----------|-------|------|
-| Card borders | White highlight edge | `grey-650` — subtler stroke |
-| Input fill | `grey-white` (`--color-input-bg`) | `grey-750` (`--color-input-bg`) — deeper than surface |
-| Input border (default) | `grey-150` | `grey-600` |
-| Input border (filled/active) | `grey-200` | `grey-550` |
-| Input border (focus) | `purple-400` | `purple-900` |
-| Input disabled | light disabled tokens | `grey-650` fill, `grey-600` border |
+| Card borders | White highlight edge | `grey650` — subtler stroke |
+| Input fill | `greyWhite` (`--colorInputBg`) | `grey750` (`--colorInputBg`) — deeper than surface |
+| Input border (default) | `grey150` | `grey600` |
+| Input border (filled/active) | `grey200` | `grey550` |
+| Input border (focus) | `purple400` | `purple900` |
+| Input disabled | light disabled tokens | `grey650` fill, `grey600` border |
 | Dropdown menu | White + shadow | Raised surface + visible border |
 | Shadows | Standard | Heavier rgba values for visibility |
 | Scrollbar | Browser default | Custom dark scrollbar |

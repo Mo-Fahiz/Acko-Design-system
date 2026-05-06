@@ -5,85 +5,54 @@
 }
 
 .acko-pagination-info {
-  font-size: var(--font-body-sm-size);
-  color: var(--color-text-secondary);
-  @apply px-8;
+  @apply px-8 text-sm text-text-secondary;
 }
 
 .acko-pagination-btn {
-  @apply inline-flex items-center justify-center w-40 h-40;
-  border-radius: var(--radius-full);
-  font-size: var(--font-body-sm-size);
-  font-weight: 500;
-  background: transparent;
-  color: var(--color-text-default);
-  border: none;
-  cursor: pointer;
-  transition: all 200ms var(--ease-in-out-cubic);
+  @apply inline-flex items-center justify-center w-40 h-40 rounded-full text-sm font-medium bg-transparent text-text-default border-none cursor-pointer transition-all duration-200;
   font-family: inherit;
+  transition-timing-function: var(--easeInOutCubic);
 }
 
 .acko-pagination-btn:hover:not(:disabled):not(.acko-pagination-btn-current) {
-  background: var(--color-primary-subtle);
-  color: var(--color-text-primary);
+  @apply bg-primary-subtle text-text-primary;
 }
 
 .acko-pagination-btn-current {
-  background: var(--color-primary-subtle);
-  color: var(--color-text-default);
-  font-weight: 600;
+  @apply bg-primary-subtle text-text-default font-semibold;
 }
 
 .acko-pagination-btn:disabled {
-  opacity: var(--opacity-48);
-  color: var(--color-text-secondary);
-  cursor: not-allowed;
+  @apply opacity-[var(--opacity48)] text-text-secondary cursor-not-allowed;
 }
 
 .acko-pagination-nav {
-  @apply inline-flex items-center justify-center w-40 h-40;
-  border-radius: var(--radius-full);
-  background: var(--color-surface-raised);
-  border: none;
-  cursor: pointer;
-  color: var(--color-text-default);
-  transition: all 200ms var(--ease-in-out-cubic);
+  @apply inline-flex items-center justify-center w-40 h-40 rounded-full bg-surface-raised border-none cursor-pointer text-text-default transition-all duration-200;
   font-family: inherit;
+  transition-timing-function: var(--easeInOutCubic);
 }
 
 .acko-pagination-nav:hover:not(:disabled) {
-  background: var(--color-surface-raised-hover);
+  @apply bg-surface-raised-hover;
 }
 
 .acko-pagination-nav:disabled {
-  opacity: var(--opacity-48);
-  cursor: not-allowed;
+  @apply opacity-[var(--opacity48)] cursor-not-allowed;
 }
 
 .acko-pagination-ellipsis {
-  @apply inline-flex items-center justify-center w-40 h-40;
-  color: var(--color-text-secondary);
-  font-size: var(--font-body-sm-size);
+  @apply inline-flex items-center justify-center w-40 h-40 text-sm text-text-secondary;
 }
 
 .acko-pagination-load-more {
-  @apply px-24 py-8;
-  border-radius: var(--radius-full);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-size: var(--font-body-sm-size);
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: background 150ms ease;
+  @apply px-24 py-8 rounded-full bg-primary text-on-primary text-sm font-medium border-none cursor-pointer transition-colors duration-150 ease-in-out;
   font-family: inherit;
 }
 
 .acko-pagination-load-more:hover:not(:disabled) {
-  opacity: 0.9;
+  @apply opacity-90;
 }
 
 .acko-pagination-load-more:disabled {
-  opacity: var(--opacity-48);
-  cursor: not-allowed;
+  @apply opacity-[var(--opacity48)] cursor-not-allowed;
 }

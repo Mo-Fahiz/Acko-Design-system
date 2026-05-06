@@ -4,72 +4,54 @@
    ============================================================ */
 
 .acko-toggle {
-  @apply inline-flex items-center justify-center cursor-pointer rounded-full;
-  font-weight: 500;
+  @apply inline-flex items-center justify-center cursor-pointer rounded-full font-medium border border-transparent transition-colors duration-150 ease-in-out;
   font-family: inherit;
-  border: 1px solid transparent;
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
 }
 
 .acko-toggle-sm {
-  @apply h-32 py-0 px-8;
-  font-size: var(--font-label-md-size);
+  @apply h-32 py-0 px-8 text-[length:var(--fontLabelMdSize)];
 }
 
 .acko-toggle-md {
-  @apply h-40 py-0 px-12;
-  font-size: var(--font-body-sm-size);
+  @apply h-40 py-0 px-12 text-sm;
 }
 
 .acko-toggle-lg {
-  @apply h-48 py-0 px-16;
-  font-size: var(--font-body-md-size);
+  @apply h-48 py-0 px-16 text-base;
 }
 
 .acko-toggle-default {
-  background: var(--color-toggle-bg);
-  color: var(--color-toggle-text);
+  @apply bg-[var(--colorToggleBg)] text-[var(--colorToggleText)];
 }
 
 .acko-toggle-default.acko-toggle-pressed {
-  background: var(--color-toggle-active-bg);
-  color: var(--color-toggle-active-text);
-  border-color: var(--color-primary-hover);
+  @apply bg-[var(--colorToggleActiveBg)] text-[var(--colorToggleActiveText)] border-primary-hover;
 }
 
 .acko-toggle-outline {
-  background: var(--color-surface-raised);
-  border-color: var(--color-border);
-  color: var(--color-toggle-text);
+  @apply bg-surface-raised border-border text-[var(--colorToggleText)];
 }
 
 .acko-toggle-outline.acko-toggle-pressed {
-  background: var(--color-toggle-active-bg);
-  color: var(--color-toggle-active-text);
-  border-color: var(--color-primary-hover);
+  @apply bg-[var(--colorToggleActiveBg)] text-[var(--colorToggleActiveText)] border-primary-hover;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .acko-toggle-default:hover:not(:disabled):not(.acko-toggle-pressed) {
-    background: var(--color-toggle-bg-hover);
+    @apply bg-[var(--colorToggleBgHover)];
   }
 
   .acko-toggle-outline:hover:not(:disabled):not(.acko-toggle-pressed) {
-    background: var(--color-toggle-bg-hover);
+    @apply bg-[var(--colorToggleBgHover)];
   }
 }
 
 .acko-toggle:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
+  @apply outline-none shadow-focus-ring;
 }
 
 .acko-toggle-disabled {
-  background: var(--color-btn-disabled-bg);
-  color: var(--color-btn-disabled-text);
-  border-color: transparent;
-  cursor: not-allowed;
-  opacity: 1;
+  @apply bg-btn-disabled-bg text-btn-disabled-text border-transparent cursor-not-allowed opacity-100;
 }
 
 .acko-toggle-group {

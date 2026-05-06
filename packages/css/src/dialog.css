@@ -2,114 +2,99 @@
    Dialog — @acko/css/dialog.css
    ============================================================ */
 
-/* --- Backdrop --- */
-
 .acko-dialog-backdrop {
-  @apply flex items-center justify-center p-16;
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal);
-  background: var(--color-surface-overlay);
-  animation: acko-dialog-backdrop-in 200ms var(--ease-out-cubic) forwards;
+  @apply flex items-center justify-center p-16 fixed inset-0;
+  z-index: var(--zModal);
+  background: var(--colorSurfaceOverlay);
+  animation: acko-dialog-backdrop-in 200ms var(--easeOutCubic) forwards;
 }
 
 @keyframes acko-dialog-backdrop-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* --- Panel --- */
-
 .acko-dialog {
-  position: relative;
-  background: var(--color-surface-raised);
-  border-radius: var(--radius-4xl);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100vh - 2rem);
-  max-width: 540px;
-  outline: none;
-  animation: acko-dialog-in 250ms var(--ease-out-quart) forwards;
+  @apply relative flex flex-col outline-none rounded-4xl shadow-lg max-h-[calc(100vh-2rem)] max-w-[540px];
+  background: var(--colorSurfaceRaised);
+  animation: acko-dialog-in 250ms var(--easeOutQuart) forwards;
 }
 
 @keyframes acko-dialog-in {
-  from { opacity: 0; transform: scale(0.95) translateY(0.5rem); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-/* --- Sizes --- */
+.acko-dialog-sm {
+  @apply max-w-360;
+}
 
-.acko-dialog-sm  { @apply max-w-360; }
-.acko-dialog-md  { @apply max-w-480; }
-.acko-dialog-lg  { @apply max-w-600; }
-.acko-dialog-xl  { @apply max-w-760; }
+.acko-dialog-md {
+  @apply max-w-480;
+}
+
+.acko-dialog-lg {
+  @apply max-w-600;
+}
+
+.acko-dialog-xl {
+  @apply max-w-760;
+}
+
 .acko-dialog-full {
   max-width: 100%;
   max-height: 100vh;
   border-radius: 0;
 }
 
-/* --- Header --- */
-
 .acko-dialog-header {
   @apply flex items-start gap-12 pt-20 px-20 pb-16;
 }
 
 .acko-dialog-title {
-  flex: 1;
-  font-size: var(--font-body-lg-size);
-  font-weight: 600;
-  line-height: var(--font-body-lg-line);
-  color: var(--color-text-default);
-  margin: 0;
+  @apply flex-1 m-0 font-semibold text-text-default;
+  font-size: var(--fontBodyLgSize);
+  line-height: var(--fontBodyLgLine);
 }
 
 .acko-dialog-description {
-  flex: 1 1 100%;
-  font-size: var(--font-body-sm-size);
-  line-height: var(--font-body-sm-line);
-  color: var(--color-text-secondary);
-  @apply mt-4;
+  @apply flex-1 basis-full mt-4 text-text-secondary;
+  font-size: var(--fontBodySmSize);
+  line-height: var(--fontBodySmLine);
 }
 
 .acko-dialog-close {
-  @apply inline-flex items-center justify-center shrink-0 rounded-full w-32 h-32;
-  background: transparent;
-  border: none;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  @apply inline-flex items-center justify-center shrink-0 rounded-full w-32 h-32 bg-transparent border-none text-text-secondary cursor-pointer transition-colors duration-150 ease-in-out;
 }
 
 .acko-dialog-close:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-default);
+  @apply bg-surface-raised-hover text-text-default;
 }
 
 .acko-dialog-close:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus-ring);
+  @apply outline-none shadow-focus-ring;
 }
-
-/* --- Body --- */
 
 .acko-dialog-body {
-  @apply flex-1 overflow-y-auto pb-20 px-20;
-  color: var(--color-text-default);
-  font-size: var(--font-body-md-size);
-  line-height: var(--font-body-md-line);
+  @apply flex-1 overflow-y-auto pb-20 px-20 text-text-default;
+  font-size: var(--fontBodyMdSize);
+  line-height: var(--fontBodyMdLine);
 }
-
-/* --- Footer --- */
 
 .acko-dialog-footer {
-  @apply flex items-center justify-end gap-12 py-16 px-20;
-  border-top: 1px solid var(--color-border-subtle);
+  @apply flex items-center justify-end gap-12 py-16 px-20 border-t border-border-subtle;
 }
 
-/* --- Dark theme --- */
-
 [data-theme="dark"] .acko-dialog {
-  box-shadow: var(--shadow-modal);
+  box-shadow: var(--shadowModal);
 }

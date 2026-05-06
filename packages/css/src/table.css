@@ -2,32 +2,32 @@
 
 .acko-table-wrapper {
   @apply overflow-x-auto w-full;
-  border: 1px solid var(--color-table-border);
-  border-radius: var(--radius-3xl);
+  border: 1px solid var(--colorTableBorder);
+  border-radius: var(--radius3xl);
 }
 
 .acko-table {
   @apply w-full;
   border-collapse: collapse;
-  font-size: var(--font-body-sm-size);
+  font-size: var(--fontBodySmSize);
 }
 
 .acko-table-head {
   @apply py-12 px-16;
-  background: var(--color-table-header-bg);
-  color: var(--color-table-header-text);
-  font-weight: var(--font-label-lg-weight);
+  background: var(--colorTableHeaderBg);
+  color: var(--colorTableHeaderText);
+  font-weight: var(--fontLabelLgWeight);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: var(--font-label-md-size);
-  border-bottom: 1px solid var(--color-table-border);
+  font-size: var(--fontLabelMdSize);
+  border-bottom: 1px solid var(--colorTableBorder);
   text-align: left;
 }
 
 .acko-table-cell {
   @apply py-12 px-16;
-  color: var(--color-text-default);
-  border-bottom: 1px solid var(--color-table-border);
+  color: var(--colorTextDefault);
+  border-bottom: 1px solid var(--colorTableBorder);
 }
 
 .acko-table-body .acko-table-row:last-child .acko-table-cell {
@@ -35,20 +35,20 @@
 }
 
 .acko-table-striped .acko-table-body .acko-table-row:nth-child(even) {
-  background: var(--color-table-stripe);
+  background: var(--colorTableStripe);
 }
 
 .acko-table-hoverable .acko-table-body .acko-table-row {
-  transition: background 150ms var(--ease-out-quad);
+  transition: background 150ms var(--easeOutQuad);
 }
 
 .acko-table-hoverable .acko-table-body .acko-table-row:hover {
-  background: var(--color-table-row-hover);
+  background: var(--colorTableRowHover);
 }
 
 .acko-table-caption {
   @apply p-12;
-  color: var(--color-text-secondary);
-  font-size: var(--font-body-sm-size);
+  color: var(--colorTextSecondary);
+  font-size: var(--fontBodySmSize);
   caption-side: bottom;
 }

@@ -23,17 +23,17 @@ Default ACKO brand theme. Applied via `:root` or `[data-theme="light"]`.
 
 | Semantic Token | Primitive | Hex |
 |---------------|-----------|-----|
-| `--color-primary` | `purple-600` | `#6841E6` |
-| `--color-on-primary` | — | `#FFFFFF` |
-| `--color-surface` | `grey-100` | `#F5F5F5` |
-| `--color-surface-raised` | `grey-100` | `#F5F5F5` |
-| `--color-text-primary` | `grey-800` | `#0A0A0A` |
-| `--color-text-default` | `grey-700` | `#141414` |
-| `--color-text-secondary` | `grey-450` | `#605F63` |
-| `--color-border` | `grey-300` | `#B7B7B8` |
-| `--color-card-bg` | `grey-50` | `#FBFBFB` |
-| `--color-error` | `red-600` | `#DC2626` |
-| `--color-success` | `green-600` | `#16A34A` |
+| `--colorPrimary` | `purple600` | `#6841E6` |
+| `--colorOnPrimary` | — | `#FFFFFF` |
+| `--colorSurface` | `grey100` | `#F5F5F5` |
+| `--colorSurfaceRaised` | `grey100` | `#F5F5F5` |
+| `--colorTextPrimary` | `grey800` | `#343434` |
+| `--colorTextDefault` | `grey700` | `#505050` |
+| `--colorTextSecondary` | `grey450` | `#969696` |
+| `--colorBorder` | `grey300` | `#C0C0C0` |
+| `--colorCardBg` | `grey50` | `#FBFBFB` |
+| `--colorError` | `red600` | `#DC2626` |
+| `--colorSuccess` | `green600` | `#16A34A` |
 
 ## Activation
 

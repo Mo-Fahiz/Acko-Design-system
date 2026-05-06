@@ -12,7 +12,7 @@ import { clsx } from "clsx";
 /**
  * Slider — range input with gradient track/fill and branded thumb.
  * Consumer must import `@acko/css/slider.css` (after tokens + theme). Visuals use semantic
- * tokens: `--color-slider-*`, `--slider-thumb-size-*`, `--shadow-slider-thumb`.
+ * tokens: `colorSlider*`, `sliderThumbSize*`, `shadowSliderThumb`.
  */
 export interface SliderProps {
   value: number;

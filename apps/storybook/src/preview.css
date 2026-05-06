@@ -41,11 +41,11 @@ body {
 
 .sb-section-title {
   margin: 0 0 8px;
-  font-size: var(--font-heading-md-size);
-  line-height: var(--font-heading-md-line);
-  font-weight: var(--font-heading-md-weight);
-  letter-spacing: var(--font-heading-md-spacing);
-  color: var(--color-text-primary);
+  font-size: var(--fontHeadingMdSize);
+  line-height: var(--fontHeadingMdLine);
+  font-weight: var(--fontHeadingMdWeight);
+  letter-spacing: var(--fontHeadingMdSpacing);
+  color: var(--colorTextPrimary);
 }
 
 .sb-section {
@@ -129,7 +129,7 @@ body {
 
 .sb-card-avatar-row .acko-avatar {
   position: relative;
-  border: 2px solid var(--color-card-bg);
+  border: 2px solid var(--colorCardBg);
 }
 
 .sb-card-avatar-row .acko-avatar:nth-child(1) {
@@ -151,12 +151,12 @@ body {
 /* Wave placeholder */
 .sb-card-wave {
   flex-shrink: 0;
-  border-radius: var(--radius-inset-md);
+  border-radius: var(--radiusInsetMd);
   background: linear-gradient(
     125deg,
-    var(--color-primary-subtle) 0%,
-    var(--color-btn-link-color) 45%,
-    var(--color-primary) 100%
+    var(--colorPrimarySubtle) 0%,
+    var(--colorBtnLinkColor) 45%,
+    var(--colorPrimary) 100%
   );
 }
 
@@ -168,7 +168,7 @@ body {
 .sb-card-wave--thumb {
   width: 72px;
   height: 56px;
-  border-radius: var(--radius-inset-sm);
+  border-radius: var(--radiusInsetSm);
 }
 
 /* Card 2: search row */
@@ -178,29 +178,29 @@ body {
   gap: 12px;
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid var(--color-input-border);
-  border-radius: var(--radius-full);
-  background-color: var(--color-input-bg);
-  color: var(--color-text-secondary);
+  border: 1px solid var(--colorInputBorder);
+  border-radius: var(--radiusFull);
+  background-color: var(--colorInputBg);
+  color: var(--colorTextSecondary);
   box-sizing: border-box;
 }
 
 .sb-card-search-row svg:first-of-type {
   flex-shrink: 0;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
 }
 
 .sb-card-search-placeholder {
   flex: 1;
   min-width: 0;
   text-align: left;
-  font-size: var(--font-body-md-size);
-  line-height: var(--font-body-md-line);
+  font-size: var(--fontBodyMdSize);
+  line-height: var(--fontBodyMdLine);
 }
 
 .sb-card-search-row svg:last-of-type {
   flex-shrink: 0;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
 }
 
 /* Horizontal split: text + image */
@@ -238,17 +238,17 @@ body {
 .sb-card-star-row {
   display: flex;
   gap: 1px;
-  font-size: var(--font-body-sm-size);
+  font-size: var(--fontBodySmSize);
   line-height: 1;
   letter-spacing: 0.02em;
 }
 
 .sb-card-star--on {
-  color: var(--color-warning);
+  color: var(--colorWarning);
 }
 
 .sb-card-star--off {
-  color: var(--color-border);
+  color: var(--colorBorder);
 }
 
 /* Ticket stepper */
@@ -286,15 +286,15 @@ body {
   justify-content: space-between;
   gap: 8px;
   margin-top: 12px;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
 }
 
 .sb-card-feed-stat {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
 }
 
 .sb-card-feed-stat svg {
@@ -312,13 +312,13 @@ body {
   display: inline-block;
   align-self: flex-start;
   padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-text-primary);
-  color: var(--color-text-static);
-  font-size: var(--font-label-sm-size);
-  line-height: var(--font-label-sm-line);
-  font-weight: var(--font-label-sm-weight);
-  letter-spacing: var(--font-label-sm-spacing);
+  border-radius: var(--radiusSm);
+  background-color: var(--colorTextPrimary);
+  color: var(--colorTextStatic);
+  font-size: var(--fontLabelSmSize);
+  line-height: var(--fontLabelSmLine);
+  font-weight: var(--fontLabelSmWeight);
+  letter-spacing: var(--fontLabelSmSpacing);
 }
 
 /* Stat bar:3 columns */
@@ -337,7 +337,7 @@ body {
 }
 
 .sb-card-stat-cell svg {
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
 }
 
 /* Reading / task cards */
@@ -359,7 +359,7 @@ body {
 
 .sb-card-icon-title-row > svg {
   flex-shrink: 0;
-  color: var(--color-text-primary);
+  color: var(--colorTextPrimary);
   margin-top: 2px;
 }
 
@@ -377,7 +377,7 @@ body {
 
 .sb-card-reading-item > svg {
   flex-shrink: 0;
-  color: var(--color-text-primary);
+  color: var(--colorTextPrimary);
 }
 
 .sb-card-media-wrap {
@@ -411,7 +411,7 @@ body {
 }
 
 .sb-card-profile-dismiss-row .acko-btn-ghost {
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
 }
 
 /* Course preview: avatar overlaps media / body */
@@ -428,8 +428,8 @@ body {
   margin-top: -32px;
   position: relative;
   z-index: 1;
-  border: 3px solid var(--color-card-bg);
-  border-radius: var(--radius-full);
+  border: 3px solid var(--colorCardBg);
+  border-radius: var(--radiusFull);
   box-sizing: content-box;
 }
 
@@ -442,17 +442,17 @@ body {
   text-align: center;
   padding-top: 16px;
   margin-top: 8px;
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--colorBorderSubtle);
 }
 
 .sb-card-view-contents-btn.acko-btn-link {
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
   text-decoration: none;
 }
 
 @media (hover: hover) {
   .sb-card-view-contents-btn.acko-btn-link:hover:not(:disabled) {
-    color: var(--color-text-primary);
+    color: var(--colorTextPrimary);
     text-decoration: underline;
   }
 }
@@ -468,7 +468,7 @@ body {
   width: 100%;
   max-width: 240px;
   aspect-ratio: 1;
-  border-radius: var(--radius-inset-md);
+  border-radius: var(--radiusInsetMd);
 }
 
 .sb-card-meta-stack {
@@ -489,7 +489,7 @@ body {
 .sb-card-footer-divider {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--colorBorderSubtle);
 }
 
 .sb-card-footer-link-row {
@@ -504,7 +504,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-text-primary);
+  color: var(--colorTextPrimary);
 }
 
 .sb-card-footer-share-row svg {
@@ -523,7 +523,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-text-primary);
+  color: var(--colorTextPrimary);
 }
 
 .sb-card-footer-split-item svg {
@@ -560,7 +560,7 @@ body {
   width: 80px;
   height: 80px;
   flex-shrink: 0;
-  border-radius: var(--radius-inset-md);
+  border-radius: var(--radiusInsetMd);
 }
 
 /* Full-bleed media covers */
@@ -583,8 +583,8 @@ body {
 }
 
 .sb-card-cover-play-fab.acko-btn-primary {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-static);
+  background-color: var(--colorTextPrimary);
+  color: var(--colorTextStatic);
   box-shadow: none;
 }
 
@@ -610,7 +610,7 @@ body {
   gap: 4px;
   background: color-mix(
     in srgb,
-    var(--color-text-primary) 72%,
+    var(--colorTextPrimary) 72%,
     transparent
   );
 }
@@ -627,7 +627,7 @@ body {
   padding: 16px 20px;
   background: linear-gradient(
     to top,
-    color-mix(in srgb, var(--color-text-primary) 88%, transparent) 0%,
+    color-mix(in srgb, var(--colorTextPrimary) 88%, transparent) 0%,
     transparent 100%
   );
 }
@@ -641,7 +641,7 @@ body {
 }
 
 .sb-card-cover-footer .acko-btn-ghost {
-  color: var(--color-text-static);
+  color: var(--colorTextStatic);
 }
 
 .sb-card-inset-media {
@@ -651,21 +651,21 @@ body {
 .sb-card-wave--inset-top {
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: var(--radius-inset-md);
+  border-radius: var(--radiusInsetMd);
 }
 
 /* Gradient “reading task” hero */
 .sb-card-reading-gradient {
   background: linear-gradient(
     125deg,
-    var(--color-primary) 0%,
-    var(--color-btn-link-color) 100%
+    var(--colorPrimary) 0%,
+    var(--colorBtnLinkColor) 100%
   );
   border-color: transparent;
 }
 
 .sb-card-on-gradient-muted {
-  color: color-mix(in srgb, var(--color-text-static) 78%, transparent);
+  color: color-mix(in srgb, var(--colorTextStatic) 78%, transparent);
 }
 
 .sb-card-reading-gradient-stack {
@@ -676,34 +676,34 @@ body {
 }
 
 .sb-card-reading-gradient .sb-card-avatar-row .acko-avatar {
-  border-color: color-mix(in srgb, var(--color-text-static) 35%, transparent);
+  border-color: color-mix(in srgb, var(--colorTextStatic) 35%, transparent);
 }
 
 /* Solid purple host / event surfaces */
 .sb-card-host-solid {
-  background-color: var(--color-primary);
+  background-color: var(--colorPrimary);
   border-color: transparent;
 }
 
 .sb-card-host-solid .acko-btn-ghost {
-  color: var(--color-text-static);
+  color: var(--colorTextStatic);
 }
 
 .sb-card-host-solid .sb-card-footer-split-item svg {
   flex-shrink: 0;
-  color: var(--color-text-static);
+  color: var(--colorTextStatic);
 }
 
 .sb-card-host-pill {
   display: inline-block;
   padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-text-static);
-  color: var(--color-primary);
-  font-size: var(--font-label-sm-size);
-  line-height: var(--font-label-sm-line);
-  font-weight: var(--font-label-sm-weight);
-  letter-spacing: var(--font-label-sm-spacing);
+  border-radius: var(--radiusFull);
+  background-color: var(--colorTextStatic);
+  color: var(--colorPrimary);
+  font-size: var(--fontLabelSmSize);
+  line-height: var(--fontLabelSmLine);
+  font-weight: var(--fontLabelSmWeight);
+  letter-spacing: var(--fontLabelSmSpacing);
 }
 
 .sb-card-host-header-row {
@@ -731,7 +731,7 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 2px solid var(--color-text-static);
+  border: 2px solid var(--colorTextStatic);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -742,14 +742,14 @@ body {
 }
 
 .sb-card-audience-extra .sb-card-audience-count {
-  font-size: var(--font-label-md-size);
+  font-size: var(--fontLabelMdSize);
   line-height: 1.1;
-  font-weight: var(--font-label-md-weight);
-  color: var(--color-text-static);
+  font-weight: var(--fontLabelMdWeight);
+  color: var(--colorTextStatic);
 }
 
 .sb-card-audience-extra svg {
-  color: var(--color-text-static);
+  color: var(--colorTextStatic);
 }
 
 .sb-card-host-footer-row {
@@ -761,13 +761,13 @@ body {
 }
 
 .sb-card-host-foot-muted {
-  color: color-mix(in srgb, var(--color-text-static) 72%, transparent);
+  color: color-mix(in srgb, var(--colorTextStatic) 72%, transparent);
 }
 
 /* Dark play chip on purple / gradient */
 .sb-card-play-chip.acko-btn {
-  background-color: var(--color-text-primary);
-  color: var(--color-text-static);
+  background-color: var(--colorTextPrimary);
+  color: var(--colorTextStatic);
   box-shadow: none;
 }
 

@@ -6,12 +6,6 @@ description: Spacing, sizing, opacity, z-index, and utility tokens — numeric f
 
 All numeric foundations for the design system: spacing, component sizing, and utility tokens. All tokens on this page are **theme-agnostic** — they do not change between themes.
 
-## Documentation scope
-
-**Portable across platforms:** Numeric intent — “8px gap”, “48px control height”, inter-component spacing table, opacity and z-index scales, hairline border behavior. These values should match in Flutter (`SizedBox`, `EdgeInsets`, theme spacing constants) even if the *syntax* differs.
-
-**Web-specific in this file:** Tailwind v4 utilities (`gap-8`, `h-48`, `@apply`, `@theme inline` `--spacing`). Flutter does not use these class names; map the **pixel column** to your spacing API.
-
 ## Spacing System
 
 Spacing is powered by Tailwind v4 utilities with a **1px base**:
@@ -107,45 +101,45 @@ With `--spacing: 0.0625rem`, utility numbers map 1:1 to pixels:
 |-------|----|
 | `gap-2` for 8px (old 4px base) | `gap-8` for 8px |
 | `h-12` for 48px (old 4px base) | `h-48` for 48px |
-| `gap-[var(--scale-8)]` | `gap-8` |
-| `padding: var(--scale-16)` | `@apply p-16` |
+| `gap-[var(--scale8)]` | `gap-8` |
+| `padding: var(--scale16)` | `@apply p-16` |
 | `width: 240px` | `@apply w-240` |
 | `height: 48px` | `@apply h-48` |
 
 ## Opacity Scale (`--opacity-*`)
 
-Direct decimal values from 0 to 1. The token number represents the percentage (e.g., `--opacity-48` = 0.48).
+Direct decimal values from 0 to 1. The token number represents the percentage (e.g., `--opacity48` = 0.48).
 
 | Token | Value | | Token | Value |
 |-------|-------|-|-------|-------|
-| `--opacity-0` | 0 | | `--opacity-44` | 0.44 |
-| `--opacity-2` | 0.02 | | `--opacity-48` | 0.48 |
-| `--opacity-4` | 0.04 | | `--opacity-52` | 0.52 |
-| `--opacity-6` | 0.06 | | `--opacity-56` | 0.56 |
-| `--opacity-8` | 0.08 | | `--opacity-64` | 0.64 |
-| `--opacity-10` | 0.10 | | `--opacity-72` | 0.72 |
-| `--opacity-12` | 0.12 | | `--opacity-80` | 0.80 |
-| `--opacity-16` | 0.16 | | `--opacity-88` | 0.88 |
-| `--opacity-20` | 0.20 | | `--opacity-96` | 0.96 |
-| `--opacity-24` | 0.24 | | `--opacity-100` | 1.00 |
-| `--opacity-28` | 0.28 | | | |
-| `--opacity-32` | 0.32 | | | |
-| `--opacity-36` | 0.36 | | | |
-| `--opacity-40` | 0.40 | | | |
+| `--opacity0` | 0 | | `--opacity44` | 0.44 |
+| `--opacity2` | 0.02 | | `--opacity48` | 0.48 |
+| `--opacity4` | 0.04 | | `--opacity52` | 0.52 |
+| `--opacity6` | 0.06 | | `--opacity56` | 0.56 |
+| `--opacity8` | 0.08 | | `--opacity64` | 0.64 |
+| `--opacity10` | 0.10 | | `--opacity72` | 0.72 |
+| `--opacity12` | 0.12 | | `--opacity80` | 0.80 |
+| `--opacity16` | 0.16 | | `--opacity88` | 0.88 |
+| `--opacity20` | 0.20 | | `--opacity96` | 0.96 |
+| `--opacity24` | 0.24 | | `--opacity100` | 1.00 |
+| `--opacity28` | 0.28 | | | |
+| `--opacity32` | 0.32 | | | |
+| `--opacity36` | 0.36 | | | |
+| `--opacity40` | 0.40 | | | |
 
 ## Z-Index Scale (`--z-*`)
 
 | Token | Value | Use Case |
 |-------|-------|----------|
-| `--z-dropdown` | 100 | Dropdown menus, select popups |
-| `--z-sticky` | 150 | Sticky headers, floating elements |
-| `--z-modal` | 200 | Modal dialogs, sheets |
-| `--z-tooltip` | 300 | Tooltips, popovers |
-| `--z-toast` | 400 | Toast notifications |
+| `--zDropdown` | 100 | Dropdown menus, select popups |
+| `--zSticky` | 150 | Sticky headers, floating elements |
+| `--zModal` | 200 | Modal dialogs, sheets |
+| `--zTooltip` | 300 | Tooltips, popovers |
+| `--zToast` | 400 | Toast notifications |
 
 ## Responsive Breakpoints
 
-See `foundation/layout.md` for the canonical breakpoint definitions, section containers, gutters, and full-bleed rules.
+See `foundation/layout.mdc` for the canonical breakpoint definitions, section containers, gutters, and full-bleed rules.
 
 | Name | Range | Media Query |
 |------|-------|-------------|
@@ -153,18 +147,18 @@ See `foundation/layout.md` for the canonical breakpoint definitions, section con
 | Tablet | 768px – 1023px | `@media (min-width: 768px)` |
 | Desktop | ≥ 1024px | `@media (min-width: 1024px)` |
 
-## Hairline Border (`--border-hairline`)
+## Hairline Border (`--borderHairline`)
 
 A responsive border width that renders as 0.5px on retina displays:
 
 ```css
 :root {
-  --border-hairline: 1px;
+  --borderHairline: 1px;
 }
 
 @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   :root {
-    --border-hairline: 0.5px;
+    --borderHairline: 0.5px;
   }
 }
 ```

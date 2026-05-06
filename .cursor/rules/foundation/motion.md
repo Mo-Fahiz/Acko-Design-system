@@ -4,23 +4,17 @@ description: Animation tokens — easing curves, keyframes, and performance rule
 
 # Motion Tokens
 
-## Documentation scope
-
-**Portable across platforms:** Duration and easing **intent** (what each curve is for), performance rules (prefer transform/opacity), and “when to animate” guidance. Cubic-bezier values are **portable** — use the same curves in Flutter (`Cubic` / `Curves` approximations or exact values).
-
-**Web-specific in this file:** `@keyframes`, `animation` shorthand, `prefers-reduced-motion` CSS snippets. Mirror reduced-motion in Flutter with `MediaQuery.disableAnimations` / system settings where appropriate.
-
 ## Easing Curves
 
 These are defined as CSS custom properties in `tokens.css`:
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--ease-out-quad` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Standard exit |
-| `--ease-out-cubic` | `cubic-bezier(0.215, 0.61, 0.355, 1)` | Dropdown/modal enter |
-| `--ease-out-quart` | `cubic-bezier(0.165, 0.84, 0.44, 1)` | Strong deceleration |
-| `--ease-in-out-cubic` | `cubic-bezier(0.645, 0.045, 0.355, 1)` | On-screen movement |
-| `--ease-in-out-quart` | `cubic-bezier(0.77, 0, 0.175, 1)` | Emphatic transitions |
+| `--easeOutQuad` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Standard exit |
+| `--easeOutCubic` | `cubic-bezier(0.215, 0.61, 0.355, 1)` | Dropdown/modal enter |
+| `--easeOutQuart` | `cubic-bezier(0.165, 0.84, 0.44, 1)` | Strong deceleration |
+| `--easeInOutCubic` | `cubic-bezier(0.645, 0.045, 0.355, 1)` | On-screen movement |
+| `--easeInOutQuart` | `cubic-bezier(0.77, 0, 0.175, 1)` | Emphatic transitions |
 
 ### Decision guide
 

@@ -412,8 +412,8 @@ function BadgePreview() {
   const solidLabels: Record<string, string> = {
     purple: "New", green: "Active", blue: "Info", orange: "Pending", pink: "Beta", gray: "Draft",
   };
-  const mobileStyle = { padding: '6px 8px', fontSize: 'var(--font-caption-size)' };
-  const desktopStyle = { padding: '6px 8px', fontSize: 'var(--font-body-sm-size)' };
+  const mobileStyle = { padding: '6px 8px', fontSize: 'var(--fontCaptionSize)' };
+  const desktopStyle = { padding: '6px 8px', fontSize: 'var(--fontBodySmSize)' };
 
   const renderBadges = (style: React.CSSProperties) => (
     <div className="space-y-16">
@@ -1105,9 +1105,9 @@ function CardPreview() {
               <div className="flex flex-col gap-16 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-12">
                   <div className="flex">
-                    <Avatar src={CARD_AVATAR_A} alt="Member 1" size="md" shape="circle" className="ring-2 ring-[var(--color-card-demoted-bg)]" />
-                    <Avatar src={CARD_AVATAR_B} alt="Member 2" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--color-card-demoted-bg)]" />
-                    <Avatar src={CARD_AVATAR_C} alt="Member 3" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--color-card-demoted-bg)]" />
+                    <Avatar src={CARD_AVATAR_A} alt="Member 1" size="md" shape="circle" className="ring-2 ring-[var(--colorCardDemotedBg)]" />
+                    <Avatar src={CARD_AVATAR_B} alt="Member 2" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--colorCardDemotedBg)]" />
+                    <Avatar src={CARD_AVATAR_C} alt="Member 3" size="md" shape="circle" className="-ml-8 ring-2 ring-[var(--colorCardDemotedBg)]" />
                   </div>
                   <Typography variant="caption" color="secondary">
                     <span className="font-medium text-text-primary">12 members</span> in this group policy
@@ -2055,7 +2055,7 @@ function BreadcrumbPreview() {
 
       <div>
         <Typography variant="label-sm" color="secondary" className="mb-12">Contained</Typography>
-        <div style={{ background: "var(--color-surface-raised)", border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-xl)", padding: "0.75rem 1rem", display: "inline-block" }}>
+        <div style={{ background: "var(--colorSurfaceRaised)", border: "1px solid var(--colorBorderSubtle)", borderRadius: "var(--radiusXl)", padding: "0.75rem 1rem", display: "inline-block" }}>
           <Breadcrumb items={[{ label: "Dashboard", href: "#", icon: <HomeIcon /> }, { label: "Settings", href: "#" }, { label: "Account" }]} />
         </div>
       </div>
@@ -2954,7 +2954,7 @@ function OtpInputUsage() {
             </Button>
           )}
           <Typography variant="caption" color="secondary" style={{ textAlign: "center" }}>
-            Didn&apos;t receive? <span style={{ color: "var(--color-primary)", cursor: "pointer" }}>Resend in 28s</span>
+            Didn&apos;t receive? <span style={{ color: "var(--colorPrimary)", cursor: "pointer" }}>Resend in 28s</span>
           </Typography>
         </div>
       </CardContent>

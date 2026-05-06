@@ -5,11 +5,11 @@
 }
 
 .acko-radio-group-label {
-  font-size: var(--font-label-lg-size);
-  font-weight: var(--font-label-lg-weight);
-  letter-spacing: var(--font-label-lg-spacing);
-  line-height: var(--font-label-lg-line);
-  color: var(--color-text-default);
+  font-size: var(--fontLabelLgSize);
+  font-weight: var(--fontLabelLgWeight);
+  letter-spacing: var(--fontLabelLgSpacing);
+  line-height: var(--fontLabelLgLine);
+  color: var(--colorTextDefault);
 }
 
 .acko-radio-options {
@@ -38,8 +38,8 @@
 /* Circle */
 .acko-radio-circle {
   @apply shrink-0 flex items-center justify-center rounded-full;
-  border: 2px solid var(--color-control-border-selector);
-  background-color: var(--color-card-bg);
+  border: 2px solid var(--colorControlBorderSelector);
+  background-color: var(--colorCardBg);
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -55,7 +55,7 @@
 /* Dot */
 .acko-radio-dot {
   @apply rounded-full;
-  background-color: var(--color-on-primary);
+  background-color: var(--colorOnPrimary);
   animation: acko-radio-dot-bounce 280ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
@@ -70,44 +70,44 @@
 
 /* Selected */
 .acko-radio-item-selected .acko-radio-circle {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
   transform: scale(1.08);
 }
 
 /* Hover */
 @media (hover: hover) and (pointer: fine) {
   .acko-radio-item:not(.acko-radio-item-disabled):not(.acko-radio-item-selected):hover .acko-radio-circle {
-    border-color: var(--color-primary-muted);
-    background-color: var(--color-primary-subtle);
+    border-color: var(--colorPrimaryMuted);
+    background-color: var(--colorPrimarySubtle);
   }
   .acko-radio-item:not(.acko-radio-item-disabled).acko-radio-item-selected:hover .acko-radio-circle {
-    background-color: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+    background-color: var(--colorPrimaryHover);
+    border-color: var(--colorPrimaryHover);
     transform: scale(1.08);
   }
 }
 
 /* Focus */
 .acko-radio-native:focus-visible + .acko-radio-circle {
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
-  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--colorPrimaryRing);
+  border-color: var(--colorPrimary);
 }
 
 /* Disabled */
 .acko-radio-item-disabled .acko-radio-circle {
-  border-color: var(--color-border-subtle);
-  background-color: var(--color-surface-raised);
+  border-color: var(--colorBorderSubtle);
+  background-color: var(--colorSurfaceRaised);
 }
 
 .acko-radio-item-disabled.acko-radio-item-selected .acko-radio-circle {
-  background-color: var(--color-text-secondary);
-  border-color: var(--color-text-secondary);
+  background-color: var(--colorTextSecondary);
+  border-color: var(--colorTextSecondary);
 }
 
 /* Error */
 .acko-radio-error .acko-radio-circle {
-  border-color: var(--color-error);
+  border-color: var(--colorError);
 }
 
 /* Labels */
@@ -117,30 +117,30 @@
 }
 
 .acko-radio-label-text {
-  color: var(--color-text-default);
+  color: var(--colorTextDefault);
   line-height: 1.4;
 }
 
-.acko-radio-sm .acko-radio-label-text { font-size: var(--font-body-sm-size); }
-.acko-radio-md .acko-radio-label-text { font-size: var(--font-body-md-size); }
-.acko-radio-lg .acko-radio-label-text { font-size: var(--font-body-lg-size); }
+.acko-radio-sm .acko-radio-label-text { font-size: var(--fontBodySmSize); }
+.acko-radio-md .acko-radio-label-text { font-size: var(--fontBodyMdSize); }
+.acko-radio-lg .acko-radio-label-text { font-size: var(--fontBodyLgSize); }
 
 .acko-radio-description {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  color: var(--colorTextSecondary);
 }
 
-.acko-radio-item-disabled .acko-radio-label-text { color: var(--color-text-disabled); }
-.acko-radio-item-disabled .acko-radio-description { color: var(--color-text-disabled); }
+.acko-radio-item-disabled .acko-radio-label-text { color: var(--colorTextDisabled); }
+.acko-radio-item-disabled .acko-radio-description { color: var(--colorTextDisabled); }
 
 /* --- Card variant --- */
 
 .acko-radio-card-item {
   @apply flex items-start cursor-pointer select-none gap-12 p-16;
-  border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-3xl);
-  background-color: var(--color-card-bg);
+  border: 1px solid var(--colorCardBorder);
+  border-radius: var(--radius3xl);
+  background-color: var(--colorCardBg);
   transition:
     border-color 150ms ease,
     background-color 150ms ease,
@@ -153,16 +153,16 @@
 
 @media (hover: hover) and (pointer: fine) {
   .acko-radio-card-item:hover:not(.acko-radio-item-disabled) {
-    border-color: var(--color-radio-card-hover-border);
-    background-color: var(--color-radio-card-hover-bg);
+    border-color: var(--colorRadioCardHoverBorder);
+    background-color: var(--colorRadioCardHoverBg);
   }
 }
 
 .acko-radio-card-item.acko-radio-item-selected {
-  border-color: var(--color-radio-card-active-border);
-  background-color: var(--color-radio-card-active-bg);
+  border-color: var(--colorRadioCardActiveBorder);
+  background-color: var(--colorRadioCardActiveBg);
 }
 
 .acko-radio-card-item:focus-within {
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
+  box-shadow: 0 0 0 3px var(--colorPrimaryRing);
 }

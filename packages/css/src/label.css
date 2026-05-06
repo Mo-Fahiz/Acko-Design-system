@@ -3,35 +3,28 @@
    Import: @import "@acko/css/label.css"
    ============================================================ */
 
-/* --- Base --- */
-
 .acko-label {
-  font-weight: var(--font-label-lg-weight);
-  letter-spacing: var(--font-label-lg-spacing);
-  line-height: var(--font-label-lg-line);
-  cursor: default;
-  color: var(--color-text-default);
-  transition: color 150ms ease;
+  @apply font-medium text-text-default cursor-default transition-colors duration-150 ease-in-out;
+  letter-spacing: var(--fontLabelLgSpacing);
+  line-height: var(--fontLabelLgLine);
 }
 
 .acko-label-sm {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
+  @apply text-xs leading-snug;
 }
 
 .acko-label-md {
-  font-size: var(--font-label-lg-size);
+  @apply text-[length:var(--fontLabelLgSize)];
 }
 
 .acko-label-focused {
-  color: var(--color-primary);
+  @apply text-primary;
 }
 
 .acko-label-disabled {
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
 }
 
 .acko-label-required {
-  color: var(--color-error);
-  margin-left: 2px;
+  @apply text-error ml-[2px];
 }

@@ -25,7 +25,7 @@
 
 .acko-wizard-circle {
   @apply flex items-center justify-center w-28 h-28;
-  border-radius: var(--radius-full);
+  border-radius: var(--radiusFull);
   font-size: 14px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -46,29 +46,29 @@ button.acko-wizard-circle:disabled { cursor: default; }
 /* Status: upcoming */
 .acko-wizard-circle-upcoming {
   background-color: transparent;
-  border: 2px solid var(--color-wizard-upcoming-border);
-  color: var(--color-wizard-upcoming-text);
+  border: 2px solid var(--colorWizardUpcomingBorder);
+  color: var(--colorWizardUpcomingText);
 }
 
 /* Status: current */
 .acko-wizard-circle-current {
-  background-color: var(--color-wizard-active-bg);
-  color: var(--color-wizard-active-text);
+  background-color: var(--colorWizardActiveBg);
+  color: var(--colorWizardActiveText);
   box-shadow:
-    inset 0 -1px 2px 0 var(--color-wizard-active-shadow-bottom),
-    inset 0 1px 1px 0 var(--color-wizard-active-shadow-top);
+    inset 0 -1px 2px 0 var(--colorWizardActiveShadowBottom),
+    inset 0 1px 1px 0 var(--colorWizardActiveShadowTop);
 }
 
 /* Status: completed */
 .acko-wizard-circle-completed {
-  background-color: var(--color-wizard-done-bg);
-  color: var(--color-wizard-done-text);
+  background-color: var(--colorWizardDoneBg);
+  color: var(--colorWizardDoneText);
 }
 
 /* Status: error */
 .acko-wizard-circle-error {
-  background-color: var(--color-error-text);
-  color: var(--color-on-primary);
+  background-color: var(--colorErrorText);
+  color: var(--colorOnPrimary);
 }
 
 /* Label block (horizontal) */
@@ -83,14 +83,14 @@ button.acko-wizard-circle:disabled { cursor: default; }
   transition: color 200ms ease;
 }
 
-.acko-wizard-label-upcoming { color: var(--color-wizard-upcoming-text); }
-.acko-wizard-label-current { color: var(--color-text-default); }
-.acko-wizard-label-completed { color: var(--color-text-default); }
-.acko-wizard-label-error { color: var(--color-error-text); }
+.acko-wizard-label-upcoming { color: var(--colorWizardUpcomingText); }
+.acko-wizard-label-current { color: var(--colorTextDefault); }
+.acko-wizard-label-completed { color: var(--colorTextDefault); }
+.acko-wizard-label-error { color: var(--colorErrorText); }
 
 .acko-wizard-description {
-  font-size: var(--font-caption-size);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  color: var(--colorTextSecondary);
   text-align: center;
   @apply max-w-120;
 }
@@ -104,11 +104,11 @@ button.acko-wizard-circle:disabled { cursor: default; }
 }
 
 .acko-wizard-connector-default {
-  background-color: var(--color-wizard-connector-upcoming);
+  background-color: var(--colorWizardConnectorUpcoming);
 }
 
 .acko-wizard-connector-completed {
-  background-color: var(--color-wizard-connector-done);
+  background-color: var(--colorWizardConnectorDone);
 }
 
 /* ── Vertical ── */
@@ -149,14 +149,14 @@ button.acko-wizard-circle:disabled { cursor: default; }
   transition: color 200ms ease;
 }
 
-.acko-wizard-vertical-label-upcoming { color: var(--color-wizard-upcoming-text); }
-.acko-wizard-vertical-label-current { color: var(--color-text-default); }
-.acko-wizard-vertical-label-completed { color: var(--color-text-default); }
-.acko-wizard-vertical-label-error { color: var(--color-error-text); }
+.acko-wizard-vertical-label-upcoming { color: var(--colorWizardUpcomingText); }
+.acko-wizard-vertical-label-current { color: var(--colorTextDefault); }
+.acko-wizard-vertical-label-completed { color: var(--colorTextDefault); }
+.acko-wizard-vertical-label-error { color: var(--colorErrorText); }
 
 .acko-wizard-vertical-description {
-  font-size: var(--font-caption-size);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  color: var(--colorTextSecondary);
   margin-top: 2px;
 }
 
@@ -177,19 +177,19 @@ button.acko-wizard-circle:disabled { cursor: default; }
   transition: background-color 200ms ease;
 }
 
-.acko-wizard-compact-dot-upcoming { background-color: var(--color-wizard-connector-upcoming); }
-.acko-wizard-compact-dot-current { background-color: var(--color-wizard-active-bg); box-shadow: 0 0 0 3px var(--color-primary-ring); }
-.acko-wizard-compact-dot-completed { background-color: var(--color-wizard-done-bg); }
-.acko-wizard-compact-dot-error { background-color: var(--color-error-text); }
+.acko-wizard-compact-dot-upcoming { background-color: var(--colorWizardConnectorUpcoming); }
+.acko-wizard-compact-dot-current { background-color: var(--colorWizardActiveBg); box-shadow: 0 0 0 3px var(--colorPrimaryRing); }
+.acko-wizard-compact-dot-completed { background-color: var(--colorWizardDoneBg); }
+.acko-wizard-compact-dot-error { background-color: var(--colorErrorText); }
 
 .acko-wizard-compact-label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-default);
+  color: var(--colorTextDefault);
 }
 
 .acko-wizard-compact-count {
-  font-size: var(--font-caption-size);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  color: var(--colorTextSecondary);
   margin-left: auto;
 }

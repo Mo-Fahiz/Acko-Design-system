@@ -6,54 +6,30 @@
   @apply flex flex-col gap-16;
 }
 
-/* --- Form item --- */
-
 .acko-form-item {
   @apply flex flex-col gap-8;
 }
 
-/* --- Label --- */
-
 .acko-form-label {
-  font-size: var(--font-body-sm-size);
-  font-weight: 500;
-  line-height: var(--font-body-sm-line);
-  color: var(--color-text-default);
+  @apply text-sm font-medium leading-snug text-text-default;
 }
 
 .acko-form-required {
-  @apply ml-4;
-  color: var(--color-error);
+  @apply ml-4 text-error;
 }
-
-/* --- Error text --- */
 
 .acko-form-error-text {
-  @apply flex items-center gap-4 m-0 before:content-[''] before:inline-block before:w-4 before:h-4 before:rounded-full before:shrink-0;
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-error-text);
+  @apply flex items-center gap-4 m-0 text-xs leading-snug text-error-text before:content-[''] before:inline-block before:w-4 before:h-4 before:rounded-full before:shrink-0 before:bg-error;
 }
-
-.acko-form-error-text::before {
-  background: var(--color-error);
-}
-
-/* --- Error field highlight --- */
 
 .acko-form-item-error .acko-text-input {
-  border-color: var(--color-error-border);
+  @apply border-error-border;
 }
 
 .acko-form-item-error .acko-text-input:focus-within {
-  box-shadow: 0 0 0 3px var(--color-error-subtle);
+  box-shadow: 0 0 0 3px var(--colorErrorSubtle);
 }
 
-/* --- Message --- */
-
 .acko-form-message {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
-  margin: 0;
+  @apply text-xs leading-snug text-text-secondary m-0;
 }

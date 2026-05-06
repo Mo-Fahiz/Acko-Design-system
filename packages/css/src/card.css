@@ -3,65 +3,55 @@
    Import: @import "@acko/css/card.css"
 
    Geometry is responsive and global:
-     - Outer radius and content gutter come from --radius-card-outer
-       and --card-content-gutter (defined in @acko/tokens/tokens.css).
+     - Outer radius and content gutter come from --radiusCardOuter
+       and --cardContentGutter (defined in @acko/tokens/tokens.css).
      - Narrow (320–768px): outer 32px, gutter 12px, nested 12px.
      - Wide   (769px+):    outer 32px, gutter 16px, nested 16px.
    Variants only change fill / border / shadow.
    ============================================================ */
 
 .acko-card {
-  border-radius: var(--radius-card-outer);
+  border-radius: var(--radiusCardOuter);
 }
 
 .acko-card-default {
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  @apply bg-card-bg border border-solid border-card-border;
 }
 
 .acko-card-secondary {
-  background-color: var(--color-card-secondary-bg);
-  border: 1px solid var(--color-card-secondary-border);
+  @apply border border-solid bg-[var(--colorCardSecondaryBg)] border-[var(--colorCardSecondaryBorder)];
 }
 
 .acko-card-elevated {
-  background-color: var(--color-card-elevated-bg);
-  box-shadow: var(--shadow-lg);
+  @apply bg-card-elevated-bg shadow-lg;
 }
 
 .acko-card-outline {
-  background: transparent;
-  border: 1px solid var(--color-card-outline-border);
+  @apply bg-transparent border border-solid border-[var(--colorCardOutlineBorder)];
 }
 
 .acko-card-demoted {
-  background-color: var(--color-card-demoted-bg);
-  border: 1px solid var(--color-card-demoted-border);
+  @apply border border-solid bg-[var(--colorCardDemotedBg)] border-[var(--colorCardDemotedBorder)];
 }
 
-/* Padding tokens map to the responsive content gutter.
-   `md` is the canonical default (= --card-content-gutter); `sm` and
-   `lg` are explicit overrides when a layout needs tighter or roomier
-   inner margin than the breakpoint default. */
 .acko-card-pad-none {
-  padding: 0;
+  @apply p-0;
 }
 
 .acko-card-pad-sm {
-  padding: calc(var(--card-content-gutter) - 4px);
+  padding: calc(var(--cardContentGutter) - 4px);
 }
 
 .acko-card-pad-md {
-  padding: var(--card-content-gutter);
+  padding: var(--cardContentGutter);
 }
 
 .acko-card-pad-lg {
-  padding: calc(var(--card-content-gutter) + 8px);
+  padding: calc(var(--cardContentGutter) + 8px);
 }
 
 .acko-card-header {
-  @apply flex items-center gap-12 pb-16;
-  border-bottom: 1px solid var(--color-border-subtle);
+  @apply flex items-center gap-12 pb-16 border-b border-border-subtle;
 }
 
 .acko-card-content {
@@ -69,16 +59,12 @@
 }
 
 .acko-card-footer {
-  @apply flex items-center justify-end gap-12 pt-16;
-  border-top: 1px solid var(--color-border-subtle);
+  @apply flex items-center justify-end gap-12 pt-16 border-t border-border-subtle;
 }
 
-/* Nested card / inset surface. Uses the responsive nested radius
-   (12px narrow, 16px wide) so a card-in-card stays geometrically
-   consistent across breakpoints. */
 .acko-card-inset {
-  padding: var(--card-content-gutter);
-  border: 1px solid var(--color-card-demoted-border);
-  background-color: var(--color-card-demoted-bg);
-  border-radius: var(--radius-card-nested);
+  padding: var(--cardContentGutter);
+  border: 1px solid var(--colorCardDemotedBorder);
+  background-color: var(--colorCardDemotedBg);
+  border-radius: var(--radiusCardNested);
 }

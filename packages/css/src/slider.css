@@ -18,8 +18,8 @@
   touch-action: none;
   background: linear-gradient(
     90deg,
-    var(--color-slider-track-inactive-from),
-    var(--color-slider-track-inactive-to)
+    var(--colorSliderTrackInactiveFrom),
+    var(--colorSliderTrackInactiveTo)
   );
 }
 
@@ -36,10 +36,10 @@
   bottom: 0;
   background: linear-gradient(
     90deg,
-    var(--color-slider-track-active-from),
-    var(--color-slider-track-active-to)
+    var(--colorSliderTrackActiveFrom),
+    var(--colorSliderTrackActiveTo)
   );
-  border-radius: var(--radius-full);
+  border-radius: var(--radiusFull);
   pointer-events: none;
 }
 
@@ -50,41 +50,41 @@
   z-index: 1;
   transform: translateX(-50%);
   border: 1px solid transparent;
-  border-radius: var(--radius-full);
+  border-radius: var(--radiusFull);
   cursor: grab;
-  transition: box-shadow 150ms var(--ease-out-cubic), transform 100ms var(--ease-out-cubic);
+  transition: box-shadow 150ms var(--easeOutCubic), transform 100ms var(--easeOutCubic);
   outline: none;
   /* Inner fill + vertical gradient stroke (same technique as badge gradients) */
   background:
-    linear-gradient(var(--color-slider-thumb-bg), var(--color-slider-thumb-bg)) padding-box,
+    linear-gradient(var(--colorSliderThumbBg), var(--colorSliderThumbBg)) padding-box,
     linear-gradient(
       180deg,
-      var(--color-slider-thumb-stroke-from),
-      var(--color-slider-thumb-stroke-to)
+      var(--colorSliderThumbStrokeFrom),
+      var(--colorSliderThumbStrokeTo)
     ) border-box;
   background-clip: padding-box, border-box;
-  box-shadow: var(--shadow-slider-thumb);
+  box-shadow: var(--shadowSliderThumb);
 }
 
 .acko-slider-sm .acko-slider-thumb {
-  width: var(--slider-thumb-size-sm);
-  height: var(--slider-thumb-size-sm);
+  width: var(--sliderThumbSizeSm);
+  height: var(--sliderThumbSizeSm);
 }
 .acko-slider-md .acko-slider-thumb {
-  width: var(--slider-thumb-size-md);
-  height: var(--slider-thumb-size-md);
+  width: var(--sliderThumbSizeMd);
+  height: var(--sliderThumbSizeMd);
 }
 .acko-slider-lg .acko-slider-thumb {
-  width: var(--slider-thumb-size-lg);
-  height: var(--slider-thumb-size-lg);
+  width: var(--sliderThumbSizeLg);
+  height: var(--sliderThumbSizeLg);
 }
 
 .acko-slider-thumb:hover {
-  box-shadow: var(--shadow-slider-thumb), var(--shadow-md);
+  box-shadow: var(--shadowSliderThumb), var(--shadowMd);
 }
 
 .acko-slider-thumb:focus-visible {
-  box-shadow: var(--shadow-slider-thumb), var(--shadow-focus-ring);
+  box-shadow: var(--shadowSliderThumb), var(--shadowFocusRing);
 }
 
 .acko-slider-thumb:active {
@@ -101,20 +101,20 @@
 .acko-slider-tick {
   @apply absolute w-2 h-2;
   transform: translateX(-50%);
-  border-radius: var(--radius-full);
-  background: var(--color-slider-track-inactive-to);
+  border-radius: var(--radiusFull);
+  background: var(--colorSliderTrackInactiveTo);
 }
 
 .acko-slider-tick-filled {
-  background: var(--color-slider-track-active-to);
+  background: var(--colorSliderTrackActiveTo);
 }
 
 /* --- Value label --- */
 
 .acko-slider-value {
-  font-size: var(--font-body-sm-size);
+  font-size: var(--fontBodySmSize);
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--colorTextSecondary);
   text-align: right;
 }
 
@@ -126,16 +126,16 @@
 }
 
 .acko-slider-disabled .acko-slider-fill {
-  background: var(--color-text-disabled);
+  background: var(--colorTextDisabled);
 }
 
 .acko-slider-disabled .acko-slider-thumb {
-  background: var(--color-disabled-bg);
-  border: 1px solid var(--color-disabled-border);
+  background: var(--colorDisabledBg);
+  border: 1px solid var(--colorDisabledBorder);
   box-shadow: none;
   background-clip: border-box;
 }
 
 .acko-slider-disabled .acko-slider-tick {
-  background: var(--color-track-inactive);
+  background: var(--colorTrackInactive);
 }

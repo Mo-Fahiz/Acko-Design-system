@@ -5,7 +5,9 @@ alwaysApply: true
 
 # ACKO Design System — System Rules
 
-**Human-readable architecture + doc pipeline:** see [`Flutter-React md/global.md`](../../Flutter-React%20md/global.md) — foundation encyclopedia **and** how `*-base.md`, `react/`, `flutter/`, and `*.style.md` connect across platforms.
+**Foundations for this monorepo:** see [`foundation/global.md`](foundation/global.md) and the rest of [`foundation/`](foundation/) — token layers, primitives, semantics, themes.
+
+**Cross-platform handoff:** [`Flutter-React md/global.md`](../../Flutter-React%20md/global.md) — how `*-base.md`, `react/`, `flutter/`, and `*.style.md` connect across platforms when generating Flutter or shared specs.
 
 You are generating components for the ACKO Design System — a pnpm monorepo of standalone React component packages with a shared CSS package and a dedicated tokens package.
 
@@ -111,16 +113,16 @@ Contains two files:
 
 ### `@theme inline` — Key Design Decision
 
-Tailwind v4's `@theme inline` creates utility classes WITHOUT generating CSS custom properties. This avoids namespace collisions since `tokens.css` already defines `--color-primary`, `--shadow-*`, etc. on `:root`.
+Tailwind v4's `@theme inline` creates utility classes WITHOUT generating duplicate CSS custom properties. This avoids namespace collisions since `tokens.css` already defines camelCase semantics (`--colorPrimary`, `--shadowXs`, …) on `:root`.
 
 ```css
-/* theme.css */
+/* theme.css — kebab utility keys map to camelCase tokens */
 @theme inline {
-  --color-primary: var(--color-primary);
-  --color-on-primary: var(--color-on-primary);
-  --shadow-btn-inner: var(--shadow-btn-inner);
-  --radius-full: var(--radius-full);
-  /* … all semantic tokens mapped … */
+  --color-primary: var(--colorPrimary);
+  --color-on-primary: var(--colorOnPrimary);
+  --shadow-btn-inner: var(--shadowBtnInner);
+  --radius-full: var(--radiusFull);
+  /* … */
 }
 ```
 
@@ -128,14 +130,14 @@ Tailwind v4's `@theme inline` creates utility classes WITHOUT generating CSS cus
 
 ```
 primitives (raw values) → semantics (role mappings) → component CSS
---purple-600              --color-primary             .acko-btn-primary { @apply bg-primary text-on-primary; }
---grey-200                --color-border              .acko-text-input { @apply border-border; }
+--purple600              --colorPrimary             .acko-btn-primary { @apply bg-primary text-on-primary; }
+--grey200                --colorBorder              .acko-text-input { border-color: var(--colorInputBorder); }
 ```
 
 ### Absolute rules
 
-1. Component CSS MUST only reference **semantic tokens** (`--color-primary`, `--color-border`, etc.)
-2. **Never** use primitive tokens (`--purple-600`, `--grey-200`) in component CSS
+1. Component CSS MUST only reference **semantic tokens** from `tokens.css` (`--colorPrimary`, `--colorBorder`, etc.)
+2. **Never** use primitive tokens (`--purple600`, `--grey200`) in component CSS
 3. Theme switching is automatic via `[data-theme="dark"]` or `[data-theme="elevated"]` on `<html>`
 4. Spacing and sizing use **Tailwind utilities** powered by `--spacing: 0.0625rem` (1px base). The utility number equals the pixel value (`gap-12` = 12px, `h-48` = 48px). No `--scale-*` or `--space-*` tokens exist.
 5. Color and shadow tokens remap between themes — always go through semantics
@@ -153,13 +155,13 @@ Components are assigned radius by **semantic role**, not arbitrary size:
 | Surface containers | `--radius-4xl` | 20px | Cards, dialogs, drawers, toasts, dropdown menus, calendar panels |
 | Small controls | `--radius-sm` / `--radius-md` | 4–6px | Checkboxes, tooltips |
 
-**Nested radius formula:** When a child element fills a container edge-to-edge, its radius must be `container radius − padding`. Use the `--radius-inset-*` tokens:
+**Nested radius formula:** When a child element fills a container edge-to-edge, its radius must be `container radius − padding`. Use the `--radiusInset*` tokens:
 
 ```
-Container (--radius-4xl: 20px)
-├── pad-sm (p-12, 12px)  → child uses --radius-inset-sm (8px)
-├── pad-md (p-16, 16px)  → child uses --radius-inset-md (4px)
-└── pad-lg (p-24, 24px)  → child uses --radius-inset-lg (0px)
+Container (--radius4xl: 20px)
+├── pad-sm (p-12, 12px)  → child uses --radiusInsetSm (8px)
+├── pad-md (p-16, 16px)  → child uses --radiusInsetMd (4px)
+└── pad-lg (p-24, 24px)  → child uses --radiusInsetLg (0px)
 ```
 
 **Pill buttons inside cards:** A pill CTA must never touch the card edge. Full-width buttons sit inside the padded content zone — the card's padding creates the visual separation. Minimum card padding when a CTA is present: `pad-md` (`p-16`, 16px).

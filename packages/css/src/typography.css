@@ -9,175 +9,175 @@
 
 /* Variants — font-size, line-height, letter-spacing, font-weight from tokens */
 .acko-text-display-xl {
-  font-size: var(--font-display-xl-size);
-  line-height: var(--font-display-xl-line);
-  letter-spacing: var(--font-display-xl-spacing);
-  font-weight: var(--font-display-xl-weight, 700);
+  font-size: var(--fontDisplayXlSize);
+  line-height: var(--fontDisplayXlLine);
+  letter-spacing: var(--fontDisplayXlSpacing);
+  font-weight: var(--fontDisplayXlWeight, 700);
 }
 
 .acko-text-display-lg {
-  font-size: var(--font-display-lg-size);
-  line-height: var(--font-display-lg-line);
-  letter-spacing: var(--font-display-lg-spacing);
-  font-weight: var(--font-display-lg-weight, 700);
+  font-size: var(--fontDisplayLgSize);
+  line-height: var(--fontDisplayLgLine);
+  letter-spacing: var(--fontDisplayLgSpacing);
+  font-weight: var(--fontDisplayLgWeight, 700);
 }
 
 .acko-text-display-md {
-  font-size: var(--font-display-md-size);
-  line-height: var(--font-display-md-line);
-  letter-spacing: var(--font-display-md-spacing);
-  font-weight: var(--font-display-md-weight, 700);
+  font-size: var(--fontDisplayMdSize);
+  line-height: var(--fontDisplayMdLine);
+  letter-spacing: var(--fontDisplayMdSpacing);
+  font-weight: var(--fontDisplayMdWeight, 700);
 }
 
 .acko-text-display-sm {
-  font-size: var(--font-display-sm-size);
-  line-height: var(--font-display-sm-line);
-  letter-spacing: var(--font-display-sm-spacing);
-  font-weight: var(--font-display-sm-weight, 600);
+  font-size: var(--fontDisplaySmSize);
+  line-height: var(--fontDisplaySmLine);
+  letter-spacing: var(--fontDisplaySmSpacing);
+  font-weight: var(--fontDisplaySmWeight, 600);
 }
 
 .acko-text-heading-xl {
-  font-size: var(--font-heading-xl-size);
-  line-height: var(--font-heading-xl-line);
-  letter-spacing: var(--font-heading-xl-spacing);
-  font-weight: var(--font-heading-xl-weight, 600);
+  font-size: var(--fontHeadingXlSize);
+  line-height: var(--fontHeadingXlLine);
+  letter-spacing: var(--fontHeadingXlSpacing);
+  font-weight: var(--fontHeadingXlWeight, 600);
 }
 
 .acko-text-heading-lg {
-  font-size: var(--font-heading-lg-size);
-  line-height: var(--font-heading-lg-line);
-  letter-spacing: var(--font-heading-lg-spacing);
-  font-weight: var(--font-heading-lg-weight, 600);
+  font-size: var(--fontHeadingLgSize);
+  line-height: var(--fontHeadingLgLine);
+  letter-spacing: var(--fontHeadingLgSpacing);
+  font-weight: var(--fontHeadingLgWeight, 600);
 }
 
 .acko-text-heading-md {
-  font-size: var(--font-heading-md-size);
-  line-height: var(--font-heading-md-line);
-  letter-spacing: var(--font-heading-md-spacing);
-  font-weight: var(--font-heading-md-weight, 600);
+  font-size: var(--fontHeadingMdSize);
+  line-height: var(--fontHeadingMdLine);
+  letter-spacing: var(--fontHeadingMdSpacing);
+  font-weight: var(--fontHeadingMdWeight, 600);
 }
 
 .acko-text-heading-sm {
-  font-size: var(--font-heading-sm-size);
-  line-height: var(--font-heading-sm-line);
-  letter-spacing: var(--font-heading-sm-spacing);
-  font-weight: var(--font-heading-sm-weight, 600);
+  font-size: var(--fontHeadingSmSize);
+  line-height: var(--fontHeadingSmLine);
+  letter-spacing: var(--fontHeadingSmSpacing);
+  font-weight: var(--fontHeadingSmWeight, 600);
 }
 
 .acko-text-body-lg {
-  font-size: var(--font-body-lg-size);
-  line-height: var(--font-body-lg-line);
-  letter-spacing: var(--font-body-lg-spacing);
-  font-weight: var(--font-body-lg-weight, 400);
+  font-size: var(--fontBodyLgSize);
+  line-height: var(--fontBodyLgLine);
+  letter-spacing: var(--fontBodyLgSpacing);
+  font-weight: var(--fontBodyLgWeight, 400);
 }
 
 .acko-text-body-md {
-  font-size: var(--font-body-md-size);
-  line-height: var(--font-body-md-line);
-  letter-spacing: var(--font-body-md-spacing);
-  font-weight: var(--font-body-md-weight, 400);
+  font-size: var(--fontBodyMdSize);
+  line-height: var(--fontBodyMdLine);
+  letter-spacing: var(--fontBodyMdSpacing);
+  font-weight: var(--fontBodyMdWeight, 400);
 }
 
 .acko-text-body-sm {
-  font-size: var(--font-body-sm-size);
-  line-height: var(--font-body-sm-line);
-  letter-spacing: var(--font-body-sm-spacing);
-  font-weight: var(--font-body-sm-weight, 400);
+  font-size: var(--fontBodySmSize);
+  line-height: var(--fontBodySmLine);
+  letter-spacing: var(--fontBodySmSpacing);
+  font-weight: var(--fontBodySmWeight, 400);
 }
 
 .acko-text-label-lg {
-  font-size: var(--font-label-lg-size);
-  line-height: var(--font-label-lg-line);
-  letter-spacing: var(--font-label-lg-spacing);
-  font-weight: var(--font-label-lg-weight, 500);
+  font-size: var(--fontLabelLgSize);
+  line-height: var(--fontLabelLgLine);
+  letter-spacing: var(--fontLabelLgSpacing);
+  font-weight: var(--fontLabelLgWeight, 500);
 }
 
 .acko-text-label-md {
-  font-size: var(--font-label-md-size);
-  line-height: var(--font-label-md-line);
-  letter-spacing: var(--font-label-md-spacing);
-  font-weight: var(--font-label-md-weight, 500);
+  font-size: var(--fontLabelMdSize);
+  line-height: var(--fontLabelMdLine);
+  letter-spacing: var(--fontLabelMdSpacing);
+  font-weight: var(--fontLabelMdWeight, 500);
 }
 
 .acko-text-label-sm {
-  font-size: var(--font-label-sm-size);
-  line-height: var(--font-label-sm-line);
-  letter-spacing: var(--font-label-sm-spacing);
-  font-weight: var(--font-label-sm-weight, 500);
+  font-size: var(--fontLabelSmSize);
+  line-height: var(--fontLabelSmLine);
+  letter-spacing: var(--fontLabelSmSpacing);
+  font-weight: var(--fontLabelSmWeight, 500);
 }
 
 .acko-text-caption {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  letter-spacing: var(--font-caption-spacing);
-  font-weight: var(--font-caption-weight, 400);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  letter-spacing: var(--fontCaptionSpacing);
+  font-weight: var(--fontCaptionWeight, 400);
 }
 
 .acko-text-overline {
-  font-size: var(--font-overline-size);
-  line-height: var(--font-overline-line);
-  letter-spacing: var(--font-overline-spacing);
-  font-weight: var(--font-overline-weight, 600);
+  font-size: var(--fontOverlineSize);
+  line-height: var(--fontOverlineLine);
+  letter-spacing: var(--fontOverlineSpacing);
+  font-weight: var(--fontOverlineWeight, 600);
   text-transform: uppercase;
 }
 
 /* Colors */
 .acko-text-color-primary {
-  color: var(--color-text-primary);
+  @apply text-text-primary;
 }
 
 .acko-text-color-secondary {
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
 }
 
 .acko-text-color-invert {
-  color: var(--color-text-invert);
+  @apply text-text-invert;
 }
 
 .acko-text-color-brand {
-  color: var(--color-text-brand);
+  @apply text-text-brand;
 }
 
 .acko-text-color-error {
-  color: var(--color-text-error);
+  @apply text-text-error;
 }
 
 .acko-text-color-success {
-  color: var(--color-text-success);
+  @apply text-text-success;
 }
 
 .acko-text-color-static {
-  color: var(--color-text-static);
+  @apply text-text-static;
 }
 
 /* Weight overrides */
 .acko-text-weight-regular {
-  font-weight: 400;
+  @apply font-normal;
 }
 
 .acko-text-weight-medium {
-  font-weight: 500;
+  @apply font-medium;
 }
 
 .acko-text-weight-semibold {
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .acko-text-weight-bold {
-  font-weight: 700;
+  @apply font-bold;
 }
 
 /* Align */
 .acko-text-align-left {
-  text-align: left;
+  @apply text-left;
 }
 
 .acko-text-align-center {
-  text-align: center;
+  @apply text-center;
 }
 
 .acko-text-align-right {
-  text-align: right;
+  @apply text-right;
 }
 
 /* Truncate */

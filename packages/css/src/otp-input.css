@@ -10,33 +10,33 @@
 
 .acko-otp-cell {
   @apply text-center font-semibold outline-none;
-  border: 1.5px solid var(--color-input-border);
-  background: var(--color-input-bg);
-  color: var(--color-text-default);
-  caret-color: var(--color-primary);
+  border: 1.5px solid var(--colorInputBorder);
+  background: var(--colorInputBg);
+  color: var(--colorTextDefault);
+  caret-color: var(--colorPrimary);
   transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
-.acko-otp-cell::selection { background: var(--color-primary-subtle); }
+.acko-otp-cell::selection { background: var(--colorPrimarySubtle); }
 
 /* Sizes — perfect squares with per-size radius */
-.acko-otp-sm .acko-otp-cell { @apply w-40 h-40; font-size: var(--font-body-md-size); border-radius: var(--radius-2xl); }
-.acko-otp-md .acko-otp-cell { @apply w-48 h-48; font-size: var(--font-heading-md-size); border-radius: var(--radius-3xl); }
-.acko-otp-lg .acko-otp-cell { @apply w-56 h-56; font-size: var(--font-heading-lg-size); border-radius: var(--radius-4xl); }
+.acko-otp-sm .acko-otp-cell { @apply w-40 h-40; font-size: var(--fontBodyMdSize); border-radius: var(--radius2xl); }
+.acko-otp-md .acko-otp-cell { @apply w-48 h-48; font-size: var(--fontHeadingMdSize); border-radius: var(--radius3xl); }
+.acko-otp-lg .acko-otp-cell { @apply w-56 h-56; font-size: var(--fontHeadingLgSize); border-radius: var(--radius4xl); }
 
 /* Filled (active digit — not focused) */
 .acko-otp-cell-filled:not(:focus) {
-  border-color: var(--color-otp-filled-border);
-  background: var(--color-otp-filled-bg);
-  color: var(--color-otp-filled-text);
+  border-color: var(--colorOtpFilledBorder);
+  background: var(--colorOtpFilledBg);
+  color: var(--colorOtpFilledText);
 }
 
 /* Focus — dedicated OTP tokens (overrides default + filled) */
 .acko-otp-cell:focus {
-  border-color: var(--color-otp-focus-border);
-  background: var(--color-otp-focus-bg);
-  box-shadow: 0 0 0 2px var(--color-otp-focus-ring);
-  color: var(--color-text-default);
+  border-color: var(--colorOtpFocusBorder);
+  background: var(--colorOtpFocusBg);
+  box-shadow: 0 0 0 2px var(--colorOtpFocusRing);
+  color: var(--colorTextDefault);
 }
 
 /* Error — gradient border; fill from OTP error token */
@@ -45,18 +45,18 @@
 .acko-otp-cell-error {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(var(--color-otp-error-fill), var(--color-otp-error-fill)) padding-box,
-    linear-gradient(0deg, var(--color-otp-error-gradient-from), var(--color-otp-error-gradient-to)) border-box;
-  color: var(--color-text-default);
+    linear-gradient(var(--colorOtpErrorFill), var(--colorOtpErrorFill)) padding-box,
+    linear-gradient(0deg, var(--colorOtpErrorGradientFrom), var(--colorOtpErrorGradientTo)) border-box;
+  color: var(--colorTextDefault);
   animation: acko-otp-shake 300ms ease-out;
 }
 
 .acko-otp-error .acko-otp-cell:focus {
   border: 1.5px solid transparent;
   background:
-    linear-gradient(var(--color-otp-error-fill), var(--color-otp-error-fill)) padding-box,
-    linear-gradient(0deg, var(--color-otp-error-gradient-from), var(--color-otp-error-gradient-to)) border-box;
-  box-shadow: 0 0 0 3px var(--color-error-ring, var(--color-error-subtle));
+    linear-gradient(var(--colorOtpErrorFill), var(--colorOtpErrorFill)) padding-box,
+    linear-gradient(0deg, var(--colorOtpErrorGradientFrom), var(--colorOtpErrorGradientTo)) border-box;
+  box-shadow: 0 0 0 3px var(--colorErrorSubtle);
 }
 
 @keyframes acko-otp-shake {
@@ -69,9 +69,9 @@
 
 /* Disabled — matches TextInput tokens */
 .acko-otp-disabled .acko-otp-cell {
-  background: var(--color-input-disabled-bg);
-  color: var(--color-text-disabled);
-  border-color: var(--color-input-disabled-border);
+  background: var(--colorInputDisabledBg);
+  color: var(--colorTextDisabled);
+  border-color: var(--colorInputDisabledBorder);
   cursor: not-allowed;
 }
 

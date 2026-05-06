@@ -7,27 +7,27 @@
 /* --- Label --- */
 
 .acko-dropdown-label {
-  font-size: var(--font-label-lg-size);
-  font-weight: var(--font-label-lg-weight);
-  letter-spacing: var(--font-label-lg-spacing);
-  line-height: var(--font-label-lg-line);
-  color: var(--color-text-default);
+  @apply text-text-default;
+  font-size: var(--fontLabelLgSize);
+  font-weight: var(--fontLabelLgWeight);
+  letter-spacing: var(--fontLabelLgSpacing);
+  line-height: var(--fontLabelLgLine);
   transition: color 150ms ease;
 }
 
-.acko-dropdown-label-open { color: var(--color-primary); }
+.acko-dropdown-label-open {
+  @apply text-primary;
+}
 
 .acko-dropdown-required {
-  color: var(--color-error);
+  @apply text-error;
   margin-left: 2px;
 }
 
 /* --- Trigger --- */
 
 .acko-dropdown-trigger {
-  @apply flex items-center justify-between w-full rounded-full cursor-pointer text-left;
-  border: 1px solid var(--color-input-border);
-  background-color: var(--color-input-bg);
+  @apply flex items-center justify-between w-full rounded-full cursor-pointer text-left border border-input-border bg-input-bg;
   font-family: inherit;
   transition:
     border-color 200ms ease,
@@ -35,74 +35,69 @@
     box-shadow 200ms ease;
 }
 
-.acko-dropdown-trigger-sm { @apply h-40 px-16; font-size: var(--font-body-sm-size); }
-.acko-dropdown-trigger-md { @apply h-48 px-20; font-size: var(--font-body-md-size); }
-.acko-dropdown-trigger-lg { @apply h-56 px-24; font-size: var(--font-body-lg-size); }
+.acko-dropdown-trigger-sm { @apply h-40 px-16; font-size: var(--fontBodySmSize); }
+.acko-dropdown-trigger-md { @apply h-48 px-20; font-size: var(--fontBodyMdSize); }
+.acko-dropdown-trigger-lg { @apply h-56 px-24; font-size: var(--fontBodyLgSize); }
 
 .acko-dropdown-value {
-  @apply flex-1 min-w-0 overflow-hidden whitespace-nowrap;
+  @apply flex-1 min-w-0 overflow-hidden whitespace-nowrap text-text-primary;
   text-overflow: ellipsis;
-  color: var(--color-text-primary);
 }
 
 .acko-dropdown-placeholder {
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
 }
 
 .acko-dropdown-chevron {
-  @apply shrink-0 flex items-center ml-8;
-  color: var(--color-text-secondary);
-  transition: transform 150ms var(--ease-out-cubic), color 150ms ease;
+  @apply shrink-0 flex items-center ml-8 text-text-secondary;
+  transition: transform 150ms var(--easeOutCubic), color 150ms ease;
 }
 
 .acko-dropdown-chevron-open {
   transform: rotate(180deg);
-  color: var(--color-primary);
+  @apply text-primary;
 }
 
 /* Trigger states */
 @media (hover: hover) and (pointer: fine) {
   .acko-dropdown-trigger:hover:not(:disabled):not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) {
-    border-color: var(--color-input-hover-border);
+    @apply border-input-hover-border;
   }
   .acko-dropdown-trigger:hover:not(:disabled):not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) .acko-dropdown-chevron {
-    color: var(--color-text-supporting);
+    @apply text-text-supporting;
   }
 }
 
 .acko-dropdown-trigger-open {
-  border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
+  @apply border-input-focus-border;
+  box-shadow: 0 0 0 2px var(--colorInputFocusRing);
 }
 
 .acko-dropdown-trigger:focus-visible {
-  outline: none;
-  border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
+  @apply outline-none border-input-focus-border;
+  box-shadow: 0 0 0 2px var(--colorInputFocusRing);
 }
 
 .acko-dropdown-trigger:disabled {
-  border-color: var(--color-input-disabled-border);
-  background-color: var(--color-input-disabled-bg);
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed border-input-disabled-border bg-input-disabled-bg;
 }
 
 .acko-dropdown-trigger:disabled .acko-dropdown-value,
 .acko-dropdown-trigger:disabled .acko-dropdown-placeholder,
 .acko-dropdown-trigger:disabled .acko-dropdown-chevron {
-  color: var(--color-text-disabled);
+  @apply text-text-disabled;
 }
 
 .acko-dropdown-trigger-error {
   border: 1px solid transparent;
   background:
-    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
+    linear-gradient(var(--colorInputBg), var(--colorInputBg)) padding-box,
+    linear-gradient(0deg, var(--colorErrorGradientFrom), var(--colorErrorGradientTo)) border-box;
   animation: acko-dropdown-shake 300ms ease-out;
 }
 
 .acko-dropdown-trigger-filled:not(.acko-dropdown-trigger-open):not(.acko-dropdown-trigger-error) {
-  border-color: var(--color-input-filled-border);
+  @apply border-input-filled-border;
 }
 
 @keyframes acko-dropdown-shake {
@@ -116,17 +111,13 @@
 /* --- Menu --- */
 
 .acko-dropdown-menu {
-  @apply absolute left-0 right-0 list-none p-8 m-0;
+  @apply absolute left-0 right-0 list-none p-8 m-0 bg-input-bg border border-input-border rounded-4xl shadow-lg;
   top: 100%;
   margin-top: 4px;
-  background-color: var(--color-input-bg);
-  border: 1px solid var(--color-input-border);
-  border-radius: var(--radius-4xl);
-  box-shadow: var(--shadow-lg);
-  z-index: var(--z-dropdown);
+  z-index: var(--zDropdown);
   max-height: 280px;
   overflow-y: auto;
-  animation: acko-dropdown-menu-enter 150ms var(--ease-out-cubic);
+  animation: acko-dropdown-menu-enter 150ms var(--easeOutCubic);
 }
 
 @keyframes acko-dropdown-menu-enter {
@@ -137,69 +128,58 @@
 /* --- Search input --- */
 
 .acko-dropdown-search-wrapper {
-  @apply pb-8 mb-8;
-  border-bottom: 1px solid var(--color-border-subtle);
+  @apply pb-8 mb-8 border-b border-border-subtle;
 }
 
 .acko-dropdown-search {
-  @apply w-full rounded-full outline-none py-8 px-16;
-  border: 1px solid var(--color-input-border);
+  @apply w-full rounded-full outline-none py-8 px-16 border border-input-border bg-input-bg text-text-primary;
   font-family: inherit;
-  font-size: var(--font-body-sm-size);
-  background-color: var(--color-input-bg);
-  color: var(--color-text-primary);
+  font-size: var(--fontBodySmSize);
   transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .acko-dropdown-search:focus {
-  border-color: var(--color-input-focus-border);
-  box-shadow: 0 0 0 2px var(--color-input-focus-ring);
+  @apply border-input-focus-border;
+  box-shadow: 0 0 0 2px var(--colorInputFocusRing);
 }
 
 .acko-dropdown-search::placeholder {
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
 }
 
 /* --- Group header --- */
 
 .acko-dropdown-group-header {
-  @apply py-8 px-12;
-  font-size: var(--font-label-sm-size);
-  font-weight: var(--font-label-sm-weight);
-  letter-spacing: var(--font-label-sm-spacing);
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
+  @apply py-8 px-12 text-text-secondary uppercase;
+  font-size: var(--fontLabelSmSize);
+  font-weight: var(--fontLabelSmWeight);
+  letter-spacing: var(--fontLabelSmSpacing);
 }
 
 /* --- Option --- */
 
 .acko-dropdown-option {
-  @apply flex items-center cursor-pointer gap-8 py-8 px-12 min-h-40;
-  font-size: var(--font-body-sm-size);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-lg);
+  @apply flex items-center cursor-pointer gap-8 py-8 px-12 min-h-40 rounded-lg text-text-primary;
+  font-size: var(--fontBodySmSize);
   transition: background-color 100ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .acko-dropdown-option:hover:not(.acko-dropdown-option-disabled) {
-    background-color: var(--color-primary-subtle);
+    @apply bg-primary-subtle;
   }
 }
 
 .acko-dropdown-option-focused {
-  background-color: var(--color-primary-subtle);
+  @apply bg-primary-subtle;
 }
 
 .acko-dropdown-option-selected {
-  background-color: var(--color-primary-subtle);
-  color: var(--color-primary-hover);
-  font-weight: 500;
+  @apply bg-primary-subtle text-primary-hover font-medium;
 }
 
 .acko-dropdown-option-disabled {
-  color: var(--color-text-secondary);
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed text-text-secondary;
 }
 
 .acko-dropdown-option-icon {
@@ -207,8 +187,7 @@
 }
 
 .acko-dropdown-option-check {
-  @apply ml-auto shrink-0 flex items-center;
-  color: var(--color-primary);
+  @apply ml-auto shrink-0 flex items-center text-primary;
 }
 
 /* --- Multi tags --- */
@@ -218,11 +197,8 @@
 }
 
 .acko-dropdown-tag {
-  @apply inline-flex items-center rounded-full gap-4 py-2 px-8 whitespace-nowrap;
-  background-color: var(--color-primary-subtle);
-  color: var(--color-primary-active);
-  font-size: var(--font-caption-size);
-  font-weight: 500;
+  @apply inline-flex items-center rounded-full gap-4 py-2 px-8 whitespace-nowrap bg-primary-subtle text-primary-active font-medium;
+  font-size: var(--fontCaptionSize);
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -239,46 +215,43 @@
 /* --- Helper / Error text --- */
 
 .acko-dropdown-helper-text {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  @apply text-text-secondary;
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
 }
 
 .acko-dropdown-error-text {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-error-text);
+  @apply text-error-text;
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
 }
 
 .acko-dropdown-no-results {
-  @apply text-center py-16 px-12;
-  color: var(--color-text-secondary);
-  font-size: var(--font-body-sm-size);
+  @apply text-center py-16 px-12 text-text-secondary;
+  font-size: var(--fontBodySmSize);
 }
 
 /* --- Dark theme --- */
 
 [data-theme="dark"] .acko-dropdown-trigger {
-  background-color: var(--color-input-bg);
-  border-color: var(--color-input-border);
+  @apply bg-input-bg border-input-border;
 }
 
 [data-theme="dark"] .acko-dropdown-trigger-error {
   background:
-    linear-gradient(var(--color-input-bg), var(--color-input-bg)) padding-box,
-    linear-gradient(0deg, var(--color-error-gradient-from), var(--color-error-gradient-to)) border-box;
+    linear-gradient(var(--colorInputBg), var(--colorInputBg)) padding-box,
+    linear-gradient(0deg, var(--colorErrorGradientFrom), var(--colorErrorGradientTo)) border-box;
 }
 
 [data-theme="dark"] .acko-dropdown-trigger:disabled {
-  background-color: var(--color-input-disabled-bg);
-  border-color: var(--color-input-disabled-border);
+  @apply bg-input-disabled-bg border-input-disabled-border;
 }
 
 /* Multi-select menu with CheckboxRow */
 .acko-dropdown-menu-multi .acko-cb-row {
   flex-direction: row-reverse;
   @apply px-12;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radiusLg);
 }
 
 /* Sheet (Drawer) content — always render CheckboxRow in mobile style regardless of viewport */
@@ -289,7 +262,7 @@
 
 .acko-dropdown-sheet-rows .acko-cb-row .acko-checkbox-box {
   @apply w-24 h-24;
-  border-radius: var(--radius-md);
+  border-radius: var(--radiusMd);
 }
 
 .acko-dropdown-sheet-rows .acko-cb-row .acko-checkbox-icon svg {
@@ -297,8 +270,8 @@
 }
 
 .acko-dropdown-sheet-rows .acko-cb-row-label {
-  font-size: var(--font-body-lg-size);
-  line-height: var(--font-body-lg-line);
+  font-size: var(--fontBodyLgSize);
+  line-height: var(--fontBodyLgLine);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -306,17 +279,15 @@
     display: none;
   }
   .acko-dropdown-menu-multi .acko-cb-row:hover {
-    background-color: var(--color-primary-subtle);
+    @apply bg-primary-subtle;
   }
 }
 
 [data-theme="dark"] .acko-dropdown-menu {
-  background-color: var(--color-surface-raised);
-  border-color: var(--color-border);
+  @apply bg-surface-raised border-border;
 }
 
 [data-theme="dark"] .acko-dropdown-search {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
+  @apply bg-surface border-border;
 }
 

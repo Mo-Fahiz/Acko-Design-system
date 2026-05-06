@@ -17,8 +17,8 @@
 /* Custom box */
 .acko-checkbox-box {
   @apply shrink-0 flex items-center justify-center;
-  border: 2px solid var(--color-control-border-selector);
-  background-color: var(--color-card-bg);
+  border: 2px solid var(--colorControlBorderSelector);
+  background-color: var(--colorCardBg);
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
@@ -27,14 +27,14 @@
 }
 
 /* Sizes */
-.acko-checkbox-sm .acko-checkbox-box { @apply w-16 h-16; border-radius: var(--radius-sm); }
-.acko-checkbox-md .acko-checkbox-box { @apply w-20 h-20; border-radius: var(--radius-md); }
-.acko-checkbox-lg .acko-checkbox-box { @apply w-24 h-24; border-radius: var(--radius-md); }
+.acko-checkbox-sm .acko-checkbox-box { @apply w-16 h-16; border-radius: var(--radiusSm); }
+.acko-checkbox-md .acko-checkbox-box { @apply w-20 h-20; border-radius: var(--radiusMd); }
+.acko-checkbox-lg .acko-checkbox-box { @apply w-24 h-24; border-radius: var(--radiusMd); }
 
 /* Check icon */
 .acko-checkbox-icon {
   @apply flex items-center justify-center;
-  color: var(--color-on-primary);
+  color: var(--colorOnPrimary);
   opacity: 0;
   transform: scale(0.3);
   transition: opacity 120ms ease-in, transform 120ms ease-in;
@@ -65,14 +65,14 @@
 /* --- States --- */
 
 .acko-checkbox-checked .acko-checkbox-box {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
   animation: acko-checkbox-bounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .acko-checkbox-indeterminate .acko-checkbox-box {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
 }
 
 @keyframes acko-checkbox-bounce {
@@ -84,45 +84,45 @@
 
 @media (hover: hover) and (pointer: fine) {
   .acko-checkbox:not(.acko-checkbox-disabled):not(.acko-checkbox-checked):not(.acko-checkbox-indeterminate):hover .acko-checkbox-box {
-    border-color: var(--color-primary-muted);
-    background-color: var(--color-primary-subtle);
-    box-shadow: var(--shadow-sm);
+    border-color: var(--colorPrimaryMuted);
+    background-color: var(--colorPrimarySubtle);
+    box-shadow: var(--shadowSm);
   }
   .acko-checkbox:not(.acko-checkbox-disabled).acko-checkbox-checked:hover .acko-checkbox-box,
   .acko-checkbox:not(.acko-checkbox-disabled).acko-checkbox-indeterminate:hover .acko-checkbox-box {
-    background-color: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
-    box-shadow: var(--shadow-sm);
+    background-color: var(--colorPrimaryHover);
+    border-color: var(--colorPrimaryHover);
+    box-shadow: var(--shadowSm);
   }
 }
 
 .acko-checkbox-native:focus-visible + .acko-checkbox-box {
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
-  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--colorPrimaryRing);
+  border-color: var(--colorPrimary);
 }
 
 /* Disabled unchecked */
 .acko-checkbox-disabled:not(.acko-checkbox-checked):not(.acko-checkbox-indeterminate) .acko-checkbox-box {
-  border-color: var(--color-border-subtle);
-  background-color: var(--color-surface-raised);
+  border-color: var(--colorBorderSubtle);
+  background-color: var(--colorSurfaceRaised);
 }
 
 /* Disabled checked */
 .acko-checkbox-disabled.acko-checkbox-checked .acko-checkbox-box,
 .acko-checkbox-disabled.acko-checkbox-indeterminate .acko-checkbox-box {
-  background-color: var(--color-disabled-bg);
-  border-color: var(--color-disabled-border);
+  background-color: var(--colorDisabledBg);
+  border-color: var(--colorDisabledBorder);
   animation: none;
 }
 
 .acko-checkbox-disabled.acko-checkbox-checked .acko-checkbox-icon,
 .acko-checkbox-disabled.acko-checkbox-indeterminate .acko-checkbox-icon {
-  color: var(--color-disabled-text);
+  color: var(--colorDisabledText);
 }
 
 /* Error */
 .acko-checkbox-error .acko-checkbox-box {
-  border-color: var(--color-error);
+  border-color: var(--colorError);
   animation: acko-checkbox-shake 300ms ease-out;
 }
 
@@ -141,22 +141,22 @@
 }
 
 .acko-checkbox-label-text {
-  color: var(--color-text-default);
+  color: var(--colorTextDefault);
   line-height: 1.4;
 }
 
-.acko-checkbox-sm .acko-checkbox-label-text { font-size: var(--font-body-sm-size); }
-.acko-checkbox-md .acko-checkbox-label-text { font-size: var(--font-body-md-size); }
-.acko-checkbox-lg .acko-checkbox-label-text { font-size: var(--font-body-lg-size); }
+.acko-checkbox-sm .acko-checkbox-label-text { font-size: var(--fontBodySmSize); }
+.acko-checkbox-md .acko-checkbox-label-text { font-size: var(--fontBodyMdSize); }
+.acko-checkbox-lg .acko-checkbox-label-text { font-size: var(--fontBodyLgSize); }
 
 .acko-checkbox-description {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  color: var(--colorTextSecondary);
 }
 
-.acko-checkbox-disabled .acko-checkbox-label-text { color: var(--color-text-disabled); }
-.acko-checkbox-disabled .acko-checkbox-description { color: var(--color-text-disabled); }
+.acko-checkbox-disabled .acko-checkbox-label-text { color: var(--colorTextDisabled); }
+.acko-checkbox-disabled .acko-checkbox-description { color: var(--colorTextDisabled); }
 
 
 /* ============================================================
@@ -179,7 +179,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-border-subtle);
+  background: var(--colorBorderSubtle);
   pointer-events: none;
 }
 
@@ -193,21 +193,21 @@
 }
 
 .acko-cb-row-label {
-  font-size: var(--font-body-md-size);
-  line-height: var(--font-body-md-line);
-  color: var(--color-text-default);
+  font-size: var(--fontBodyMdSize);
+  line-height: var(--fontBodyMdLine);
+  color: var(--colorTextDefault);
 }
 
 .acko-cb-row-description {
-  font-size: var(--font-caption-size);
-  line-height: var(--font-caption-line);
-  color: var(--color-text-secondary);
+  font-size: var(--fontCaptionSize);
+  line-height: var(--fontCaptionLine);
+  color: var(--colorTextSecondary);
 }
 
 /* Row reuses the atom box — size it to md (20px) */
 .acko-cb-row .acko-checkbox-box {
   @apply w-20 h-20;
-  border-radius: var(--radius-md);
+  border-radius: var(--radiusMd);
 }
 
 .acko-cb-row .acko-checkbox-icon svg { @apply w-12 h-12; }
@@ -215,32 +215,32 @@
 /* --- Row states --- */
 
 .acko-cb-row-checked .acko-checkbox-box {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
   animation: acko-checkbox-bounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .acko-cb-row-indeterminate .acko-checkbox-box {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
 }
 
 /* Error row */
 .acko-cb-row-error .acko-checkbox-box {
-  border-color: var(--color-error);
+  border-color: var(--colorError);
 }
 
 /* Desktop hover (pointer device only) */
 @media (hover: hover) and (pointer: fine) {
   .acko-cb-row:hover {
-    background-color: var(--color-surface-hover);
+    background-color: var(--colorSurfaceHover);
   }
 }
 
 /* Focus visible on hidden input targets row */
 .acko-cb-row .acko-checkbox-native:focus-visible + .acko-checkbox-box {
-  box-shadow: 0 0 0 3px var(--color-primary-ring);
-  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--colorPrimaryRing);
+  border-color: var(--colorPrimary);
 }
 
 /* --- Mobile: flip checkbox to right --- */
@@ -252,19 +252,19 @@
 
   .acko-cb-row .acko-checkbox-box {
     @apply w-24 h-24;
-    border-radius: var(--radius-md);
+    border-radius: var(--radiusMd);
   }
 
   .acko-cb-row .acko-checkbox-icon svg { @apply w-14 h-14; }
 
   .acko-cb-row-label {
-    font-size: var(--font-body-lg-size);
-    line-height: var(--font-body-lg-line);
+    font-size: var(--fontBodyLgSize);
+    line-height: var(--fontBodyLgLine);
   }
 
   /* Mobile: active instead of hover */
   .acko-cb-row:active {
-    background-color: var(--color-surface-hover);
+    background-color: var(--colorSurfaceHover);
   }
 }
 
@@ -278,9 +278,9 @@
 }
 
 .acko-cb-list-label {
-  font-size: var(--font-label-lg-size);
-  font-weight: var(--font-label-lg-weight);
-  line-height: var(--font-label-lg-line);
-  color: var(--color-text-default);
+  font-size: var(--fontLabelLgSize);
+  font-weight: var(--fontLabelLgWeight);
+  line-height: var(--fontLabelLgLine);
+  color: var(--colorTextDefault);
   @apply mb-8;
 }

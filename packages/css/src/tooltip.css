@@ -8,16 +8,15 @@
 }
 
 .acko-tooltip {
-  @apply fixed pointer-events-none whitespace-nowrap py-4 px-8;
-  z-index: var(--z-tooltip);
-  background: var(--color-tooltip-bg);
-  color: var(--color-tooltip-text);
-  font-size: var(--font-caption-size);
-  border-radius: var(--radius-xl);
+  @apply fixed pointer-events-none whitespace-nowrap py-4 px-8 text-xs rounded-xl;
+  z-index: var(--zTooltip);
+  background: var(--colorTooltipBg);
+  color: var(--colorTooltipText);
   opacity: 0;
   transform: translateY(0.5rem);
-  transition: opacity 150ms var(--ease-out-quad),
-    transform 150ms var(--ease-out-quad);
+  transition:
+    opacity 150ms var(--easeOutQuad),
+    transform 150ms var(--easeOutQuad);
 }
 
 .acko-tooltip-visible {
@@ -25,7 +24,6 @@
   transform: translateY(0);
 }
 
-/* Enter from different sides */
 .acko-tooltip-top {
   transform: translateY(0.5rem);
 }
@@ -58,11 +56,8 @@
   transform: translateX(0);
 }
 
-/* Arrow — CSS triangle */
 .acko-tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
+  @apply absolute w-0 h-0;
   border: 6px solid transparent;
 }
 
@@ -70,26 +65,26 @@
   bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  border-top-color: var(--color-tooltip-bg);
+  border-top-color: var(--colorTooltipBg);
 }
 
 .acko-tooltip-arrow-bottom {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  border-bottom-color: var(--color-tooltip-bg);
+  border-bottom-color: var(--colorTooltipBg);
 }
 
 .acko-tooltip-arrow-left {
   right: -12px;
   top: 50%;
   transform: translateY(-50%);
-  border-left-color: var(--color-tooltip-bg);
+  border-left-color: var(--colorTooltipBg);
 }
 
 .acko-tooltip-arrow-right {
   left: -12px;
   top: 50%;
   transform: translateY(-50%);
-  border-right-color: var(--color-tooltip-bg);
+  border-right-color: var(--colorTooltipBg);
 }

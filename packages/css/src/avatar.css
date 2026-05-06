@@ -1,39 +1,65 @@
 /* Avatar — @acko/css/avatar.css */
 
 .acko-avatar {
-  @apply inline-flex items-center justify-center overflow-hidden flex-shrink-0;
-  transition: opacity 200ms ease;
+  @apply inline-flex items-center justify-center overflow-hidden shrink-0 transition-opacity duration-200 ease-in-out;
 }
 
-.acko-avatar-circle { border-radius: var(--radius-full); }
-.acko-avatar-square { border-radius: var(--radius-lg); }
+.acko-avatar-circle {
+  @apply rounded-full;
+}
 
-.acko-avatar-xs { @apply w-24 h-24; }
-.acko-avatar-sm { @apply w-32 h-32; }
-.acko-avatar-md { @apply w-40 h-40; }
-.acko-avatar-lg { @apply w-48 h-48; }
-.acko-avatar-xl { @apply w-64 h-64; }
+.acko-avatar-square {
+  @apply rounded-lg;
+}
+
+.acko-avatar-xs {
+  @apply w-24 h-24;
+}
+
+.acko-avatar-sm {
+  @apply w-32 h-32;
+}
+
+.acko-avatar-md {
+  @apply w-40 h-40;
+}
+
+.acko-avatar-lg {
+  @apply w-48 h-48;
+}
+
+.acko-avatar-xl {
+  @apply w-64 h-64;
+}
 
 .acko-avatar-img {
-  @apply w-full h-full;
-  object-fit: cover;
+  @apply w-full h-full object-cover;
 }
 
 .acko-avatar-initials {
-  font-weight: 500;
-  background-color: var(--color-primary-subtle);
-  color: var(--color-primary);
-  @apply w-full h-full flex items-center justify-center;
+  @apply w-full h-full flex items-center justify-center font-medium bg-primary-subtle text-primary;
 }
 
-.acko-avatar-initials-xs { font-size: 10px; }
-.acko-avatar-initials-sm { font-size: var(--font-label-sm-size); }
-.acko-avatar-initials-md { font-size: var(--font-body-sm-size); }
-.acko-avatar-initials-lg { font-size: var(--font-body-md-size); }
-.acko-avatar-initials-xl { font-size: var(--font-body-lg-size); }
+.acko-avatar-initials-xs {
+  @apply text-[10px];
+}
+
+.acko-avatar-initials-sm {
+  @apply text-[length:var(--fontLabelSmSize)];
+}
+
+.acko-avatar-initials-md {
+  @apply text-sm;
+}
+
+.acko-avatar-initials-lg {
+  @apply text-base;
+}
+
+.acko-avatar-initials-xl {
+  @apply text-lg;
+}
 
 .acko-avatar-fallback {
-  background-color: var(--color-primary-subtle);
-  color: var(--color-primary);
-  @apply w-full h-full flex items-center justify-center;
+  @apply w-full h-full flex items-center justify-center bg-primary-subtle text-primary;
 }
