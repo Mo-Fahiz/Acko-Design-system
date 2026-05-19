@@ -544,8 +544,8 @@
   /* Radio */
   --colorRadioCardHoverBorder: var(--purple200);
   --colorRadioCardHoverBg: var(--purple50);
-  --colorRadioCardActiveBorder: var(--purple300);
-  --colorRadioCardActiveBg: var(--purple100);
+  --colorRadioCardActiveBorder: var(--purple600);
+  --colorRadioCardActiveBg: transparent;
 
   /* Calendar */
   --colorCalSelectedBg: var(--purple600);
@@ -846,8 +846,8 @@
   /* Radio */
   --colorRadioCardHoverBorder: var(--purple700);
   --colorRadioCardHoverBg: var(--purple950);
-  --colorRadioCardActiveBorder: var(--purple600);
-  --colorRadioCardActiveBg: var(--purple900);
+  --colorRadioCardActiveBorder: var(--purple500);
+  --colorRadioCardActiveBg: transparent;
 
   /* Calendar */
   --colorCalSelectedBg: var(--purple500);

@@ -666,33 +666,34 @@ const prefersReducedMotion =
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function PreviewTransition({ componentKey, children }: { componentKey: string; children: React.ReactNode }) {
-  const [visible, setVisible] = useState(true);
-  const prevKey = useRef(componentKey);
+  const [displayKey, setDisplayKey] = useState(componentKey);
+  const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
-    if (prevKey.current !== componentKey) {
+    if (displayKey !== componentKey) {
       if (prefersReducedMotion) {
-        prevKey.current = componentKey;
+        setDisplayKey(componentKey);
         return;
       }
-      setVisible(false);
+      // Fade out quickly, swap content, fade back in
+      setOpacity(0);
       const timer = setTimeout(() => {
-        prevKey.current = componentKey;
-        requestAnimationFrame(() => setVisible(true));
-      }, 150);
+        setDisplayKey(componentKey);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setOpacity(1));
+        });
+      }, 180);
       return () => clearTimeout(timer);
     }
-  }, [componentKey]);
+  }, [componentKey, displayKey]);
 
   return (
     <div
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(6px)",
+        opacity,
         transition: prefersReducedMotion
           ? "none"
-          : "opacity 250ms ease-out, transform 250ms ease-out",
-        willChange: visible ? "auto" : "opacity, transform",
+          : `opacity ${opacity === 0 ? "150ms" : "300ms"} ease-out`,
       }}
     >
       {children}
@@ -724,7 +725,7 @@ function BreakpointSwitcher({
 
   return (
     <div
-      className="relative inline-flex items-center gap-2 p-4 rounded-2xl border border-border-subtle bg-surface-raised mb-32"
+      className="relative inline-flex items-center gap-2 p-4 rounded-2xl border border-border-subtle bg-surface"
     >
       {pill.ready && (
         <div
@@ -3315,20 +3316,24 @@ function App() {
             {COMPONENT_LIST.length} Components
           </Badge>
         </div>
-        <button
-          type="button"
-          onClick={() => cycleTheme(theme === "light" ? "dark" : "light")}
-          className="flex items-center justify-center w-36 h-36 rounded-full border border-border-subtle bg-surface text-text-muted hover:text-text-default hover:bg-surface-raised transition-all"
-          aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-        >
-          {theme === "light" ? <Sun className="size-18" /> : <Moon className="size-18" />}
-        </button>
+        <div className="flex items-center gap-16">
+          <BreakpointSwitcher breakpoint={breakpoint} onChange={setBreakpoint} />
+          <div className="w-px h-24 bg-border-subtle" />
+          <button
+            type="button"
+            onClick={() => cycleTheme(theme === "light" ? "dark" : "light")}
+            className="flex items-center justify-center w-36 h-36 rounded-full border border-border-subtle bg-surface text-text-muted hover:text-text-default hover:bg-surface-raised transition-all"
+            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+          >
+            {theme === "light" ? <Sun className="size-18" /> : <Moon className="size-18" />}
+          </button>
+        </div>
       </header>
 
-      {/* ── 2-column body ── */}
+      {/* ── 3-column body ── */}
       <div className="flex-1 flex min-h-0">
 
-        {/* ── Left: Component list ── */}
+        {/* ── Col 1: Component list ── */}
         <aside className="w-240 shrink-0 border-r border-border-subtle bg-surface-raised flex flex-col">
           <div className="px-12 pt-16 pb-12">
             <div className="relative">
@@ -3379,11 +3384,11 @@ function App() {
           </nav>
         </aside>
 
-        {/* ── Main: Preview + usage (stacked) ── */}
-        <main className="flex-1 min-w-0 overflow-y-auto bg-surface">
-          <div className="w-full min-w-0 max-w-[1200px] mx-auto px-32 py-48 sm:px-40 lg:px-56">
+        {/* ── Col 2: Component preview ── */}
+        <main className="flex-1 min-w-0 overflow-y-auto bg-surface border-r border-border-subtle">
+          <div className="px-32 py-32 lg:px-40">
             {/* Title row */}
-            <div className="flex items-center gap-8 mb-4">
+            <div className="flex items-center gap-12 mb-6">
               <Typography variant="heading-xl" color="primary">
                 {selected}
               </Typography>
@@ -3393,16 +3398,11 @@ function App() {
             </div>
 
             {/* Subtitle */}
-            <div className="flex items-start justify-between mb-32">
-              <Typography variant="body-sm" color="secondary">
-                {selected === "Card"
-                  ? "Gallery: foundations, media patterns, reference layouts. Add ?c=Card to the URL to open this page directly."
-                  : "Variants, sizes, and states"}
-              </Typography>
-            </div>
-
-            {/* Breakpoint switcher */}
-            <BreakpointSwitcher breakpoint={breakpoint} onChange={setBreakpoint} />
+            <Typography variant="body-sm" color="secondary" className="mb-32">
+              {selected === "Card"
+                ? "Gallery: foundations, media patterns, reference layouts."
+                : "Variants, sizes, and states"}
+            </Typography>
 
             {/* Preview area with breakpoint constraint */}
             <div
@@ -3424,31 +3424,40 @@ function App() {
                 </div>
               </PreviewTransition>
             </div>
-
-            {/* ── Usage section (below preview) ── */}
-            <div className="mt-48 pt-32">
-              <div className="flex items-center gap-12 mb-16">
-                <div className="h-px flex-1 bg-border-subtle" />
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-text-disabled px-8">
-                  Usage
-                </span>
-                <div className="h-px flex-1 bg-border-subtle" />
-              </div>
-              <div className="flex items-center gap-8 mb-8">
-                <div className="w-4 h-16 rounded-full bg-primary" />
-                <Typography variant="label-md" color="primary">
-                  Real-world usage
-                </Typography>
-              </div>
-              <Typography variant="caption" color="secondary" className="mb-20">
-                Example of this component in a realistic context
-              </Typography>
-              <div className="rounded-2xl border border-border-subtle bg-surface-raised p-24">
-                <Usage />
-              </div>
-            </div>
           </div>
         </main>
+
+        {/* ── Col 3: Usage / Examples ── */}
+        <aside className="w-[360px] shrink-0 overflow-y-auto bg-surface-raised flex flex-col">
+          {/* Sticky header */}
+          <div className="sticky top-0 z-10 bg-surface-raised border-b border-border-subtle px-24 py-16">
+            <div className="flex items-center gap-8">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary shrink-0">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-text-secondary">
+                Usage Example
+              </span>
+            </div>
+          </div>
+
+          <div className="px-24 py-24 flex-1">
+            {/* Usage preview with breakpoint constraint */}
+            <div
+              className="mx-auto min-w-0 overflow-x-auto"
+              style={{
+                maxWidth: breakpoint === "desktop" ? "100%" : Math.min(BREAKPOINT_PX[breakpoint], 312),
+                transition: prefersReducedMotion
+                  ? "none"
+                  : "max-width 350ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+              }}
+            >
+              <PreviewTransition componentKey={`usage-${selected}`}>
+                <Usage />
+              </PreviewTransition>
+            </div>
+          </div>
+        </aside>
 
       </div>
     </div>
