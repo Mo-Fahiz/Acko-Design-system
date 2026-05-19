@@ -106,7 +106,7 @@
   --grey500: #888888; --grey550: #7A7A7A; --grey600: #6C6C6C;
   --grey650: #5E5E5E; --grey700: #505050; --grey750: #424242;
   --grey800: #343434; --grey825: #2C2C2C; --grey850: #222222;
-  --grey875: #19191A; --grey900: #181818; --grey950: #0A0A0A;
+  --grey875: #19191A; --grey900: #181818; --grey925: #141414; --grey950: #0A0A0A;
   --greyBlack: #000000;
 
   /* Red */
@@ -519,18 +519,25 @@
   --colorControlBorderSelector: var(--grey200);
 
   /* Button */
+  /* Primary border gradient: purple500 (top) → purple600 (bottom, = fill) */
+  --colorBtnPrimaryBorderFrom: var(--purple500);
+  --colorBtnPrimaryBorderTo: var(--purple600);
   --colorBtnSecondaryBg: var(--grey100);
   --colorBtnSecondaryBorder: var(--purple600);
   --colorBtnSecondaryText: var(--purple700);
+  /* Inverted fill: grey100 (#F5F5F5); border gradient: white (top) → grey100 (bottom, = fill) */
   --colorBtnInvertedBg: var(--grey100);
   --colorBtnInvertedText: var(--purple700);
+  --colorBtnInvertedBorderFrom: var(--greyWhite);
+  --colorBtnInvertedBorderTo: var(--grey100);
   --colorBtnGhostHoverBg: var(--purple50);
   --colorBtnGhostColor: var(--purple600);
   --colorBtnLinkColor: var(--blue600);
-  --colorBtnDangerBg: var(--red100);
+  /* Danger fill: red200 (#FECACA); border gradient: red100 (top) → red200 (bottom, = fill) */
+  --colorBtnDangerBg: var(--red200);
   --colorBtnDangerText: var(--red500);
-  --colorDangerGradientFrom: var(--red200);
-  --colorDangerGradientTo: var(--red300);
+  --colorBtnDangerBorderFrom: var(--red100);
+  --colorBtnDangerBorderTo: var(--red200);
   --colorBtnDisabledBg: var(--grey100);
   --colorBtnDisabledText: var(--colorTextDisabled);
 
@@ -639,9 +646,9 @@
   --shadowBtnSecondaryHover: inset 0px 2px 4px var(--blackA4);
 
   /* Primary */
-  --colorPrimary: var(--purple500);
-  --colorPrimaryHover: var(--purple400);
-  --colorPrimaryActive: var(--purple300);
+  --colorPrimary: var(--purple600);
+  --colorPrimaryHover: var(--purple500);
+  --colorPrimaryActive: var(--purple400);
   --colorPrimarySubtle: var(--purple900);
   --colorPrimaryMuted: var(--purple600);
   --colorPrimaryRing: var(--purple800);
@@ -813,21 +820,28 @@
   --colorControlBorderSelector: var(--grey500);
 
   /* Button */
+  /* Primary border gradient: same as light (purple500 → purple600) */
+  --colorBtnPrimaryBorderFrom: var(--purple500);
+  --colorBtnPrimaryBorderTo: var(--purple600);
   --colorBtnSecondaryBg: var(--grey875);
   --colorBtnSecondaryBorder: var(--purple600);
   --colorBtnSecondaryText: var(--grey50);
+  /* Inverted fill: grey875 (#19191A); border gradient: grey925 (top) → grey875 (bottom, = fill) */
   --colorBtnInvertedBg: var(--grey875);
-  --colorBtnInvertedText: var(--purple700);
+  --colorBtnInvertedText: var(--purple400);
+  --colorBtnInvertedBorderFrom: var(--grey925);
+  --colorBtnInvertedBorderTo: var(--grey875);
   --colorBtnGhostHoverBg: var(--grey800);
   --colorBtnPrimaryHoverBg: var(--purple600);
   --colorBtnGhostColor: var(--purple500);
   --colorBtnLinkColor: var(--blue500);
-  --colorBtnDangerBg: var(--red950);
+  /* Danger fill: red50 (#FEF2F2); border gradient: red900 (top) → red50 (bottom, = fill) */
+  --colorBtnDangerBg: var(--red50);
   --colorBtnDangerText: var(--red200);
+  --colorBtnDangerBorderFrom: var(--red900);
+  --colorBtnDangerBorderTo: var(--red50);
   --colorBtnDisabledBg: var(--grey800);
   --colorBtnDisabledText: var(--colorTextDisabled);
-  --colorDangerGradientFrom: var(--red900);
-  --colorDangerGradientTo: var(--red950);
 
   /* Radio */
   --colorRadioCardHoverBorder: var(--purple700);

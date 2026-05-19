@@ -1,21 +1,28 @@
 /* ============================================================
    Button — @acko/css/button.css
    Import per-component:  @import "@acko/css/button.css"
+
+   Gradient-border technique (Primary, Inverted, Danger):
+   Two backgrounds layered — solid fill on padding-box,
+   gradient on border-box. A 1px transparent border lets
+   the border-box gradient peek through as the visible border.
    ============================================================ */
 
 /* --- Base --- */
 
 .acko-btn {
   @apply inline-flex items-center justify-center font-medium
-         leading-none border-none cursor-pointer select-none
+         leading-none cursor-pointer select-none
          whitespace-nowrap no-underline relative gap-8;
   font-family: inherit;
+  border: 1px solid transparent;
   transition:
-    background-color 150ms ease,
+    background 150ms ease,
     color 150ms ease,
     border-color 150ms ease,
     transform 100ms ease,
-    box-shadow 150ms ease;
+    box-shadow 150ms ease,
+    filter 150ms ease;
 }
 
 .acko-btn:focus-visible {
@@ -58,68 +65,48 @@
 
 /* --- Variants --- */
 
+/* Primary: fill padding-box + gradient border-box */
 .acko-btn-primary {
-  @apply bg-primary text-on-primary relative;
-  isolation: isolate;
+  @apply text-on-primary;
+  background:
+    linear-gradient(var(--colorPrimary), var(--colorPrimary)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
 }
 
-.acko-btn-primary::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(to bottom, var(--purple500), var(--purple600));
-  z-index: -1;
-  pointer-events: none;
-}
-
+/* Secondary: surface fill + 1px solid primary border */
 .acko-btn-secondary {
   @apply bg-btn-secondary-bg text-btn-secondary-text;
-  box-shadow: inset 0 0 0 1px var(--colorBtnSecondaryBorder);
+  border-color: var(--colorBtnSecondaryBorder);
 }
 
 .acko-btn-secondary:focus-visible {
-  box-shadow:
-    inset 0 0 0 1px var(--colorBtnSecondaryBorder),
-    var(--shadowFocusRing);
+  box-shadow: var(--shadowFocusRing);
 }
 
+/* Inverted: neutral fill padding-box + gradient border-box */
 .acko-btn-inverted {
-  @apply bg-btn-inverted-bg text-btn-inverted-text relative;
-  isolation: isolate;
-}
-
-.acko-btn-inverted::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: inherit;
-  background: var(--colorPrimary);
-  z-index: -1;
-  pointer-events: none;
+  @apply text-btn-inverted-text;
+  background:
+    linear-gradient(var(--colorBtnInvertedBg), var(--colorBtnInvertedBg)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnInvertedBorderFrom), var(--colorBtnInvertedBorderTo)) border-box;
 }
 
 .acko-btn-ghost {
   @apply bg-transparent text-btn-ghost-color;
+  border-color: transparent;
 }
 
 .acko-btn-link {
   @apply bg-transparent text-btn-link-color px-0;
+  border-color: transparent;
 }
 
+/* Danger: red fill padding-box + gradient border-box */
 .acko-btn-danger {
-  @apply bg-btn-danger-bg text-btn-danger-text relative;
-  isolation: isolate;
-}
-
-.acko-btn-danger::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(to bottom, var(--colorDangerGradientFrom, var(--red200)), var(--colorDangerGradientTo, var(--red300)));
-  z-index: -1;
-  pointer-events: none;
+  @apply text-btn-danger-text;
+  background:
+    linear-gradient(var(--colorBtnDangerBg), var(--colorBtnDangerBg)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnDangerBorderFrom), var(--colorBtnDangerBorderTo)) border-box;
 }
 
 .acko-btn-danger:focus-visible {
@@ -130,26 +117,18 @@
 
 @media (hover: hover) and (pointer: fine) {
   .acko-btn-primary:hover:not(:disabled) {
-    @apply bg-primary-hover;
+    background:
+      linear-gradient(var(--colorPrimaryHover), var(--colorPrimaryHover)) padding-box,
+      linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
     box-shadow: var(--shadowBtnHover);
   }
 
-  .acko-btn-primary:hover:not(:disabled)::before {
-    background: linear-gradient(to bottom, var(--purple400), var(--purple500));
-  }
-
   .acko-btn-secondary:hover:not(:disabled) {
-    background-color: var(--colorBtnSecondaryBg);
     filter: brightness(0.96);
-    box-shadow: inset 0 0 0 1px var(--colorBtnSecondaryBorder);
   }
 
   .acko-btn-inverted:hover:not(:disabled) {
-    filter: brightness(1.05);
-  }
-
-  .acko-btn-inverted:hover:not(:disabled)::before {
-    filter: brightness(1.1);
+    filter: brightness(0.96);
   }
 
   .acko-btn-ghost:hover:not(:disabled) {
@@ -171,12 +150,8 @@
 .acko-btn:disabled {
   @apply cursor-not-allowed !text-btn-disabled-text !shadow-none opacity-100;
   background: var(--colorBtnDisabledBg) !important;
+  border-color: var(--colorBtnDisabledBg) !important;
   filter: none;
-}
-
-.acko-btn-disabled::before,
-.acko-btn:disabled::before {
-  display: none !important;
 }
 
 .acko-btn-disabled:active,
@@ -186,7 +161,8 @@
 
 .acko-btn-link:disabled,
 .acko-btn-link.acko-btn-disabled {
-  background-color: transparent !important;
+  background: transparent !important;
+  border-color: transparent !important;
 }
 
 /* ============================================================
@@ -194,18 +170,22 @@
    ============================================================ */
 
 [data-theme="dark"] .acko-btn-primary {
-  @apply bg-primary text-on-primary relative;
-  isolation: isolate;
+  @apply text-on-primary;
+  background:
+    linear-gradient(var(--colorPrimary), var(--colorPrimary)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
 }
 
 [data-theme="dark"] .acko-btn-secondary {
   @apply bg-btn-secondary-bg text-btn-secondary-text;
-  box-shadow: inset 0 0 0 1px var(--colorBtnSecondaryBorder);
+  border-color: var(--colorBtnSecondaryBorder);
 }
 
 [data-theme="dark"] .acko-btn-inverted {
-  @apply bg-btn-inverted-bg text-btn-inverted-text relative;
-  isolation: isolate;
+  @apply text-btn-inverted-text;
+  background:
+    linear-gradient(var(--colorBtnInvertedBg), var(--colorBtnInvertedBg)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnInvertedBorderFrom), var(--colorBtnInvertedBorderTo)) border-box;
 }
 
 [data-theme="dark"] .acko-btn-ghost {
@@ -217,23 +197,25 @@
 }
 
 [data-theme="dark"] .acko-btn-danger {
-  @apply bg-btn-danger-bg text-btn-danger-text;
+  @apply text-btn-danger-text;
+  background:
+    linear-gradient(var(--colorBtnDangerBg), var(--colorBtnDangerBg)) padding-box,
+    linear-gradient(to bottom, var(--colorBtnDangerBorderFrom), var(--colorBtnDangerBorderTo)) border-box;
 }
 
 [data-theme="dark"] .acko-btn:disabled {
   @apply cursor-not-allowed !text-btn-disabled-text !shadow-none opacity-100;
   background: var(--colorBtnDisabledBg) !important;
+  border-color: var(--colorBtnDisabledBg) !important;
   filter: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   [data-theme="dark"] .acko-btn-primary:hover:not(:disabled) {
-    @apply bg-primary-hover;
+    background:
+      linear-gradient(var(--colorPrimaryHover), var(--colorPrimaryHover)) padding-box,
+      linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
     box-shadow: var(--shadowBtnHover);
-  }
-
-  [data-theme="dark"] .acko-btn-primary:hover:not(:disabled)::before {
-    background: linear-gradient(to bottom, var(--purple400), var(--purple500));
   }
 
   [data-theme="dark"] .acko-btn-secondary:hover:not(:disabled) {
@@ -241,11 +223,7 @@
   }
 
   [data-theme="dark"] .acko-btn-inverted:hover:not(:disabled) {
-    filter: brightness(1.1);
-  }
-
-  [data-theme="dark"] .acko-btn-inverted:hover:not(:disabled)::before {
-    filter: brightness(1.15);
+    filter: brightness(0.9);
   }
 
   [data-theme="dark"] .acko-btn-ghost:hover:not(:disabled) {
