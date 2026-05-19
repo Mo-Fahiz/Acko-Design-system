@@ -11,7 +11,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, Version-4.1, Version-4.2, Version-2]
+    branches: [main, Version-4.1, Version-4.2, Version-4.3, Version-2]
   workflow_dispatch:
 
 permissions:

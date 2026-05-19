@@ -1,12 +1,26 @@
 ---
-description: ACKO Primitive Color Palette — Raw hex values for design system foundation
-version: 1.0.0
-last_updated: 2026-04-29
+description: ACKO Primitive Color Palette — Raw hex values for design system foundation. Components NEVER reference these directly — always go through colors-semantic.md.
+version: 1.2.0
+last_updated: 2026-05-18
+naming_convention: camelCase — token names match CSS custom properties, Dart, Swift, and JSON keys (e.g. greyWhite, purple600, blackA7)
+color_source: this file is the source of truth for all raw color values
 ---
 
 # Color Primitives
 
 **Layer 1** of the ACKO token architecture. Components NEVER reference these directly — they go through semantic tokens in `colors-semantic.md`.
+
+## What changed in v1.2
+
+Sync with `colors-semantic.md` v2.1 and `typography.md` v3.5.0. No new color values added.
+
+- Added `naming_convention` and `color_source` to frontmatter — aligns with the camelCase-everywhere convention established in `typography.md`
+- Updated `last_updated` date
+- Confirmed `--whiteA0_02`, `--whiteA4_28`, `--whiteA7_48` (added in v1.1) fully resolve the "Required primitive additions" gap flagged in `colors-semantic.md` v2.0 — that section is now closed in v2.1
+
+## What changed in v1.1
+
+Added three sub-step white alpha primitives (`--whiteA0_02`, `--whiteA4_28`, `--whiteA7_48`) so the semantic layer no longer needs raw `rgba()` literals for table stripes and button shadow tokens. No existing primitives were renamed or changed.
 
 ## Purpose of This File
 
@@ -406,6 +420,16 @@ Modern UI requires transparency for modals, disabled states, and depth. These to
 | `--whiteA11` | `rgba(255, 255, 255, 0.90)` | Almost solid white |
 | `--whiteA12` | `rgba(255, 255, 255, 0.95)` | Pure white text |
 
+### Sub-step white alpha (button shadows, table stripes)
+
+These half-step values exist for shadow tokens and very subtle striping that don't fit the standard 0.10 increments above.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--whiteA0_02` | `rgba(255, 255, 255, 0.02)` | Table stripe (dark mode) |
+| `--whiteA4_28` | `rgba(255, 255, 255, 0.28)` | Button inner shadow (light mode) |
+| `--whiteA7_48` | `rgba(255, 255, 255, 0.48)` | Button secondary hover inner shadow (light mode) |
+
 ## A90 Variants (Dark Mode Badge Gradients)
 
 Semi-transparent deep-shade colors for gradient badge fills in dark mode. Each is its base color at 90% opacity, approximating `color-mix(in srgb, {color} 90%, transparent)`.
@@ -512,5 +536,5 @@ Contact the ACKO Design System team to:
 - Get implementation help
 
 **Maintainer:** Design System Team  
-**Last Review:** 2026-04-29  
-**Next Review:** 2026-07-29 (quarterly)
+**Last Review:** 2026-05-18  
+**Next Review:** 2026-08-18 (quarterly)

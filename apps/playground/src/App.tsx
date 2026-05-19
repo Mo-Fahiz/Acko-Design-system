@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, type ReactNode } from "react";
 import {
   ArrowRight,
   Plus,
@@ -52,6 +52,7 @@ import { Progress } from "@acko/progress";
 import { Switch } from "@acko/switch";
 import { Separator } from "@acko/separator";
 import { Field } from "@acko/field";
+import { Label } from "@acko/label";
 import { Textarea } from "@acko/textarea";
 import { InputGroup } from "@acko/input-group";
 import { ScrollArea } from "@acko/scroll-area";
@@ -75,10 +76,10 @@ import { Pagination } from "@acko/pagination";
 type Theme = "light" | "dark";
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
-const BREAKPOINT_WIDTHS: Record<Breakpoint, string> = {
-  mobile: "max-w-[375px]",
-  tablet: "max-w-[768px]",
-  desktop: "max-w-none",
+const BREAKPOINT_PX: Record<Breakpoint, number> = {
+  mobile: 375,
+  tablet: 768,
+  desktop: 1200,
 };
 
 const BREAKPOINT_META: { key: Breakpoint; icon: typeof Smartphone; label: string }[] = [
@@ -659,11 +660,113 @@ function CardEmailSignupExample() {
   );
 }
 
+/* ─── Motion helpers ────────────────────────────────────────── */
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function PreviewTransition({ componentKey, children }: { componentKey: string; children: React.ReactNode }) {
+  const [visible, setVisible] = useState(true);
+  const prevKey = useRef(componentKey);
+
+  useEffect(() => {
+    if (prevKey.current !== componentKey) {
+      if (prefersReducedMotion) {
+        prevKey.current = componentKey;
+        return;
+      }
+      setVisible(false);
+      const timer = setTimeout(() => {
+        prevKey.current = componentKey;
+        requestAnimationFrame(() => setVisible(true));
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [componentKey]);
+
+  return (
+    <div
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(6px)",
+        transition: prefersReducedMotion
+          ? "none"
+          : "opacity 250ms ease-out, transform 250ms ease-out",
+        willChange: visible ? "auto" : "opacity, transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ─── Breakpoint switcher with sliding pill ────────────────── */
+function BreakpointSwitcher({
+  breakpoint,
+  onChange,
+}: {
+  breakpoint: Breakpoint;
+  onChange: (bp: Breakpoint) => void;
+}) {
+  const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [pill, setPill] = useState({ left: 0, width: 0, ready: false });
+
+  useLayoutEffect(() => {
+    const btn = buttonRefs.current[breakpoint];
+    if (btn) {
+      setPill({
+        left: btn.offsetLeft,
+        width: btn.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [breakpoint]);
+
+  return (
+    <div
+      className="relative inline-flex items-center gap-2 p-4 rounded-2xl border border-border-subtle bg-surface-raised mb-32"
+    >
+      {pill.ready && (
+        <div
+          className="absolute top-4 bottom-4 rounded-xl bg-primary shadow-sm"
+          style={{
+            left: pill.left,
+            width: pill.width,
+            transition: prefersReducedMotion
+              ? "none"
+              : "left 250ms cubic-bezier(0.25, 0.1, 0.25, 1), width 250ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+          }}
+        />
+      )}
+      {BREAKPOINT_META.map(({ key, icon: Icon, label }) => (
+        <button
+          key={key}
+          ref={(el) => { buttonRefs.current[key] = el; }}
+          type="button"
+          onClick={() => onChange(key)}
+          className={`relative z-10 flex items-center gap-8 px-16 py-8 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+            breakpoint === key
+              ? "text-on-primary"
+              : "text-text-muted hover:text-text-default"
+          }`}
+          aria-label={`Preview at ${label} breakpoint`}
+          aria-pressed={breakpoint === key}
+        >
+          <Icon className="size-16" />
+          <span>{label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /* ─── Shared preview primitives ─────────────────────────────── */
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-12">
-      <Typography variant="label-sm" color="secondary">{children}</Typography>
+      <span className="inline-flex items-center px-10 py-4 rounded-md bg-surface text-text-secondary text-[11px] font-semibold tracking-wide uppercase">
+        {children}
+      </span>
     </div>
   );
 }
@@ -675,14 +778,17 @@ function PreviewGroup({ id, title, description, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-32">
-      <div className="mb-24 pb-12 border-b border-border-subtle">
-        <Typography variant="heading-sm" color="primary">{title}</Typography>
-        {description && (
-          <Typography variant="body-sm" color="secondary" className="mt-4">{description}</Typography>
-        )}
+    <section id={id} className="scroll-mt-32 rounded-2xl border border-border-subtle bg-surface-raised p-24">
+      <div className="flex items-start gap-12 mb-20">
+        <div className="w-4 h-20 rounded-full bg-primary shrink-0 mt-2" />
+        <div>
+          <Typography variant="heading-sm" color="primary">{title}</Typography>
+          {description && (
+            <Typography variant="body-sm" color="secondary" className="mt-4">{description}</Typography>
+          )}
+        </div>
       </div>
-      <div className="space-y-32">
+      <div className="space-y-24">
         {children}
       </div>
     </section>
@@ -1922,66 +2028,93 @@ function SeparatorUsage() {
 }
 
 function LabelFieldPreview() {
-  const [username, setUsername] = useState("johndoe");
-  const [password, setPassword] = useState("short");
   return (
-    <div className="space-y-16">
-      <Typography variant="label-md" color="secondary">Default with helper text</Typography>
-      <TextInput
-        label="Username"
-        required
-        placeholder="johndoe"
-        value={username}
-        onChange={setUsername}
-        helperText="Choose a unique username"
-      />
-      <Typography variant="label-md" color="secondary">Error state</Typography>
-      <TextInput
-        label="Password"
-        type="password"
-        placeholder="••••••••"
-        value={password}
-        onChange={setPassword}
-        state="error"
-        errorText="Must be 8+ characters"
-      />
-      <Typography variant="label-md" color="secondary">Disabled state</Typography>
-      <TextInput
-        label="Disabled field"
-        value="Cannot edit"
-        onChange={() => {}}
-        disabled
-      />
+    <div className="space-y-32">
+      <PreviewGroup title="Label" description="Standalone label primitive for form controls">
+        <PreviewItem label="Sizes">
+          <div className="flex items-center gap-24">
+            <Label size="sm">Small label</Label>
+            <Label size="md">Medium label</Label>
+          </div>
+        </PreviewItem>
+        <PreviewItem label="Required">
+          <div className="flex items-center gap-24">
+            <Label required>Required field</Label>
+            <Label required size="sm">Required (small)</Label>
+          </div>
+        </PreviewItem>
+        <PreviewItem label="Disabled">
+          <Label disabled>Disabled label</Label>
+        </PreviewItem>
+      </PreviewGroup>
+
+      <PreviewGroup title="Field" description="Layout wrapper — adds label, helper text, and error text around any input">
+        <PreviewItem label="With helper text">
+          <Field label="Username" helperText="Choose a unique username">
+            <input
+              className="w-full px-16 py-10 rounded-full border border-border-subtle bg-surface text-sm text-text-default placeholder:text-text-disabled focus:outline-none focus:border-primary transition-colors"
+              placeholder="johndoe"
+            />
+          </Field>
+        </PreviewItem>
+        <PreviewItem label="With error text">
+          <Field label="Password" required errorText="Must be at least 8 characters">
+            <input
+              className="w-full px-16 py-10 rounded-full border border-error bg-surface text-sm text-text-default placeholder:text-text-disabled focus:outline-none"
+              placeholder="••••••••"
+              type="password"
+            />
+          </Field>
+        </PreviewItem>
+        <PreviewItem label="Disabled">
+          <Field label="Account ID" disabled helperText="Cannot be changed">
+            <input
+              className="w-full px-16 py-10 rounded-full border border-border-subtle bg-surface text-sm text-text-disabled opacity-60 cursor-not-allowed"
+              value="ACC-12345"
+              disabled
+            />
+          </Field>
+        </PreviewItem>
+      </PreviewGroup>
+
+      <PreviewGroup title="Composed" description="Field + TextInput together — this is what TextInput does internally">
+        <PreviewItem label="Full pattern">
+          <TextInput
+            label="Email"
+            required
+            placeholder="you@acko.com"
+            value=""
+            onChange={() => {}}
+            helperText="We will send a confirmation link"
+          />
+        </PreviewItem>
+      </PreviewGroup>
     </div>
   );
 }
 
 function LabelFieldUsage() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [notify, setNotify] = useState(true);
+  const [push, setPush] = useState(false);
   return (
     <Card variant="elevated" padding="md">
       <CardContent>
-        <div className="space-y-12">
+        <div className="space-y-16">
           <Typography variant="heading-md" color="primary">
-            Registration
+            Profile settings
           </Typography>
-          <TextInput
-            label="Full name"
-            required
-            placeholder="John Doe"
-            value={name}
-            onChange={setName}
-          />
-          <TextInput
-            label="Email"
-            required
-            placeholder="john@example.com"
-            value={email}
-            onChange={setEmail}
-            helperText="We'll never share it"
-          />
-          <Button variant="primary" fullWidth>Register</Button>
+          <Field label="Display name" required helperText="This appears on your public profile">
+            <TextInput placeholder="Jane Smith" value={name} onChange={setName} />
+          </Field>
+          <div>
+            <Label required size="md">Notification preferences</Label>
+            <div className="mt-8 space-y-8">
+              <CheckboxRow label="Email notifications" checked={notify} onChange={setNotify} />
+              <CheckboxRow label="Push notifications" checked={push} onChange={setPush} />
+            </div>
+          </div>
+          <Button variant="primary" fullWidth>Save changes</Button>
         </div>
       </CardContent>
     </Card>
@@ -3222,10 +3355,10 @@ function App() {
                     key={name}
                     type="button"
                     onClick={() => setSelected(name)}
-                    className={`w-full text-left px-12 py-6 rounded-lg text-xs font-medium transition-all mb-2 flex items-center justify-between group ${
+                    className={`w-full text-left px-12 py-6 rounded-lg text-xs transition-all mb-2 flex items-center justify-between group ${
                       selected === name
-                        ? "bg-primary text-on-primary"
-                        : "text-text-muted hover:text-text-strong hover:bg-surface"
+                        ? "bg-primary-subtle text-primary font-semibold shadow-[inset_3px_0_0_var(--colorPrimary)] rounded-l-none"
+                        : "text-text-secondary font-medium hover:text-text-default hover:bg-surface-ghost-hover"
                     }`}
                   >
                     <span>{name}</span>
@@ -3248,8 +3381,8 @@ function App() {
 
         {/* ── Main: Preview + usage (stacked) ── */}
         <main className="flex-1 min-w-0 overflow-y-auto bg-surface">
-          <div className="w-full min-w-0 max-w-none mx-auto px-24 py-40 sm:px-32 lg:px-40">
-            {/* Title row — first in column (below padding) */}
+          <div className="w-full min-w-0 max-w-[1200px] mx-auto px-32 py-48 sm:px-40 lg:px-56">
+            {/* Title row */}
             <div className="flex items-center gap-8 mb-4">
               <Typography variant="heading-xl" color="primary">
                 {selected}
@@ -3260,7 +3393,7 @@ function App() {
             </div>
 
             {/* Subtitle */}
-            <div className="flex items-start justify-between mb-24">
+            <div className="flex items-start justify-between mb-32">
               <Typography variant="body-sm" color="secondary">
                 {selected === "Card"
                   ? "Gallery: foundations, media patterns, reference layouts. Add ?c=Card to the URL to open this page directly."
@@ -3268,36 +3401,39 @@ function App() {
               </Typography>
             </div>
 
-            {/* Breakpoint tabs */}
-            <div className="flex items-center gap-2 mb-24 p-2 rounded-xl border border-border-subtle bg-surface-raised w-fit">
-              {BREAKPOINT_META.map(({ key, icon: Icon, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setBreakpoint(key)}
-                  className={`flex items-center gap-6 px-12 py-6 rounded-lg text-xs font-medium transition-all ${
-                    breakpoint === key
-                      ? "bg-primary text-on-primary shadow-sm"
-                      : "bg-transparent text-text-muted hover:text-text-default"
-                  }`}
-                  aria-label={`Preview at ${label} breakpoint`}
-                  aria-pressed={breakpoint === key}
-                >
-                  <Icon className="size-14" />
-                  <span>{label}</span>
-                </button>
-              ))}
-            </div>
+            {/* Breakpoint switcher */}
+            <BreakpointSwitcher breakpoint={breakpoint} onChange={setBreakpoint} />
 
             {/* Preview area with breakpoint constraint */}
-            <div className={`${BREAKPOINT_WIDTHS[breakpoint]} mx-auto min-w-0 transition-all duration-300`}>
-              <div className="p-24 min-w-0">
-                <Preview />
-              </div>
+            <div
+              className={`mx-auto min-w-0 rounded-2xl overflow-hidden ${
+                breakpoint !== "desktop"
+                  ? "border border-border-subtle bg-card-bg shadow-card"
+                  : "border border-transparent bg-transparent shadow-none"
+              }`}
+              style={{
+                maxWidth: BREAKPOINT_PX[breakpoint],
+                transition: prefersReducedMotion
+                  ? "none"
+                  : "max-width 350ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 300ms ease, box-shadow 300ms ease, background-color 300ms ease",
+              }}
+            >
+              <PreviewTransition componentKey={selected}>
+                <div className="p-32 min-w-0">
+                  <Preview />
+                </div>
+              </PreviewTransition>
             </div>
 
             {/* ── Usage section (below preview) ── */}
-            <div className="mt-40 border-t border-border-subtle pt-32">
+            <div className="mt-48 pt-32">
+              <div className="flex items-center gap-12 mb-16">
+                <div className="h-px flex-1 bg-border-subtle" />
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-text-disabled px-8">
+                  Usage
+                </span>
+                <div className="h-px flex-1 bg-border-subtle" />
+              </div>
               <div className="flex items-center gap-8 mb-8">
                 <div className="w-4 h-16 rounded-full bg-primary" />
                 <Typography variant="label-md" color="primary">

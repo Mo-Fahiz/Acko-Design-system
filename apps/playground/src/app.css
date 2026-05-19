@@ -146,3 +146,12 @@ body {
   padding-inline: 4px;
   box-sizing: border-box;
 }
+
+/* ─── Motion: reduced-motion override ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .breakpoint-indicator,
+  [style*="transition"] {
+    transition: none !important;
+    animation: none !important;
+  }
+}

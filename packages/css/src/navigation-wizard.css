@@ -67,7 +67,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 
 /* Status: error */
 .acko-wizard-circle-error {
-  background-color: var(--colorErrorText);
+  background-color: var(--colorTextError);
   color: var(--colorOnPrimary);
 }
 
@@ -86,7 +86,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 .acko-wizard-label-upcoming { color: var(--colorWizardUpcomingText); }
 .acko-wizard-label-current { color: var(--colorTextDefault); }
 .acko-wizard-label-completed { color: var(--colorTextDefault); }
-.acko-wizard-label-error { color: var(--colorErrorText); }
+.acko-wizard-label-error { color: var(--colorTextError); }
 
 .acko-wizard-description {
   font-size: var(--fontCaptionSize);
@@ -152,7 +152,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 .acko-wizard-vertical-label-upcoming { color: var(--colorWizardUpcomingText); }
 .acko-wizard-vertical-label-current { color: var(--colorTextDefault); }
 .acko-wizard-vertical-label-completed { color: var(--colorTextDefault); }
-.acko-wizard-vertical-label-error { color: var(--colorErrorText); }
+.acko-wizard-vertical-label-error { color: var(--colorTextError); }
 
 .acko-wizard-vertical-description {
   font-size: var(--fontCaptionSize);
@@ -180,7 +180,7 @@ button.acko-wizard-circle:disabled { cursor: default; }
 .acko-wizard-compact-dot-upcoming { background-color: var(--colorWizardConnectorUpcoming); }
 .acko-wizard-compact-dot-current { background-color: var(--colorWizardActiveBg); box-shadow: 0 0 0 3px var(--colorPrimaryRing); }
 .acko-wizard-compact-dot-completed { background-color: var(--colorWizardDoneBg); }
-.acko-wizard-compact-dot-error { background-color: var(--colorErrorText); }
+.acko-wizard-compact-dot-error { background-color: var(--colorTextError); }
 
 .acko-wizard-compact-label {
   font-size: 14px;

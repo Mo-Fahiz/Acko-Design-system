@@ -105,7 +105,8 @@
   --grey350: #B2B2B2; --grey400: #A4A4A4; --grey450: #969696;
   --grey500: #888888; --grey550: #7A7A7A; --grey600: #6C6C6C;
   --grey650: #5E5E5E; --grey700: #505050; --grey750: #424242;
-  --grey800: #343434; --grey900: #181818; --grey950: #0A0A0A;
+  --grey800: #343434; --grey825: #2C2C2C; --grey850: #222222;
+  --grey875: #19191A; --grey900: #181818; --grey950: #0A0A0A;
   --greyBlack: #000000;
 
   /* Red */
@@ -179,6 +180,59 @@
   --cyan600: #0891B2; --cyan700: #0E7490; --cyan800: #155E75;
   --cyan900: #164E63; --cyan950: #083344;
 
+  /* --- Alpha Tokens --- */
+  --transparent: rgba(0, 0, 0, 0);
+
+  /* Black Alpha (overlays, shadows) */
+  --blackA04: rgba(0, 0, 0, 0.04);
+  --blackA08: rgba(0, 0, 0, 0.08);
+  --blackA1: rgba(0, 0, 0, 0.05);
+  --blackA2: rgba(0, 0, 0, 0.10);
+  --blackA3: rgba(0, 0, 0, 0.15);
+  --blackA4: rgba(0, 0, 0, 0.20);
+  --blackA5: rgba(0, 0, 0, 0.30);
+  --blackA6: rgba(0, 0, 0, 0.40);
+  --blackA7: rgba(0, 0, 0, 0.50);
+  --blackA8: rgba(0, 0, 0, 0.60);
+  --blackA9: rgba(0, 0, 0, 0.70);
+  --blackA10: rgba(0, 0, 0, 0.80);
+  --blackA11: rgba(0, 0, 0, 0.90);
+  --blackA12: rgba(0, 0, 0, 0.95);
+
+  /* White Alpha (dark mode overlays) */
+  --whiteA08: rgba(255, 255, 255, 0.08);
+  --whiteA1: rgba(255, 255, 255, 0.05);
+  --whiteA2: rgba(255, 255, 255, 0.10);
+  --whiteA3: rgba(255, 255, 255, 0.15);
+  --whiteA4: rgba(255, 255, 255, 0.20);
+  --whiteA5: rgba(255, 255, 255, 0.30);
+  --whiteA6: rgba(255, 255, 255, 0.40);
+  --whiteA7: rgba(255, 255, 255, 0.50);
+  --whiteA8: rgba(255, 255, 255, 0.60);
+  --whiteA9: rgba(255, 255, 255, 0.70);
+  --whiteA10: rgba(255, 255, 255, 0.80);
+  --whiteA11: rgba(255, 255, 255, 0.90);
+  --whiteA12: rgba(255, 255, 255, 0.95);
+
+  /* Sub-step white alpha (button shadows, table stripes) */
+  --whiteA0_02: rgba(255, 255, 255, 0.02);
+  --whiteA4_28: rgba(255, 255, 255, 0.28);
+  --whiteA7_48: rgba(255, 255, 255, 0.48);
+
+  /* A90 Variants (dark mode badge gradients) */
+  --purple950A90: rgba(36, 19, 98, 0.90);
+  --purple900A90: rgba(43, 22, 120, 0.90);
+  --lime950A90: rgba(19, 46, 5, 0.90);
+  --lime900A90: rgba(33, 66, 16, 0.90);
+  --blue950A90: rgba(23, 37, 84, 0.90);
+  --blue900A90: rgba(30, 58, 138, 0.90);
+  --orange950A90: rgba(48, 2, 18, 0.90);
+  --orange900A90: rgba(82, 31, 0, 0.90);
+  --red950A90: rgba(69, 10, 10, 0.90);
+  --red900A90: rgba(127, 29, 29, 0.90);
+  --grey800A90: rgba(52, 52, 52, 0.90);
+  --grey700A90: rgba(80, 80, 80, 0.90);
+
   /* --- Opacity Scale --- */
   --opacity0: 0;
   --opacity2: 0.02; --opacity4: 0.04;
@@ -238,9 +292,9 @@
   --shadowSubtle: var(--shadowXs);
 
   /* Component shadows */
-  --shadowBtnInner: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.28);
-  --shadowBtnHover: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
-  --shadowBtnSecondaryHover: inset 0px 2px 4px rgba(255, 255, 255, 0.48);
+  --shadowBtnInner: inset 0px 1px 2px 1px var(--whiteA4_28);
+  --shadowBtnHover: 0px 4px 8px 0px var(--blackA08);
+  --shadowBtnSecondaryHover: inset 0px 2px 4px var(--whiteA7_48);
   --shadowFocusRing: 0 0 0 3px var(--colorPrimaryRing);
 
   /* --- Z-Index --- */
@@ -297,15 +351,15 @@
   --colorPrimarySubtle: var(--purple100);
   --colorPrimaryMuted: var(--purple400);
   --colorPrimaryRing: var(--purple200);
-  --colorOnPrimary: #FFFFFF;
+  --colorOnPrimary: var(--greyWhite);
 
   /* Surfaces */
   --colorSurface: var(--grey100);
   --colorSurfaceRaised: var(--grey100);
   --colorSurfaceRaisedHover: var(--grey200);
   --colorSurfaceRaisedActive: var(--grey300);
-  --colorSurfaceOverlay: rgba(10, 10, 10, 0.5);
-  --colorSurfaceGhostHover: rgba(0, 0, 0, 0.04);
+  --colorSurfaceOverlay: var(--blackA7);
+  --colorSurfaceGhostHover: var(--blackA04);
 
   /* Cards — surface hierarchy (light):
      page.base        → grey-100  (--colorSurface)
@@ -327,11 +381,11 @@
   --colorTextDefault: var(--grey700);
   --colorTextSupporting: var(--grey550);
   --colorTextSecondary: var(--grey450);
-  --colorTextDisabled: var(--grey300);
+  --colorTextDisabled: var(--grey350);
   --colorTextInvert: var(--colorOnPrimary);
   --colorTextBrand: var(--colorPrimary);
-  --colorTextError: var(--colorErrorText);
-  --colorTextSuccess: var(--colorSuccessText);
+  --colorTextError: var(--red700);
+  --colorTextSuccess: var(--green700);
   --colorTextStatic: var(--greyWhite);
 
   /* Borders */
@@ -346,7 +400,7 @@
 
   /* Disabled */
   --colorDisabledBg: var(--grey150);
-  --colorDisabledText: var(--grey350);
+  --colorDisabledText: var(--colorTextDisabled);
   --colorDisabledBorder: var(--grey200);
 
   /* Success */
@@ -412,7 +466,7 @@
   /* Input */
   --colorInputBg: var(--greyWhite);
   --colorInputBorder: var(--grey150);
-  --colorInputHoverBorder: var(--grey200);
+  --colorInputHoverBorder: var(--grey300);
   --colorInputFilledBorder: var(--grey200);
   --colorInputFocusBorder: var(--grey200);
   --colorInputFocusRing: var(--grey150);
@@ -440,7 +494,7 @@
   --shadowSliderThumb: 0 2px 6px rgba(88, 47, 210, 0.2);
 
   /* Switch thumb */
-  --colorSwitchThumb: var(--greyWhite);
+  --colorSwitchThumbOn: var(--greyWhite);
 
   /* Accordion */
   --colorAccordionBorder: var(--grey200);
@@ -465,8 +519,8 @@
   --colorControlBorderSelector: var(--grey200);
 
   /* Button */
-  --colorBtnSecondaryBg: var(--purple50);
-  --colorBtnSecondaryBorder: var(--purple300);
+  --colorBtnSecondaryBg: var(--grey100);
+  --colorBtnSecondaryBorder: var(--purple600);
   --colorBtnSecondaryText: var(--purple700);
   --colorBtnInvertedBg: var(--grey100);
   --colorBtnInvertedText: var(--purple700);
@@ -475,8 +529,10 @@
   --colorBtnLinkColor: var(--blue600);
   --colorBtnDangerBg: var(--red100);
   --colorBtnDangerText: var(--red500);
-  --colorBtnDisabledBg: var(--grey150);
-  --colorBtnDisabledText: var(--grey350);
+  --colorDangerGradientFrom: var(--red200);
+  --colorDangerGradientTo: var(--red300);
+  --colorBtnDisabledBg: var(--grey100);
+  --colorBtnDisabledText: var(--colorTextDisabled);
 
   /* Radio */
   --colorRadioCardHoverBorder: var(--purple200);
@@ -578,9 +634,9 @@
   --shadowSubtle: var(--shadowXs);
 
   /* Component shadows */
-  --shadowBtnInner: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.15);
-  --shadowBtnHover: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
-  --shadowBtnSecondaryHover: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+  --shadowBtnInner: inset 0px 1px 2px 1px var(--whiteA3);
+  --shadowBtnHover: 0px 4px 8px 0px var(--blackA5);
+  --shadowBtnSecondaryHover: inset 0px 2px 4px var(--blackA4);
 
   /* Primary */
   --colorPrimary: var(--purple500);
@@ -592,27 +648,27 @@
   --colorOnPrimary: var(--greyWhite);
 
   /* Surfaces */
-  --colorSurface: var(--grey750);
-  --colorSurfaceRaised: var(--grey700);
-  --colorSurfaceRaisedHover: var(--grey650);
-  --colorSurfaceRaisedActive: var(--grey600);
-  --colorSurfaceOverlay: rgba(0, 0, 0, 0.7);
-  --colorSurfaceGhostHover: rgba(255, 255, 255, 0.05);
+  --colorSurface: var(--grey875);
+  --colorSurfaceRaised: var(--grey850);
+  --colorSurfaceRaisedHover: var(--grey825);
+  --colorSurfaceRaisedActive: var(--grey800);
+  --colorSurfaceOverlay: var(--blackA9);
+  --colorSurfaceGhostHover: var(--whiteA1);
 
   /* Cards — surface hierarchy (dark):
-     page.base        → grey-700  (--colorSurface)
-     surface.default  → grey-650  fill
-     surface.secondary→ grey-700  fill
-     surface.elevated → grey-600  fill + shadow
-     surface.demoted  → grey-750  fill */
-  --colorCardBg: var(--grey650);
-  --colorCardBorder: var(--grey600);
-  --colorCardSecondaryBg: var(--grey700);
-  --colorCardSecondaryBorder: var(--grey600);
-  --colorCardElevatedBg: var(--grey600);
-  --colorCardDemotedBg: var(--grey750);
-  --colorCardDemotedBorder: var(--grey650);
-  --colorCardOutlineBorder: var(--grey600);
+     page.base        → grey-875  (--colorSurface)
+     surface.default  → grey-825  fill
+     surface.secondary→ grey-875  fill
+     surface.elevated → grey-800  fill + shadow
+     surface.demoted  → grey-900  fill */
+  --colorCardBg: var(--grey825);
+  --colorCardBorder: var(--grey800);
+  --colorCardSecondaryBg: var(--grey875);
+  --colorCardSecondaryBorder: var(--grey825);
+  --colorCardElevatedBg: var(--grey800);
+  --colorCardDemotedBg: var(--grey900);
+  --colorCardDemotedBorder: var(--grey850);
+  --colorCardOutlineBorder: var(--grey800);
 
   /* Text */
   --colorTextPrimary: var(--grey50);
@@ -622,24 +678,24 @@
   --colorTextDisabled: var(--grey450);
   --colorTextInvert: var(--colorOnPrimary);
   --colorTextBrand: var(--colorPrimary);
-  --colorTextError: var(--colorErrorText);
-  --colorTextSuccess: var(--colorSuccessText);
+  --colorTextError: var(--red400);
+  --colorTextSuccess: var(--green400);
   --colorTextStatic: var(--greyWhite);
 
   /* Borders */
-  --colorBorder: var(--grey600);
-  --colorBorderStrong: var(--grey550);
-  --colorBorderSubtle: var(--grey650);
+  --colorBorder: var(--grey800);
+  --colorBorderStrong: var(--grey700);
+  --colorBorderSubtle: var(--grey825);
 
   /* Dividers */
-  --colorDivider: var(--grey650);
-  --colorDividerStrong: var(--grey600);
-  --colorDividerSubtle: var(--grey700);
+  --colorDivider: var(--grey825);
+  --colorDividerStrong: var(--grey800);
+  --colorDividerSubtle: var(--grey850);
 
   /* Disabled */
-  --colorDisabledBg: var(--grey600);
-  --colorDisabledText: var(--grey450);
-  --colorDisabledBorder: var(--grey600);
+  --colorDisabledBg: var(--grey800);
+  --colorDisabledText: var(--colorTextDisabled);
+  --colorDisabledBorder: var(--grey800);
 
   /* Success */
   --colorSuccess: var(--green500);
@@ -676,50 +732,50 @@
   --colorTooltipText: var(--grey750);
 
   /* Tabs — pill container + inner tab */
-  --colorTabPillBg: var(--grey650);
-  --colorTabPillOuterBorder: var(--grey600);
+  --colorTabPillBg: var(--grey825);
+  --colorTabPillOuterBorder: var(--grey800);
   --colorTabPillActiveBg: var(--purple900);
   --colorTabPillActiveText: var(--greyWhite);
   --colorTabTextInactive: var(--grey400);
   --colorTabTextDisabled: var(--grey500);
 
   /* OTP cell */
-  --colorOtpFilledBg: var(--grey750);
-  --colorOtpFilledBorder: var(--grey600);
+  --colorOtpFilledBg: var(--grey850);
+  --colorOtpFilledBorder: var(--grey800);
   --colorOtpFilledText: var(--grey100);
-  --colorOtpFocusBg: var(--grey700);
-  --colorOtpFocusBorder: var(--grey550);
-  --colorOtpFocusRing: var(--grey600);
-  --colorOtpErrorFill: var(--grey700);
-  --colorOtpErrorGradientFrom: var(--grey600);
+  --colorOtpFocusBg: var(--grey825);
+  --colorOtpFocusBorder: var(--grey700);
+  --colorOtpFocusRing: var(--grey800);
+  --colorOtpErrorFill: var(--grey825);
+  --colorOtpErrorGradientFrom: var(--grey800);
   --colorOtpErrorGradientTo: var(--red900);
 
   /* Toggle */
-  --colorToggleBg: var(--grey650);
-  --colorToggleBgHover: var(--grey600);
+  --colorToggleBg: var(--grey825);
+  --colorToggleBgHover: var(--grey800);
   --colorToggleActiveBg: var(--purple900);
   --colorToggleActiveText: var(--purple300);
   --colorToggleText: var(--grey350);
 
   /* Input */
-  --colorInputBg: var(--grey750);
-  --colorInputBorder: var(--grey600);
-  --colorInputHoverBorder: var(--grey550);
-  --colorInputFilledBorder: var(--grey550);
-  --colorInputFocusBorder: var(--grey550);
-  --colorInputFocusRing: var(--grey600);
-  --colorInputDisabledBg: var(--grey700);
-  --colorInputDisabledBorder: var(--grey600);
-  --colorInputOptionHover: var(--grey650);
+  --colorInputBg: var(--grey850);
+  --colorInputBorder: var(--grey800);
+  --colorInputHoverBorder: var(--grey700);
+  --colorInputFilledBorder: var(--grey700);
+  --colorInputFocusBorder: var(--grey700);
+  --colorInputFocusRing: var(--grey800);
+  --colorInputDisabledBg: var(--grey875);
+  --colorInputDisabledBorder: var(--grey800);
+  --colorInputOptionHover: var(--grey825);
   --colorInputOptionSelectedBg: var(--purple900);
   --colorInputOptionSelectedText: var(--purple300);
 
   /* Error gradient (input error borders) */
   --colorErrorGradientFrom: var(--red800);
-  --colorErrorGradientTo: var(--grey600);
+  --colorErrorGradientTo: var(--grey800);
 
   /* Track / tick unfinished area */
-  --colorTrackInactive: var(--grey600);
+  --colorTrackInactive: var(--grey800);
 
   /* Slider — dark theme (same thumb stroke + --sliderThumbSize* as light) */
   --colorSliderTrackActiveFrom: var(--purple800);
@@ -732,11 +788,11 @@
   --shadowSliderThumb: 0 2px 6px rgba(62, 34, 144, 0.55);
 
   /* Switch thumb */
-  --colorSwitchThumb: var(--greyWhite);
+  --colorSwitchThumbOn: var(--greyWhite);
 
   /* Accordion */
-  --colorAccordionBorder: var(--grey600);
-  --colorAccordionHeaderHover: var(--grey650);
+  --colorAccordionBorder: var(--grey800);
+  --colorAccordionHeaderHover: var(--grey825);
   --colorAccordionIcon: var(--grey400);
 
   /* Breadcrumb */
@@ -747,29 +803,31 @@
   --colorBreadcrumbSeparator: var(--grey550);
 
   /* Table */
-  --colorTableHeaderBg: var(--grey700);
+  --colorTableHeaderBg: var(--grey875);
   --colorTableHeaderText: var(--grey350);
-  --colorTableBorder: var(--grey600);
-  --colorTableRowHover: var(--grey650);
-  --colorTableStripe: rgba(255, 255, 255, 0.02);
+  --colorTableBorder: var(--grey800);
+  --colorTableRowHover: var(--grey825);
+  --colorTableStripe: var(--whiteA0_02);
 
   /* Form Controls */
   --colorControlBorderSelector: var(--grey500);
 
   /* Button */
-  --colorBtnSecondaryBg: var(--grey650);
+  --colorBtnSecondaryBg: var(--grey875);
   --colorBtnSecondaryBorder: var(--purple600);
   --colorBtnSecondaryText: var(--grey50);
-  --colorBtnInvertedBg: var(--grey100);
+  --colorBtnInvertedBg: var(--grey875);
   --colorBtnInvertedText: var(--purple700);
-  --colorBtnGhostHoverBg: var(--grey600);
+  --colorBtnGhostHoverBg: var(--grey800);
   --colorBtnPrimaryHoverBg: var(--purple600);
   --colorBtnGhostColor: var(--purple500);
   --colorBtnLinkColor: var(--blue500);
-  --colorBtnDangerBg: var(--red900);
+  --colorBtnDangerBg: var(--red950);
   --colorBtnDangerText: var(--red200);
-  --colorBtnDisabledBg: var(--grey600);
-  --colorBtnDisabledText: var(--grey450);
+  --colorBtnDisabledBg: var(--grey800);
+  --colorBtnDisabledText: var(--colorTextDisabled);
+  --colorDangerGradientFrom: var(--red900);
+  --colorDangerGradientTo: var(--red950);
 
   /* Radio */
   --colorRadioCardHoverBorder: var(--purple700);
@@ -784,36 +842,36 @@
   --colorCalRangeText: var(--purple300);
   --colorCalHoverBg: var(--purple950);
   --colorCalTodayText: var(--purple400);
-  --colorCalCellHoverBg: var(--grey650);
+  --colorCalCellHoverBg: var(--grey825);
 
   /* Badge — solid + dot + counter (dark only: muted 90% fill, 900-tier border) */
-  --colorBadgePurpleGradientFrom: color-mix(in srgb, var(--purple950) 90%, transparent);
-  --colorBadgePurpleGradientTo: color-mix(in srgb, var(--purple900) 90%, transparent);
+  --colorBadgePurpleGradientFrom: var(--purple950A90);
+  --colorBadgePurpleGradientTo: var(--purple900A90);
   --colorBadgePurpleBorder: var(--purple900);
   --colorBadgePurpleText: var(--purple200);
 
-  --colorBadgeGreenGradientFrom: color-mix(in srgb, var(--lime950) 90%, transparent);
-  --colorBadgeGreenGradientTo: color-mix(in srgb, var(--lime900) 90%, transparent);
+  --colorBadgeGreenGradientFrom: var(--lime950A90);
+  --colorBadgeGreenGradientTo: var(--lime900A90);
   --colorBadgeGreenBorder: var(--lime900);
   --colorBadgeGreenText: var(--green200);
 
-  --colorBadgeBlueGradientFrom: color-mix(in srgb, var(--blue950) 90%, transparent);
-  --colorBadgeBlueGradientTo: color-mix(in srgb, var(--blue900) 90%, transparent);
+  --colorBadgeBlueGradientFrom: var(--blue950A90);
+  --colorBadgeBlueGradientTo: var(--blue900A90);
   --colorBadgeBlueBorder: var(--blue900);
   --colorBadgeBlueText: var(--blue200);
 
-  --colorBadgeOrangeGradientFrom: color-mix(in srgb, var(--orange950) 90%, transparent);
-  --colorBadgeOrangeGradientTo: color-mix(in srgb, var(--orange900) 90%, transparent);
+  --colorBadgeOrangeGradientFrom: var(--orange950A90);
+  --colorBadgeOrangeGradientTo: var(--orange900A90);
   --colorBadgeOrangeBorder: var(--orange900);
   --colorBadgeOrangeText: var(--orange200);
 
-  --colorBadgePinkGradientFrom: color-mix(in srgb, var(--red950) 90%, transparent);
-  --colorBadgePinkGradientTo: color-mix(in srgb, var(--red900) 90%, transparent);
+  --colorBadgePinkGradientFrom: var(--red950A90);
+  --colorBadgePinkGradientTo: var(--red900A90);
   --colorBadgePinkBorder: var(--red900);
   --colorBadgePinkText: var(--red200);
 
-  --colorBadgeGrayGradientFrom: color-mix(in srgb, var(--grey800) 90%, transparent);
-  --colorBadgeGrayGradientTo: color-mix(in srgb, var(--grey700) 90%, transparent);
+  --colorBadgeGrayGradientFrom: var(--grey800A90);
+  --colorBadgeGrayGradientTo: var(--grey700A90);
   --colorBadgeGrayBorder: var(--grey600);
   --colorBadgeGrayText: var(--grey200);
 
@@ -826,16 +884,16 @@
   --colorBadgeGrayOutlineColor: var(--grey500);
 
   /* Counter badge — dark: muted fill, 900-tier border */
-  --colorCounterPinkGradientFrom: color-mix(in srgb, var(--red950) 90%, transparent);
-  --colorCounterPinkGradientTo: color-mix(in srgb, var(--red900) 90%, transparent);
+  --colorCounterPinkGradientFrom: var(--red950A90);
+  --colorCounterPinkGradientTo: var(--red900A90);
   --colorCounterPinkBorder: var(--red900);
 
-  --colorCounterPurpleGradientFrom: color-mix(in srgb, var(--purple950) 90%, transparent);
-  --colorCounterPurpleGradientTo: color-mix(in srgb, var(--purple900) 90%, transparent);
+  --colorCounterPurpleGradientFrom: var(--purple950A90);
+  --colorCounterPurpleGradientTo: var(--purple900A90);
   --colorCounterPurpleBorder: var(--purple900);
 
-  --colorCounterBlueGradientFrom: color-mix(in srgb, var(--blue950) 90%, transparent);
-  --colorCounterBlueGradientTo: color-mix(in srgb, var(--blue900) 90%, transparent);
+  --colorCounterBlueGradientFrom: var(--blue950A90);
+  --colorCounterBlueGradientTo: var(--blue900A90);
   --colorCounterBlueBorder: var(--blue900);
 
   /* Wizard */

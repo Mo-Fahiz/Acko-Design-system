@@ -59,7 +59,18 @@
 /* --- Variants --- */
 
 .acko-btn-primary {
-  @apply bg-primary text-on-primary shadow-btn-inner;
+  @apply bg-primary text-on-primary relative;
+  isolation: isolate;
+}
+
+.acko-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, var(--purple500), var(--purple600));
+  z-index: -1;
+  pointer-events: none;
 }
 
 .acko-btn-secondary {
@@ -74,7 +85,18 @@
 }
 
 .acko-btn-inverted {
-  @apply bg-btn-inverted-bg text-btn-inverted-text;
+  @apply bg-btn-inverted-bg text-btn-inverted-text relative;
+  isolation: isolate;
+}
+
+.acko-btn-inverted::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: var(--colorPrimary);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .acko-btn-ghost {
@@ -86,7 +108,18 @@
 }
 
 .acko-btn-danger {
-  @apply bg-btn-danger-bg text-btn-danger-text;
+  @apply bg-btn-danger-bg text-btn-danger-text relative;
+  isolation: isolate;
+}
+
+.acko-btn-danger::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, var(--colorDangerGradientFrom, var(--red200)), var(--colorDangerGradientTo, var(--red300)));
+  z-index: -1;
+  pointer-events: none;
 }
 
 .acko-btn-danger:focus-visible {
@@ -97,11 +130,12 @@
 
 @media (hover: hover) and (pointer: fine) {
   .acko-btn-primary:hover:not(:disabled) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
-    background-color: var(--colorPrimary);
-    box-shadow:
-      var(--shadowBtnInner),
-      var(--shadowBtnHover);
+    @apply bg-primary-hover;
+    box-shadow: var(--shadowBtnHover);
+  }
+
+  .acko-btn-primary:hover:not(:disabled)::before {
+    background: linear-gradient(to bottom, var(--purple400), var(--purple500));
   }
 
   .acko-btn-secondary:hover:not(:disabled) {
@@ -111,7 +145,11 @@
   }
 
   .acko-btn-inverted:hover:not(:disabled) {
-    filter: brightness(0.96);
+    filter: brightness(1.05);
+  }
+
+  .acko-btn-inverted:hover:not(:disabled)::before {
+    filter: brightness(1.1);
   }
 
   .acko-btn-ghost:hover:not(:disabled) {
@@ -131,8 +169,14 @@
 
 .acko-btn-disabled,
 .acko-btn:disabled {
-  @apply cursor-not-allowed !bg-btn-disabled-bg !text-btn-disabled-text !shadow-none opacity-100;
+  @apply cursor-not-allowed !text-btn-disabled-text !shadow-none opacity-100;
+  background: var(--colorBtnDisabledBg) !important;
   filter: none;
+}
+
+.acko-btn-disabled::before,
+.acko-btn:disabled::before {
+  display: none !important;
 }
 
 .acko-btn-disabled:active,
@@ -150,7 +194,8 @@
    ============================================================ */
 
 [data-theme="dark"] .acko-btn-primary {
-  @apply bg-primary text-on-primary shadow-btn-inner;
+  @apply bg-primary text-on-primary relative;
+  isolation: isolate;
 }
 
 [data-theme="dark"] .acko-btn-secondary {
@@ -159,7 +204,8 @@
 }
 
 [data-theme="dark"] .acko-btn-inverted {
-  @apply bg-btn-inverted-bg text-btn-inverted-text;
+  @apply bg-btn-inverted-bg text-btn-inverted-text relative;
+  isolation: isolate;
 }
 
 [data-theme="dark"] .acko-btn-ghost {
@@ -175,17 +221,19 @@
 }
 
 [data-theme="dark"] .acko-btn:disabled {
-  @apply cursor-not-allowed !bg-btn-disabled-bg !text-btn-disabled-text !shadow-none opacity-100;
+  @apply cursor-not-allowed !text-btn-disabled-text !shadow-none opacity-100;
+  background: var(--colorBtnDisabledBg) !important;
   filter: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   [data-theme="dark"] .acko-btn-primary:hover:not(:disabled) {
-    background-color: var(--colorBtnPrimaryHoverBg);
-    background-image: none;
-    box-shadow:
-      var(--shadowBtnInner),
-      var(--shadowBtnHover);
+    @apply bg-primary-hover;
+    box-shadow: var(--shadowBtnHover);
+  }
+
+  [data-theme="dark"] .acko-btn-primary:hover:not(:disabled)::before {
+    background: linear-gradient(to bottom, var(--purple400), var(--purple500));
   }
 
   [data-theme="dark"] .acko-btn-secondary:hover:not(:disabled) {
@@ -193,7 +241,11 @@
   }
 
   [data-theme="dark"] .acko-btn-inverted:hover:not(:disabled) {
-    filter: brightness(0.9);
+    filter: brightness(1.1);
+  }
+
+  [data-theme="dark"] .acko-btn-inverted:hover:not(:disabled)::before {
+    filter: brightness(1.15);
   }
 
   [data-theme="dark"] .acko-btn-ghost:hover:not(:disabled) {

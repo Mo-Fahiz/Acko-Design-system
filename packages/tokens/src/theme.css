@@ -126,7 +126,7 @@
   --color-slider-thumb-bg: var(--colorSliderThumbBg);
   --color-slider-thumb-stroke-from: var(--colorSliderThumbStrokeFrom);
   --color-slider-thumb-stroke-to: var(--colorSliderThumbStrokeTo);
-  --color-switch-thumb: var(--colorSwitchThumb);
+  --color-switch-thumb-on: var(--colorSwitchThumbOn);
 
   --color-tooltip-bg: var(--colorTooltipBg);
   --color-tooltip-text: var(--colorTooltipText);

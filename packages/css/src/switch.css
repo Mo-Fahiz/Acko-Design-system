@@ -27,11 +27,11 @@
 
 .acko-switch-checked .acko-switch-track {
   @apply bg-primary;
-  box-shadow: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0px 1px 2px 1px var(--whiteA4_28);
 }
 
 .acko-switch-thumb {
-  @apply absolute rounded-full bg-[var(--colorSwitchThumb)] shadow-sm transition-transform duration-[250ms] ease-out;
+  @apply absolute rounded-full bg-[var(--colorSwitchThumbOn)] shadow-sm transition-transform duration-[250ms] ease-out;
 }
 
 .acko-switch-thumb-sm {
