@@ -835,11 +835,11 @@
   --colorBtnPrimaryHoverBg: var(--purple600);
   --colorBtnGhostColor: var(--purple500);
   --colorBtnLinkColor: var(--blue500);
-  /* Danger fill: red50 (#FEF2F2); border gradient: red900 (top) → red50 (bottom, = fill) */
-  --colorBtnDangerBg: var(--red50);
+  /* Danger fill: red950 (#450A0A); border gradient: red900 (#7F1D1D, top) → red950 (bottom, = fill) */
+  --colorBtnDangerBg: var(--red950);
   --colorBtnDangerText: var(--red200);
   --colorBtnDangerBorderFrom: var(--red900);
-  --colorBtnDangerBorderTo: var(--red50);
+  --colorBtnDangerBorderTo: var(--red950);
   --colorBtnDisabledBg: var(--grey800);
   --colorBtnDisabledText: var(--colorTextDisabled);
 

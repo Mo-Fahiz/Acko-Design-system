@@ -65,9 +65,10 @@
 
 /* --- Variants --- */
 
-/* Primary: fill padding-box + gradient border-box */
+/* Primary: fill padding-box + 2px gradient border-box */
 .acko-btn-primary {
   @apply text-on-primary;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorPrimary), var(--colorPrimary)) padding-box,
     linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
@@ -83,9 +84,10 @@
   box-shadow: var(--shadowFocusRing);
 }
 
-/* Inverted: neutral fill padding-box + gradient border-box */
+/* Inverted: neutral fill padding-box + 2px gradient border-box */
 .acko-btn-inverted {
   @apply text-btn-inverted-text;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorBtnInvertedBg), var(--colorBtnInvertedBg)) padding-box,
     linear-gradient(to bottom, var(--colorBtnInvertedBorderFrom), var(--colorBtnInvertedBorderTo)) border-box;
@@ -101,9 +103,10 @@
   border-color: transparent;
 }
 
-/* Danger: red fill padding-box + gradient border-box */
+/* Danger: red fill padding-box + 2px gradient border-box */
 .acko-btn-danger {
   @apply text-btn-danger-text;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorBtnDangerBg), var(--colorBtnDangerBg)) padding-box,
     linear-gradient(to bottom, var(--colorBtnDangerBorderFrom), var(--colorBtnDangerBorderTo)) border-box;
@@ -171,6 +174,7 @@
 
 [data-theme="dark"] .acko-btn-primary {
   @apply text-on-primary;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorPrimary), var(--colorPrimary)) padding-box,
     linear-gradient(to bottom, var(--colorBtnPrimaryBorderFrom), var(--colorBtnPrimaryBorderTo)) border-box;
@@ -183,6 +187,7 @@
 
 [data-theme="dark"] .acko-btn-inverted {
   @apply text-btn-inverted-text;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorBtnInvertedBg), var(--colorBtnInvertedBg)) padding-box,
     linear-gradient(to bottom, var(--colorBtnInvertedBorderFrom), var(--colorBtnInvertedBorderTo)) border-box;
@@ -198,6 +203,7 @@
 
 [data-theme="dark"] .acko-btn-danger {
   @apply text-btn-danger-text;
+  border-width: 2px;
   background:
     linear-gradient(var(--colorBtnDangerBg), var(--colorBtnDangerBg)) padding-box,
     linear-gradient(to bottom, var(--colorBtnDangerBorderFrom), var(--colorBtnDangerBorderTo)) border-box;
