@@ -2105,7 +2105,7 @@ function LabelFieldUsage() {
             Profile settings
           </Typography>
           <Field label="Display name" required helperText="This appears on your public profile">
-            <TextInput placeholder="Jane Smith" value={name} onChange={setName} />
+            <TextInput label="Display name" placeholder="Jane Smith" value={name} onChange={setName} />
           </Field>
           <div>
             <Label required size="md">Notification preferences</Label>
